@@ -5,6 +5,7 @@ import { FloatingContact } from '@/components/FloatingContact/Component'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { Providers } from '@/providers'
+import { getCachedGlobal } from '@/utilities/getGlobals'
 import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { cn } from '@/utilities/ui'
@@ -24,6 +25,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isEnabled } = await draftMode()
+  const contact = await getCachedGlobal('company-contact', 0)()
 
   return (
     <html className={cn(plusJakarta.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
@@ -33,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body className={cn(plusJakarta.className, 'min-h-[100vh] antialiased')}>
-        <Providers>
+        <Providers quotePagePath={contact?.quotePagePath}>
           <AdminBar
             adminBarProps={{
               preview: isEnabled,

@@ -8,6 +8,8 @@ export const companyContactDefaultData = {
   whatsappPrefillMessage:
     'Hello, I would like to enquire about aluminium sulphate supply from Chilmund Chemicals.',
   quotePagePath: '/contact',
+  /** Paste the iframe src from Google Maps embed (optional). */
+  googleMapsEmbedUrl: '',
   headOfficeAddress: '114 Harare Drive, Marlborough, Harare',
   manufacturingPlantAddress: '914/15 Kingston Road, Bindura, Zimbabwe',
   phoneBinduraDisplay: '+263 66 2107 155 / 57',

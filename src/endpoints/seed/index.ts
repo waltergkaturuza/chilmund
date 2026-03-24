@@ -16,6 +16,7 @@ const collections: CollectionSlug[] = [
   'media',
   'pages',
   'posts',
+  'products',
   'forms',
   'form-submissions',
   'search',
@@ -231,7 +232,50 @@ export const seed = async ({
           {
             link: {
               type: 'custom',
-              label: 'Posts',
+              label: 'Home',
+              url: '/',
+            },
+          },
+          {
+            style: 'dropdown',
+            dropdownLabel: 'Company',
+            subItems: [
+              {
+                link: { type: 'custom', label: 'About', url: '/about' },
+              },
+              {
+                link: { type: 'custom', label: 'Vision & mission', url: '/vision-mission' },
+              },
+              {
+                link: { type: 'custom', label: 'Values', url: '/values' },
+              },
+              {
+                link: { type: 'custom', label: 'SHEQ', url: '/sheq' },
+              },
+              {
+                link: { type: 'custom', label: 'CSR', url: '/csr' },
+              },
+            ],
+          },
+          {
+            style: 'dropdown',
+            dropdownLabel: 'Products',
+            subItems: [
+              {
+                link: { type: 'custom', label: 'Overview', url: '/products' },
+              },
+              {
+                link: { type: 'custom', label: 'Industrial chemicals', url: '/products/industrial' },
+              },
+              {
+                link: { type: 'custom', label: 'Agriculture', url: '/products/agriculture' },
+              },
+            ],
+          },
+          {
+            link: {
+              type: 'custom',
+              label: 'News',
               url: '/posts',
             },
           },

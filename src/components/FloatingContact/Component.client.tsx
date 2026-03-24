@@ -5,6 +5,7 @@ import Link from 'next/link'
 import React, { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+import { useQuoteModalOptional } from '@/providers/QuoteModal'
 import { cn } from '@/utilities/ui'
 
 export type FloatingContactClientProps = {
@@ -35,6 +36,7 @@ export function FloatingContactClient({
   quotePagePath,
 }: FloatingContactClientProps) {
   const [open, setOpen] = useState(false)
+  const quoteModal = useQuoteModalOptional()
 
   const track = useCallback((action: string) => {
     if (
@@ -104,7 +106,17 @@ export function FloatingContactClient({
             </Button>
           ) : null}
           <Button asChild className="w-full justify-start gap-2" variant="outline">
-            <Link data-contact="quote" href={quoteHref} onClick={() => track('quote_click')}>
+            <Link
+              data-contact="quote"
+              href={quoteHref}
+              onClick={(e) => {
+                track('quote_click')
+                if (quoteModal) {
+                  e.preventDefault()
+                  quoteModal.openQuoteModal()
+                }
+              }}
+            >
               Request a quote
             </Link>
           </Button>

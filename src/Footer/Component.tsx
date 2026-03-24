@@ -21,6 +21,11 @@ function handleToInstagramUrl(handle: string | null | undefined): string | null 
   return `https://www.instagram.com/${h}/`
 }
 
+function isTrustedGoogleMapsEmbedUrl(url: string): boolean {
+  const u = url.trim()
+  return u.startsWith('https://www.google.com/maps/embed') || u.startsWith('https://maps.google.com/maps/embed')
+}
+
 export async function Footer() {
   const [footerData, contact]: [Footer, CompanyContact] = await Promise.all([
     getCachedGlobal('footer', 1)(),
@@ -184,6 +189,24 @@ export async function Footer() {
             </div>
           </div>
         </div>
+
+        {contact?.googleMapsEmbedUrl && isTrustedGoogleMapsEmbedUrl(contact.googleMapsEmbedUrl) ? (
+          <div className="mt-14 border-t border-white/10 pt-12">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">Map</h3>
+            <p className="mt-2 max-w-xl text-sm text-white/65">
+              Head office or plant location (embed URL from Company contact → Addresses &amp; quote).
+            </p>
+            <div className="mt-4 aspect-[21/9] min-h-[200px] w-full overflow-hidden rounded-2xl border border-white/10 bg-black/25 md:min-h-[260px]">
+              <iframe
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={contact.googleMapsEmbedUrl.trim()}
+                title="Chilmund location map"
+              />
+            </div>
+          </div>
+        ) : null}
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-xs text-white/45 md:flex-row md:text-left">
           <p>© {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.</p>

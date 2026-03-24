@@ -5,6 +5,11 @@ import { revalidateFooter } from './hooks/revalidateFooter'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
+  label: 'Footer links',
+  admin: {
+    group: 'Site & navigation',
+    description: 'Secondary links in the site footer (legal, social, key pages).',
+  },
   access: {
     read: () => true,
   },
@@ -17,7 +22,7 @@ export const Footer: GlobalConfig = {
           appearances: false,
         }),
       ],
-      maxRows: 6,
+      maxRows: 12,
       admin: {
         initCollapsed: true,
         components: {

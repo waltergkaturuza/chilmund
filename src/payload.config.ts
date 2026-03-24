@@ -8,6 +8,7 @@ import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
+import { Products } from './collections/Products'
 import { Users } from './collections/Users'
 import { CompanyContact } from './company-contact/config'
 import { Footer } from './Footer/config'
@@ -23,9 +24,35 @@ const dirname = path.dirname(filename)
 const payloadDatabaseSchema = process.env.PAYLOAD_DATABASE_SCHEMA || 'chilmund_payload'
 const migrationsDir = path.resolve(dirname, '..', 'migrations')
 
+const databaseUrl = process.env.DATABASE_URL?.trim()
+if (!databaseUrl) {
+  throw new Error(
+    '[Chilmund] DATABASE_URL is missing or empty. Copy .env.example to .env, then paste your full Supabase Postgres URI from Dashboard → Settings → Database (URI format). ' +
+      'The password must appear in the URI; if it contains @ # / etc., use URL-encoded characters. ' +
+      'Example: postgresql://postgres.[ref]:YOUR_PASSWORD@aws-0-eu-central-1.pooler.supabase.com:6543/postgres?sslmode=require',
+  )
+}
+
+/** Supabase + Node on Windows often hits "self-signed certificate in certificate chain"; TLS is still on, we only skip CA verification. */
+const isSupabaseHost = /supabase\.(com|co)/i.test(databaseUrl)
+const forceStrictSsl = process.env.DATABASE_SSL_STRICT === 'true'
+const relaxSslVerify =
+  process.env.DATABASE_SSL_REJECT_UNAUTHORIZED === 'false' ||
+  process.env.DATABASE_SSL_REJECT_UNAUTHORIZED === '0'
+const poolSsl =
+  !forceStrictSsl && (isSupabaseHost || relaxSslVerify)
+    ? { rejectUnauthorized: false as const }
+    : undefined
+
 export default buildConfig({
   admin: {
+    meta: {
+      titleSuffix: '— Chilmund CMS',
+    },
     components: {
+      graphics: {
+        Logo: '@/components/AdminLogo',
+      },
       // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeLogin: ['@/components/BeforeLogin'],
@@ -69,9 +96,10 @@ export default buildConfig({
      */
     schemaName: payloadDatabaseSchema,
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: databaseUrl,
       max: Number(process.env.PAYLOAD_PG_POOL_MAX || 10),
       idleTimeoutMillis: Number(process.env.PAYLOAD_PG_IDLE_TIMEOUT_MS || 30_000),
+      ...(poolSsl ? { ssl: poolSsl } : {}),
     },
     migrationDir: migrationsDir,
     /** Supabase always has a database; do not let Payload try CREATE DATABASE. */
@@ -81,7 +109,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Products, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, CompanyContact],
   plugins,

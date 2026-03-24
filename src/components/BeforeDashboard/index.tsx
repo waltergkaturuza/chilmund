@@ -1,6 +1,8 @@
 import { Banner } from '@payloadcms/ui/elements/Banner'
 import React from 'react'
 
+import { productCatalogPath, recommendedCorporatePages } from '@/content/siteStructure'
+
 import { SeedButton } from './SeedButton'
 import './index.scss'
 
@@ -51,6 +53,13 @@ const BeforeDashboard: React.FC = () => {
         </li>
         <li>
           Commit and push your changes to the repository to trigger a redeployment of your project.
+        </li>
+        <li>
+          <strong>Chilmund sitemap:</strong> plan {recommendedCorporatePages.length} top-level pages in{' '}
+          <em>Website content → Pages</em> (reference slugs in{' '}
+          <code className="text-[0.85em]">src/content/siteStructure.ts</code>). Product catalog:{' '}
+          <code className="text-[0.85em]">{productCatalogPath}</code> (add entries in{' '}
+          <em>Products</em>).
         </li>
       </ul>
       {'Pro Tip: This block is a '}

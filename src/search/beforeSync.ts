@@ -5,15 +5,49 @@ export const beforeSyncWithSearch: BeforeSync = async ({ req, originalDoc, searc
     doc: { relationTo: collection },
   } = searchDoc
 
-  const { slug, id, categories, title, meta } = originalDoc
+  const { slug, id, title, meta, categories, shortDescription } = originalDoc as {
+    slug?: string
+    id?: string | number
+    title?: string
+    meta?: { title?: string; description?: string; image?: unknown }
+    categories?: unknown
+    shortDescription?: string
+  }
+
+  if (collection === 'products') {
+    const img = meta?.image
+    const imageRef =
+      img && typeof img === 'object' && img !== null && 'id' in img
+        ? (img as { id: unknown }).id
+        : img
+    const modifiedDoc: DocToSync = {
+      ...searchDoc,
+      slug,
+      meta: {
+        ...meta,
+        title: meta?.title || title,
+        image: imageRef,
+        description: meta?.description || shortDescription,
+      },
+      categories: [],
+    }
+    return modifiedDoc
+  }
+
+  const postImage = meta?.image
+  const postImageRef =
+    postImage && typeof postImage === 'object' && postImage !== null && 'id' in postImage
+      ? (postImage as { id: unknown }).id
+      : postImage
 
   const modifiedDoc: DocToSync = {
     ...searchDoc,
     slug,
+    id,
     meta: {
       ...meta,
       title: meta?.title || title,
-      image: meta?.image?.id || meta?.image,
+      image: postImageRef,
       description: meta?.description,
     },
     categories: [],
@@ -26,14 +60,14 @@ export const beforeSyncWithSearch: BeforeSync = async ({ req, originalDoc, searc
         continue
       }
 
-      if (typeof category === 'object') {
-        populatedCategories.push(category)
+      if (typeof category === 'object' && category !== null && 'title' in category) {
+        populatedCategories.push(category as { id: string | number; title: string })
         continue
       }
 
       const doc = await req.payload.findByID({
         collection: 'categories',
-        id: category,
+        id: category as string | number,
         disableErrors: true,
         depth: 0,
         select: { title: true },

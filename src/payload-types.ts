@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     pages: Page;
     posts: Post;
+    products: Product;
     media: Media;
     categories: Category;
     users: User;
@@ -91,6 +92,7 @@ export interface Config {
   collectionsSelect: {
     pages: PagesSelect<false> | PagesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -190,6 +192,10 @@ export interface Page {
               | ({
                   relationTo: 'posts';
                   value: number | Post;
+                } | null)
+              | ({
+                  relationTo: 'products';
+                  value: number | Product;
                 } | null);
             url?: string | null;
             label: string;
@@ -442,6 +448,63 @@ export interface User {
   collection: 'users';
 }
 /**
+ * Product catalog: public pages at /products/[slug], datasheet downloads, and SEO. Link products from Pages or the main nav.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  title: string;
+  /**
+   * Only published products appear in the catalog and on /products.
+   */
+  published?: boolean | null;
+  /**
+   * Used for filters on the product catalog.
+   */
+  category?: ('industrial' | 'agriculture' | 'water-treatment' | 'other') | null;
+  /**
+   * Shown on catalog cards and in site search.
+   */
+  shortDescription?: string | null;
+  heroImage?: (number | null) | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  /**
+   * Upload a PDF in Media first, then select it here.
+   */
+  datasheet?: (number | null) | Media;
+  meta?: {
+    title?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    description?: string | null;
+  };
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "CallToActionBlock".
  */
@@ -474,6 +537,10 @@ export interface CallToActionBlock {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'products';
+                value: number | Product;
               } | null);
           url?: string | null;
           label: string;
@@ -524,6 +591,10 @@ export interface ContentBlock {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'products';
+                value: number | Product;
               } | null);
           url?: string | null;
           label: string;
@@ -803,6 +874,10 @@ export interface Redirect {
       | ({
           relationTo: 'posts';
           value: number | Post;
+        } | null)
+      | ({
+          relationTo: 'products';
+          value: number | Product;
         } | null);
     url?: string | null;
   };
@@ -836,10 +911,15 @@ export interface Search {
   id: number;
   title?: string | null;
   priority?: number | null;
-  doc: {
-    relationTo: 'posts';
-    value: number | Post;
-  };
+  doc:
+    | {
+        relationTo: 'posts';
+        value: number | Post;
+      }
+    | {
+        relationTo: 'products';
+        value: number | Product;
+      };
   slug?: string | null;
   meta?: {
     title?: string | null;
@@ -980,6 +1060,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
       } | null)
     | ({
         relationTo: 'media';
@@ -1220,6 +1304,30 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  title?: T;
+  published?: T;
+  category?: T;
+  shortDescription?: T;
+  heroImage?: T;
+  content?: T;
+  datasheet?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        image?: T;
+        description?: T;
+      };
+  generateSlug?: T;
+  slug?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1634,14 +1742,23 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * Controls the public top bar: pill-style tabs and optional dropdown groups (similar to large summit / conference sites). Order here is left → right on the site.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header".
  */
 export interface Header {
   id: number;
+  /**
+   * Use **Single link** for Home, Contact, etc. Use **Dropdown group** for sections with several destinations (e.g. Company, Products).
+   */
   navItems?:
     | {
-        link: {
+        /**
+         * Dropdowns show a panel of sub-links on hover (desktop) or tap (mobile).
+         */
+        style?: ('link' | 'dropdown') | null;
+        link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
           reference?:
@@ -1652,10 +1769,42 @@ export interface Header {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'products';
+                value: number | Product;
               } | null);
           url?: string | null;
           label: string;
         };
+        /**
+         * Shown on the pill / button (e.g. “Company”, “Products”).
+         */
+        dropdownLabel?: string | null;
+        subItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null)
+                  | ({
+                      relationTo: 'products';
+                      value: number | Product;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -1663,6 +1812,8 @@ export interface Header {
   createdAt?: string | null;
 }
 /**
+ * Secondary links in the site footer (legal, social, key pages).
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer".
  */
@@ -1681,6 +1832,10 @@ export interface Footer {
             | ({
                 relationTo: 'posts';
                 value: number | Post;
+              } | null)
+            | ({
+                relationTo: 'products';
+                value: number | Product;
               } | null);
           url?: string | null;
           label: string;
@@ -1692,6 +1847,8 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * Phones, emails, addresses, and social links used in the footer, floating actions, and structured data.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "company-contact".
  */
@@ -1721,6 +1878,10 @@ export interface CompanyContact {
    * Path for “Request a quote” (e.g. /contact).
    */
   quotePagePath?: string | null;
+  /**
+   * Google Maps → Share → Embed a map → copy only the URL inside src="..." (HTTPS). Shown in the footer when set.
+   */
+  googleMapsEmbedUrl?: string | null;
   socialTwitter?: string | null;
   socialInstagram?: string | null;
   socialLinkedIn?: string | null;
@@ -1738,6 +1899,7 @@ export interface HeaderSelect<T extends boolean = true> {
   navItems?:
     | T
     | {
+        style?: T;
         link?:
           | T
           | {
@@ -1746,6 +1908,21 @@ export interface HeaderSelect<T extends boolean = true> {
               reference?: T;
               url?: T;
               label?: T;
+            };
+        dropdownLabel?: T;
+        subItems?:
+          | T
+          | {
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };
@@ -1793,6 +1970,7 @@ export interface CompanyContactSelect<T extends boolean = true> {
   headOfficeAddress?: T;
   manufacturingPlantAddress?: T;
   quotePagePath?: T;
+  googleMapsEmbedUrl?: T;
   socialTwitter?: T;
   socialInstagram?: T;
   socialLinkedIn?: T;

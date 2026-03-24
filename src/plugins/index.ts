@@ -14,19 +14,25 @@ import { Page, Post } from '@/payload-types'
 import { getServerSideURL } from '@/utilities/getURL'
 
 const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
-  return doc?.title ? `${doc.title} | Payload Website Template` : 'Payload Website Template'
+  return doc?.title ? `${doc.title} | Chilmund Chemicals` : 'Chilmund Chemicals'
 }
 
-const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
+const generateURL: GenerateURL = ({ doc, collectionSlug }) => {
   const url = getServerSideURL()
-
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  const slug = doc && typeof doc === 'object' && 'slug' in doc ? (doc as { slug?: string }).slug : undefined
+  if (!slug) return url
+  if (collectionSlug === 'products') return `${url}/products/${slug}`
+  if (collectionSlug === 'posts') return `${url}/posts/${slug}`
+  return `${url}/${slug}`
 }
 
 export const plugins: Plugin[] = [
   redirectsPlugin({
-    collections: ['pages', 'posts'],
+    collections: ['pages', 'posts', 'products'],
     overrides: {
+      admin: {
+        group: 'Site configuration',
+      },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -59,6 +65,9 @@ export const plugins: Plugin[] = [
       payment: false,
     },
     formOverrides: {
+      admin: {
+        group: 'Forms',
+      },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
           if ('name' in field && field.name === 'confirmationMessage') {
@@ -79,11 +88,19 @@ export const plugins: Plugin[] = [
         })
       },
     },
+    formSubmissionOverrides: {
+      admin: {
+        group: 'Forms',
+      },
+    },
   }),
   searchPlugin({
-    collections: ['posts'],
+    collections: ['posts', 'products'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
+      admin: {
+        group: 'Website content',
+      },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]
       },
