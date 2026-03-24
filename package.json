@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "node ./node_modules/next/dist/bin/next build --webpack",
-    "vercel-build": "node ./node_modules/payload/bin.js migrate && node ./node_modules/next/dist/bin/next build --webpack",
+    "vercel-build": "echo \"[chilmund] Running Payload migrations...\" && node ./node_modules/payload/bin.js migrate && echo \"[chilmund] Migrations done. Building Next.js...\" && node ./node_modules/next/dist/bin/next build --webpack",
     "postbuild": "node ./node_modules/next-sitemap/bin/next-sitemap.mjs --config next-sitemap.config.cjs",
     "dev": "node ./node_modules/next/dist/bin/next dev --webpack",
     "dev:prod": "node ./node_modules/next/dist/bin/next build && node ./node_modules/next/dist/bin/next start",
