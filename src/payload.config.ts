@@ -4,6 +4,7 @@ import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
+import { anyone } from './access/anyone'
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -137,6 +138,22 @@ export default buildConfig({
   },
   // This config helps us configure global or default features that the other editors can inherit
   editor: defaultLexical,
+  /**
+   * Media uses `folders: true`. Payload injects `payload-folders` with read access = authenticated only.
+   * The admin UI loads `/api/media` while browsing uploads; that flow can 403 on production if folder reads
+   * are denied. Media already uses `read: anyone`; align folder document read the same way (names/structure only).
+   */
+  folders: {
+    collectionOverrides: [
+      ({ collection }) => ({
+        ...collection,
+        access: {
+          ...collection.access,
+          read: anyone,
+        },
+      }),
+    ],
+  },
   db: postgresAdapter({
     /**
      * All Payload tables + enums live only in this schema, so existing `public` (and other) schemas stay untouched.
