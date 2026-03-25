@@ -33,6 +33,24 @@ if (!databaseUrl) {
   )
 }
 
+/** The project-only host (ref.supabase.co) is API traffic, not Postgres; TCP to :5432 there often hits Cloudflare and times out. */
+function assertPostgresHostNotSupabaseProjectApi(url: string): void {
+  let host: string
+  try {
+    host = new URL(url.replace(/^postgresql:/i, 'http:')).hostname
+  } catch {
+    return
+  }
+  if (/^[a-z0-9]{8,40}\.supabase\.co$/i.test(host)) {
+    throw new Error(
+      `[Chilmund] DATABASE_URL host "${host}" is the Supabase project (API) hostname, not Postgres. ` +
+        'Dashboard → Project Settings → Database → Connection string → URI. Use db.PROJECT_REF.supabase.co (direct) or aws-0-REGION.pooler.supabase.com (pooler), not PROJECT_REF.supabase.co. ' +
+        'Wrong host causes ETIMEDOUT (e.g. to Cloudflare IPs) on port 5432.',
+    )
+  }
+}
+assertPostgresHostNotSupabaseProjectApi(databaseUrl)
+
 /** Supabase + Node on Windows often hits "self-signed certificate in certificate chain"; TLS is still on, we only skip CA verification. */
 const isSupabaseHost = /supabase\.(com|co)/i.test(databaseUrl)
 const forceStrictSsl = process.env.DATABASE_SSL_STRICT === 'true'
