@@ -12,22 +12,28 @@ import type { Header as HeaderType } from '@/payload-types'
 type NavItem = NonNullable<HeaderType['navItems']>[number]
 type SubItem = NonNullable<NavItem['subItems']>[number]
 
-/** Desktop: segmented “tab” cells inside a bar */
+/**
+ * Desktop: TNF-style row — loose pills on the canvas (no heavy outer chrome on dark).
+ * Active item = solid gold pill + dark label; idle = quiet text + soft hover.
+ */
 const tabStripTrack =
-  'inline-flex max-w-full flex-nowrap items-center gap-0.5 overflow-x-auto rounded-xl border px-1.5 py-1.5 shadow-sm [scrollbar-width:thin] sm:gap-1 sm:px-2'
+  'inline-flex max-w-full flex-nowrap items-center gap-1 overflow-x-auto py-0.5 [scrollbar-width:thin] sm:gap-1.5'
+
+const tabStripTrackLight =
+  'rounded-full border border-slate-200/90 bg-slate-100/90 px-1 py-1 shadow-sm ring-1 ring-slate-200/50'
 
 const tabStripItem =
-  'inline-flex shrink-0 items-center gap-1.5 rounded-lg px-3 py-2 text-[0.8125rem] font-semibold tracking-wide transition-colors sm:px-3.5 sm:py-2.5 sm:text-sm'
+  'inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-[0.8125rem] font-semibold tracking-wide transition-colors sm:px-4 sm:py-2.5 sm:text-sm'
 
 const tabStripActive = (dark?: boolean) =>
   dark
-    ? 'bg-amber-500/25 text-amber-100 shadow-sm ring-1 ring-amber-400/35'
-    : 'bg-white text-slate-900 shadow-sm ring-1 ring-slate-200/90'
+    ? 'bg-amber-400 text-slate-900 shadow-sm hover:bg-amber-300'
+    : 'bg-amber-400 text-slate-900 shadow-sm ring-1 ring-amber-500/30 hover:bg-amber-300'
 
 const tabStripIdle = (dark?: boolean) =>
   dark
-    ? 'text-white/75 hover:bg-white/10 hover:text-white'
-    : 'text-slate-600 hover:bg-slate-200/70 hover:text-slate-900'
+    ? 'text-white/85 hover:bg-white/10 hover:text-white'
+    : 'text-slate-600 hover:bg-slate-200/80 hover:text-slate-900'
 
 /** Mobile drawer: pill chips */
 const pillBase =
@@ -75,8 +81,8 @@ function NavLinkPill({
         pillBase,
         active
           ? dark
-            ? 'bg-amber-500/20 text-amber-200 ring-1 ring-amber-400/40'
-            : 'bg-amber-100 text-amber-950 ring-1 ring-amber-300/80'
+            ? 'bg-amber-400 text-slate-900 ring-0'
+            : 'bg-amber-400 text-slate-900 ring-1 ring-amber-500/25'
           : dark
             ? 'text-white/80 hover:bg-white/10 hover:text-white'
             : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
@@ -106,6 +112,8 @@ function DropdownDesktopStrip({
     return h ? isHrefActive(pathname, h) : false
   })
 
+  const leaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
   useEffect(() => {
     if (!open) return
     const onDoc = (e: MouseEvent) => {
@@ -115,8 +123,27 @@ function DropdownDesktopStrip({
     return () => document.removeEventListener('mousedown', onDoc)
   }, [open])
 
+  useEffect(() => {
+    return () => {
+      if (leaveTimer.current) clearTimeout(leaveTimer.current)
+    }
+  }, [])
+
   return (
-    <div ref={wrapRef} className="relative shrink-0">
+    <div
+      ref={wrapRef}
+      className="relative shrink-0"
+      onMouseEnter={() => {
+        if (leaveTimer.current) {
+          clearTimeout(leaveTimer.current)
+          leaveTimer.current = null
+        }
+        setOpen(true)
+      }}
+      onMouseLeave={() => {
+        leaveTimer.current = setTimeout(() => setOpen(false), 160)
+      }}
+    >
       <button
         type="button"
         aria-expanded={open}
@@ -136,7 +163,7 @@ function DropdownDesktopStrip({
       {open ? (
         <div
           className={cn(
-            'absolute left-1/2 top-[calc(100%+0.35rem)] z-50 min-w-[13rem] -translate-x-1/2 rounded-xl border py-1.5 shadow-xl',
+            'absolute left-1/2 top-[calc(100%+0.45rem)] z-50 min-w-[14rem] -translate-x-1/2 rounded-xl border py-1.5 shadow-xl',
             dark
               ? 'border-white/10 bg-slate-950/95 text-white backdrop-blur-md'
               : 'border-slate-200/90 bg-white text-slate-900 shadow-slate-200/50',
@@ -157,8 +184,8 @@ function DropdownDesktopStrip({
                   'block px-4 py-2.5 text-sm font-medium transition-colors',
                   active
                     ? dark
-                      ? 'bg-white/10 text-amber-200'
-                      : 'bg-amber-50 text-amber-950'
+                      ? 'bg-amber-400/20 text-amber-200'
+                      : 'bg-amber-100 text-amber-950'
                     : dark
                       ? 'text-white/85 hover:bg-white/10'
                       : 'text-slate-700 hover:bg-slate-50',
@@ -290,33 +317,57 @@ function MobileDropdownSection({
   )
 }
 
-function SearchTabStrip({
-  pathname,
+/** Summit-style search control (separate from the pill row). */
+export function HeaderSearchTrigger({
   dark,
-  onClick,
+  className,
+  onNavigate,
 }: {
-  pathname: string
   dark?: boolean
-  onClick?: () => void
+  className?: string
+  onNavigate?: () => void
 }) {
+  const pathname = usePathname()
   const active = pathname.startsWith('/search')
+  const [modKey, setModKey] = useState('⌘')
+
+  useEffect(() => {
+    if (typeof navigator === 'undefined') return
+    const mac = /mac|iphone|ipad|ipod/i.test(navigator.userAgent)
+    setModKey(mac ? '⌘' : 'Ctrl')
+  }, [])
+
   return (
     <Link
       href="/search"
-      onClick={onClick}
+      onClick={onNavigate}
       className={cn(
-        tabStripItem,
-        active ? tabStripActive(dark) : tabStripIdle(dark),
-        'shrink-0',
+        'inline-flex min-w-0 max-w-[11rem] items-center gap-2 rounded-full border px-3 py-2 text-sm transition-colors sm:max-w-[13.5rem] sm:px-3.5',
+        active
+          ? dark
+            ? 'border-amber-400/50 bg-amber-400/15 text-white'
+            : 'border-amber-400/60 bg-amber-50 text-slate-900'
+          : dark
+            ? 'border-white/20 bg-black/20 text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white'
+            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900',
+        className,
       )}
     >
-      <SearchIcon className="size-[1.05rem]" aria-hidden />
-      <span>Search</span>
+      <SearchIcon className="size-4 shrink-0 opacity-70" aria-hidden />
+      <span className="min-w-0 flex-1 truncate text-left font-medium opacity-90">Search</span>
+      <kbd
+        className={cn(
+          'hidden shrink-0 rounded-md border px-1.5 py-0.5 font-sans text-[0.65rem] font-semibold sm:inline',
+          dark ? 'border-white/25 bg-white/5 text-white/70' : 'border-slate-200 bg-slate-50 text-slate-500',
+        )}
+      >
+        {modKey} K
+      </kbd>
     </Link>
   )
 }
 
-/** Centered primary navigation bar — use inside grid column with minmax(0,1fr) */
+/** Centered primary navigation — pills only (search lives in the header utilities column). */
 export function HeaderNavDesktopStrip({ data, dark }: { data: HeaderType; dark?: boolean }) {
   const pathname = usePathname()
   const navItems = data?.navItems || []
@@ -326,16 +377,8 @@ export function HeaderNavDesktopStrip({ data, dark }: { data: HeaderType; dark?:
       aria-label="Main"
       className="flex w-full min-w-0 max-w-full justify-center lg:justify-center"
     >
-      <div
-        className={cn(
-          tabStripTrack,
-          dark
-            ? 'border-white/15 bg-slate-900/55 ring-1 ring-white/5'
-            : 'border-slate-200/95 bg-slate-100/90 ring-1 ring-slate-200/60',
-        )}
-      >
+      <div className={cn(tabStripTrack, !dark && tabStripTrackLight)}>
         {navItems.map((item, i) => renderNavItem(item, i, { dark, pathname, mode: 'desktop' }))}
-        <SearchTabStrip pathname={pathname} dark={dark} />
       </div>
     </nav>
   )
@@ -400,23 +443,7 @@ export function HeaderNavMobileDrawer({
   }, [open])
 
   const searchPill = (
-    <Link
-      href="/search"
-      onClick={onClose}
-      className={cn(
-        pillBase,
-        pathname.startsWith('/search')
-          ? dark
-            ? 'bg-amber-500/20 text-amber-200 ring-1 ring-amber-400/40'
-            : 'bg-amber-100 text-amber-950 ring-1 ring-amber-300/80'
-          : dark
-            ? 'text-white/80 hover:bg-white/10 hover:text-white'
-            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
-      )}
-    >
-      <SearchIcon className="size-[1.05rem]" aria-hidden />
-      <span>Search</span>
-    </Link>
+    <HeaderSearchTrigger dark={dark} onNavigate={onClose} className="w-full max-w-none py-2.5" />
   )
 
   if (!open) return null

@@ -2,9 +2,11 @@
 import { Button } from '@/components/ui/button'
 import { Logo } from '@/components/Logo/Logo'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
+import { useTheme } from '@/providers/Theme'
 import { cn } from '@/utilities/ui'
+import { Moon, SearchIcon, Sun } from 'lucide-react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useCallback, useEffect, useId, useState } from 'react'
 
 import type { Header } from '@/payload-types'
@@ -14,14 +16,40 @@ import {
   HeaderNavDesktopStrip,
   HeaderNavMobileButton,
   HeaderNavMobileDrawer,
+  HeaderSearchTrigger,
 } from './Nav'
 
 interface HeaderClientProps {
   data: Header
 }
 
+const headerCtaClasses =
+  'rounded-full border-0 bg-amber-400 px-4 font-semibold text-slate-900 shadow-sm hover:bg-amber-300 lg:px-5'
+
+function HeaderThemeToggle({ darkHeader }: { darkHeader: boolean }) {
+  const { theme, setTheme } = useTheme()
+  const isDark = theme === 'dark'
+
+  return (
+    <button
+      type="button"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      className={cn(
+        'flex size-10 shrink-0 items-center justify-center rounded-full border transition-colors',
+        darkHeader
+          ? 'border-white/25 text-white hover:bg-white/10'
+          : 'border-border text-slate-700 hover:bg-muted',
+      )}
+      onClick={() => setTheme(isDark ? 'light' : 'dark')}
+    >
+      {isDark ? <Sun className="size-[1.15rem]" aria-hidden /> : <Moon className="size-[1.15rem]" aria-hidden />}
+    </button>
+  )
+}
+
 export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const { openQuoteModal } = useQuoteModal()
+  const router = useRouter()
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
@@ -43,6 +71,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   useEffect(() => {
     closeMobileMenu()
   }, [pathname, closeMobileMenu])
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault()
+        router.push('/search')
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [router])
 
   const isDarkHeader = theme === 'dark'
 
@@ -70,9 +109,26 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
         </div>
 
-        <div className="col-start-2 row-start-1 flex shrink-0 items-center justify-end gap-2 justify-self-end lg:col-start-3">
+        <div className="col-start-2 row-start-1 flex shrink-0 items-center justify-end gap-2 justify-self-end sm:gap-2.5 lg:col-start-3">
+          <HeaderSearchTrigger
+            dark={isDarkHeader}
+            className="hidden lg:inline-flex"
+          />
+          <Link
+            href="/search"
+            className={cn(
+              'flex size-10 items-center justify-center rounded-full border lg:hidden',
+              isDarkHeader
+                ? 'border-white/25 text-white hover:bg-white/10'
+                : 'border-border text-slate-700 hover:bg-muted',
+            )}
+            aria-label="Search"
+          >
+            <SearchIcon className="size-5" aria-hidden />
+          </Link>
+          <HeaderThemeToggle darkHeader={isDarkHeader} />
           <Button
-            className="hidden rounded-full px-4 sm:inline-flex lg:px-5"
+            className={cn('hidden sm:inline-flex', headerCtaClasses)}
             size="sm"
             type="button"
             onClick={openQuoteModal}
@@ -89,13 +145,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       </div>
 
       <div className="container flex justify-end pb-3 sm:hidden">
-        <Button
-          className="rounded-full px-4"
-          size="sm"
-          type="button"
-          variant="secondary"
-          onClick={openQuoteModal}
-        >
+        <Button className={headerCtaClasses} size="sm" type="button" onClick={openQuoteModal}>
           Request a quote
         </Button>
       </div>
