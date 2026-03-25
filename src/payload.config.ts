@@ -62,6 +62,36 @@ const poolSsl =
     ? { rejectUnauthorized: false as const }
     : undefined
 
+/**
+ * `pg` merges `parse(connectionString)` over pool options, so `sslmode=require` becomes `ssl: {}` and
+ * overrides our `ssl: { rejectUnauthorized: false }`, causing SELF_SIGNED_CERT_IN_CHAIN on Vercel/Supabase.
+ * Drop SSL query params when we supply explicit relaxed TLS below.
+ */
+function connectionStringWithoutSslQueryParams(rawUrl: string): string {
+  try {
+    const schemeMatch = rawUrl.match(/^(postgres(?:ql)?):\/\//i)
+    const scheme = schemeMatch ? schemeMatch[1].toLowerCase() : 'postgresql'
+    const u = new URL(rawUrl.replace(/^postgres(?:ql)?:\/\//i, 'http://'))
+    for (const key of [
+      'sslmode',
+      'ssl',
+      'sslrootcert',
+      'sslcert',
+      'sslkey',
+      'uselibpqcompat',
+    ]) {
+      u.searchParams.delete(key)
+    }
+    return u.toString().replace(/^http:\/\//i, `${scheme}://`)
+  } catch {
+    return rawUrl
+  }
+}
+
+const poolConnectionString = poolSsl
+  ? connectionStringWithoutSslQueryParams(databaseUrl)
+  : databaseUrl
+
 export default buildConfig({
   admin: {
     meta: {
@@ -114,7 +144,7 @@ export default buildConfig({
      */
     schemaName: payloadDatabaseSchema,
     pool: {
-      connectionString: databaseUrl,
+      connectionString: poolConnectionString,
       max: Number(process.env.PAYLOAD_PG_POOL_MAX || 10),
       idleTimeoutMillis: Number(process.env.PAYLOAD_PG_IDLE_TIMEOUT_MS || 30_000),
       ...(poolSsl ? { ssl: poolSsl } : {}),
