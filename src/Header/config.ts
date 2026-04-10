@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { link } from '@/fields/link'
 import { revalidateHeader } from './hooks/revalidateHeader'
 
@@ -7,7 +8,7 @@ export const Header: GlobalConfig = {
   slug: 'header',
   label: 'Header & main menu',
   admin: {
-    group: 'Site & navigation',
+    group: SIDEBAR.site,
     description:
       'Controls the public top bar: pill-style tabs and optional dropdown groups (similar to large summit / conference sites). Order here is left → right on the site.',
   },

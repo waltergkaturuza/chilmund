@@ -23,7 +23,7 @@ export const recommendedCorporatePages = [
 export const productCatalogPath = '/products'
 
 /**
- * Suggested top bar (Payload → Globals → Header & main menu). Mirrors a “summit” style site:
+ * Suggested top bar (Payload admin → SITE → Header & main menu). Mirrors a “summit” style site:
  * a few primary pills, with deep sections grouped under dropdowns.
  */
 export const recommendedHeaderNavBlueprint = [

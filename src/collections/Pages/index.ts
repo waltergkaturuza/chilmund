@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
 import { Archive } from '../../blocks/ArchiveBlock/config'
@@ -37,7 +38,7 @@ export const Pages: CollectionConfig<'pages'> = {
     slug: true,
   },
   admin: {
-    group: 'Website content',
+    group: SIDEBAR.content,
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>

@@ -4,6 +4,8 @@ import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { searchPlugin } from '@payloadcms/plugin-search'
 import { Plugin } from 'payload'
+
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { revalidateRedirects } from '@/hooks/revalidateRedirects'
 import { GenerateTitle, GenerateURL } from '@payloadcms/plugin-seo/types'
 import { FixedToolbarFeature, HeadingFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
@@ -31,7 +33,7 @@ export const plugins: Plugin[] = [
     collections: ['pages', 'posts', 'products'],
     overrides: {
       admin: {
-        group: 'Site configuration',
+        group: SIDEBAR.configuration,
       },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -66,7 +68,7 @@ export const plugins: Plugin[] = [
     },
     formOverrides: {
       admin: {
-        group: 'Forms',
+        group: SIDEBAR.management,
       },
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {
@@ -90,7 +92,7 @@ export const plugins: Plugin[] = [
     },
     formSubmissionOverrides: {
       admin: {
-        group: 'Forms',
+        group: SIDEBAR.management,
       },
     },
   }),
@@ -99,7 +101,7 @@ export const plugins: Plugin[] = [
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
       admin: {
-        group: 'Website content',
+        group: SIDEBAR.content,
       },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]

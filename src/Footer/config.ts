@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { link } from '@/fields/link'
 import { revalidateFooter } from './hooks/revalidateFooter'
 
@@ -7,7 +8,7 @@ export const Footer: GlobalConfig = {
   slug: 'footer',
   label: 'Footer links',
   admin: {
-    group: 'Site & navigation',
+    group: SIDEBAR.site,
     description: 'Secondary links in the site footer (legal, social, key pages).',
   },
   access: {

@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { authenticated } from '../../access/authenticated'
 
 export const Users: CollectionConfig = {
@@ -12,7 +13,7 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    group: 'Administration',
+    group: SIDEBAR.administration,
     defaultColumns: ['name', 'email'],
     useAsTitle: 'name',
   },

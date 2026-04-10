@@ -8,6 +8,7 @@ import {
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { anyone } from '../access/anyone'
 import { authenticated } from '../access/authenticated'
 
@@ -18,7 +19,7 @@ export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
   admin: {
-    group: 'Website content',
+    group: SIDEBAR.content,
   },
   access: {
     create: authenticated,

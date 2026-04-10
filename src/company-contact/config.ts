@@ -1,5 +1,6 @@
 import type { GlobalConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { companyContactDefaultData } from './defaultData'
 
 import { revalidateCompanyContact } from './hooks/revalidateCompanyContact'
@@ -10,7 +11,7 @@ export const CompanyContact: GlobalConfig = {
   slug: 'company-contact',
   label: 'Company contact & CTAs',
   admin: {
-    group: 'Site & navigation',
+    group: SIDEBAR.site,
     description:
       'Phones, emails, addresses, and social links used in the footer, floating actions, and structured data.',
   },

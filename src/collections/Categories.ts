@@ -1,3 +1,4 @@
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import type { CollectionConfig } from 'payload'
 
 import { anyone } from '../access/anyone'
@@ -13,7 +14,7 @@ export const Categories: CollectionConfig = {
     update: authenticated,
   },
   admin: {
-    group: 'Website content',
+    group: SIDEBAR.content,
     useAsTitle: 'title',
   },
   fields: [

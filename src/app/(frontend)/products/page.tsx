@@ -73,7 +73,7 @@ export default async function ProductsCatalogPage({ searchParams }: Props) {
           <p className="mx-auto mt-16 max-w-md text-center text-slate-600">
             {query
               ? `No products match “${query}”. Try another search or clear the filter.`
-              : 'No published products yet. Add products in the CMS under Website content → Products.'}
+              : 'No published products yet. Add products in the CMS under CONTENT → Products.'}
           </p>
         ) : (
           <ul className="mx-auto mt-12 grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-3">

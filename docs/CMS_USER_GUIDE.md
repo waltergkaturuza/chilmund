@@ -8,12 +8,14 @@ This guide is for **content editors and admins** using the Payload admin panel f
 
 1. Open your site’s **admin URL** (for local development it is usually `http://localhost:3000/admin`; production will be your domain + `/admin`).
 2. Sign in with the **email and password** your administrator created for you.
-3. The **left sidebar** groups everything by purpose (same idea as in your **Pages** screenshot):
-   - **Website content** — day-to-day site material (Pages, Posts, Products, Media, Categories, Search results).
-   - **Administration** — **Users** (who can log in).
-   - **Site configuration** — **Redirects** (old URL → new URL).
-   - **Forms** — form definitions and **Form submissions**.
-   - **Site & navigation** — **Header**, **Footer**, **Company contact** (global settings used across the site).
+3. The **left sidebar** is grouped like a large event / ops admin (section headers in **ALL CAPS**):
+   - **CONTENT** — Pages, Posts, Products, Media, Categories, Search results.
+   - **MANAGEMENT** — **Forms** and **Form submissions** (leads / enquiries).
+   - **SITE** — **Header & main menu**, **Footer links**, **Company contact & CTAs** (globals).
+   - **CONFIGURATION** — **Redirects**.
+   - **ADMINISTRATION** — **Users** (who can log in).
+
+   (Payload orders these groups **alphabetically** by label.)
 
 ---
 
@@ -63,7 +65,7 @@ Here you build the **body** of the page by adding **blocks** (stacked sections).
 | **Call to action** | Prominent message + buttons. |
 | **Media**        | Image or embed from the Media library. |
 | **Archive**      | Listing of posts (e.g. news-style feed). |
-| **Form**         | Embed a form you created under **Forms**. |
+| **Form**         | Embed a form you created under **MANAGEMENT → Forms**. |
 
 **Example — simple text page**
 
@@ -154,7 +156,7 @@ Products are **not** normal pages; they live at **`/products/[slug]`** (e.g. `/p
 
 **Globals** are singletons: one shared **Header** for the whole site.
 
-1. Open **Site & navigation** → **Header & main menu**.
+1. Open **SITE** → **Header & main menu**.
 2. **Main menu** — array of items, each either:
    - **Single link** — one **Link** (internal page/post/product or custom URL).
    - **Dropdown group** — **Dropdown label** (e.g. “Company”) plus **Sub-links** (each sub-link is a full link).
@@ -189,7 +191,7 @@ The admin **Live site tips** tab on the Header global summarizes this blueprint.
 
 ## 7. Footer links (global)
 
-**Footer links** — **Site & navigation** → **Footer links**.
+**Footer links** — **SITE** → **Footer links**.
 
 - Add rows; each row is a **link** (internal or custom), same pattern as header links.
 - Good for legal pages, privacy, secondary “Contact”, social URLs, etc.
@@ -207,7 +209,7 @@ The admin **Live site tips** tab on the Header global summarizes this blueprint.
 
 ## 9. Forms and submissions
 
-Under **Forms**:
+Under **MANAGEMENT**:
 
 1. **Forms** — define fields, validation, confirmation message, emails (per your form builder configuration).
 2. **Form submissions** — read entries visitors submitted.
@@ -218,7 +220,7 @@ To show a form on a **Page**: in **Page sections**, add a **Form** block and sel
 
 ## 10. Redirects
 
-**Site configuration** → **Redirects**.
+**CONFIGURATION** → **Redirects**.
 
 - **From:** old path (as configured in admin—often site-relative).
 - **To:** new path or full URL.
@@ -253,7 +255,7 @@ Use when URLs change so bookmarks and search results don’t 404. Large redirect
 3. **Page sections** — add **Content** with address, hours, or embed a **Form** for enquiries.  
 4. **SEO** — meta title/description.  
 5. **Publish** the page.  
-6. **Header & main menu** — add or edit a **Single link**:  
+6. **SITE** → **Header & main menu** — add or edit a **Single link**:  
    - Internal link → Page **Contact us**  
    - Label: `Contact`  
 7. Save the global.  

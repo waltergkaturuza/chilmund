@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
+import { SIDEBAR } from '@/admin/sidebarGroups'
 import { authenticated } from '@/access/authenticated'
 import { publicIfProductPublished } from '@/access/publicIfProductPublished'
 import { defaultLexical } from '@/fields/defaultLexical'
@@ -18,7 +19,7 @@ import { revalidateProduct, revalidateProductDelete } from './hooks/revalidatePr
 export const Products: CollectionConfig<'products'> = {
   slug: 'products',
   admin: {
-    group: 'Website content',
+    group: SIDEBAR.content,
     defaultColumns: ['title', 'slug', 'category', 'published', 'updatedAt'],
     useAsTitle: 'title',
     description:

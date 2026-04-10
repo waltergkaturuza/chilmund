@@ -56,7 +56,7 @@ const BeforeDashboard: React.FC = () => {
         </li>
         <li>
           <strong>Chilmund sitemap:</strong> plan {recommendedCorporatePages.length} top-level pages in{' '}
-          <em>Website content → Pages</em> (reference slugs in{' '}
+          <em>CONTENT → Pages</em> (reference slugs in{' '}
           <code className="text-[0.85em]">src/content/siteStructure.ts</code>). Product catalog:{' '}
           <code className="text-[0.85em]">{productCatalogPath}</code> (add entries in{' '}
           <em>Products</em>).
