@@ -372,7 +372,7 @@ export function HeaderNavDesktopStrip({ data, dark }: { data: HeaderType; dark?:
   const navItems = data?.navItems || []
 
   return (
-    <nav aria-label="Main" className="w-full pt-1.5">
+    <nav aria-label="Main" className="w-full">
       <div className={tabStripTrack}>
         {navItems.map((item, i) => renderNavItem(item, i, { dark, pathname, mode: 'desktop' }))}
       </div>

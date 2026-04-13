@@ -95,13 +95,20 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      {/* Top bar: logo + utility icons */}
-      <div className="container flex items-center justify-between py-2.5 sm:py-3">
+      {/* Single row: logo | nav tabs | utilities + CTA */}
+      <div className="mx-auto flex w-full max-w-[1920px] items-center px-5 py-2.5 sm:py-3">
+        {/* Logo — far left */}
         <Link className="shrink-0" href="/">
           <Logo variant={isDarkHeader ? 'light' : 'default'} />
         </Link>
 
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        {/* Desktop nav tabs — centered between logo and CTA */}
+        <div className="mx-4 hidden min-w-0 flex-1 lg:block">
+          <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
+        </div>
+
+        {/* Utilities + CTA — far right */}
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
           <HeaderSearchTrigger
             dark={isDarkHeader}
             className="hidden md:inline-flex"
@@ -136,18 +143,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
       </div>
 
-      {/* Desktop nav: full-width row below logo, hidden on mobile */}
-      <div
-        className={cn(
-          'container hidden pb-2 lg:block',
-          isDarkHeader ? 'border-t border-white/10' : 'border-t border-border/50',
-        )}
-      >
-        <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
-      </div>
-
       {/* Mobile CTA when screen is too small for the inline button */}
-      <div className="container flex justify-end pb-2 sm:hidden">
+      <div className="flex justify-end px-5 pb-2 sm:hidden">
         <Button className={headerCtaClasses} size="sm" type="button" onClick={openQuoteModal}>
           Request a quote
         </Button>
