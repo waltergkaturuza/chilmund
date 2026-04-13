@@ -162,8 +162,8 @@ export default buildConfig({
     schemaName: payloadDatabaseSchema,
     pool: {
       connectionString: poolConnectionString,
-      max: Number(process.env.PAYLOAD_PG_POOL_MAX || 10),
-      idleTimeoutMillis: Number(process.env.PAYLOAD_PG_IDLE_TIMEOUT_MS || 30_000),
+      max: Number(process.env.PAYLOAD_PG_POOL_MAX || 3),
+      idleTimeoutMillis: Number(process.env.PAYLOAD_PG_IDLE_TIMEOUT_MS || 10_000),
       ...(poolSsl ? { ssl: poolSsl } : {}),
     },
     migrationDir: migrationsDir,
