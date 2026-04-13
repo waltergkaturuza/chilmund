@@ -13,17 +13,16 @@ type NavItem = NonNullable<HeaderType['navItems']>[number]
 type SubItem = NonNullable<NavItem['subItems']>[number]
 
 /**
- * Desktop: TNF-style row — loose pills on the canvas (no heavy outer chrome on dark).
+ * Desktop: full-width row of tabs that wrap naturally (no horizontal scroll).
  * Active item = solid gold pill + dark label; idle = quiet text + soft hover.
  */
 const tabStripTrack =
-  'inline-flex max-w-full flex-nowrap items-center gap-1 overflow-x-auto py-0.5 [scrollbar-width:thin] sm:gap-1.5'
+  'flex w-full flex-wrap items-center justify-center gap-x-0.5 gap-y-1 py-0.5'
 
-const tabStripTrackLight =
-  'rounded-full border border-slate-200/90 bg-slate-100/90 px-1 py-1 shadow-sm ring-1 ring-slate-200/50'
+const tabStripTrackLight = ''
 
 const tabStripItem =
-  'inline-flex shrink-0 items-center gap-1.5 rounded-full px-3.5 py-2 text-[0.8125rem] font-semibold tracking-wide transition-colors sm:px-4 sm:py-2.5 sm:text-sm'
+  'inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[0.75rem] font-semibold tracking-wide transition-colors xl:px-3 xl:py-2 xl:text-[0.8125rem]'
 
 const tabStripActive = (dark?: boolean) =>
   dark
@@ -367,17 +366,14 @@ export function HeaderSearchTrigger({
   )
 }
 
-/** Centered primary navigation — pills only (search lives in the header utilities column). */
+/** Full-width navigation bar — tabs spread evenly, wrapping when needed. */
 export function HeaderNavDesktopStrip({ data, dark }: { data: HeaderType; dark?: boolean }) {
   const pathname = usePathname()
   const navItems = data?.navItems || []
 
   return (
-    <nav
-      aria-label="Main"
-      className="flex w-full min-w-0 max-w-full justify-center lg:justify-center"
-    >
-      <div className={cn(tabStripTrack, !dark && tabStripTrackLight)}>
+    <nav aria-label="Main" className="w-full pt-1.5">
+      <div className={tabStripTrack}>
         {navItems.map((item, i) => renderNavItem(item, i, { dark, pathname, mode: 'desktop' }))}
       </div>
     </nav>

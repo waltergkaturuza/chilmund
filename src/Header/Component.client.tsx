@@ -95,36 +95,28 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
       )}
       {...(theme ? { 'data-theme': theme } : {})}
     >
-      <div
-        className={cn(
-          'container grid items-center gap-x-4 gap-y-2 py-3 sm:gap-x-6 sm:py-4',
-          'grid-cols-[1fr_auto] lg:grid-cols-[auto_minmax(0,1fr)_auto]',
-        )}
-      >
-        <Link className="min-w-0 shrink-0 justify-self-start" href="/">
+      {/* Top bar: logo + utility icons */}
+      <div className="container flex items-center justify-between py-2.5 sm:py-3">
+        <Link className="shrink-0" href="/">
           <Logo variant={isDarkHeader ? 'light' : 'default'} />
         </Link>
 
-        <div className="col-span-2 hidden min-w-0 justify-center px-2 lg:col-span-1 lg:col-start-2 lg:row-start-1 lg:flex">
-          <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
-        </div>
-
-        <div className="col-start-2 row-start-1 flex shrink-0 items-center justify-end gap-2 justify-self-end sm:gap-2.5 lg:col-start-3">
+        <div className="flex items-center gap-2 sm:gap-2.5">
           <HeaderSearchTrigger
             dark={isDarkHeader}
-            className="hidden lg:inline-flex"
+            className="hidden md:inline-flex"
           />
           <Link
             href="/search"
             className={cn(
-              'flex size-10 items-center justify-center rounded-full border lg:hidden',
+              'flex size-9 items-center justify-center rounded-full border md:hidden',
               isDarkHeader
                 ? 'border-white/25 text-white hover:bg-white/10'
                 : 'border-border text-slate-700 hover:bg-muted',
             )}
             aria-label="Search"
           >
-            <SearchIcon className="size-5" aria-hidden />
+            <SearchIcon className="size-4.5" aria-hidden />
           </Link>
           <HeaderThemeToggle darkHeader={isDarkHeader} />
           <Button
@@ -144,7 +136,18 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
       </div>
 
-      <div className="container flex justify-end pb-3 sm:hidden">
+      {/* Desktop nav: full-width row below logo, hidden on mobile */}
+      <div
+        className={cn(
+          'container hidden pb-2 lg:block',
+          isDarkHeader ? 'border-t border-white/10' : 'border-t border-border/50',
+        )}
+      >
+        <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
+      </div>
+
+      {/* Mobile CTA when screen is too small for the inline button */}
+      <div className="container flex justify-end pb-2 sm:hidden">
         <Button className={headerCtaClasses} size="sm" type="button" onClick={openQuoteModal}>
           Request a quote
         </Button>
