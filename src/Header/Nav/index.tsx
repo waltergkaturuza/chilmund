@@ -9,6 +9,8 @@ import React, { useEffect, useRef, useState } from 'react'
 
 import type { Header as HeaderType } from '@/payload-types'
 
+import { AboutMegaMenu } from '../AboutMegaMenu'
+
 type NavItem = NonNullable<HeaderType['navItems']>[number]
 type SubItem = NonNullable<NavItem['subItems']>[number]
 
@@ -214,6 +216,27 @@ function renderNavItem(
 
   if (style === 'dropdown') {
     if (opts.mode === 'desktop') {
+      const isAbout = (item.dropdownLabel || '').toLowerCase().includes('about')
+      if (isAbout) {
+        const links = (item.subItems || [])
+          .map((s) => {
+            const href = resolveCMSLinkHref(s.link)
+            return href ? { label: s.link?.label || '', href } : null
+          })
+          .filter(Boolean) as { label: string; href: string }[]
+
+        return (
+          <AboutMegaMenu
+            key={i}
+            dark={opts.dark}
+            tabStripItem={tabStripItem}
+            tabStripActive={tabStripActive}
+            tabStripIdle={tabStripIdle}
+            pathname={opts.pathname}
+            links={links}
+          />
+        )
+      }
       return <DropdownDesktopStrip key={i} item={item} dark={opts.dark} pathname={opts.pathname} />
     }
     return (
