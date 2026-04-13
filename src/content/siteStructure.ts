@@ -35,9 +35,12 @@ export const recommendedHeaderNavBlueprint = [
     pageSlug: 'home',
   },
   {
-    type: 'link' as const,
+    type: 'dropdown' as const,
     label: 'About Chilmund',
-    pageSlug: 'about-chilmund',
+    sub: [
+      { label: 'About Us', pageSlug: 'about-chilmund' },
+      { label: 'Contact Us', pageSlug: 'contact' },
+    ],
   },
   {
     type: 'dropdown' as const,
@@ -46,22 +49,16 @@ export const recommendedHeaderNavBlueprint = [
       { label: 'Product Details', pageSlug: 'product-details' },
       { label: 'Uses of Aluminium Sulphate', pageSlug: 'uses-aluminium-sulphate' },
       { label: 'Manufacturing Plant', pageSlug: 'manufacturing-plant' },
+      { label: 'Trucking & Logistics', pageSlug: 'trucking-logistics' },
     ],
   },
   {
-    type: 'link' as const,
-    label: 'Trucking & Logistics',
-    pageSlug: 'trucking-logistics',
-  },
-  {
-    type: 'link' as const,
-    label: 'Regional Markets',
-    pageSlug: 'regional-markets',
-  },
-  {
-    type: 'link' as const,
+    type: 'dropdown' as const,
     label: 'Partnerships & Accreditations',
-    pageSlug: 'partnerships-accreditations',
+    sub: [
+      { label: 'Partnerships & Accreditations', pageSlug: 'partnerships-accreditations' },
+      { label: 'Regional Markets', pageSlug: 'regional-markets' },
+    ],
   },
   {
     type: 'link' as const,
@@ -71,19 +68,10 @@ export const recommendedHeaderNavBlueprint = [
   {
     type: 'dropdown' as const,
     label: 'News & Events',
-    sub: [{ label: 'Industry Awards', pageSlug: 'industry-awards' }],
-  },
-  {
-    type: 'link' as const,
-    label: 'Contact Us',
-    pageSlug: 'contact',
-  },
-  {
-    type: 'dropdown' as const,
-    label: 'Quote Request',
     sub: [
+      { label: 'News & Events', pageSlug: 'news' },
+      { label: 'Industry Awards', pageSlug: 'industry-awards' },
       { label: 'CSR', pageSlug: 'csr' },
-      { label: 'Track Your Request', pageSlug: 'track-request' },
     ],
   },
 ] as const

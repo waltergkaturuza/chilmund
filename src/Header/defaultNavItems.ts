@@ -24,22 +24,24 @@ function dropdown(
 
 export const defaultNavItems: NavItems = [
   link('Home', '/'),
-  link('About Chilmund', '/about-chilmund'),
+  dropdown('About Chilmund', [
+    { label: 'About Us', url: '/about-chilmund' },
+    { label: 'Contact Us', url: '/contact' },
+  ]),
   dropdown('Products & Services', [
     { label: 'Product Details', url: '/product-details' },
     { label: 'Uses of Aluminium Sulphate', url: '/uses-aluminium-sulphate' },
     { label: 'Manufacturing Plant', url: '/manufacturing-plant' },
+    { label: 'Trucking & Logistics', url: '/trucking-logistics' },
   ]),
-  link('Trucking & Logistics', '/trucking-logistics'),
-  link('Regional Markets', '/regional-markets'),
-  link('Partnerships & Accreditations', '/partnerships-accreditations'),
+  dropdown('Partnerships & Accreditations', [
+    { label: 'Partnerships & Accreditations', url: '/partnerships-accreditations' },
+    { label: 'Regional Markets', url: '/regional-markets' },
+  ]),
   link('SHEQ', '/sheq'),
   dropdown('News & Events', [
+    { label: 'News & Events', url: '/news' },
     { label: 'Industry Awards', url: '/industry-awards' },
-  ]),
-  link('Contact Us', '/contact'),
-  dropdown('Quote Request', [
     { label: 'CSR', url: '/csr' },
-    { label: 'Track Your Request', url: '/track-request' },
   ]),
 ]
