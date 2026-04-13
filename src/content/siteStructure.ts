@@ -39,6 +39,7 @@ export const recommendedHeaderNavBlueprint = [
     label: 'About Chilmund',
     sub: [
       { label: 'About Us', pageSlug: 'about-chilmund' },
+      { label: 'Meet our Team', pageSlug: 'meet-our-team' },
       { label: 'Contact Us', pageSlug: 'contact' },
     ],
   },

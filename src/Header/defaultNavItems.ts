@@ -26,6 +26,7 @@ export const defaultNavItems: NavItems = [
   link('Home', '/'),
   dropdown('About Chilmund', [
     { label: 'About Us', url: '/about-chilmund' },
+    { label: 'Meet our Team', url: '/meet-our-team' },
     { label: 'Contact Us', url: '/contact' },
   ]),
   dropdown('Products & Services', [

@@ -12,6 +12,7 @@ import React, { useCallback, useEffect, useId, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { useQuoteModal } from '@/providers/QuoteModal'
+import { LanguageSelector } from './LanguageSelector'
 import {
   HeaderNavDesktopStrip,
   HeaderNavMobileButton,
@@ -125,6 +126,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           >
             <SearchIcon className="size-4.5" aria-hidden />
           </Link>
+          <LanguageSelector dark={isDarkHeader} />
           <HeaderThemeToggle darkHeader={isDarkHeader} />
           <Button
             className={cn('hidden sm:inline-flex', headerCtaClasses)}
