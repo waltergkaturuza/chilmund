@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Image from 'next/image'
 import React from 'react'
 
 interface Props {
@@ -15,20 +16,21 @@ export const Logo = (props: Props) => {
   return (
     <span
       className={clsx(
-        'flex flex-col leading-none transition-colors',
-        variant === 'light' ? 'text-white' : 'text-foreground',
+        'inline-flex items-center gap-2 transition-colors',
         className,
       )}
     >
-      <span className="font-extrabold text-xl tracking-tight md:text-2xl">Chilmund</span>
-      <span
+      <Image
+        src="/chilmund-logo.png"
+        alt="Chilmund Chemicals"
+        width={160}
+        height={48}
         className={clsx(
-          'mt-1 text-[0.65rem] font-bold uppercase tracking-[0.28em]',
-          variant === 'light' ? 'text-amber-300' : 'text-amber-600',
+          'h-8 w-auto md:h-10',
+          variant === 'light' && 'brightness-0 invert',
         )}
-      >
-        Chemicals
-      </span>
+        priority
+      />
     </span>
   )
 }

@@ -43,7 +43,7 @@ export function AdminNavHelp() {
                     {s.label}
                     {' · '}
                     <code style={{ fontSize: '0.9em' }}>
-                      {'href' in s ? s.href : `/${s.pageSlug}`}
+                      {'href' in s ? (s as { href: string }).href : `/${(s as { pageSlug: string }).pageSlug}`}
                     </code>
                   </li>
                 ))}

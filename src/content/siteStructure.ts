@@ -6,6 +6,7 @@ export const recommendedCorporatePages = [
   { suggestedSlug: 'home', label: 'Home', notes: 'Use existing home page (slug often `home`).' },
   { suggestedSlug: 'about-chilmund', label: 'About Chilmund' },
   { suggestedSlug: 'products-services', label: 'Products & Services', notes: 'Overview; link to /products for catalog.' },
+  { suggestedSlug: 'product-details', label: 'Product Details', notes: 'Detailed specifications; or use /products catalog.' },
   { suggestedSlug: 'uses-aluminium-sulphate', label: 'Uses of Aluminium Sulphate' },
   { suggestedSlug: 'manufacturing-plant', label: 'Manufacturing Plant' },
   { suggestedSlug: 'trucking-logistics', label: 'Trucking & Logistics' },
@@ -16,15 +17,16 @@ export const recommendedCorporatePages = [
   { suggestedSlug: 'industry-awards', label: 'Industry Awards' },
   { suggestedSlug: 'news', label: 'News & Events', notes: 'Optional listing page; blog uses /posts.' },
   { suggestedSlug: 'contact', label: 'Contact Us' },
-  { suggestedSlug: 'quote', label: 'Quote request', notes: 'Optional dedicated page; quick quote modal + /contact form.' },
+  { suggestedSlug: 'quote', label: 'Quote Request', notes: 'Dedicated page; or uses the quick-quote modal.' },
+  { suggestedSlug: 'track-request', label: 'Track Your Request', notes: 'Order / quote tracking page.' },
 ] as const
 
 /** Product detail URLs are always `/products/[slug]` from the Products collection. */
 export const productCatalogPath = '/products'
 
 /**
- * Suggested top bar (Payload admin → SITE → Header & main menu). Mirrors a “summit” style site:
- * a few primary pills, with deep sections grouped under dropdowns.
+ * Suggested top bar (Payload admin → SITE → Header & main menu).
+ * Mirrors the exact tab list from the client brief.
  */
 export const recommendedHeaderNavBlueprint = [
   {
@@ -33,36 +35,55 @@ export const recommendedHeaderNavBlueprint = [
     pageSlug: 'home',
   },
   {
+    type: 'link' as const,
+    label: 'About Chilmund',
+    pageSlug: 'about-chilmund',
+  },
+  {
     type: 'dropdown' as const,
-    label: 'Company',
+    label: 'Products & Services',
     sub: [
-      { label: 'About Chilmund', pageSlug: 'about-chilmund' },
+      { label: 'Product Details', pageSlug: 'product-details' },
+      { label: 'Uses of Aluminium Sulphate', pageSlug: 'uses-aluminium-sulphate' },
       { label: 'Manufacturing Plant', pageSlug: 'manufacturing-plant' },
-      { label: 'Trucking & Logistics', pageSlug: 'trucking-logistics' },
-      { label: 'Regional Markets', pageSlug: 'regional-markets' },
-      { label: 'Partnerships & Accreditations', pageSlug: 'partnerships-accreditations' },
-      { label: 'SHEQ', pageSlug: 'sheq' },
-      { label: 'CSR', pageSlug: 'csr' },
-      { label: 'Industry Awards', pageSlug: 'industry-awards' },
     ],
+  },
+  {
+    type: 'link' as const,
+    label: 'Trucking & Logistics',
+    pageSlug: 'trucking-logistics',
+  },
+  {
+    type: 'link' as const,
+    label: 'Regional Markets',
+    pageSlug: 'regional-markets',
+  },
+  {
+    type: 'link' as const,
+    label: 'Partnerships & Accreditations',
+    pageSlug: 'partnerships-accreditations',
+  },
+  {
+    type: 'link' as const,
+    label: 'SHEQ',
+    pageSlug: 'sheq',
   },
   {
     type: 'dropdown' as const,
-    label: 'Products & services',
-    sub: [
-      { label: 'Overview', pageSlug: 'products-services' },
-      { label: 'Uses of aluminium sulphate', pageSlug: 'uses-aluminium-sulphate' },
-      { label: 'Product catalog', href: productCatalogPath },
-    ],
+    label: 'News & Events',
+    sub: [{ label: 'Industry Awards', pageSlug: 'industry-awards' }],
   },
   {
     type: 'link' as const,
-    label: 'News & events',
-    pageSlug: 'news',
-  },
-  {
-    type: 'link' as const,
-    label: 'Contact',
+    label: 'Contact Us',
     pageSlug: 'contact',
+  },
+  {
+    type: 'dropdown' as const,
+    label: 'Quote Request',
+    sub: [
+      { label: 'CSR', pageSlug: 'csr' },
+      { label: 'Track Your Request', pageSlug: 'track-request' },
+    ],
   },
 ] as const
