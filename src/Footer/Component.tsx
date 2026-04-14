@@ -9,6 +9,7 @@ import type { Footer } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
+import { FooterQuoteButton } from './QuoteButton'
 
 /* ── Brand SVG icons (not in lucide) ────────────────────────────────── */
 
@@ -296,12 +297,7 @@ export async function Footer() {
               <div className="mt-4 text-white/80 [&_button]:border-white/20 [&_button]:text-white">
                 <ThemeSelector />
               </div>
-              <Link
-                className="mt-6 inline-flex rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
-                href="/contact"
-              >
-                Request a quote
-              </Link>
+              <FooterQuoteButton />
             </div>
           </div>
         </div>

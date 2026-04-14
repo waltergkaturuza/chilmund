@@ -5,6 +5,8 @@ import React from 'react'
 
 import type { Page, Post, Product } from '@/payload-types'
 
+import { QuoteInterceptButton } from './QuoteInterceptLink'
+
 type CMSLinkType = {
   appearance?: 'inline' | ButtonProps['variant']
   children?: React.ReactNode
@@ -18,6 +20,13 @@ type CMSLinkType = {
   size?: ButtonProps['size'] | null
   type?: 'custom' | 'reference' | null
   url?: string | null
+}
+
+const QUOTE_LABELS = ['request a quote', 'request quote', 'get a quote', 'get quote']
+
+function isQuoteLink(label?: string | null): boolean {
+  if (!label) return false
+  return QUOTE_LABELS.includes(label.toLowerCase().trim())
 }
 
 export const CMSLink: React.FC<CMSLinkType> = (props) => {
@@ -45,7 +54,19 @@ export const CMSLink: React.FC<CMSLinkType> = (props) => {
   const size = appearance === 'link' ? 'clear' : sizeFromProps
   const newTabProps = newTab ? { rel: 'noopener noreferrer', target: '_blank' } : {}
 
-  /* Ensure we don't break any styles set by richText */
+  if (isQuoteLink(label) && appearance !== 'inline') {
+    return (
+      <QuoteInterceptButton
+        label={label}
+        className={className}
+        size={size}
+        variant={appearance}
+      >
+        {children}
+      </QuoteInterceptButton>
+    )
+  }
+
   if (appearance === 'inline') {
     return (
       <Link className={cn(className)} href={href || url || ''} {...newTabProps}>

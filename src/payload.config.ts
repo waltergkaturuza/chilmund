@@ -10,6 +10,7 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
+import { ContactSubmissions } from './collections/ContactSubmissions'
 import { QuoteRequests } from './collections/QuoteRequests'
 import { Users } from './collections/Users'
 import { CompanyContact } from './company-contact/config'
@@ -175,7 +176,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests],
+  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, CompanyContact],
   plugins,

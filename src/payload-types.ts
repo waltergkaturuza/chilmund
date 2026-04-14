@@ -74,6 +74,7 @@ export interface Config {
     categories: Category;
     users: User;
     'quote-requests': QuoteRequest;
+    'contact-submissions': ContactSubmission;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -98,6 +99,7 @@ export interface Config {
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'quote-requests': QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
+    'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -890,6 +892,29 @@ export interface QuoteRequest {
   createdAt: string;
 }
 /**
+ * Messages submitted via the Contact Us page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-submissions".
+ */
+export interface ContactSubmission {
+  id: number;
+  status?: ('new' | 'read' | 'replied' | 'archived') | null;
+  subject: string;
+  fullName: string;
+  email: string;
+  phone?: string | null;
+  company?: string | null;
+  country?: string | null;
+  message: string;
+  /**
+   * Private notes — not visible to the sender.
+   */
+  adminNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1115,6 +1140,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'quote-requests';
         value: number | QuoteRequest;
+      } | null)
+    | ({
+        relationTo: 'contact-submissions';
+        value: number | ContactSubmission;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1527,6 +1556,23 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
   delivery?: T;
   deliveryAddress?: T;
   urgency?: T;
+  message?: T;
+  adminNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-submissions_select".
+ */
+export interface ContactSubmissionsSelect<T extends boolean = true> {
+  status?: T;
+  subject?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  company?: T;
+  country?: T;
   message?: T;
   adminNotes?: T;
   updatedAt?: T;
