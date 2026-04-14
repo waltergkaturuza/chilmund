@@ -87,55 +87,58 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const isDarkHeader = theme === 'dark'
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-40 border-b transition-[background-color,box-shadow,color] duration-300',
-        isDarkHeader
-          ? 'border-white/10 bg-slate-950/90 text-white shadow-md backdrop-blur-md'
-          : 'border-border/80 bg-white/95 text-foreground shadow-sm backdrop-blur-md',
-      )}
-      {...(theme ? { 'data-theme': theme } : {})}
-    >
-      {/* Single row: logo | nav tabs | utilities + CTA */}
-      <div className="mx-auto flex w-full max-w-[1920px] items-center px-5 py-2.5 sm:py-3">
-        {/* Logo — far left */}
-        <Link className="shrink-0" href="/">
-          <Logo variant={isDarkHeader ? 'light' : 'default'} />
-        </Link>
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-40 border-b transition-[background-color,box-shadow,color] duration-300',
+          isDarkHeader
+            ? 'border-white/10 bg-slate-950/90 text-white shadow-md backdrop-blur-md'
+            : 'border-border/80 bg-white/95 text-foreground shadow-sm backdrop-blur-md',
+        )}
+        {...(theme ? { 'data-theme': theme } : {})}
+      >
+        {/* Single row: logo | nav tabs | utilities + CTA */}
+        <div className="mx-auto flex w-full max-w-[1920px] items-center px-5 py-2.5 sm:py-3">
+          {/* Logo — far left */}
+          <Link className="shrink-0" href="/">
+            <Logo variant={isDarkHeader ? 'light' : 'default'} />
+          </Link>
 
-        {/* Desktop nav tabs — centered between logo and CTA */}
-        <div className="mx-4 hidden min-w-0 flex-1 lg:block">
-          <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
-        </div>
-
-        {/* Utilities + CTA — far right */}
-        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
-          {/* Desktop-only: search bar, language selector */}
-          <HeaderSearchTrigger
-            dark={isDarkHeader}
-            className="hidden lg:inline-flex"
-          />
-          <div className="hidden sm:block">
-            <LanguageSelector dark={isDarkHeader} />
+          {/* Desktop nav tabs — centered between logo and CTA */}
+          <div className="mx-4 hidden min-w-0 flex-1 lg:block">
+            <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
           </div>
-          <HeaderThemeToggle darkHeader={isDarkHeader} />
-          <Button
-            className={cn('hidden md:inline-flex', headerCtaClasses)}
-            size="sm"
-            type="button"
-            onClick={openQuoteModal}
-          >
-            Request a quote
-          </Button>
-          <HeaderNavMobileButton
-            dark={isDarkHeader}
-            open={mobileMenuOpen}
-            onOpenChange={setMobileMenuOpen}
-            ariaControlsId={navDrawerId}
-          />
-        </div>
-      </div>
 
+          {/* Utilities + CTA — far right */}
+          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
+            {/* Desktop-only: search bar, language selector */}
+            <HeaderSearchTrigger
+              dark={isDarkHeader}
+              className="hidden lg:inline-flex"
+            />
+            <div className="hidden sm:block">
+              <LanguageSelector dark={isDarkHeader} />
+            </div>
+            <HeaderThemeToggle darkHeader={isDarkHeader} />
+            <Button
+              className={cn('hidden md:inline-flex', headerCtaClasses)}
+              size="sm"
+              type="button"
+              onClick={openQuoteModal}
+            >
+              Request a quote
+            </Button>
+            <HeaderNavMobileButton
+              dark={isDarkHeader}
+              open={mobileMenuOpen}
+              onOpenChange={setMobileMenuOpen}
+              ariaControlsId={navDrawerId}
+            />
+          </div>
+        </div>
+      </header>
+
+      {/* Drawer rendered outside <header> so sticky + backdrop-blur stacking context doesn't trap it */}
       <HeaderNavMobileDrawer
         id={navDrawerId}
         data={data}
@@ -144,6 +147,6 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         onClose={closeMobileMenu}
         onQuote={openQuoteModal}
       />
-    </header>
+    </>
   )
 }
