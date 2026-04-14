@@ -119,12 +119,12 @@ const STEPS = [
 /* ── Shared styles ───────────────────────────────────────────────────── */
 
 const inputCls =
-  'w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/25'
+  'w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/25'
 const labelCls = 'mb-1.5 block text-xs font-semibold uppercase tracking-wider text-muted-foreground'
 const checkCls =
-  'size-4 shrink-0 appearance-none rounded border border-border bg-background checked:border-amber-400 checked:bg-amber-400 transition-colors cursor-pointer relative after:absolute after:inset-0 after:flex after:items-center after:justify-center checked:after:content-["✓"] after:text-[0.6rem] after:font-bold after:text-white'
+  'size-4 shrink-0 appearance-none rounded border border-border bg-background checked:border-blue-600 checked:bg-blue-600 transition-colors cursor-pointer relative after:absolute after:inset-0 after:flex after:items-center after:justify-center checked:after:content-["✓"] after:text-[0.6rem] after:font-bold after:text-white'
 const radioCls =
-  'size-4 shrink-0 appearance-none rounded-full border border-border bg-background checked:border-amber-400 checked:bg-amber-400 transition-colors cursor-pointer relative after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 checked:after:content-[""] checked:after:block checked:after:size-1.5 checked:after:rounded-full checked:after:bg-white'
+  'size-4 shrink-0 appearance-none rounded-full border border-border bg-background checked:border-blue-600 checked:bg-blue-600 transition-colors cursor-pointer relative after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 checked:after:content-[""] checked:after:block checked:after:size-1.5 checked:after:rounded-full checked:after:bg-white'
 
 /* ── Provider + Modal ────────────────────────────────────────────────── */
 
@@ -237,9 +237,9 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
           <CheckCircle2 className="mx-auto size-14 text-emerald-500" />
           <h2 className="mt-4 text-xl font-bold tracking-tight">Quote request sent!</h2>
           {trackingId && (
-            <div className="mx-auto mt-4 w-fit rounded-xl border-2 border-dashed border-amber-400/60 bg-amber-50 px-6 py-3 dark:bg-amber-950/20">
+            <div className="mx-auto mt-4 w-fit rounded-xl border-2 border-dashed border-blue-600/60 bg-blue-50 px-6 py-3 dark:bg-blue-950/20">
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your tracking number</p>
-              <p className="mt-1 font-mono text-xl font-bold tracking-widest text-amber-600 dark:text-amber-400">{trackingId}</p>
+              <p className="mt-1 font-mono text-xl font-bold tracking-widest text-blue-700 dark:text-blue-600">{trackingId}</p>
               <p className="mt-1 text-[0.65rem] text-muted-foreground">Save this to track your request</p>
             </div>
           )}
@@ -249,7 +249,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
           </p>
           <button
             type="button"
-            className="mt-6 inline-flex rounded-full bg-amber-400 px-6 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-300"
+            className="mt-6 inline-flex rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
             onClick={onClose}
           >
             Done
@@ -287,7 +287,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
                   disabled={i > step}
                   className={cn(
                     'flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold transition-colors',
-                    active && 'bg-amber-400 text-slate-900',
+                    active && 'bg-blue-600 text-white',
                     done && 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400',
                     !active && !done && 'text-muted-foreground/50',
                     i <= step && 'cursor-pointer',
@@ -325,7 +325,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
               type="button"
               disabled={!canNext()}
               onClick={() => setStep((s) => s + 1)}
-              className="inline-flex items-center gap-1.5 rounded-full bg-amber-400 px-5 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-300 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Next <ChevronRight className="size-3.5" aria-hidden />
             </button>
@@ -334,7 +334,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
               type="button"
               disabled={submitting}
               onClick={handleSubmit}
-              className="inline-flex items-center gap-2 rounded-full bg-amber-400 px-6 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-300 disabled:opacity-60"
+              className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:opacity-60"
             >
               {submitting ? <Loader2 className="size-4 animate-spin" aria-hidden /> : <Send className="size-4" aria-hidden />}
               {submitting ? 'Sending…' : 'Submit Quote Request'}
@@ -449,7 +449,7 @@ function StepCompany({ form, set }: { form: FormData; set: <K extends keyof Form
                   onClick={() => selectCountry(c)}
                   className={cn(
                     'block w-full px-3 py-2 text-left text-sm transition-colors hover:bg-muted',
-                    form.country === c && 'bg-amber-50 font-semibold text-amber-700 dark:bg-amber-950/20 dark:text-amber-400',
+                    form.country === c && 'bg-blue-50 font-semibold text-blue-700 dark:bg-blue-950/20 dark:text-blue-600',
                   )}
                 >
                   {c}
@@ -510,7 +510,7 @@ function StepProduct({ form, set, toggleProduct }: { form: FormData; set: <K ext
         <label className={labelCls}>Products *</label>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {PRODUCTS.map((p) => (
-            <label key={p} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.products.includes(p) ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/20' : 'border-border')}>
+            <label key={p} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.products.includes(p) ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/20' : 'border-border')}>
               <input type="checkbox" className={checkCls} checked={form.products.includes(p)} onChange={() => toggleProduct(p)} />
               {p}
             </label>
@@ -527,7 +527,7 @@ function StepProduct({ form, set, toggleProduct }: { form: FormData; set: <K ext
         <label className={labelCls}>Estimated volume *</label>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
           {VOLUMES.map((v) => (
-            <label key={v} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.volume === v ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/20' : 'border-border')}>
+            <label key={v} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.volume === v ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/20' : 'border-border')}>
               <input type="radio" name="volume" className={radioCls} checked={form.volume === v} onChange={() => set('volume', v)} />
               {v}
             </label>
@@ -548,7 +548,7 @@ function StepDelivery({ form, set }: { form: FormData; set: <K extends keyof For
         <label className={labelCls}>Delivery preference *</label>
         <div className="space-y-2">
           {DELIVERY.map((d) => (
-            <label key={d} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.delivery === d ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/20' : 'border-border')}>
+            <label key={d} className={cn('flex cursor-pointer items-center gap-2.5 rounded-lg border px-3 py-2.5 text-sm transition-colors hover:bg-muted', form.delivery === d ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/20' : 'border-border')}>
               <input type="radio" name="delivery" className={radioCls} checked={form.delivery === d} onChange={() => set('delivery', d)} />
               {d}
             </label>
@@ -565,7 +565,7 @@ function StepDelivery({ form, set }: { form: FormData; set: <K extends keyof For
         <label className={labelCls}>Urgency</label>
         <div className="grid grid-cols-3 gap-2">
           {['Standard', 'Urgent', 'Emergency'].map((u) => (
-            <label key={u} className={cn('flex cursor-pointer items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted', form.urgency === u ? 'border-amber-400 bg-amber-50 dark:bg-amber-950/20' : 'border-border')}>
+            <label key={u} className={cn('flex cursor-pointer items-center justify-center gap-2 rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors hover:bg-muted', form.urgency === u ? 'border-blue-600 bg-blue-50 dark:bg-blue-950/20' : 'border-border')}>
               <input type="radio" name="urgency" className={radioCls} checked={form.urgency === u} onChange={() => set('urgency', u)} />
               {u}
             </label>
@@ -597,14 +597,14 @@ function StepReview({ form }: { form: FormData }) {
 
       <div className="rounded-xl border border-border divide-y divide-border">
         <div className="px-4 py-3">
-          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-amber-500">Contact</h4>
+          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-blue-700">Contact</h4>
           {row('Name', form.fullName)}
           {row('Email', form.email)}
           {row('Phone', form.phone)}
         </div>
 
         <div className="px-4 py-3">
-          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-amber-500">Company</h4>
+          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-blue-700">Company</h4>
           {row('Company', form.company)}
           {row('Role', form.jobTitle)}
           {row('Location', [form.city, form.province, form.country].filter(Boolean).join(', '))}
@@ -612,14 +612,14 @@ function StepReview({ form }: { form: FormData }) {
         </div>
 
         <div className="px-4 py-3">
-          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-amber-500">Product</h4>
+          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-blue-700">Product</h4>
           {row('Products', form.products.join(', '))}
           {form.otherProduct && row('Other', form.otherProduct)}
           {row('Volume', form.volume)}
         </div>
 
         <div className="px-4 py-3">
-          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-amber-500">Delivery</h4>
+          <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-blue-700">Delivery</h4>
           {row('Method', form.delivery)}
           {row('Address', form.deliveryAddress)}
           {row('Urgency', form.urgency)}

@@ -92,7 +92,7 @@ export function AboutMegaMenu({
     }
   }, [])
 
-  const sectionTitle = 'mb-2 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-amber-400/90'
+  const sectionTitle = 'mb-2 text-[0.65rem] font-bold uppercase tracking-[0.15em] text-blue-500/90'
   const cardBg = dark ? 'rounded-lg bg-white/5 p-3' : 'rounded-lg bg-slate-50 p-3'
 
   return (
@@ -152,7 +152,7 @@ export function AboutMegaMenu({
                     className={cn(
                       'block px-5 py-2.5 text-sm font-medium transition-colors',
                       active
-                        ? dark ? 'bg-amber-400/20 text-amber-200' : 'bg-amber-100 text-amber-900'
+                        ? dark ? 'bg-blue-600/20 text-blue-200' : 'bg-blue-100 text-blue-900'
                         : dark ? 'text-white/80 hover:bg-white/10 hover:text-white' : 'text-slate-700 hover:bg-slate-100',
                     )}
                   >
@@ -173,7 +173,7 @@ export function AboutMegaMenu({
                 <div className="grid gap-2 sm:grid-cols-3">
                   {pillars.map((p) => (
                     <div key={p.title} className={cardBg}>
-                      <p className="text-xs font-bold text-amber-500">{p.title}</p>
+                      <p className="text-xs font-bold text-blue-700">{p.title}</p>
                       <p className={cn('mt-1 text-xs leading-relaxed', dark ? 'text-white/65' : 'text-slate-600')}>
                         {p.text}
                       </p>

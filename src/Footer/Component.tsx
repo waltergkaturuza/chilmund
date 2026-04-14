@@ -68,9 +68,9 @@ function isTrustedGoogleMapsEmbedUrl(url: string): boolean {
 
 const iconLink =
   'group inline-flex items-center gap-2.5 transition-colors hover:text-white'
-const iconClass = 'size-4 shrink-0 text-amber-400/80 transition-colors group-hover:text-amber-300'
+const iconClass = 'size-4 shrink-0 text-blue-500/80 transition-colors group-hover:text-blue-500'
 const socialIconBtn =
-  'flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:border-amber-400/40 hover:bg-amber-400/10 hover:text-white'
+  'flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white/70 transition-all hover:border-blue-600/40 hover:bg-blue-600/10 hover:text-white'
 
 /* ── Component ──────────────────────────────────────────────────────── */
 
@@ -130,9 +130,9 @@ export async function Footer() {
               <div className="mt-6 space-y-3 text-sm text-white/75">
                 {contact.headOfficeAddress && (
                   <div className="flex items-start gap-2.5">
-                    <MapPin className="mt-0.5 size-4 shrink-0 text-amber-400/80" />
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-blue-500/80" />
                     <div>
-                      <span className="font-semibold text-amber-300/90">Head office</span>
+                      <span className="font-semibold text-blue-400/90">Head office</span>
                       <br />
                       {contact.headOfficeAddress}
                     </div>
@@ -140,9 +140,9 @@ export async function Footer() {
                 )}
                 {contact.manufacturingPlantAddress && (
                   <div className="flex items-start gap-2.5">
-                    <Factory className="mt-0.5 size-4 shrink-0 text-amber-400/80" />
+                    <Factory className="mt-0.5 size-4 shrink-0 text-blue-500/80" />
                     <div>
-                      <span className="font-semibold text-amber-300/90">Manufacturing plant</span>
+                      <span className="font-semibold text-blue-400/90">Manufacturing plant</span>
                       <br />
                       {contact.manufacturingPlantAddress}
                     </div>
@@ -155,13 +155,13 @@ export async function Footer() {
           {/* ── Column 2: contact + sitemap ──────────────────────── */}
           <div className="grid gap-10 sm:grid-cols-2 lg:col-span-4">
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Contact
               </h3>
               <div className="mt-4 flex flex-col gap-3 text-sm text-white/75">
                 {contact?.salesPhone && (
                   <div className="flex items-start gap-2.5">
-                    <Phone className="mt-0.5 size-4 shrink-0 text-amber-400/80" />
+                    <Phone className="mt-0.5 size-4 shrink-0 text-blue-500/80" />
                     <div>
                       <span className="text-white/50">Harare</span>
                       <br />
@@ -180,7 +180,7 @@ export async function Footer() {
                 )}
                 {contact?.phoneBinduraDisplay && (
                   <div className="flex items-start gap-2.5">
-                    <Phone className="mt-0.5 size-4 shrink-0 text-amber-400/80" />
+                    <Phone className="mt-0.5 size-4 shrink-0 text-blue-500/80" />
                     <div>
                       <span className="text-white/50">Bindura</span>
                       <br />
@@ -213,7 +213,7 @@ export async function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Sitemap
               </h3>
               <nav className="mt-4 flex flex-col gap-2.5 text-sm text-white/75">
@@ -242,7 +242,7 @@ export async function Footer() {
           {/* ── Column 3: social + appearance ────────────────────── */}
           <div className="flex flex-col justify-between gap-8 border-t border-white/10 pt-10 lg:col-span-4 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Social
               </h3>
 
@@ -290,14 +290,14 @@ export async function Footer() {
             </div>
 
             <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">
+              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Appearance
               </h3>
               <div className="mt-4 text-white/80 [&_button]:border-white/20 [&_button]:text-white">
                 <ThemeSelector />
               </div>
               <Link
-                className="mt-6 inline-flex rounded-full bg-amber-400 px-5 py-2.5 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-300"
+                className="mt-6 inline-flex rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
                 href="/contact"
               >
                 Request a quote
@@ -310,7 +310,7 @@ export async function Footer() {
         {contact?.googleMapsEmbedUrl &&
         isTrustedGoogleMapsEmbedUrl(contact.googleMapsEmbedUrl) ? (
           <div className="mt-14 border-t border-white/10 pt-12">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-amber-300/90">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
               Map
             </h3>
             <p className="mt-2 max-w-xl text-sm text-white/65">

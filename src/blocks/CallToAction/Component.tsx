@@ -11,7 +11,7 @@ export const CallToActionBlock: React.FC<CTABlockProps> = ({ links, richText }) 
       <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[linear-gradient(135deg,oklch(18%_0.045_250deg)_0%,oklch(22%_0.05_248deg)_100%)] px-6 py-10 text-white shadow-xl md:px-12 md:py-12">
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-amber-400/10 blur-3xl"
+          className="pointer-events-none absolute -right-20 -top-20 size-64 rounded-full bg-blue-600/10 blur-3xl"
         />
         <div
           aria-hidden

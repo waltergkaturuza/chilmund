@@ -129,7 +129,7 @@ export function LanguageSelector({ dark }: { dark?: boolean }) {
           )}
         >
           <Globe className="size-3.5" aria-hidden />
-          <span className="font-bold text-amber-400">{activeLang.country}</span>
+          <span className="font-bold text-blue-600">{activeLang.country}</span>
           <span className="hidden sm:inline">{activeLang.label}</span>
           <ChevronDown
             className={cn('size-3 opacity-70 transition-transform', open && 'rotate-180')}
@@ -162,15 +162,15 @@ export function LanguageSelector({ dark }: { dark?: boolean }) {
                     dark
                       ? 'hover:bg-white/10'
                       : 'hover:bg-slate-50',
-                    isActive && (dark ? 'bg-white/5' : 'bg-amber-50'),
+                    isActive && (dark ? 'bg-white/5' : 'bg-blue-50'),
                   )}
                 >
-                  <span className="w-7 shrink-0 text-xs font-bold text-amber-400">
+                  <span className="w-7 shrink-0 text-xs font-bold text-blue-600">
                     {lang.country}
                   </span>
                   <span className="flex-1 font-medium">{lang.label}</span>
                   {isActive && (
-                    <span className="size-2 shrink-0 rounded-full bg-amber-400" />
+                    <span className="size-2 shrink-0 rounded-full bg-blue-600" />
                   )}
                 </button>
               )

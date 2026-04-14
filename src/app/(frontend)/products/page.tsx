@@ -55,7 +55,7 @@ export default async function ProductsCatalogPage({ searchParams }: Props) {
     <main className="bg-[linear-gradient(180deg,oklch(98%_0.01_95deg)_0%,oklch(96%_0.02_250deg)_100%)] pb-24 pt-10 md:pt-14">
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-amber-800/80">Catalog</p>
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue-800/80">Catalog</p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
             Products &amp; services
           </h1>

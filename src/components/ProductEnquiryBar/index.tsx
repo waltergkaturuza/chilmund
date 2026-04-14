@@ -21,7 +21,7 @@ export function ProductEnquiryBar({ productTitle, salesEmail }: Props) {
     <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200/90 bg-white/95 px-4 py-3 shadow-[0_-4px_24px_rgba(0,0,0,0.08)] backdrop-blur-md">
       <div className="container flex flex-wrap items-center justify-between gap-3">
         <p className="text-sm font-medium text-slate-800">
-          Enquire about <span className="text-amber-900">{productTitle}</span>
+          Enquire about <span className="text-blue-900">{productTitle}</span>
         </p>
         <div className="flex flex-wrap items-center gap-2">
           {mailto ? (

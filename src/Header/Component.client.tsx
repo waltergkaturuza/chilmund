@@ -25,7 +25,7 @@ interface HeaderClientProps {
 }
 
 const headerCtaClasses =
-  'rounded-full border-0 bg-amber-400 px-4 font-semibold text-slate-900 shadow-sm hover:bg-amber-300 lg:px-5'
+  'rounded-full border-0 bg-blue-600 px-4 font-semibold text-white shadow-sm hover:bg-blue-500 lg:px-5'
 
 function HeaderThemeToggle({ darkHeader }: { darkHeader: boolean }) {
   const { theme, setTheme } = useTheme()

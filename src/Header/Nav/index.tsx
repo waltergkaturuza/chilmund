@@ -28,8 +28,8 @@ const tabStripItem =
 
 const tabStripActive = (dark?: boolean) =>
   dark
-    ? 'bg-amber-400 text-slate-900 shadow-sm hover:bg-amber-300'
-    : 'bg-amber-400 text-slate-900 shadow-sm ring-1 ring-amber-500/30 hover:bg-amber-300'
+    ? 'bg-blue-600 text-white shadow-sm hover:bg-blue-500'
+    : 'bg-blue-600 text-white shadow-sm ring-1 ring-blue-700/30 hover:bg-blue-500'
 
 const tabStripIdle = (dark?: boolean) =>
   dark
@@ -82,8 +82,8 @@ function NavLinkPill({
         pillBase,
         active
           ? dark
-            ? 'bg-amber-400 text-slate-900 ring-0'
-            : 'bg-amber-400 text-slate-900 ring-1 ring-amber-500/25'
+            ? 'bg-blue-600 text-white ring-0'
+            : 'bg-blue-600 text-white ring-1 ring-blue-700/25'
           : dark
             ? 'text-white/80 hover:bg-white/10 hover:text-white'
             : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
@@ -185,8 +185,8 @@ function DropdownDesktopStrip({
                   'block px-4 py-2.5 text-sm font-medium transition-colors',
                   active
                     ? dark
-                      ? 'bg-amber-400/20 text-amber-200'
-                      : 'bg-amber-100 text-amber-950'
+                      ? 'bg-blue-600/20 text-blue-200'
+                      : 'bg-blue-100 text-blue-950'
                     : dark
                       ? 'text-white/85 hover:bg-white/10'
                       : 'text-slate-700 hover:bg-slate-50',
@@ -322,8 +322,8 @@ function MobileDropdownSection({
                   'rounded-lg px-3 py-2.5 text-sm font-medium',
                   active
                     ? dark
-                      ? 'bg-white/10 text-amber-200'
-                      : 'bg-amber-100 text-amber-950'
+                      ? 'bg-white/10 text-blue-200'
+                      : 'bg-blue-100 text-blue-950'
                     : dark
                       ? 'text-white/80 hover:bg-white/10'
                       : 'text-slate-600 hover:bg-white',
@@ -367,8 +367,8 @@ export function HeaderSearchTrigger({
         'inline-flex min-w-0 max-w-[11rem] items-center gap-2 rounded-full border px-3 py-2 text-sm transition-colors sm:max-w-[13.5rem] sm:px-3.5',
         active
           ? dark
-            ? 'border-amber-400/50 bg-amber-400/15 text-white'
-            : 'border-amber-400/60 bg-amber-50 text-slate-900'
+            ? 'border-blue-600/50 bg-blue-600/15 text-white'
+            : 'border-blue-600/60 bg-blue-50 text-slate-900'
           : dark
             ? 'border-white/20 bg-black/20 text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white'
             : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900',

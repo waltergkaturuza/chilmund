@@ -78,11 +78,11 @@ export default async function ProductDetailPage({ params: paramsPromise }: Args)
   return (
     <article className="pb-28 pt-10 md:pt-14">
       <div className="container max-w-3xl">
-        <Link className="text-sm font-semibold text-amber-800 hover:text-amber-900" href="/products">
+        <Link className="text-sm font-semibold text-blue-800 hover:text-blue-900" href="/products">
           ← All products
         </Link>
         {product.category ? (
-          <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-amber-800/80">
+          <p className="mt-4 text-xs font-bold uppercase tracking-[0.2em] text-blue-800/80">
             {product.category.replace(/-/g, ' ')}
           </p>
         ) : null}
@@ -109,7 +109,7 @@ export default async function ProductDetailPage({ params: paramsPromise }: Args)
         <div className="mt-8 flex flex-wrap gap-3">
           {sheetHref ? (
             <a
-              className="inline-flex items-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-amber-400 hover:text-amber-950"
+              className="inline-flex items-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm transition-colors hover:border-blue-600 hover:text-blue-950"
               href={sheetHref}
               rel="noopener noreferrer"
               target="_blank"
