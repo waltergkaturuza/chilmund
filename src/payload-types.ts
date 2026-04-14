@@ -77,6 +77,8 @@ export interface Config {
     'contact-submissions': ContactSubmission;
     events: Event;
     resources: Resource;
+    'industry-awards': IndustryAward;
+    'csr-initiatives': CsrInitiative;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -104,6 +106,8 @@ export interface Config {
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
     resources: ResourcesSelect<false> | ResourcesSelect<true>;
+    'industry-awards': IndustryAwardsSelect<false> | IndustryAwardsSelect<true>;
+    'csr-initiatives': CsrInitiativesSelect<false> | CsrInitiativesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1025,6 +1029,142 @@ export interface Resource {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Showcase industry awards, recognitions and achievements.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industry-awards".
+ */
+export interface IndustryAward {
+  id: number;
+  /**
+   * e.g. "Best Chemical Manufacturer 2025"
+   */
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  /**
+   * Year the award was received.
+   */
+  awardYear: number;
+  awardingBody: string;
+  /**
+   * Used for filtering on the public page.
+   */
+  category?: ('quality' | 'safety' | 'innovation' | 'export' | 'community' | 'leadership' | 'other') | null;
+  /**
+   * Award photo, certificate scan, or trophy image.
+   */
+  image?: (number | null) | Media;
+  /**
+   * Brief description shown on the award card.
+   */
+  summary?: string | null;
+  /**
+   * Optional longer write-up about the award.
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * Featured awards appear prominently at the top.
+   */
+  featured?: boolean | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Corporate Social Responsibility programmes, community projects and sustainability efforts.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "csr-initiatives".
+ */
+export interface CsrInitiative {
+  id: number;
+  /**
+   * e.g. "Clean Water for Bindura Schools"
+   */
+  title: string;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  /**
+   * Used for filtering on the public CSR page.
+   */
+  category: 'community' | 'education' | 'environment' | 'health' | 'water' | 'youth' | 'employee' | 'other';
+  /**
+   * When the initiative took place or started.
+   */
+  date?: string | null;
+  /**
+   * e.g. "Bindura, Zimbabwe"
+   */
+  location?: string | null;
+  /**
+   * Main photo for this initiative.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Additional photos from the initiative.
+   */
+  gallery?:
+    | {
+        image: number | Media;
+        caption?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Brief description shown on the initiative card.
+   */
+  summary?: string | null;
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * e.g. "500 learners now have access to clean water"
+   */
+  impact?: string | null;
+  /**
+   * Featured initiatives appear at the top of the page.
+   */
+  featured?: boolean | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1262,6 +1402,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'resources';
         value: number | Resource;
+      } | null)
+    | ({
+        relationTo: 'industry-awards';
+        value: number | IndustryAward;
+      } | null)
+    | ({
+        relationTo: 'csr-initiatives';
+        value: number | CsrInitiative;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1738,6 +1886,54 @@ export interface ResourcesSelect<T extends boolean = true> {
   thumbnail?: T;
   videoUrl?: T;
   fileSize?: T;
+  featured?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "industry-awards_select".
+ */
+export interface IndustryAwardsSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  awardYear?: T;
+  awardingBody?: T;
+  category?: T;
+  image?: T;
+  summary?: T;
+  content?: T;
+  featured?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "csr-initiatives_select".
+ */
+export interface CsrInitiativesSelect<T extends boolean = true> {
+  title?: T;
+  generateSlug?: T;
+  slug?: T;
+  category?: T;
+  date?: T;
+  location?: T;
+  heroImage?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        caption?: T;
+        id?: T;
+      };
+  summary?: T;
+  content?: T;
+  impact?: T;
   featured?: T;
   publishedAt?: T;
   updatedAt?: T;

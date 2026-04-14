@@ -5,6 +5,7 @@ import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
 
 import { anyone } from './access/anyone'
+import { CSRInitiatives } from './collections/CSRInitiatives'
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
@@ -12,6 +13,7 @@ import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
 import { ContactSubmissions } from './collections/ContactSubmissions'
 import { Events } from './collections/Events'
+import { IndustryAwards } from './collections/IndustryAwards'
 import { QuoteRequests } from './collections/QuoteRequests'
 import { Resources } from './collections/Resources'
 import { Users } from './collections/Users'
@@ -178,7 +180,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources],
+  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, CompanyContact],
   plugins,
