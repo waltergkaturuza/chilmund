@@ -73,6 +73,7 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    'quote-requests': QuoteRequest;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -96,6 +97,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    'quote-requests': QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -855,6 +857,39 @@ export interface Form {
   createdAt: string;
 }
 /**
+ * Inbound quote/enquiry submissions from the website.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-requests".
+ */
+export interface QuoteRequest {
+  id: number;
+  trackingId: string;
+  status?: ('pending' | 'reviewed' | 'quoted' | 'accepted' | 'declined') | null;
+  fullName: string;
+  email: string;
+  phone: string;
+  jobTitle?: string | null;
+  company: string;
+  country?: string | null;
+  province?: string | null;
+  city?: string | null;
+  industry?: string | null;
+  products?: string | null;
+  otherProduct?: string | null;
+  volume?: string | null;
+  delivery?: string | null;
+  deliveryAddress?: string | null;
+  urgency?: string | null;
+  message?: string | null;
+  /**
+   * Private notes — not visible to the customer.
+   */
+  adminNotes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1076,6 +1111,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'users';
         value: number | User;
+      } | null)
+    | ({
+        relationTo: 'quote-requests';
+        value: number | QuoteRequest;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1465,6 +1504,33 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-requests_select".
+ */
+export interface QuoteRequestsSelect<T extends boolean = true> {
+  trackingId?: T;
+  status?: T;
+  fullName?: T;
+  email?: T;
+  phone?: T;
+  jobTitle?: T;
+  company?: T;
+  country?: T;
+  province?: T;
+  city?: T;
+  industry?: T;
+  products?: T;
+  otherProduct?: T;
+  volume?: T;
+  delivery?: T;
+  deliveryAddress?: T;
+  urgency?: T;
+  message?: T;
+  adminNotes?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

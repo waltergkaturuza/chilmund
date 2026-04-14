@@ -12,7 +12,9 @@ import {
   User,
   X,
 } from 'lucide-react'
-import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
+
+import { COUNTRIES, getRegions } from '@/content/geo'
 
 /* ── Context ─────────────────────────────────────────────────────────── */
 
@@ -73,6 +75,7 @@ type FormData = {
   company: string
   jobTitle: string
   country: string
+  province: string
   city: string
   products: string[]
   otherProduct: string
@@ -91,6 +94,7 @@ const emptyForm: FormData = {
   company: '',
   jobTitle: '',
   country: '',
+  province: '',
   city: '',
   products: [],
   otherProduct: '',
@@ -146,6 +150,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
   const [form, setForm] = useState<FormData>(emptyForm)
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [trackingId, setTrackingId] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
   const panelRef = useRef<HTMLDivElement>(null)
 
@@ -191,6 +196,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
         company: form.company,
         jobTitle: form.jobTitle,
         country: form.country,
+        province: form.province,
         city: form.city,
         products: form.products.join(', '),
         otherProduct: form.otherProduct,
@@ -209,10 +215,12 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
       })
 
       if (!res.ok) {
-        const text = await res.text().catch(() => '')
-        throw new Error(text || `Server error ${res.status}`)
+        const data = await res.json().catch(() => ({}))
+        throw new Error(data?.error || `Server error ${res.status}`)
       }
 
+      const data = await res.json()
+      setTrackingId(data.trackingId || null)
       setSubmitted(true)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
@@ -228,9 +236,16 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
         <div className="relative z-10 w-full max-w-lg rounded-2xl border border-border bg-card p-8 text-center shadow-2xl">
           <CheckCircle2 className="mx-auto size-14 text-emerald-500" />
           <h2 className="mt-4 text-xl font-bold tracking-tight">Quote request sent!</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
+          {trackingId && (
+            <div className="mx-auto mt-4 w-fit rounded-xl border-2 border-dashed border-amber-400/60 bg-amber-50 px-6 py-3 dark:bg-amber-950/20">
+              <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your tracking number</p>
+              <p className="mt-1 font-mono text-xl font-bold tracking-widest text-amber-600 dark:text-amber-400">{trackingId}</p>
+              <p className="mt-1 text-[0.65rem] text-muted-foreground">Save this to track your request</p>
+            </div>
+          )}
+          <p className="mt-4 text-sm text-muted-foreground">
             Thank you, {form.fullName.split(' ')[0]}. Our sales team will get back to you within 24 hours with a
-            detailed quotation. Check your email at <strong>{form.email}</strong>.
+            detailed quotation. A confirmation has been sent to <strong>{form.email}</strong>.
           </p>
           <button
             type="button"
@@ -248,7 +263,7 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-[100] flex items-end justify-center p-3 sm:items-center sm:p-4" role="dialog" aria-modal="true" aria-labelledby="quote-modal-title">
       <button type="button" className="absolute inset-0 bg-black/50 backdrop-blur-sm" aria-label="Close" onClick={onClose} />
 
-      <div className="relative z-10 flex w-full max-w-2xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl" style={{ maxHeight: 'min(92vh, 720px)' }}>
+      <div className="relative z-10 flex w-full max-w-4xl flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-2xl" style={{ maxHeight: 'min(92vh, 780px)' }}>
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border px-5 py-4">
           <h2 id="quote-modal-title" className="text-lg font-bold tracking-tight">Request a Quote</h2>
@@ -358,27 +373,118 @@ function StepContact({ form, set }: { form: FormData; set: <K extends keyof Form
 /* ── Step 2: Company ─────────────────────────────────────────────────── */
 
 function StepCompany({ form, set }: { form: FormData; set: <K extends keyof FormData>(k: K, v: FormData[K]) => void }) {
+  const [countrySearch, setCountrySearch] = useState('')
+  const [countryOpen, setCountryOpen] = useState(false)
+  const countryRef = useRef<HTMLDivElement>(null)
+
+  const filteredCountries = useMemo(() => {
+    const q = countrySearch.toLowerCase().trim()
+    if (!q) return COUNTRIES as unknown as string[]
+    return (COUNTRIES as unknown as string[]).filter((c) => c.toLowerCase().includes(q))
+  }, [countrySearch])
+
+  const regions = useMemo(() => (form.country ? getRegions(form.country) : null), [form.country])
+
+  useEffect(() => {
+    if (!countryOpen) return
+    const handler = (e: MouseEvent) => {
+      if (countryRef.current && !countryRef.current.contains(e.target as Node)) setCountryOpen(false)
+    }
+    document.addEventListener('mousedown', handler)
+    return () => document.removeEventListener('mousedown', handler)
+  }, [countryOpen])
+
+  const selectCountry = (c: string) => {
+    set('country', c)
+    set('province', '')
+    set('city', '')
+    setCountrySearch('')
+    setCountryOpen(false)
+  }
+
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground">Tell us about your organisation.</p>
-      <div>
-        <label className={labelCls}>Company / organisation *</label>
-        <input className={inputCls} placeholder="e.g. Harare Municipality" value={form.company} onChange={(e) => set('company', e.target.value)} autoFocus />
-      </div>
-      <div>
-        <label className={labelCls}>Your role / job title</label>
-        <input className={inputCls} placeholder="e.g. Procurement Manager" value={form.jobTitle} onChange={(e) => set('jobTitle', e.target.value)} />
-      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label className={labelCls}>Country</label>
-          <input className={inputCls} placeholder="e.g. Zimbabwe" value={form.country} onChange={(e) => set('country', e.target.value)} />
+          <label className={labelCls}>Company / organisation *</label>
+          <input className={inputCls} placeholder="e.g. Harare Municipality" value={form.company} onChange={(e) => set('company', e.target.value)} autoFocus />
+        </div>
+        <div>
+          <label className={labelCls}>Your role / job title</label>
+          <input className={inputCls} placeholder="e.g. Procurement Manager" value={form.jobTitle} onChange={(e) => set('jobTitle', e.target.value)} />
+        </div>
+      </div>
+
+      {/* Country — searchable dropdown */}
+      <div ref={countryRef} className="relative">
+        <label className={labelCls}>Country</label>
+        <div
+          className={cn(inputCls, 'flex cursor-pointer items-center justify-between')}
+          onClick={() => setCountryOpen((o) => !o)}
+        >
+          <span className={form.country ? '' : 'text-muted-foreground/60'}>{form.country || 'Select country…'}</span>
+          <ChevronRight className={cn('size-4 text-muted-foreground transition-transform', countryOpen && 'rotate-90')} />
+        </div>
+        {countryOpen && (
+          <div className="absolute left-0 top-full z-50 mt-1 w-full rounded-xl border border-border bg-card shadow-xl">
+            <div className="border-b border-border px-3 py-2">
+              <input
+                className="w-full bg-transparent text-sm outline-none placeholder:text-muted-foreground/50"
+                placeholder="Search countries…"
+                value={countrySearch}
+                onChange={(e) => setCountrySearch(e.target.value)}
+                autoFocus
+              />
+            </div>
+            <div className="max-h-52 overflow-y-auto py-1">
+              {filteredCountries.length === 0 && (
+                <p className="px-3 py-2 text-sm text-muted-foreground">No countries found</p>
+              )}
+              {filteredCountries.map((c) => (
+                <button
+                  key={c}
+                  type="button"
+                  onClick={() => selectCountry(c)}
+                  className={cn(
+                    'block w-full px-3 py-2 text-left text-sm transition-colors hover:bg-muted',
+                    form.country === c && 'bg-amber-50 font-semibold text-amber-700 dark:bg-amber-950/20 dark:text-amber-400',
+                  )}
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Province / State — dropdown if available, free text otherwise */}
+      <div className="grid gap-4 sm:grid-cols-2">
+        <div>
+          <label className={labelCls}>Province / state / region</label>
+          {regions ? (
+            <select
+              className={cn(inputCls, 'cursor-pointer')}
+              value={form.province}
+              onChange={(e) => { set('province', e.target.value); set('city', '') }}
+            >
+              <option value="">Select region…</option>
+              {regions.map((r) => (
+                <option key={r} value={r}>{r}</option>
+              ))}
+            </select>
+          ) : (
+            <input className={inputCls} placeholder="e.g. Mashonaland Central" value={form.province} onChange={(e) => set('province', e.target.value)} />
+          )}
         </div>
         <div>
           <label className={labelCls}>City / town</label>
           <input className={inputCls} placeholder="e.g. Harare" value={form.city} onChange={(e) => set('city', e.target.value)} />
         </div>
       </div>
+
       <div>
         <label className={labelCls}>Industry / sector</label>
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -501,7 +607,7 @@ function StepReview({ form }: { form: FormData }) {
           <h4 className="mb-1 text-xs font-bold uppercase tracking-wider text-amber-500">Company</h4>
           {row('Company', form.company)}
           {row('Role', form.jobTitle)}
-          {row('Location', [form.city, form.country].filter(Boolean).join(', '))}
+          {row('Location', [form.city, form.province, form.country].filter(Boolean).join(', '))}
           {row('Industry', form.industry)}
         </div>
 
