@@ -228,21 +228,45 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
-/* Hero & CTA button overrides for dark backgrounds */
-@layer components {
+/* Hero & CTA button overrides for dark backgrounds — must beat CVA specificity */
+.summit-hero-actions [data-slot='button'] {
+  min-width: 10rem;
+  justify-content: center;
+}
+@media (min-width: 40rem) {
   .summit-hero-actions [data-slot='button'] {
-    @apply min-w-[10rem] justify-center sm:min-w-0;
+    min-width: auto;
   }
+}
 
-  .summit-hero-actions li:not(:first-child) [data-slot='button'] {
-    @apply border-2 border-white/45 bg-white/5 text-white shadow-none backdrop-blur-sm hover:border-white/70 hover:bg-white/12 hover:text-white;
-  }
+.summit-hero-actions li:not(:first-child) [data-slot='button'] {
+  border-width: 2px;
+  border-color: rgb(255 255 255 / 0.50);
+  background-color: rgb(255 255 255 / 0.10);
+  color: white;
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+}
+.summit-hero-actions li:not(:first-child) [data-slot='button']:hover {
+  border-color: rgb(255 255 255 / 0.80);
+  background-color: rgb(255 255 255 / 0.20);
+  color: white;
+}
 
-  .summit-hero-actions li:first-child [data-slot='button'] {
-    @apply shadow-lg;
-  }
+.summit-hero-actions li:first-child [data-slot='button'] {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
 
-  .cta-summit-actions > *:not(:first-child) [data-slot='button'] {
-    @apply border-2 border-white/45 bg-white/5 text-white shadow-none backdrop-blur-sm hover:border-white/70 hover:bg-white/12 hover:text-white;
-  }
+.cta-summit-actions > *:not(:first-child) [data-slot='button'] {
+  border-width: 2px;
+  border-color: rgb(255 255 255 / 0.50);
+  background-color: rgb(255 255 255 / 0.10);
+  color: white;
+  box-shadow: none;
+  backdrop-filter: blur(4px);
+}
+.cta-summit-actions > *:not(:first-child) [data-slot='button']:hover {
+  border-color: rgb(255 255 255 / 0.80);
+  background-color: rgb(255 255 255 / 0.20);
+  color: white;
 }
