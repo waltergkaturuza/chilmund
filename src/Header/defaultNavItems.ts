@@ -45,4 +45,5 @@ export const defaultNavItems: NavItems = [
     { label: 'Industry Awards', url: '/industry-awards' },
     { label: 'CSR', url: '/csr' },
   ]),
+  link('Resources', '/resources'),
 ]

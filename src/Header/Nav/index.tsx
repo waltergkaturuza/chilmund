@@ -442,12 +442,14 @@ export function HeaderNavMobileDrawer({
   dark,
   open,
   onClose,
+  onQuote,
 }: {
   id: string
   data: HeaderType
   dark?: boolean
   open: boolean
   onClose: () => void
+  onQuote?: () => void
 }) {
   const pathname = usePathname()
   const navItems = data?.navItems || []
@@ -460,10 +462,6 @@ export function HeaderNavMobileDrawer({
       document.body.style.overflow = prev
     }
   }, [open])
-
-  const searchPill = (
-    <HeaderSearchTrigger dark={dark} onNavigate={onClose} className="w-full max-w-none py-2.5" />
-  )
 
   if (!open) return null
 
@@ -483,10 +481,11 @@ export function HeaderNavMobileDrawer({
       />
       <div
         className={cn(
-          'absolute right-0 top-0 flex h-full w-[min(100%,20rem)] flex-col border-l shadow-2xl',
+          'absolute right-0 top-0 flex h-full w-[min(100%,22rem)] flex-col border-l shadow-2xl',
           dark ? 'border-white/10 bg-slate-950 text-white' : 'border-border bg-white text-foreground',
         )}
       >
+        {/* Drawer header */}
         <div className="flex items-center justify-between border-b border-inherit px-4 py-4">
           <span className="text-sm font-semibold uppercase tracking-wider">Menu</span>
           <button
@@ -500,6 +499,13 @@ export function HeaderNavMobileDrawer({
             <X className="size-5" />
           </button>
         </div>
+
+        {/* Search */}
+        <div className="border-b border-inherit px-4 py-3">
+          <HeaderSearchTrigger dark={dark} onNavigate={onClose} className="w-full max-w-none py-2.5" />
+        </div>
+
+        {/* Nav items */}
         <nav className="flex flex-1 flex-col gap-2 overflow-y-auto p-4" aria-label="Main">
           {navItems.map((item, i) =>
             renderNavItem(item, i, {
@@ -509,8 +515,20 @@ export function HeaderNavMobileDrawer({
               mode: 'mobile',
             }),
           )}
-          <div className="pt-2">{searchPill}</div>
         </nav>
+
+        {/* Bottom CTA */}
+        {onQuote && (
+          <div className="border-t border-inherit p-4">
+            <button
+              type="button"
+              onClick={() => { onClose(); onQuote() }}
+              className="w-full rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
+            >
+              Request a quote
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

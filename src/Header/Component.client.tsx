@@ -4,7 +4,7 @@ import { Logo } from '@/components/Logo/Logo'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import { useTheme } from '@/providers/Theme'
 import { cn } from '@/utilities/ui'
-import { Moon, SearchIcon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import React, { useCallback, useEffect, useId, useState } from 'react'
@@ -110,26 +110,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
         {/* Utilities + CTA — far right */}
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
+          {/* Desktop-only: search bar, language selector */}
           <HeaderSearchTrigger
             dark={isDarkHeader}
-            className="hidden md:inline-flex"
+            className="hidden lg:inline-flex"
           />
-          <Link
-            href="/search"
-            className={cn(
-              'flex size-9 items-center justify-center rounded-full border md:hidden',
-              isDarkHeader
-                ? 'border-white/25 text-white hover:bg-white/10'
-                : 'border-border text-slate-700 hover:bg-muted',
-            )}
-            aria-label="Search"
-          >
-            <SearchIcon className="size-4.5" aria-hidden />
-          </Link>
-          <LanguageSelector dark={isDarkHeader} />
+          <div className="hidden sm:block">
+            <LanguageSelector dark={isDarkHeader} />
+          </div>
           <HeaderThemeToggle darkHeader={isDarkHeader} />
           <Button
-            className={cn('hidden sm:inline-flex', headerCtaClasses)}
+            className={cn('hidden md:inline-flex', headerCtaClasses)}
             size="sm"
             type="button"
             onClick={openQuoteModal}
@@ -145,19 +136,13 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
       </div>
 
-      {/* Mobile CTA when screen is too small for the inline button */}
-      <div className="flex justify-end px-5 pb-2 sm:hidden">
-        <Button className={headerCtaClasses} size="sm" type="button" onClick={openQuoteModal}>
-          Request a quote
-        </Button>
-      </div>
-
       <HeaderNavMobileDrawer
         id={navDrawerId}
         data={data}
         dark={isDarkHeader}
         open={mobileMenuOpen}
         onClose={closeMobileMenu}
+        onQuote={openQuoteModal}
       />
     </header>
   )

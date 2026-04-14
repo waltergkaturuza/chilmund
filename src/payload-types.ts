@@ -76,6 +76,7 @@ export interface Config {
     'quote-requests': QuoteRequest;
     'contact-submissions': ContactSubmission;
     events: Event;
+    resources: Resource;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -102,6 +103,7 @@ export interface Config {
     'quote-requests': QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
+    resources: ResourcesSelect<false> | ResourcesSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -969,6 +971,60 @@ export interface Event {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Public resource library — certificates, documents, infographics, videos, images, etc.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources".
+ */
+export interface Resource {
+  id: number;
+  /**
+   * Display name shown on the public site.
+   */
+  title: string;
+  /**
+   * Used for filtering on the public Resources page.
+   */
+  resourceType:
+    | 'certificate'
+    | 'document'
+    | 'infographic'
+    | 'video'
+    | 'image'
+    | 'brochure'
+    | 'datasheet'
+    | 'presentation'
+    | 'other';
+  /**
+   * Short summary shown on the resource card.
+   */
+  description?: string | null;
+  /**
+   * The downloadable file — PDF, image, document, etc. For videos, upload a thumbnail here and paste the video URL below.
+   */
+  file: number | Media;
+  /**
+   * Optional cover image / thumbnail. If empty the file preview is used.
+   */
+  thumbnail?: (number | null) | Media;
+  /**
+   * YouTube or Vimeo URL. Only needed for video resources.
+   */
+  videoUrl?: string | null;
+  /**
+   * e.g. "2.4 MB" — shown as a hint next to the download button.
+   */
+  fileSize?: string | null;
+  /**
+   * Featured resources appear at the top of the page.
+   */
+  featured?: boolean | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1202,6 +1258,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'events';
         value: number | Event;
+      } | null)
+    | ({
+        relationTo: 'resources';
+        value: number | Resource;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1661,6 +1721,24 @@ export interface EventsSelect<T extends boolean = true> {
         image?: T;
         description?: T;
       };
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "resources_select".
+ */
+export interface ResourcesSelect<T extends boolean = true> {
+  title?: T;
+  resourceType?: T;
+  description?: T;
+  file?: T;
+  thumbnail?: T;
+  videoUrl?: T;
+  fileSize?: T;
+  featured?: T;
   publishedAt?: T;
   updatedAt?: T;
   createdAt?: T;
