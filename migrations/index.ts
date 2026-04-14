@@ -1,5 +1,6 @@
 import * as migration_20260414_071208_add_quote_requests from './20260414_071208_add_quote_requests';
 import * as migration_20260414_081215_add_contact_submissions from './20260414_081215_add_contact_submissions';
+import * as migration_20260414_085148_add_events_and_user_roles from './20260414_085148_add_events_and_user_roles';
 
 export const migrations = [
   {
@@ -10,6 +11,11 @@ export const migrations = [
   {
     up: migration_20260414_081215_add_contact_submissions.up,
     down: migration_20260414_081215_add_contact_submissions.down,
-    name: '20260414_081215_add_contact_submissions'
+    name: '20260414_081215_add_contact_submissions',
+  },
+  {
+    up: migration_20260414_085148_add_events_and_user_roles.up,
+    down: migration_20260414_085148_add_events_and_user_roles.down,
+    name: '20260414_085148_add_events_and_user_roles'
   },
 ];

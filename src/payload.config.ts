@@ -11,6 +11,7 @@ import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Products } from './collections/Products'
 import { ContactSubmissions } from './collections/ContactSubmissions'
+import { Events } from './collections/Events'
 import { QuoteRequests } from './collections/QuoteRequests'
 import { Users } from './collections/Users'
 import { CompanyContact } from './company-contact/config'
@@ -176,7 +177,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions],
+  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, CompanyContact],
   plugins,

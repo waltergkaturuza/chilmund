@@ -15,6 +15,8 @@ import { draftMode } from 'next/headers'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import React from 'react'
 
+import { GoogleAnalytics } from '@/components/Analytics/GoogleAnalytics'
+
 import './globals.css'
 
 const plusJakarta = Plus_Jakarta_Sans({
@@ -31,6 +33,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html className={cn(plusJakarta.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>
       <head>
         <InitTheme />
+        <GoogleAnalytics />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
