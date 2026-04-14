@@ -3,6 +3,7 @@ import * as migration_20260414_081215_add_contact_submissions from './20260414_0
 import * as migration_20260414_085148_add_events_and_user_roles from './20260414_085148_add_events_and_user_roles';
 import * as migration_20260414_095050_add_resources_collection from './20260414_095050_add_resources_collection';
 import * as migration_20260414_113848_add_awards_and_csr from './20260414_113848_add_awards_and_csr';
+import * as migration_20260414_115825_add_team_members from './20260414_115825_add_team_members';
 
 export const migrations = [
   {
@@ -28,6 +29,11 @@ export const migrations = [
   {
     up: migration_20260414_113848_add_awards_and_csr.up,
     down: migration_20260414_113848_add_awards_and_csr.down,
-    name: '20260414_113848_add_awards_and_csr'
+    name: '20260414_113848_add_awards_and_csr',
+  },
+  {
+    up: migration_20260414_115825_add_team_members.up,
+    down: migration_20260414_115825_add_team_members.down,
+    name: '20260414_115825_add_team_members'
   },
 ];

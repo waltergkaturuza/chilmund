@@ -79,6 +79,7 @@ export interface Config {
     resources: Resource;
     'industry-awards': IndustryAward;
     'csr-initiatives': CsrInitiative;
+    'team-members': TeamMember;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -108,6 +109,7 @@ export interface Config {
     resources: ResourcesSelect<false> | ResourcesSelect<true>;
     'industry-awards': IndustryAwardsSelect<false> | IndustryAwardsSelect<true>;
     'csr-initiatives': CsrInitiativesSelect<false> | CsrInitiativesSelect<true>;
+    'team-members': TeamMembersSelect<false> | TeamMembersSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -1165,6 +1167,63 @@ export interface CsrInitiative {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Manage the Chilmund team displayed on the "Meet Our Team" page.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members".
+ */
+export interface TeamMember {
+  id: number;
+  name: string;
+  jobTitle: string;
+  /**
+   * Used for grouping on the public page.
+   */
+  department?:
+    | (
+        | 'management'
+        | 'finance'
+        | 'business'
+        | 'production'
+        | 'research'
+        | 'engineering'
+        | 'hr'
+        | 'quality'
+        | 'sheq'
+        | 'logistics'
+        | 'other'
+      )
+    | null;
+  /**
+   * Professional headshot or portrait photo.
+   */
+  photo?: (number | null) | Media;
+  /**
+   * Short biography shown on hover/click (optional).
+   */
+  bio?: string | null;
+  /**
+   * Public contact email (optional).
+   */
+  email?: string | null;
+  /**
+   * Full LinkedIn profile URL (optional).
+   */
+  linkedIn?: string | null;
+  /**
+   * Lower numbers appear first. Use 1-10 for executives, 20+ for others.
+   */
+  order?: number | null;
+  /**
+   * Featured members get a larger card.
+   */
+  featured?: boolean | null;
+  publishedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
@@ -1410,6 +1469,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'csr-initiatives';
         value: number | CsrInitiative;
+      } | null)
+    | ({
+        relationTo: 'team-members';
+        value: number | TeamMember;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1934,6 +1997,25 @@ export interface CsrInitiativesSelect<T extends boolean = true> {
   summary?: T;
   content?: T;
   impact?: T;
+  featured?: T;
+  publishedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "team-members_select".
+ */
+export interface TeamMembersSelect<T extends boolean = true> {
+  name?: T;
+  jobTitle?: T;
+  department?: T;
+  photo?: T;
+  bio?: T;
+  email?: T;
+  linkedIn?: T;
+  order?: T;
   featured?: T;
   publishedAt?: T;
   updatedAt?: T;
