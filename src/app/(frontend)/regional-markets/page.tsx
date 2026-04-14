@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const MARKETS = [
   {
     country: 'Zimbabwe',
-    flag: '🇿🇼',
+    code: 'zw',
     lat: -19.0,
     lng: 29.9,
     desc: 'Headquarters (Harare) & manufacturing plant (Bindura). Nationwide municipal, industrial and mining supply.',
@@ -19,68 +19,82 @@ const MARKETS = [
   },
   {
     country: 'South Africa',
-    flag: '🇿🇦',
+    code: 'za',
     lat: -29.0,
     lng: 24.0,
     desc: 'Municipal water treatment and mining chemicals across all provinces.',
   },
   {
     country: 'Mozambique',
-    flag: '🇲🇿',
+    code: 'mz',
     lat: -18.7,
     lng: 35.5,
     desc: 'Maputo, Beira, and northern corridor municipalities.',
   },
   {
     country: 'Zambia',
-    flag: '🇿🇲',
+    code: 'zm',
     lat: -15.4,
     lng: 28.3,
     desc: 'Copperbelt mining sector and Lusaka municipal supply.',
   },
   {
     country: 'Malawi',
-    flag: '🇲🇼',
+    code: 'mw',
     lat: -13.3,
     lng: 34.3,
     desc: 'Lilongwe and Blantyre water boards.',
   },
   {
     country: 'Botswana',
-    flag: '🇧🇼',
+    code: 'bw',
     lat: -22.3,
     lng: 24.7,
     desc: 'Water Utilities Corporation and mining operations.',
   },
   {
     country: 'Namibia',
-    flag: '🇳🇦',
+    code: 'na',
     lat: -22.6,
     lng: 17.1,
     desc: 'NamWater and municipal water treatment plants.',
   },
   {
     country: 'Tanzania',
-    flag: '🇹🇿',
+    code: 'tz',
     lat: -6.4,
     lng: 34.9,
     desc: 'Dar es Salaam and regional mining operations.',
   },
   {
     country: 'DRC',
-    flag: '🇨🇩',
+    code: 'cd',
     lat: -4.3,
     lng: 15.3,
     desc: 'Mining sector in the Katanga (Haut-Katanga) copper belt.',
   },
   {
     country: 'Kenya',
-    flag: '🇰🇪',
+    code: 'ke',
     lat: -1.3,
     lng: 36.8,
     desc: 'Nairobi Water and Sewerage Company, industrial chemicals.',
   },
 ] as const
+
+function FlagImg({ code, size = 24 }: { code: string; size?: number }) {
+  return (
+    <img
+      src={`https://flagcdn.com/w40/${code}.png`}
+      srcSet={`https://flagcdn.com/w80/${code}.png 2x`}
+      width={size}
+      height={Math.round(size * 0.75)}
+      alt=""
+      className="inline-block rounded-sm"
+      loading="lazy"
+    />
+  )
+}
 
 export default function RegionalMarketsPage() {
   return (
@@ -109,7 +123,7 @@ export default function RegionalMarketsPage() {
               className={`rounded-xl border p-5 shadow-sm transition-shadow hover:shadow-md ${'highlight' in m && m.highlight ? 'border-blue-600 bg-blue-50/50 dark:bg-blue-950/10' : 'border-border bg-card'}`}
             >
               <div className="flex items-center gap-3">
-                <span className="text-3xl">{m.flag}</span>
+                <FlagImg code={m.code} size={32} />
                 <h3 className="text-lg font-bold">{m.country}</h3>
               </div>
               <p className="mt-2 text-sm text-muted-foreground">{m.desc}</p>

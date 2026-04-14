@@ -1,11 +1,10 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
-import { cn } from '@/utilities/ui'
+import React, { useEffect, useRef } from 'react'
 
 type Market = {
   country: string
-  flag: string
+  code: string
   lat: number
   lng: number
   desc: string
@@ -14,7 +13,6 @@ type Market = {
 
 export function RegionalMarketsMap({ markets }: { markets: Market[] }) {
   const mapRef = useRef<HTMLDivElement>(null)
-  const [active, setActive] = useState<Market | null>(null)
   const leafletMap = useRef<any>(null)
 
   useEffect(() => {
@@ -67,7 +65,10 @@ export function RegionalMarketsMap({ markets }: { markets: Market[] }) {
 
         const popupContent = `
           <div style="min-width:200px;font-family:system-ui,sans-serif;">
-            <div style="font-size:1.3rem;margin-bottom:4px;">${m.flag} <strong>${m.country}</strong></div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">
+              <img src="https://flagcdn.com/w40/${m.code}.png" srcset="https://flagcdn.com/w80/${m.code}.png 2x" width="28" height="21" alt="" style="border-radius:3px;" />
+              <strong style="font-size:1.1rem;">${m.country}</strong>
+            </div>
             <p style="margin:0;font-size:0.85rem;color:#94a3b8;line-height:1.4;">${m.desc}</p>
           </div>
         `
