@@ -87,19 +87,19 @@
 }
 
 :root {
-  /* TNF-style summit palette: warm gold CTA, deep navy text, cool off-white canvas */
-  --tnf-navy: oklch(22% 0.045 250deg);
-  --tnf-navy-deep: oklch(16% 0.04 250deg);
-  --tnf-gold: oklch(78% 0.14 85deg);
-  --tnf-gold-hover: oklch(72% 0.14 85deg);
+  /* Chilmund corporate blue palette — Facebook Blue (#1877F2) as primary */
+  --chilmund-navy: oklch(22% 0.045 250deg);
+  --chilmund-navy-deep: oklch(16% 0.04 250deg);
+  --chilmund-blue: oklch(55% 0.22 260deg);
+  --chilmund-blue-hover: oklch(50% 0.22 260deg);
   --background: oklch(99% 0.004 250deg);
   --foreground: oklch(22% 0.045 250deg);
   --card: oklch(100% 0.002 250deg);
   --card-foreground: oklch(22% 0.045 250deg);
   --popover: oklch(100% 0 0deg);
   --popover-foreground: oklch(22% 0.045 250deg);
-  --primary: var(--tnf-gold);
-  --primary-foreground: oklch(18% 0.04 250deg);
+  --primary: var(--chilmund-blue);
+  --primary-foreground: oklch(100% 0 0deg);
   --secondary: oklch(96% 0.01 250deg);
   --secondary-foreground: oklch(22% 0.045 250deg);
   --muted: oklch(96% 0.008 250deg);
@@ -110,7 +110,7 @@
   --destructive-foreground: oklch(57.7% 0.245 27.325deg);
   --border: oklch(90% 0.015 250deg);
   --input: oklch(90% 0.015 250deg);
-  --ring: oklch(78% 0.12 85deg);
+  --ring: oklch(55% 0.20 260deg);
   --chart-1: oklch(64.6% 0.222 41.116deg);
   --chart-2: oklch(60% 0.118 184.704deg);
   --chart-3: oklch(39.8% 0.07 227.392deg);
@@ -228,7 +228,7 @@ html[data-theme='light'] {
   opacity: initial;
 }
 
-/* Summit-style hero CTAs on dark backgrounds (inspired by tnf-summit.vercel.app) */
+/* Hero & CTA button overrides for dark backgrounds */
 @layer components {
   .summit-hero-actions [data-slot='button'] {
     @apply min-w-[10rem] justify-center sm:min-w-0;
