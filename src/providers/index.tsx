@@ -2,6 +2,7 @@ import React from 'react'
 
 import { HeaderThemeProvider } from './HeaderTheme'
 import { QuoteModalProvider } from './QuoteModal'
+import { TrackQuoteModalProvider } from './TrackQuoteModal'
 import { ThemeProvider } from './Theme'
 
 export const Providers: React.FC<{
@@ -11,9 +12,11 @@ export const Providers: React.FC<{
 }> = ({ children, quotePagePath = '/contact' }) => {
   return (
     <ThemeProvider>
-      <QuoteModalProvider quotePagePath={quotePagePath || '/contact'}>
-        <HeaderThemeProvider>{children}</HeaderThemeProvider>
-      </QuoteModalProvider>
+      <TrackQuoteModalProvider>
+        <QuoteModalProvider quotePagePath={quotePagePath || '/contact'}>
+          <HeaderThemeProvider>{children}</HeaderThemeProvider>
+        </QuoteModalProvider>
+      </TrackQuoteModalProvider>
     </ThemeProvider>
   )
 }

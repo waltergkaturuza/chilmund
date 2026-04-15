@@ -12,6 +12,7 @@ import {
   User,
   X,
 } from 'lucide-react'
+import Link from 'next/link'
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 
 import { COUNTRIES, getRegions } from '@/content/geo'
@@ -241,6 +242,12 @@ function QuoteFormModal({ onClose }: { onClose: () => void }) {
               <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your tracking number</p>
               <p className="mt-1 font-mono text-xl font-bold tracking-widest text-blue-700 dark:text-blue-600">{trackingId}</p>
               <p className="mt-1 text-[0.65rem] text-muted-foreground">Save this to track your request</p>
+              <Link
+                href={`/track-quote?trackingId=${encodeURIComponent(trackingId)}`}
+                className="mt-3 inline-flex text-sm font-semibold text-blue-600 underline underline-offset-2 hover:text-blue-500 dark:text-blue-400"
+              >
+                Track status anytime →
+              </Link>
             </div>
           )}
           <p className="mt-4 text-sm text-muted-foreground">

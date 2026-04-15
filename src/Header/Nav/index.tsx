@@ -10,6 +10,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { AboutMegaMenu } from '../AboutMegaMenu'
+import { TrackQuoteMenuItem } from './TrackQuoteMenuItem'
 
 type NavItem = NonNullable<HeaderType['navItems']>[number]
 type SubItem = NonNullable<NavItem['subItems']>[number]
@@ -175,22 +176,33 @@ function DropdownDesktopStrip({
             const href = resolveCMSLinkHref(row.link)
             if (!href) return null
             const active = isHrefActive(pathname, href)
+            const itemCls = cn(
+              'block px-4 py-2.5 text-sm font-medium transition-colors',
+              active
+                ? dark
+                  ? 'bg-blue-600/20 text-blue-200'
+                  : 'bg-blue-100 text-blue-950'
+                : dark
+                  ? 'text-white/85 hover:bg-white/10'
+                  : 'text-slate-700 hover:bg-slate-50',
+            )
+            if (href === '/track-quote') {
+              return (
+                <TrackQuoteMenuItem
+                  key={i}
+                  label={row.link?.label || 'Track your quote'}
+                  className={itemCls}
+                  onNavigate={() => setOpen(false)}
+                />
+              )
+            }
             return (
               <Link
                 key={i}
                 href={href}
                 role="menuitem"
                 onClick={() => setOpen(false)}
-                className={cn(
-                  'block px-4 py-2.5 text-sm font-medium transition-colors',
-                  active
-                    ? dark
-                      ? 'bg-blue-600/20 text-blue-200'
-                      : 'bg-blue-100 text-blue-950'
-                    : dark
-                      ? 'text-white/85 hover:bg-white/10'
-                      : 'text-slate-700 hover:bg-slate-50',
-                )}
+                className={itemCls}
               >
                 {row.link?.label}
               </Link>
@@ -313,22 +325,28 @@ function MobileDropdownSection({
             const href = resolveCMSLinkHref(row.link)
             if (!href) return null
             const active = isHrefActive(pathname, href)
+            const itemCls = cn(
+              'rounded-lg px-3 py-2.5 text-sm font-medium',
+              active
+                ? dark
+                  ? 'bg-white/10 text-blue-200'
+                  : 'bg-blue-100 text-blue-950'
+                : dark
+                  ? 'text-white/80 hover:bg-white/10'
+                  : 'text-slate-600 hover:bg-white',
+            )
+            if (href === '/track-quote') {
+              return (
+                <TrackQuoteMenuItem
+                  key={j}
+                  label={row.link?.label || 'Track your quote'}
+                  className={itemCls}
+                  onNavigate={onNavigate}
+                />
+              )
+            }
             return (
-              <Link
-                key={j}
-                href={href}
-                onClick={onNavigate}
-                className={cn(
-                  'rounded-lg px-3 py-2.5 text-sm font-medium',
-                  active
-                    ? dark
-                      ? 'bg-white/10 text-blue-200'
-                      : 'bg-blue-100 text-blue-950'
-                    : dark
-                      ? 'text-white/80 hover:bg-white/10'
-                      : 'text-slate-600 hover:bg-white',
-                )}
-              >
+              <Link key={j} href={href} onClick={onNavigate} className={itemCls}>
                 {row.link?.label}
               </Link>
             )

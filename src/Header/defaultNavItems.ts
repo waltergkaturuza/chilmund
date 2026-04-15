@@ -45,5 +45,8 @@ export const defaultNavItems: NavItems = [
     { label: 'Industry Awards', url: '/industry-awards' },
     { label: 'CSR', url: '/csr' },
   ]),
-  link('Resources', '/resources'),
+  dropdown('Resources', [
+    { label: 'Resource library', url: '/resources' },
+    { label: 'Track your quote', url: '/track-quote' },
+  ]),
 ]
