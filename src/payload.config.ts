@@ -14,6 +14,7 @@ import { Products } from './collections/Products'
 import { ContactSubmissions } from './collections/ContactSubmissions'
 import { Events } from './collections/Events'
 import { IndustryAwards } from './collections/IndustryAwards'
+import { NewsletterSubscribers } from './collections/NewsletterSubscribers'
 import { QuoteRequests } from './collections/QuoteRequests'
 import { Resources } from './collections/Resources'
 import { TeamMembers } from './collections/TeamMembers'
@@ -181,7 +182,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives, TeamMembers],
+  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives, TeamMembers, NewsletterSubscribers],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer, CompanyContact],
   plugins,

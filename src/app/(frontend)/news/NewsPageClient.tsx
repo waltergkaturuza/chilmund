@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { Calendar, Clock, MapPin, Search, ArrowRight, Tag } from 'lucide-react'
+import { Calendar, CheckCircle, Clock, Mail, MapPin, Search, ArrowRight, Tag } from 'lucide-react'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
 
@@ -209,6 +209,9 @@ export function NewsPageClient({
                 ))}
               </div>
             </SidebarCard>
+
+            {/* Newsletter subscribe */}
+            <NewsletterWidget />
           </aside>
         </div>
       </div>
@@ -279,6 +282,78 @@ function FeaturedCard({ item }: { item: AnyItem }) {
         </span>
       </div>
     </Link>
+  )
+}
+
+function NewsletterWidget() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email.trim() || !email.includes('@')) return
+
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setStatus('success')
+        setMessage(data.message || 'Successfully subscribed!')
+        setEmail('')
+      } else {
+        setStatus('error')
+        setMessage(data.error || 'Something went wrong.')
+      }
+    } catch {
+      setStatus('error')
+      setMessage('Connection error. Please try again.')
+    }
+  }
+
+  return (
+    <div className="rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-950/80 to-slate-900/80 p-5">
+      <h3 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-400">
+        <Mail className="size-4" />
+        Never Miss an Update
+      </h3>
+      <p className="mb-4 text-sm text-white/50">
+        Subscribe for the latest news, events, and industry updates from Chilmund Chemicals.
+      </p>
+
+      {status === 'success' ? (
+        <div className="flex items-center gap-2 rounded-lg bg-emerald-500/15 px-4 py-3 text-sm font-medium text-emerald-300">
+          <CheckCircle className="size-4 shrink-0" />
+          {message}
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-2.5">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => { setEmail(e.target.value); setStatus('idle') }}
+            required
+            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30"
+          />
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            className="w-full rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:opacity-60"
+          >
+            {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
+          </button>
+          {status === 'error' && (
+            <p className="text-xs text-red-400">{message}</p>
+          )}
+        </form>
+      )}
+    </div>
   )
 }
 
