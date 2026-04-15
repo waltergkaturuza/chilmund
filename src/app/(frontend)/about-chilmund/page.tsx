@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { CheckCircle, Eye, Target, Factory, Users, Globe, Droplets } from 'lucide-react'
+import Image from 'next/image'
 import React from 'react'
 
 export const metadata: Metadata = {
@@ -18,16 +19,29 @@ const stats = [
 export default function AboutChilmundPage() {
   return (
     <article className="min-h-screen">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-20 text-center text-white md:py-28">
+      {/* Hero — logo left, copy centered in right column */}
+      <section className="relative overflow-hidden bg-slate-950 px-4 py-16 text-white md:py-24 lg:py-28">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-        <div className="relative mx-auto max-w-3xl">
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-            About Chilmund Chemicals
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
-            {chilmundCopy.about.intro}
-          </p>
+        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
+          <div className="flex items-center justify-center md:min-h-[280px] lg:min-h-[320px]">
+            <Image
+              src="/chilmund-logo.png"
+              alt="Chilmund Chemicals"
+              width={560}
+              height={168}
+              className="h-auto w-full max-w-[min(100%,22rem)] brightness-0 invert md:max-w-none md:w-[min(100%,28rem)] lg:w-[min(100%,32rem)]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
+          </div>
+          <div className="text-center">
+            <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+              About Chilmund Chemicals
+            </h1>
+            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+              {chilmundCopy.about.intro}
+            </p>
+          </div>
         </div>
       </section>
 
