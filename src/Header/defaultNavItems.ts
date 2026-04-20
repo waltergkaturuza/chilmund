@@ -24,29 +24,29 @@ function dropdown(
 
 export const defaultNavItems: NavItems = [
   link('Home', '/'),
-  dropdown('About Chilmund', [
+  dropdown('About', [
     { label: 'About Us', url: '/about-chilmund' },
     { label: 'Meet our Team', url: '/meet-our-team' },
     { label: 'Contact Us', url: '/contact' },
   ]),
-  dropdown('Products & Services', [
-    { label: 'Product Details', url: '/product-details' },
-    { label: 'Uses of Aluminium Sulphate', url: '/uses-aluminium-sulphate' },
-    { label: 'Manufacturing Plant', url: '/manufacturing-plant' },
-    { label: 'Trucking & Logistics', url: '/trucking-logistics' },
+  dropdown('Products', [
+    { label: 'Product details', url: '/product-details' },
+    { label: 'Aluminium sulphate uses', url: '/uses-aluminium-sulphate' },
+    { label: 'Manufacturing plant', url: '/manufacturing-plant' },
+    { label: 'Logistics', url: '/trucking-logistics' },
   ]),
-  dropdown('Partnerships & Accreditations', [
-    { label: 'Partnerships & Accreditations', url: '/partnerships-accreditations' },
-    { label: 'Regional Markets', url: '/regional-markets' },
+  dropdown('Partners', [
+    { label: 'Partnerships & accreditations', url: '/partnerships-accreditations' },
+    { label: 'Regional markets', url: '/regional-markets' },
   ]),
   link('SHEQ', '/sheq'),
-  dropdown('News & Events', [
-    { label: 'News & Events', url: '/news' },
-    { label: 'Industry Awards', url: '/industry-awards' },
+  dropdown('Updates', [
+    { label: 'News & events', url: '/news' },
+    { label: 'Industry awards', url: '/industry-awards' },
     { label: 'CSR', url: '/csr' },
   ]),
   dropdown('Resources', [
-    { label: 'Resource library', url: '/resources' },
-    { label: 'Track your quote', url: '/track-quote' },
+    { label: 'Library', url: '/resources' },
+    { label: 'Track quote', url: '/track-quote' },
   ]),
 ]

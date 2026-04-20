@@ -56,6 +56,8 @@ const applications = [
 
 interface AboutMegaMenuProps {
   dark?: boolean
+  /** Pill label from CMS (e.g. "About") — keep short for narrow desktops. */
+  tabLabel: string
   tabStripItem: string
   tabStripActive: (dark?: boolean) => string
   tabStripIdle: (dark?: boolean) => string
@@ -65,6 +67,7 @@ interface AboutMegaMenuProps {
 
 export function AboutMegaMenu({
   dark,
+  tabLabel,
   tabStripItem,
   tabStripActive,
   tabStripIdle,
@@ -117,7 +120,7 @@ export function AboutMegaMenu({
           anyActive || open ? tabStripActive(dark) : tabStripIdle(dark),
         )}
       >
-        About Chilmund
+        {tabLabel}
         <ChevronDown
           className={cn('size-3.5 shrink-0 opacity-80 transition-transform', open && 'rotate-180')}
           aria-hidden

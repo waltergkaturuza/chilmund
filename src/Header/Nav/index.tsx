@@ -19,8 +19,9 @@ type SubItem = NonNullable<NavItem['subItems']>[number]
  * Desktop: full-width row of tabs that wrap naturally (no horizontal scroll).
  * Active item = solid gold pill + dark label; idle = quiet text + soft hover.
  */
+/** Single row on desktop — horizontal scroll if CMS labels are long (15" laptops). */
 const tabStripTrack =
-  'flex w-full flex-wrap items-center justify-center gap-x-0.5 gap-y-1 py-0.5'
+  'flex w-full flex-nowrap items-center justify-center gap-x-0.5 overflow-x-auto overflow-y-hidden py-0.5 [scrollbar-width:thin]'
 
 const tabStripTrackLight = ''
 
@@ -241,6 +242,7 @@ function renderNavItem(
           <AboutMegaMenu
             key={i}
             dark={opts.dark}
+            tabLabel={item.dropdownLabel || 'About'}
             tabStripItem={tabStripItem}
             tabStripActive={tabStripActive}
             tabStripIdle={tabStripIdle}
