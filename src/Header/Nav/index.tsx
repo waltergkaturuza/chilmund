@@ -16,12 +16,11 @@ type NavItem = NonNullable<HeaderType['navItems']>[number]
 type SubItem = NonNullable<NavItem['subItems']>[number]
 
 /**
- * Desktop: full-width row of tabs that wrap naturally (no horizontal scroll).
- * Active item = solid gold pill + dark label; idle = quiet text + soft hover.
+ * Desktop: single row of tabs. Do not use overflow:hidden/auto on this row — it clips
+ * absolutely-positioned dropdown panels. Short labels keep one row on ~15" screens.
  */
-/** Single row on desktop — horizontal scroll if CMS labels are long (15" laptops). */
 const tabStripTrack =
-  'flex w-full flex-nowrap items-center justify-center gap-x-0.5 overflow-x-auto overflow-y-hidden py-0.5 [scrollbar-width:thin]'
+  'flex w-full flex-nowrap items-center justify-center gap-x-0.5 overflow-visible py-0.5'
 
 const tabStripTrackLight = ''
 
@@ -144,7 +143,7 @@ function DropdownDesktopStrip({
         setOpen(true)
       }}
       onMouseLeave={() => {
-        leaveTimer.current = setTimeout(() => setOpen(false), 160)
+        leaveTimer.current = setTimeout(() => setOpen(false), 220)
       }}
     >
       <button
@@ -164,15 +163,20 @@ function DropdownDesktopStrip({
         />
       </button>
       {open ? (
+        /* pt-2 bridges button → menu so pointer does not leave the wrapper in the gap */
         <div
-          className={cn(
-            'absolute left-1/2 top-[calc(100%+0.45rem)] z-50 min-w-[14rem] -translate-x-1/2 rounded-xl border py-1.5 shadow-xl',
-            dark
-              ? 'border-white/10 bg-slate-950/95 text-white backdrop-blur-md'
-              : 'border-slate-200/90 bg-white text-slate-900 shadow-slate-200/50',
-          )}
-          role="menu"
+          className="absolute left-1/2 top-full z-[60] min-w-[14rem] -translate-x-1/2 pt-2"
+          role="presentation"
         >
+          <div
+            className={cn(
+              'rounded-xl border py-1.5 shadow-xl',
+              dark
+                ? 'border-white/10 bg-slate-950/95 text-white backdrop-blur-md'
+                : 'border-slate-200/90 bg-white text-slate-900 shadow-slate-200/50',
+            )}
+            role="menu"
+          >
           {subs.map((row: SubItem, i: number) => {
             const href = resolveCMSLinkHref(row.link)
             if (!href) return null
@@ -209,6 +213,7 @@ function DropdownDesktopStrip({
               </Link>
             )
           })}
+          </div>
         </div>
       ) : null}
     </div>

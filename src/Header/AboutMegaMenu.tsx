@@ -107,7 +107,7 @@ export function AboutMegaMenu({
         setOpen(true)
       }}
       onMouseLeave={() => {
-        leaveTimer.current = setTimeout(() => setOpen(false), 200)
+        leaveTimer.current = setTimeout(() => setOpen(false), 240)
       }}
     >
       <button
@@ -128,15 +128,17 @@ export function AboutMegaMenu({
       </button>
 
       {open && (
-        <div
-          className={cn(
-            'absolute left-0 top-[calc(100%+0.45rem)] z-50 w-[min(92vw,56rem)] rounded-2xl border shadow-2xl',
-            dark
-              ? 'border-white/10 bg-slate-950/95 text-white backdrop-blur-md'
-              : 'border-slate-200 bg-white text-slate-900 shadow-slate-300/40',
-          )}
-          role="menu"
-        >
+        /* pt-2 bridges trigger → panel so the pointer does not leave wrapRef in the gap */
+        <div className="absolute left-0 top-full z-[60] w-[min(92vw,56rem)] pt-2" role="presentation">
+          <div
+            className={cn(
+              'rounded-2xl border shadow-2xl',
+              dark
+                ? 'border-white/10 bg-slate-950/95 text-white backdrop-blur-md'
+                : 'border-slate-200 bg-white text-slate-900 shadow-slate-300/40',
+            )}
+            role="menu"
+          >
           <div className="grid gap-0 lg:grid-cols-[13rem_1fr]">
             {/* Left: nav links */}
             <div
@@ -279,6 +281,7 @@ export function AboutMegaMenu({
                 </p>
               </div>
             </div>
+          </div>
           </div>
         </div>
       )}
