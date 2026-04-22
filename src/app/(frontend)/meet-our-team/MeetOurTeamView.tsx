@@ -5,6 +5,7 @@ import { Linkedin, Mail, User, Users } from 'lucide-react'
 import React, { useState } from 'react'
 
 import { TeamProfileModal } from './TeamProfileModal'
+import { TeamPortraitImage } from './TeamPortraitImage'
 import type { MeetOurTeamMember } from './types'
 
 const DEPT_LABELS: Record<string, string> = {
@@ -145,13 +146,15 @@ function FeaturedCard({
       aria-label={`View full profile: ${member.name}`}
       className="group w-full overflow-hidden rounded-2xl border border-slate-200 bg-white text-left transition-shadow hover:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-slate-900/60 dark:focus-visible:ring-offset-slate-950"
     >
-      <div className="relative flex h-56 items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-800">
+      <div className="relative flex h-72 min-h-[18rem] items-center justify-center overflow-hidden bg-slate-100 md:h-80 dark:bg-slate-800">
         {member.photo ? (
-          <img
+          <TeamPortraitImage
             src={member.photo}
             alt=""
-            className="size-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            aria-hidden
+            objectPositionClass={member.photoObjectPosition}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+            priority={colorIdx === 0}
+            className="transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
           <div
@@ -229,8 +232,13 @@ function MemberCard({
       )}
     >
       {member.photo ? (
-        <div className="relative mx-auto size-24 overflow-hidden rounded-full border-4 border-slate-100 shadow-md dark:border-slate-800">
-          <img src={member.photo} alt="" className="size-full object-cover object-top" aria-hidden />
+        <div className="relative mx-auto size-32 overflow-hidden rounded-full border-4 border-slate-100 shadow-md sm:size-36 dark:border-slate-800">
+          <TeamPortraitImage
+            src={member.photo}
+            alt=""
+            objectPositionClass={member.photoObjectPosition}
+            sizes="(max-width: 640px) 128px, 144px"
+          />
           <span className="absolute inset-0 flex items-center justify-center rounded-full bg-slate-950/0 text-[0.65rem] font-bold uppercase text-white opacity-0 transition-all group-hover:bg-slate-950/55 group-hover:opacity-100">
             Profile
           </span>

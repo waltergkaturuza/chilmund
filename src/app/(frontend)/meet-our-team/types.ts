@@ -4,6 +4,8 @@ export type MeetOurTeamMember = {
   jobTitle: string
   department: string | null
   photo: string | null
+  /** Tailwind classes for portrait crop (object-position), e.g. object-[50%_58%] */
+  photoObjectPosition: string | null
   /** Short line for cards */
   bioShort: string | null
   credentials: string | null

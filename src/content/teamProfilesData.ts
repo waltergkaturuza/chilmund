@@ -30,6 +30,11 @@ export type TeamProfileSource = {
   credentials: string
   /** Full biography for profile modal (from PDF) */
   fullProfile: string
+  /**
+   * Optional Tailwind classes for `object-position` when using `object-cover`
+   * (e.g. lots of headroom above the subject in the source file).
+   */
+  photoObjectPosition?: string
 }
 
 export function teamPhotoSrc(imageFile: string): string {
@@ -45,6 +50,8 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     imageFile: 'Jeffrey Mazonde \u2013 Managing Director.jpg',
     featured: true,
     order: 1,
+    /* Source photo has large empty area above the subject; shift crop down */
+    photoObjectPosition: 'object-[50%_58%]',
     credentials: 'MSc Strategic Management, BSc (Civ. Eng) Hons',
     fullProfile:
       'A hands-on, purpose-driven business leader, Jeffrey brings extensive experience (over 36 years) into this role. His expertise in project design and management, consultancy and leadership delivers highly competitive, tailored water treatment solutions for local and international customers.',
@@ -57,6 +64,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     imageFile: 'Oswell Matore \u2013 Production and Distribution Director.jpg',
     featured: true,
     order: 2,
+    photoObjectPosition: 'object-[50%_56%]',
     credentials: 'BCompt, CA (Z)',
     fullProfile:
       'Oswell brings more than 25 years of experience in auditing, finance and administration across the insurance, banking, aviation, energy and manufacturing sectors. He has recently been assigned to the Production and Distribution department in a drive to make the company more customer-centric.',

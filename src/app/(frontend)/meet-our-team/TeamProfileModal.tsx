@@ -4,6 +4,7 @@ import { cn } from '@/utilities/ui'
 import { Linkedin, Mail, X } from 'lucide-react'
 import React, { useEffect, useRef } from 'react'
 
+import { TeamPortraitImage } from './TeamPortraitImage'
 import type { MeetOurTeamMember } from './types'
 
 type Props = {
@@ -50,13 +51,13 @@ export function TeamProfileModal({ member, onClose }: Props) {
       onClose={onClose}
       className={cn(
         /* inset-0 + fixed width pins the dialog to a corner; center explicitly */
-        'fixed left-1/2 top-1/2 z-[200] max-h-[min(92vh,900px)] w-[min(100vw-1.5rem,52rem)] max-w-[calc(100vw-1.5rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border-0 p-0 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm',
+        'fixed left-1/2 top-1/2 z-[200] max-h-[min(92vh,920px)] w-[min(100vw-1.5rem,56rem)] max-w-[calc(100vw-1.5rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border-0 p-0 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm',
         'open:flex open:flex-col',
         'dark:backdrop:bg-slate-950/85',
       )}
     >
       {member ? (
-        <div className="flex max-h-[min(92vh,900px)] flex-col bg-white dark:bg-slate-900">
+        <div className="flex max-h-[min(92vh,920px)] flex-col bg-white dark:bg-slate-900">
           <div className="relative shrink-0 border-b border-slate-200 bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 px-6 pb-10 pt-6 text-white dark:border-white/10 sm:px-8 sm:pb-12 sm:pt-8">
             <button
               type="button"
@@ -66,14 +67,15 @@ export function TeamProfileModal({ member, onClose }: Props) {
             >
               <X className="size-5" />
             </button>
-            <div className="mt-2 flex flex-col gap-6 sm:flex-row sm:items-end sm:gap-8">
+            <div className="mt-2 flex flex-col gap-6 sm:flex-row sm:items-center sm:gap-10">
               <div className="mx-auto shrink-0 sm:mx-0">
-                <div className="size-32 overflow-hidden rounded-2xl ring-4 ring-white/40 ring-offset-4 ring-offset-blue-900/80 sm:size-36">
+                <div className="relative h-48 w-48 overflow-hidden rounded-2xl ring-4 ring-white/50 ring-offset-4 ring-offset-blue-900/80 sm:h-56 sm:w-56 md:h-64 md:w-64">
                   {member.photo ? (
-                    <img
+                    <TeamPortraitImage
                       src={member.photo}
                       alt={member.name}
-                      className="size-full object-cover object-top"
+                      objectPositionClass={member.photoObjectPosition}
+                      sizes="(max-width: 768px) 192px, 256px"
                     />
                   ) : (
                     <div className="flex size-full items-center justify-center bg-slate-800 text-2xl font-bold text-white/80">
