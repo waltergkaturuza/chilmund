@@ -50,8 +50,8 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     imageFile: 'Jeffrey Mazonde \u2013 Managing Director.jpg',
     featured: true,
     order: 1,
-    /* Source photo has large empty area above the subject; shift crop down */
-    photoObjectPosition: 'object-[50%_58%]',
+    /* Top-anchored crop: tall cards + object-cover otherwise cut foreheads */
+    photoObjectPosition: 'object-top',
     credentials: 'MSc Strategic Management, BSc (Civ. Eng) Hons',
     fullProfile:
       'A hands-on, purpose-driven business leader, Jeffrey brings extensive experience (over 36 years) into this role. His expertise in project design and management, consultancy and leadership delivers highly competitive, tailored water treatment solutions for local and international customers.',
@@ -64,7 +64,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     imageFile: 'Oswell Matore \u2013 Production and Distribution Director.jpg',
     featured: true,
     order: 2,
-    photoObjectPosition: 'object-[50%_56%]',
+    photoObjectPosition: 'object-top',
     credentials: 'BCompt, CA (Z)',
     fullProfile:
       'Oswell brings more than 25 years of experience in auditing, finance and administration across the insurance, banking, aviation, energy and manufacturing sectors. He has recently been assigned to the Production and Distribution department in a drive to make the company more customer-centric.',
