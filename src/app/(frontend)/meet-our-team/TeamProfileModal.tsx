@@ -49,7 +49,8 @@ export function TeamProfileModal({ member, onClose }: Props) {
       ref={dialogRef}
       onClose={onClose}
       className={cn(
-        'fixed inset-0 z-[200] max-h-[min(92vh,900px)] w-[min(100vw-1.5rem,52rem)] max-w-[calc(100vw-1.5rem)] translate-x-0 translate-y-0 overflow-hidden rounded-2xl border-0 p-0 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm',
+        /* inset-0 + fixed width pins the dialog to a corner; center explicitly */
+        'fixed left-1/2 top-1/2 z-[200] max-h-[min(92vh,900px)] w-[min(100vw-1.5rem,52rem)] max-w-[calc(100vw-1.5rem)] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-2xl border-0 p-0 shadow-2xl backdrop:bg-slate-950/70 backdrop:backdrop-blur-sm',
         'open:flex open:flex-col',
         'dark:backdrop:bg-slate-950/85',
       )}
