@@ -10,6 +10,7 @@ import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
+import { HomeContentSections } from '../home/HomeContentSections'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
@@ -67,6 +68,12 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
 
+  /** Home fallback uses designed sections; omit legacy Payload `content` blocks to avoid duplication. */
+  const blocks =
+    decodedSlug === 'home'
+      ? (layout ?? []).filter((block) => block.blockType !== 'content')
+      : (layout ?? [])
+
   return (
     <article
       className={cn(
@@ -81,7 +88,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} pageSlug={decodedSlug} />
-      <RenderBlocks blocks={layout} />
+      {decodedSlug === 'home' ? <HomeContentSections /> : null}
+      <RenderBlocks blocks={blocks} />
     </article>
   )
 }
