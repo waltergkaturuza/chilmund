@@ -194,7 +194,7 @@ export default function SHEQPage() {
               <p className="mt-2 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
                 As a testament to our commitment to Quality, Chilmund has established a laboratory equipped with analytical
                 instruments including an <strong className="font-semibold text-slate-900 dark:text-white">Atomic Absorption Spectrophotometer (AAS)</strong>,{' '}
-                digital temperature / conductivity / pH metres, and a{' '}
+                digital temperature / conductivity / pH meters, and a{' '}
                 <strong className="font-semibold text-slate-900 dark:text-white">thermogravimetric moisture-content analyser</strong>. Quarterly
                 calibrated equipment and certified volumetric glassware allow competent analysts to execute routine QC testing,
                 complexometric titrations, and method-validation work underpinning authorised product release.
