@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 
-import { cn } from '@/utilities/ui'
 import { PayloadRedirects } from '@/components/PayloadRedirects'
 import configPromise from '@payload-config'
 import { getPayload, type RequiredDataFromCollectionSlug } from 'payload'
@@ -75,12 +74,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       : (layout ?? [])
 
   return (
-    <article
-      className={cn(
-        'pb-20 pt-0',
-        decodedSlug === 'home' && '[&_p]:text-justify',
-      )}
-    >
+    <article className="pb-20 pt-0">
       <PageClient />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />

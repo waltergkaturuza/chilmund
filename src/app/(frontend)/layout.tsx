@@ -46,7 +46,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
 
           <Header />
-          {children}
+          <main
+            id="main-content"
+            className="[&_.payload-richtext_p]:text-justify [&_.prose_p]:text-justify [&_article_p]:text-justify"
+          >
+            {children}
+          </main>
           <Footer />
           <FloatingContact />
         </Providers>

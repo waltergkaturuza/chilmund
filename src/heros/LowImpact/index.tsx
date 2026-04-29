@@ -31,9 +31,10 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
           }}
         />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-600/50 to-transparent" />
-        <div className="container relative py-16 md:py-24 lg:py-28">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
-            <div className="max-w-4xl lg:col-span-6 xl:col-span-7">
+        <div className="container relative py-12 md:py-16 lg:py-20">
+          {/* Stretch columns so the product image fills available height (minimal empty band on wide screens). */}
+          <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-10 xl:gap-14">
+            <div className="flex max-w-3xl flex-col justify-center xl:max-w-none">
               {children ||
                 (richText && (
                   <RichText
@@ -54,18 +55,18 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
                 </ul>
               )}
             </div>
-            <div className="relative lg:col-span-6 xl:col-span-5">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
+            <div className="relative flex min-h-0 flex-col lg:min-h-[min(520px,_62vh)]">
+              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.5)] ring-1 ring-white/10 sm:min-h-[280px] lg:min-h-0">
                 <Image
                   src="/chilmund-products-warehouse.png"
                   alt="Chilmund Chemicals aluminium sulphate — stacked 50 kg bags"
                   fill
                   className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   priority
                 />
               </div>
-              <p className="mt-3 text-center text-[0.7rem] uppercase tracking-[0.12em] text-white/45 lg:text-right">
+              <p className="mt-3 shrink-0 text-center text-[0.7rem] uppercase tracking-[0.12em] text-white/50 lg:text-right">
                 Aluminium sulphate — plant &amp; warehouse
               </p>
             </div>
