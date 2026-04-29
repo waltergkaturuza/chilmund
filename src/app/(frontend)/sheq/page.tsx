@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import {
   Award,
-  Beaker,
   Building2,
   CheckCircle,
   ClipboardCheck,
@@ -14,6 +14,8 @@ import {
   Users,
 } from 'lucide-react'
 import React from 'react'
+
+import { cn } from '@/utilities/ui'
 
 export const metadata: Metadata = {
   title: 'SHEQ & Integrated Management System | Chilmund Chemicals',
@@ -144,6 +146,53 @@ export default function SHEQPage() {
         </div>
       </section>
 
+      {/* On-site safety & health (photography) */}
+      <section id="site-safety" className="scroll-mt-24 border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
+        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-white/40">On the ground</p>
+            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
+              Safety &amp; awareness across our facilities
+            </h2>
+            <p className="mt-4 text-[1.0625rem] leading-relaxed text-slate-600 dark:text-white/58">
+              IMS and ISO&nbsp;45001 commitments show up in maintained equipment, clear signage, forklift and lifting
+              disciplines, and occupational health readiness — from fire points to first aid and hazard literacy.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:items-start">
+            <SheqPhoto
+              src="/sheq/fire-point.png"
+              alt="Fire point with dual blue extinguishers and FIRE POINT sign at Chilmund facility"
+              caption="Fire point — serviced extinguishers and visible emergency identification."
+              aspectClass="aspect-[4/5] sm:aspect-[3/4]"
+            />
+            <SheqPhoto
+              src="/sheq/forklift-safety-sign.png"
+              alt="Forklift safety instruction sign: daily checks, horn, seat belts, forks lowered"
+              caption="Powered industrial truck rules — daily checks, disciplined travel, and mandated PPE."
+              aspectClass="aspect-[3/4] sm:aspect-[4/5]"
+            />
+          </div>
+
+          <SheqPhoto
+            src="/sheq/safety-signage-overview.png"
+            alt="Workplace safety boards: pipe colour coding, lifting equipment inspection tags, hard hat colour codes"
+            caption="Standardised visual controls — pipe identification, lifting-equipment colour tags, and role-based hard-hat coding."
+            aspectClass="aspect-[16/11] md:aspect-[21/9]"
+            className="mt-8"
+          />
+
+          <SheqPhoto
+            src="/sheq/first-aid-hazard-awareness.png"
+            alt="First aid station and workplace hazards awareness poster on wall"
+            caption="First-aid station and hazard-awareness material supporting workforce health and preparedness."
+            aspectClass="aspect-[3/4] sm:aspect-[16/11] md:aspect-[2/1]"
+            className="mt-8 max-w-4xl lg:mx-auto"
+          />
+        </div>
+      </section>
+
       {/* QC/QA */}
       <section id="qc-qa" className="scroll-mt-24 border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
@@ -184,14 +233,14 @@ export default function SHEQPage() {
 
       {/* Laboratory */}
       <section id="laboratory" className="scroll-mt-24 bg-slate-50 dark:bg-slate-900/80">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
           <div className="flex flex-wrap items-start gap-4">
             <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white">
               <Microscope className="size-6" aria-hidden />
             </span>
             <div className="min-w-0 flex-1">
               <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory facilities</h2>
-              <p className="mt-2 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
+              <p className="mt-2 max-w-4xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
                 As a testament to our commitment to Quality, Chilmund has established a laboratory equipped with analytical
                 instruments including an <strong className="font-semibold text-slate-900 dark:text-white">Atomic Absorption Spectrophotometer (AAS)</strong>,{' '}
                 digital temperature / conductivity / pH meters, and a{' '}
@@ -199,11 +248,19 @@ export default function SHEQPage() {
                 calibrated equipment and certified volumetric glassware allow competent analysts to execute routine QC testing,
                 complexometric titrations, and method-validation work underpinning authorised product release.
               </p>
-              <div className="mt-8 rounded-2xl border border-dashed border-slate-300 bg-white p-10 text-center dark:border-white/15 dark:bg-slate-950/50">
-                <Beaker className="mx-auto size-10 text-slate-400 dark:text-white/35" aria-hidden />
-                <p className="mt-3 text-sm font-medium text-slate-600 dark:text-white/55">
-                  Facility and equipment photography will be displayed here once available.
-                </p>
+              <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
+                <SheqPhoto
+                  src="/sheq/lab-workstation-documentation.png"
+                  alt="Laboratory bench with labelled volumetric flasks, EDTA and standard preparation documentation for QC testing."
+                  caption="Documented preparations and calibrated glassware supporting traceable QC work."
+                  aspectClass="aspect-[4/3] sm:aspect-[3/2]"
+                />
+                <SheqPhoto
+                  src="/sheq/lab-analyst-titration.png"
+                  alt="Analyst in PPE performing titration at fume hood with burettes and labelled reagents."
+                  caption="Analyst-controlled titrations and fume-hood disciplines aligned with SHEQ protocols."
+                  aspectClass="aspect-[4/3] sm:aspect-[3/2]"
+                />
               </div>
             </div>
           </div>
@@ -376,5 +433,38 @@ function PillarCard({
         ))}
       </ul>
     </div>
+  )
+}
+
+function SheqPhoto({
+  src,
+  alt,
+  caption,
+  aspectClass,
+  className,
+}: {
+  src: string
+  alt: string
+  caption: string
+  aspectClass: string
+  className?: string
+}) {
+  return (
+    <figure className={cn('group', className)}>
+      <div
+        className={`relative w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-100 shadow-[0_14px_40px_-12px_rgba(15,23,42,0.35)] ring-1 ring-black/[0.04] dark:border-white/10 dark:bg-slate-900 dark:shadow-none ${aspectClass}`}
+      >
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+      </div>
+      <figcaption className="mt-3 text-center text-xs leading-snug text-slate-500 dark:text-white/45 md:text-left">
+        {caption}
+      </figcaption>
+    </figure>
   )
 }
