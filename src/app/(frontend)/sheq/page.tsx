@@ -146,53 +146,6 @@ export default function SHEQPage() {
         </div>
       </section>
 
-      {/* On-site safety & health (photography) */}
-      <section id="site-safety" className="scroll-mt-24 border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 dark:text-white/40">On the ground</p>
-            <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
-              Safety &amp; awareness across our facilities
-            </h2>
-            <p className="mt-4 text-[1.0625rem] leading-relaxed text-slate-600 dark:text-white/58">
-              IMS and ISO&nbsp;45001 commitments show up in maintained equipment, clear signage, forklift and lifting
-              disciplines, and occupational health readiness — from fire points to first aid and hazard literacy.
-            </p>
-          </div>
-
-          <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:items-start">
-            <SheqPhoto
-              src="/sheq/fire-point.png"
-              alt="Fire point with dual blue extinguishers and FIRE POINT sign at Chilmund facility"
-              caption="Fire point — serviced extinguishers and visible emergency identification."
-              aspectClass="aspect-[4/5] sm:aspect-[3/4]"
-            />
-            <SheqPhoto
-              src="/sheq/forklift-safety-sign.png"
-              alt="Forklift safety instruction sign: daily checks, horn, seat belts, forks lowered"
-              caption="Powered industrial truck rules — daily checks, disciplined travel, and mandated PPE."
-              aspectClass="aspect-[3/4] sm:aspect-[4/5]"
-            />
-          </div>
-
-          <SheqPhoto
-            src="/sheq/safety-signage-overview.png"
-            alt="Workplace safety boards: pipe colour coding, lifting equipment inspection tags, hard hat colour codes"
-            caption="Standardised visual controls — pipe identification, lifting-equipment colour tags, and role-based hard-hat coding."
-            aspectClass="aspect-[16/11] md:aspect-[21/9]"
-            className="mt-8"
-          />
-
-          <SheqPhoto
-            src="/sheq/first-aid-hazard-awareness.png"
-            alt="First aid station and workplace hazards awareness poster on wall"
-            caption="First-aid station and hazard-awareness material supporting workforce health and preparedness."
-            aspectClass="aspect-[3/4] sm:aspect-[16/11] md:aspect-[2/1]"
-            className="mt-8 max-w-4xl lg:mx-auto"
-          />
-        </div>
-      </section>
-
       {/* QC/QA */}
       <section id="qc-qa" className="scroll-mt-24 border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
