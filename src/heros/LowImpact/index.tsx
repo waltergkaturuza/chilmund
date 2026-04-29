@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 import type { Page } from '@/payload-types'
@@ -31,26 +32,43 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
         />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-600/50 to-transparent" />
         <div className="container relative py-16 md:py-24 lg:py-28">
-          <div className="max-w-4xl">
-            {children ||
-              (richText && (
-                <RichText
-                  className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-lg prose-p:leading-relaxed prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline md:prose-p:text-xl [&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:lg:text-6xl [&_h1]:leading-[1.08] [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:text-white/95"
-                  data={richText}
-                  enableGutter={false}
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+            <div className="max-w-4xl lg:col-span-6 xl:col-span-7">
+              {children ||
+                (richText && (
+                  <RichText
+                    className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-justify prose-p:text-lg prose-p:leading-relaxed prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline md:prose-p:text-xl [&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:lg:text-6xl [&_h1]:leading-[1.08] [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:text-white/95"
+                    data={richText}
+                    enableGutter={false}
+                  />
+                ))}
+              {Array.isArray(links) && links.length > 0 && (
+                <ul className="summit-hero-actions mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                  {links.map(({ link }, i) => {
+                    return (
+                      <li key={i}>
+                        <CMSLink {...link} size="lg" />
+                      </li>
+                    )
+                  })}
+                </ul>
+              )}
+            </div>
+            <div className="relative lg:col-span-6 xl:col-span-5">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_24px_60px_-12px_rgba(0,0,0,0.45)] ring-1 ring-white/10">
+                <Image
+                  src="/chilmund-products-warehouse.png"
+                  alt="Chilmund Chemicals aluminium sulphate — stacked 50 kg bags"
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  priority
                 />
-              ))}
-            {Array.isArray(links) && links.length > 0 && (
-              <ul className="summit-hero-actions mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-                {links.map(({ link }, i) => {
-                  return (
-                    <li key={i}>
-                      <CMSLink {...link} size="lg" />
-                    </li>
-                  )
-                })}
-              </ul>
-            )}
+              </div>
+              <p className="mt-3 text-center text-[0.7rem] uppercase tracking-[0.12em] text-white/45 lg:text-right">
+                Aluminium sulphate — plant &amp; warehouse
+              </p>
+            </div>
           </div>
         </div>
       </section>
