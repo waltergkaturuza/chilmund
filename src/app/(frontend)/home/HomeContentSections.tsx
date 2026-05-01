@@ -2,10 +2,7 @@ import Link from 'next/link'
 import {
   Award,
   BadgeCheck,
-  Beaker,
   Building2,
-  Download,
-  FileText,
   Handshake,
   HeartHandshake,
   Leaf,
@@ -22,7 +19,7 @@ const linkCls =
   'font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300'
 
 /**
- * Styled home storytelling (pillars → vision → products → SHEQ → CSR → awards → downloads).
+ * Styled home storytelling (pillars → vision → products → SHEQ → CSR → awards → resources link).
  * Linked to main site destinations; replaces plain CMS RichText blocks for `home`.
  */
 export function HomeContentSections() {
@@ -358,49 +355,15 @@ export function HomeContentSections() {
         </div>
       </section>
 
-      {/* Downloads */}
-      <section className="border-b border-slate-200/90 bg-white py-14 dark:border-white/10 dark:bg-slate-950 md:py-20">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="mb-10 text-center">
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">Downloads</h2>
-            <p className="mx-auto mt-2 max-w-2xl text-sm text-slate-600 dark:text-white/55">
-              Controlled technical documents issued per request — request via sales with your SKU / batch requirement.
-              Direct file links activate once migrated into Payload media libraries.
-            </p>
-          </div>
-          <div className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-3">
-            <DownloadPlaceholder
-              icon={<FileText className="size-6 text-slate-500" />}
-              title="MSDS"
-              subtitle="Material safety — hazard &amp; handling"
-            />
-            <DownloadPlaceholder icon={<Beaker className="size-6 text-slate-500" />} title="COA" subtitle="Certificates of Analysis" />
-            <DownloadPlaceholder
-              icon={<Download className="size-6 text-slate-500" />}
-              title="Company profile"
-              subtitle="Capability overview PDF"
-            />
-          </div>
-          <div className="mx-auto mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              className="inline-flex rounded-full bg-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-md transition-colors hover:bg-blue-500"
-              href="/contact"
-            >
-              Request documents
+      <section
+        aria-label="Resources"
+        className="border-b border-slate-200/90 bg-white py-7 dark:border-white/10 dark:bg-slate-950 md:py-8"
+      >
+        <div className="container mx-auto max-w-6xl px-4 text-center">
+          <p className="text-sm text-slate-600 dark:text-white/62">
+            <Link className={linkCls} href="/resources">
+              MSDS, COAs, brochures &amp; downloads — browse Resources →
             </Link>
-            <a
-              className={`text-sm ${linkCls}`}
-              href={`https://wa.me/263783184726?text=${encodeURIComponent(
-                'Hello Chilmund, I would like MSDS / COA / company profile.',
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Message on WhatsApp
-            </a>
-          </div>
-          <p className="mt-6 text-center text-xs text-slate-400 dark:text-white/35">
-            WhatsApp uses the configured company line — update in Site settings if your number changes.
           </p>
         </div>
       </section>
@@ -455,17 +418,6 @@ function PillarCard({
           {foot}
         </div>
       </div>
-    </div>
-  )
-}
-
-function DownloadPlaceholder({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
-  return (
-    <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50/90 px-5 py-8 text-center dark:border-white/15 dark:bg-slate-900/50">
-      <div className="mx-auto flex size-12 items-center justify-center rounded-xl bg-white shadow-sm dark:bg-slate-800">{icon}</div>
-      <p className="mt-4 font-bold text-slate-900 dark:text-white">{title}</p>
-      <p className="mt-1 text-xs text-slate-500 dark:text-white/45">{subtitle}</p>
-      <p className="mt-3 text-[0.65rem] font-medium uppercase tracking-wide text-slate-400 dark:text-white/30">Link via CMS</p>
     </div>
   )
 }
