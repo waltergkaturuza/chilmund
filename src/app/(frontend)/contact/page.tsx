@@ -4,6 +4,7 @@ import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { CompanyContact } from '@/payload-types'
 import { Building2, Factory, Globe, Mail, MapPin, Phone } from 'lucide-react'
 import React from 'react'
+import { isTrustedGoogleMapsEmbedUrl } from '@/utilities/googleMapsEmbed'
 import { ContactForm } from './ContactForm'
 
 export const metadata: Metadata = {
@@ -128,7 +129,8 @@ export default async function ContactPage() {
       </section>
 
       {/* Map section */}
-      {contact?.googleMapsEmbedUrl && (
+      {contact?.googleMapsEmbedUrl &&
+        isTrustedGoogleMapsEmbedUrl(contact.googleMapsEmbedUrl) && (
         <section className="container px-4 pb-16">
           <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
             <iframe
@@ -136,7 +138,7 @@ export default async function ContactPage() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               src={contact.googleMapsEmbedUrl.trim()}
-              title="Chilmund Chemicals location"
+              title="Chilmund manufacturing plant — Bindura"
             />
           </div>
         </section>

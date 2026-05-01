@@ -67,16 +67,16 @@ export default function PartnershipsAccreditationsPage() {
   return (
     <article className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-20 text-center text-white md:py-28">
+      <section className="relative overflow-hidden bg-slate-950 px-4 py-10 text-white sm:py-12 md:py-14">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-        <div className="relative mx-auto max-w-3xl">
-          <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-blue-500/20">
-            <Handshake className="size-8 text-blue-400" />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <div className="mb-3 flex size-14 shrink-0 items-center justify-center rounded-2xl bg-blue-500/20 md:mb-4 md:size-16">
+            <Handshake className="size-7 text-blue-400 md:size-8" />
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
             Partnerships &amp; Accreditations
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
             Built on trust, verified by standards — our partnerships and certifications underpin
             every product we deliver.
           </p>

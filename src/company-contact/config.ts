@@ -140,7 +140,7 @@ export const CompanyContact: GlobalConfig = {
               defaultValue: D.googleMapsEmbedUrl,
               admin: {
                 description:
-                  'Google Maps → Share → Embed a map → copy only the URL inside src="..." (HTTPS). Shown in the footer when set.',
+                  'Google Maps → Share → Embed a map → copy the URL from src="..." (HTTPS). Or use the classic coordinate embed: https://maps.google.com/maps?q=LAT,LNG&z=17&hl=en&output=embed — shown in footer and contact when set.',
               },
             },
           ],

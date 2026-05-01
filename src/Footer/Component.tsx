@@ -10,6 +10,7 @@ import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { FooterQuoteButton } from './QuoteButton'
+import { isTrustedGoogleMapsEmbedUrl } from '@/utilities/googleMapsEmbed'
 
 /* ── Brand SVG icons (not in lucide) ────────────────────────────────── */
 
@@ -57,14 +58,6 @@ function handleToInstagramUrl(handle: string | null | undefined): string | null 
   if (!handle?.trim()) return null
   const h = handle.trim().replace(/^@/, '')
   return `https://www.instagram.com/${h}/`
-}
-
-function isTrustedGoogleMapsEmbedUrl(url: string): boolean {
-  const u = url.trim()
-  return (
-    u.startsWith('https://www.google.com/maps/embed') ||
-    u.startsWith('https://maps.google.com/maps/embed')
-  )
 }
 
 const iconLink =
@@ -310,8 +303,7 @@ export async function Footer() {
               Map
             </h3>
             <p className="mt-2 max-w-xl text-sm text-white/65">
-              Head office or plant location (embed URL from Company contact → Addresses &amp;
-              quote).
+              Bindura plant location (configure embed URL under Company contact → Addresses &amp; quote).
             </p>
             <div className="mt-4 aspect-[21/9] min-h-[200px] w-full overflow-hidden rounded-2xl border border-white/10 bg-black/25 md:min-h-[260px]">
               <iframe
@@ -319,7 +311,7 @@ export async function Footer() {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 src={contact.googleMapsEmbedUrl.trim()}
-                title="Chilmund location map"
+                title="Chilmund Chemicals Bindura manufacturing plant map"
               />
             </div>
           </div>
@@ -330,6 +322,44 @@ export async function Footer() {
           <p>© {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.</p>
           <p className="max-w-md md:text-right">
             MSDS, COA, and company profile available on request from sales.
+          </p>
+        </div>
+
+        {/* ── Legal strip: policies, discreet admin entry, developer credit ─ */}
+        <div className="mt-6 flex flex-col items-center gap-2 border-t border-white/10 pb-2 pt-5 text-center text-[0.6875rem] leading-snug sm:text-xs">
+          <nav
+            aria-label="Legal"
+            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-white/[0.82]"
+          >
+            <Link className="transition-colors hover:text-white" href="/privacy-policy">
+              Privacy Policy
+            </Link>
+            <span aria-hidden className="text-white/25">
+              ·
+            </span>
+            <Link className="transition-colors hover:text-white" href="/terms-of-use">
+              Terms of Use
+            </Link>
+            <span aria-hidden className="text-white/25">
+              ·
+            </span>
+            <Link
+              className="text-white/28 transition-colors hover:text-white/55 focus-visible:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              href="/admin"
+            >
+              Admin
+            </Link>
+          </nav>
+          <p className="text-white/58">
+            Platform developed by{' '}
+            <a
+              className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+              href="https://www.quantistechnologies.co.zw/"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              Quantis Technologies
+            </a>
           </p>
         </div>
       </div>
