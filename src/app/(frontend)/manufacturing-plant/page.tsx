@@ -59,6 +59,17 @@ const features = [
   { icon: <MapPin className="size-5" />, label: 'Strategically located in Bindura for raw material access' },
 ]
 
+const aluminiumSulphateSpecs: { label: string; value: string }[] = [
+  { label: 'Chemical formula', value: 'Al₂(SO₄)₃ · nH₂O' },
+  { label: 'Al₂O₃ content', value: '≥ 17%' },
+  { label: 'Iron (Fe) content', value: 'Non-ferric (< 0.01%)' },
+  { label: 'pH (1% solution)', value: '3.0 – 3.5' },
+  { label: 'Appearance', value: 'Off-white granules / lumps' },
+  { label: 'Solubility', value: 'Readily soluble in water' },
+  { label: 'Packaging', value: '25 kg, 50 kg bags & bulk' },
+  { label: 'Daily capacity', value: '70 tonnes' },
+]
+
 export default async function ManufacturingPlantPage() {
   const contact = await getCachedGlobal('company-contact', 0)()
   const embedSrc = resolveManufacturingPlantMapsEmbedUrl(contact?.googleMapsEmbedUrl)
@@ -127,6 +138,60 @@ export default async function ManufacturingPlantPage() {
                 </figcaption>
               </figure>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Product & specifications */}
+      <section className="border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-900">
+        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
+            Aluminium sulphate — product at a glance
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/55 md:text-base">
+            SAZ-aligned labelling and controlled batch release — the same quality that leaves our warehouse for
+            municipalities, industry, and agriculture across the region.
+          </p>
+
+          <div className="mt-12 grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
+            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
+              <div className="relative aspect-[4/5] w-full min-h-[280px] sm:aspect-[3/4] lg:min-h-0">
+                <Image
+                  src="/manufacturing/aluminium-sulphate-product-bags.png"
+                  alt="Stacks of Chilmund Chemicals 50 kg bags of aluminium sulphate, branded with product name, Al₂O₃ grade, non-ferric marking, and storage instructions."
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center">
+              <h3 className="text-center text-lg font-bold text-slate-900 dark:text-white lg:text-left">
+                Technical specifications
+              </h3>
+              <div className="mt-5 overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950 shadow-inner dark:border-white/10">
+                <table className="w-full border-collapse text-sm">
+                  <caption className="sr-only">Aluminium sulphate technical specifications</caption>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {aluminiumSulphateSpecs.map((row, i) => (
+                      <tr
+                        key={row.label}
+                        className={i % 2 === 0 ? 'bg-slate-900/60' : 'bg-slate-900/40'}
+                      >
+                        <th
+                          scope="row"
+                          className="w-[44%] px-4 py-3.5 text-left font-medium text-slate-400 md:px-5"
+                        >
+                          {row.label}
+                        </th>
+                        <td className="px-4 py-3.5 text-right font-semibold text-white md:px-5">{row.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </section>
