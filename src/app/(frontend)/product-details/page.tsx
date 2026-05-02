@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { Beaker, CheckCircle, Droplets, FlaskConical, Package, Shield } from 'lucide-react'
+import { Beaker, Droplets, FlaskConical, Package, Shield } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -52,22 +53,60 @@ export default function ProductDetailsPage() {
         </div>
       </section>
 
-      {/* Technical specs */}
+      {/* Product at a glance: photo + technical specs */}
       <section className="bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Technical Specifications
+        <div className="container mx-auto max-w-6xl px-4 py-12 md:py-16">
+          <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
+            Aluminium sulphate — product at a glance
           </h2>
-          <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            {specs.map((s, i) => (
-              <div
-                key={s.label}
-                className={`flex items-center justify-between px-6 py-4 ${i % 2 === 0 ? 'bg-slate-50 dark:bg-slate-800/50' : 'bg-white dark:bg-slate-900'}`}
-              >
-                <span className="text-sm font-medium text-slate-500 dark:text-white/50">{s.label}</span>
-                <span className="font-semibold text-slate-900 dark:text-white">{s.value}</span>
+          <p className="mx-auto mt-3 max-w-none text-center text-sm leading-snug text-slate-600 text-balance md:max-w-4xl md:text-base dark:text-white/55">
+            SAZ-aligned labelling and controlled batch release — the same quality that leaves our warehouse for
+            municipalities, industry, and agriculture across the region.
+          </p>
+
+          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
+            <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
+              <div className="relative aspect-square w-full min-h-[260px] shrink-0 lg:aspect-auto lg:min-h-0 lg:flex-1">
+                <Image
+                  src="/manufacturing/aluminium-sulphate-product-bags.png"
+                  alt="Stacks of Chilmund Chemicals branded 50 kg bags of aluminium sulphate in warehouse storage, showing product name and grade markings."
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            ))}
+            </figure>
+
+            <div className="flex min-h-0 flex-col">
+              <h3 className="text-center text-lg font-bold text-slate-900 dark:text-white lg:mb-4 lg:text-left">
+                Technical specifications
+              </h3>
+              <div className="mt-5 overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950 shadow-inner lg:mt-0 dark:border-white/10">
+                <table className="w-full border-collapse text-sm">
+                  <caption className="sr-only">
+                    Aluminium sulphate technical specifications for Chilmund Chemicals products
+                  </caption>
+                  <tbody className="divide-y divide-white/[0.06]">
+                    {specs.map((row, i) => (
+                      <tr
+                        key={row.label}
+                        className={i % 2 === 0 ? 'bg-slate-900/60' : 'bg-slate-900/40'}
+                      >
+                        <th
+                          scope="row"
+                          className="w-[44%] px-4 py-3.5 text-left font-medium text-slate-400 md:px-5"
+                        >
+                          {row.label}
+                        </th>
+                        <td className="px-4 py-3.5 text-right font-semibold text-white md:px-5">
+                          {row.value}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </section>
