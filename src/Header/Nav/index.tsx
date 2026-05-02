@@ -10,6 +10,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import type { Header as HeaderType } from '@/payload-types'
 
 import { AboutMegaMenu } from '../AboutMegaMenu'
+import {
+  isAboutMegaDropdown,
+  withInjectedSiteMapSubItems,
+} from '../aboutDropdownSubs'
 import { TrackQuoteMenuItem } from './TrackQuoteMenuItem'
 
 type NavItem = NonNullable<HeaderType['navItems']>[number]
@@ -107,7 +111,7 @@ function DropdownDesktopStrip({
   const [open, setOpen] = useState(false)
   const wrapRef = useRef<HTMLDivElement>(null)
   const label = item.dropdownLabel || 'Menu'
-  const subs = item.subItems || []
+  const subs = withInjectedSiteMapSubItems(item)
 
   const anyActive = subs.some((row) => {
     const h = resolveCMSLinkHref(row.link)
@@ -234,9 +238,9 @@ function renderNavItem(
 
   if (style === 'dropdown') {
     if (opts.mode === 'desktop') {
-      const isAbout = (item.dropdownLabel || '').toLowerCase().includes('about')
+      const isAbout = isAboutMegaDropdown(item.dropdownLabel)
       if (isAbout) {
-        const links = (item.subItems || [])
+        const links = withInjectedSiteMapSubItems(item)
           .map((s) => {
             const href = resolveCMSLinkHref(s.link)
             return href ? { label: s.link?.label || '', href } : null
@@ -306,7 +310,7 @@ function MobileDropdownSection({
   onNavigate?: () => void
 }) {
   const [expanded, setExpanded] = useState(false)
-  const subs = item.subItems || []
+  const subs = withInjectedSiteMapSubItems(item)
 
   return (
     <div

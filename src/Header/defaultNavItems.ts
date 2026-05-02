@@ -27,6 +27,7 @@ export const defaultNavItems: NavItems = [
   dropdown('About', [
     { label: 'About Us', url: '/about-chilmund' },
     { label: 'Meet our Team', url: '/meet-our-team' },
+    { label: 'Site map', url: '/sitemap' },
     { label: 'Contact Us', url: '/contact' },
   ]),
   dropdown('Products', [

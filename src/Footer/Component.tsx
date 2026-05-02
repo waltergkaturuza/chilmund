@@ -228,6 +228,12 @@ export async function Footer() {
                     </Link>
                   </>
                 )}
+                <Link
+                  className="transition-colors hover:text-white"
+                  href="/bindura-map"
+                >
+                  Bindura manufacturing plant — map →
+                </Link>
               </nav>
             </div>
           </div>
@@ -294,52 +300,49 @@ export async function Footer() {
           </div>
         </div>
 
-        {/* ── Plant map link (full map on /bindura-map) ───────────── */}
+        {/* ── Copyright, legal links, attribution ─ */}
         <div className="mt-14 border-t border-white/10 pt-8 md:pt-10">
-          <p className="text-sm leading-relaxed text-white/72">
-            <Link
-              className="font-semibold text-white underline-offset-4 transition-colors hover:text-blue-300 hover:underline"
-              href="/bindura-map"
-            >
-              Bindura manufacturing plant — view interactive map →
-            </Link>
-          </p>
-        </div>
+          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between md:gap-8">
+            <div className="space-y-2.5 text-center md:text-left">
+              <p className="text-xs text-white/50">
+                © {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.
+              </p>
+              <nav
+                aria-label="Legal"
+                className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.6875rem] leading-snug sm:text-xs md:justify-start"
+              >
+                <Link
+                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
+                  href="/privacy-policy"
+                >
+                  Privacy Policy
+                </Link>
+                <span aria-hidden className="text-white/20">
+                  ·
+                </span>
+                <Link
+                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
+                  href="/terms-of-use"
+                >
+                  Terms of Use
+                </Link>
+                <span aria-hidden className="text-white/20">
+                  ·
+                </span>
+                <Link
+                  className="text-white/[0.07] underline-offset-2 transition-colors hover:text-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  href="/admin"
+                >
+                  Admin
+                </Link>
+              </nav>
+            </div>
+            <p className="max-w-md self-center text-center text-xs text-white/45 md:self-start md:text-right">
+              MSDS, COA, and company profile available on request from sales.
+            </p>
+          </div>
 
-        {/* ── Copyright ──────────────────────────────────────────── */}
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-xs text-white/45 md:flex-row md:text-left">
-          <p>© {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.</p>
-          <p className="max-w-md md:text-right">
-            MSDS, COA, and company profile available on request from sales.
-          </p>
-        </div>
-
-        {/* ── Legal strip: policies, discreet admin entry, developer credit ─ */}
-        <div className="mt-6 flex flex-col items-center gap-2 border-t border-white/10 pb-2 pt-5 text-center text-[0.6875rem] leading-snug sm:text-xs">
-          <nav
-            aria-label="Legal"
-            className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-white/[0.82]"
-          >
-            <Link className="transition-colors hover:text-white" href="/privacy-policy">
-              Privacy Policy
-            </Link>
-            <span aria-hidden className="text-white/25">
-              ·
-            </span>
-            <Link className="transition-colors hover:text-white" href="/terms-of-use">
-              Terms of Use
-            </Link>
-            <span aria-hidden className="text-white/25">
-              ·
-            </span>
-            <Link
-              className="text-white/28 transition-colors hover:text-white/55 focus-visible:text-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-              href="/admin"
-            >
-              Admin
-            </Link>
-          </nav>
-          <p className="text-white/58">
+          <p className="mt-6 border-t border-white/10 pb-2 pt-5 text-center text-[0.6875rem] leading-snug text-white/58 sm:text-xs">
             Platform developed by{' '}
             <a
               className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
