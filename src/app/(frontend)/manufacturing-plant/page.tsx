@@ -220,18 +220,20 @@ export default async function ManufacturingPlantPage() {
 
       {/* Location */}
       <section className="bg-white dark:bg-slate-900">
-        <div className="container mx-auto max-w-5xl px-4 py-16 text-center">
-          <MapPin className="mx-auto size-10 text-blue-600 dark:text-blue-400" />
-          <h2 className="mt-4 text-2xl font-extrabold text-slate-900 dark:text-white">Location</h2>
-          <p className="mx-auto mt-3 max-w-xl text-slate-600 dark:text-white/60">
+        <div className="container mx-auto max-w-7xl px-4 py-8 text-center md:py-10">
+          <MapPin className="mx-auto size-9 text-blue-600 dark:text-blue-400 md:size-10" />
+          <h2 className="mt-3 text-2xl font-extrabold text-slate-900 dark:text-white md:mt-2">Location</h2>
+          <p className="mx-auto mt-2 max-w-none text-pretty text-base leading-snug text-slate-600 text-balance dark:text-white/60 md:text-lg md:leading-normal">
             Our manufacturing plant is strategically located in <strong>Bindura, Zimbabwe</strong>,
             providing easy access to bauxite raw materials and key transport routes for distribution
             across Southern and East Africa.
           </p>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-slate-500 dark:text-white/45">{plantAddress}</p>
+          <p className="mx-auto mt-1.5 max-w-none text-pretty text-sm text-slate-500 text-balance dark:text-white/45 md:text-[0.9375rem]">
+            {plantAddress}
+          </p>
 
           {embedSrc ? (
-            <div className="mx-auto mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-lg dark:border-white/15 dark:bg-slate-950 dark:shadow-none">
+            <div className="mx-auto mt-6 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-lg dark:border-white/15 dark:bg-slate-950 dark:shadow-none md:mt-8">
               <iframe
                 title={`Google Maps — ${CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}`}
                 className="aspect-video min-h-[280px] w-full border-0 sm:min-h-[380px]"
@@ -248,7 +250,7 @@ export default async function ManufacturingPlantPage() {
               </div>
             </div>
           ) : (
-            <p className="mx-auto mt-10 max-w-lg rounded-xl border border-dashed border-slate-300 px-6 py-8 text-sm text-slate-600 dark:border-white/20 dark:text-white/60">
+            <p className="mx-auto mt-6 max-w-lg rounded-xl border border-dashed border-slate-300 px-6 py-6 text-sm text-slate-600 dark:border-white/20 dark:text-white/60 md:mt-8">
               Interactive map unavailable. Configure <strong className="text-slate-800 dark:text-white">Google Maps embed URL</strong> under Company contact in the admin panel, or{' '}
               <a
                 className="font-semibold text-blue-600 underline underline-offset-2 hover:text-blue-700 dark:text-blue-400"
@@ -263,7 +265,7 @@ export default async function ManufacturingPlantPage() {
           )}
 
           {embedSrc ? (
-            <div className="mx-auto mt-5 flex flex-wrap items-center justify-center gap-6 text-sm">
+            <div className="mx-auto mt-4 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm md:mt-5">
               <Link
                 className="font-semibold text-blue-600 underline-offset-4 transition-colors hover:underline dark:text-blue-400"
                 href="/bindura-map"
