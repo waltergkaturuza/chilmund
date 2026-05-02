@@ -1,9 +1,11 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import React from 'react'
-
 import { getCachedGlobal } from '@/utilities/getGlobals'
-import { isTrustedGoogleMapsEmbedUrl } from '@/utilities/googleMapsEmbed'
+import {
+  CHILMUND_MANUFACTURING_PLANT_MAP_LABEL,
+  resolveManufacturingPlantMapsEmbedUrl,
+} from '@/utilities/manufacturingPlantMapsEmbed'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 
 export const metadata: Metadata = {
@@ -12,15 +14,14 @@ export const metadata: Metadata = {
     'Interactive map of the Chilmund Chemicals aluminium sulphate manufacturing plant in Bindura, Zimbabwe.',
 }
 
-/** Matches default embedded pin in Site settings → Company contact → Google Maps. */
-const GOOGLE_MAPS_SEARCH =
-  'https://www.google.com/maps/search/?api=1&query=-17.323036,31.323233'
 
 export default async function BinduraPlantMapPage() {
   const contact = await getCachedGlobal('company-contact', 0)()
-  const raw = contact?.googleMapsEmbedUrl?.trim() ?? ''
-  const embedSrc = raw && isTrustedGoogleMapsEmbedUrl(raw) ? raw : null
 
+  const embedSrc = resolveManufacturingPlantMapsEmbedUrl(contact?.googleMapsEmbedUrl)
+  const plantAddress =
+    contact?.manufacturingPlantAddress ?? '914/15 Kingston Road, Bindura, Zimbabwe'
+  const GOOGLE_MAPS_SEARCH = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}, ${plantAddress}`)}`
   return (
     <article className="min-h-screen pb-16">
       <section className={innerHeroRadialSection}>
@@ -59,7 +60,7 @@ export default async function BinduraPlantMapPage() {
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               src={embedSrc}
-              title="Chilmund Chemicals Bindura manufacturing plant map"
+              title={`Google Maps — ${CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}`}
             />
           </div>
         ) : (

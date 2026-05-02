@@ -1,7 +1,41 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { CheckCircle, Factory, Gauge, HardHat, MapPin, Recycle, Shield, Truck, Zap } from 'lucide-react'
+import { getCachedGlobal } from '@/utilities/getGlobals'
+import {
+  CHILMUND_MANUFACTURING_PLANT_MAP_LABEL,
+  resolveManufacturingPlantMapsEmbedUrl,
+} from '@/utilities/manufacturingPlantMapsEmbed'
+import { Factory, Gauge, HardHat, MapPin, Recycle, Shield, Truck, Zap } from 'lucide-react'
 import React from 'react'
+
+const facilityGallery = [
+  {
+    src: '/manufacturing/plant-reactors.png',
+    alt: 'Four large industrial chemical reactors suspended from a steel platform with yellow guardrails inside a modern factory.',
+    caption:
+      'State-of-the-art chemical reactors at our primary Bindura manufacturing facility — engineered for dependable, high-volume output.',
+  },
+  {
+    src: '/manufacturing/plant-processing.png',
+    alt: 'Controlled liquid streams dispensing from a perforated pipe onto a metal processing surface.',
+    caption:
+      'Precise automated distribution along our chemical processing line — consistency you can rely on batch after batch.',
+  },
+  {
+    src: '/manufacturing/plant-packaging.png',
+    alt: 'Chilmund Chemicals personnel in branded coveralls packing large bags of Aluminium sulphate beside industrial bagging machinery.',
+    caption:
+      'Our trained team oversees packaging under strict SHEQ standards — alum and ancillary products labelled and pallet-ready for shipment.',
+  },
+  {
+    src: '/manufacturing/plant-logistics.png',
+    alt: 'A forklift transports a pallet stacked with bulk chemical bags across a lined warehouse floor past safety bulletin boards.',
+    caption:
+      'Integrated material handling connects production to dispatch — streamlined movement that keeps deliveries on schedule.',
+  },
+] as const
 
 export const metadata: Metadata = {
   title: 'Manufacturing Plant | Chilmund Chemicals',
@@ -25,7 +59,13 @@ const features = [
   { icon: <MapPin className="size-5" />, label: 'Strategically located in Bindura for raw material access' },
 ]
 
-export default function ManufacturingPlantPage() {
+export default async function ManufacturingPlantPage() {
+  const contact = await getCachedGlobal('company-contact', 0)()
+  const embedSrc = resolveManufacturingPlantMapsEmbedUrl(contact?.googleMapsEmbedUrl)
+  const plantAddress =
+    contact?.manufacturingPlantAddress ?? '914/15 Kingston Road, Bindura, Zimbabwe'
+  const openInGoogleMapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}, ${plantAddress}`)}`
+
   return (
     <article className="min-h-screen">
       {/* Hero */}
@@ -57,6 +97,40 @@ export default function ManufacturingPlantPage() {
         </div>
       </section>
 
+      {/* Facility gallery */}
+      <section className="border-b border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950">
+        <div className="container mx-auto px-4 py-16 md:py-20">
+          <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
+            Inside the plant
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/55 md:text-base">
+            A glimpse of Bindura&apos;s reactors, finishing line, packaging floor, and warehouse — where SAZ-aligned
+            quality meets scale.
+          </p>
+          <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
+            {facilityGallery.map((item) => (
+              <figure
+                key={item.src}
+                className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/80 dark:shadow-none"
+              >
+                <div className="relative aspect-[4/3] w-full bg-slate-200 dark:bg-slate-800">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <figcaption className="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600 dark:border-white/10 dark:text-white/70 md:px-6 md:py-5 md:text-[0.9375rem]">
+                  {item.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Plant features */}
       <section className="bg-slate-50 dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16">
@@ -81,14 +155,66 @@ export default function ManufacturingPlantPage() {
 
       {/* Location */}
       <section className="bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4 py-16 text-center">
+        <div className="container mx-auto max-w-5xl px-4 py-16 text-center">
           <MapPin className="mx-auto size-10 text-blue-600 dark:text-blue-400" />
           <h2 className="mt-4 text-2xl font-extrabold text-slate-900 dark:text-white">Location</h2>
           <p className="mx-auto mt-3 max-w-xl text-slate-600 dark:text-white/60">
             Our manufacturing plant is strategically located in <strong>Bindura, Zimbabwe</strong>,
-            providing easy access to bauxite raw materials and key transport routes for
-            distribution across Southern and East Africa.
+            providing easy access to bauxite raw materials and key transport routes for distribution
+            across Southern and East Africa.
           </p>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-slate-500 dark:text-white/45">{plantAddress}</p>
+
+          {embedSrc ? (
+            <div className="mx-auto mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 shadow-lg dark:border-white/15 dark:bg-slate-950 dark:shadow-none">
+              <iframe
+                title={`Google Maps — ${CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}`}
+                className="aspect-video min-h-[280px] w-full border-0 sm:min-h-[380px]"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                src={embedSrc}
+              />
+              <div className="border-t border-slate-100 bg-white px-4 py-3 text-center text-[0.8125rem] text-slate-600 dark:border-white/10 dark:bg-slate-900/90 dark:text-white/55">
+                <span className="font-semibold text-slate-800 dark:text-white/90">
+                  {CHILMUND_MANUFACTURING_PLANT_MAP_LABEL}
+                </span>
+                {' · '}
+                <span>Open in Maps for directions and satellite view.</span>
+              </div>
+            </div>
+          ) : (
+            <p className="mx-auto mt-10 max-w-lg rounded-xl border border-dashed border-slate-300 px-6 py-8 text-sm text-slate-600 dark:border-white/20 dark:text-white/60">
+              Interactive map unavailable. Configure <strong className="text-slate-800 dark:text-white">Google Maps embed URL</strong> under Company contact in the admin panel, or{' '}
+              <a
+                className="font-semibold text-blue-600 underline underline-offset-2 hover:text-blue-700 dark:text-blue-400"
+                href={openInGoogleMapsHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                open {CHILMUND_MANUFACTURING_PLANT_MAP_LABEL} in Google Maps
+              </a>
+              .
+            </p>
+          )}
+
+          {embedSrc ? (
+            <div className="mx-auto mt-5 flex flex-wrap items-center justify-center gap-6 text-sm">
+              <Link
+                className="font-semibold text-blue-600 underline-offset-4 transition-colors hover:underline dark:text-blue-400"
+                href="/bindura-map"
+              >
+                Full-screen map page →
+              </Link>
+              <a
+                className="font-semibold text-blue-600 underline-offset-4 transition-colors hover:underline dark:text-blue-400"
+                href={openInGoogleMapsHref}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Open in Google Maps (new tab) →
+              </a>
+            </div>
+          ) : null}
         </div>
       </section>
     </article>

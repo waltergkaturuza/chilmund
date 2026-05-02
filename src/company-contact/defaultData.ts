@@ -9,11 +9,11 @@ export const companyContactDefaultData = {
     'Hello, I would like to enquire about aluminium sulphate supply from Chilmund Chemicals.',
   quotePagePath: '/contact',
   /**
-   * Bindura plant — Google Maps pin (decimal -17.323036, 31.323233; ~M8GF+Q7Q).
-   * Classic embed: `.../maps?q=lat,lng&z=…&output=embed` — also allowed by our iframe allowlist.
+   * Bindura plant — Google Maps iframe (legacy `maps.google.com/maps?...output=embed`).
+   * Uses `Facility name@lat,lng` so the marker shows **Chilmund Chemicals Manufacturing Plant**.
    */
   googleMapsEmbedUrl:
-    'https://maps.google.com/maps?q=-17.323036,31.323233&z=17&hl=en&output=embed',
+    'https://maps.google.com/maps?q=Chilmund+Chemicals+Manufacturing+Plant@-17.323036%2C31.323233&z=17&hl=en&output=embed',
   headOfficeAddress: '114 Harare Drive, Marlborough, Harare',
   manufacturingPlantAddress: '914/15 Kingston Road, Bindura, Zimbabwe',
   phoneBinduraDisplay: '+263 66 2107 155 / 57',
