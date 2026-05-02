@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Beaker, CheckCircle, Droplets, FlaskConical, Package, Shield } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -38,16 +39,13 @@ export default function ProductDetailsPage() {
   return (
     <article className="min-h-screen">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-20 text-center text-white md:py-28">
+      <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
-          <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-blue-500/20">
-            <FlaskConical className="size-8 text-blue-400" />
-          </div>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
             Aluminium Sulphate
           </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
             High-purity, non-ferric aluminium sulphate manufactured at our state-of-the-art plant
             in Bindura, Zimbabwe.
           </p>

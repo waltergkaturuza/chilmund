@@ -16,6 +16,7 @@ export const recommendedCorporatePages = [
   { suggestedSlug: 'csr', label: 'CSR' },
   { suggestedSlug: 'industry-awards', label: 'Industry Awards' },
   { suggestedSlug: 'news', label: 'News & Events', notes: 'Optional listing page; blog uses /posts.' },
+  { suggestedSlug: 'bindura-map', label: 'Bindura plant map', notes: 'Static Next route `/bindura-map` — embed driven by Company contact global.' },
   { suggestedSlug: 'contact', label: 'Contact Us' },
   { suggestedSlug: 'quote', label: 'Quote Request', notes: 'Dedicated page; or uses the quick-quote modal.' },
   { suggestedSlug: 'track-request', label: 'Track Your Request', notes: 'Order / quote tracking page.' },
@@ -40,6 +41,7 @@ export const recommendedHeaderNavBlueprint = [
     sub: [
       { label: 'About Us', pageSlug: 'about-chilmund' },
       { label: 'Meet our Team', pageSlug: 'meet-our-team' },
+      { label: 'Bindura plant map', href: '/bindura-map' },
       { label: 'Contact Us', pageSlug: 'contact' },
     ],
   },

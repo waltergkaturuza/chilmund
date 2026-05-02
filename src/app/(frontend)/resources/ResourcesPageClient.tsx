@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
+import { innerHeroMutedBand } from '@/utilities/pageHero'
 import {
   Award,
   Download,
@@ -63,9 +64,9 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
   return (
     <article className="min-h-screen bg-slate-950 pb-20 text-white">
       {/* Hero */}
-      <section className="border-b border-white/10 bg-slate-900/50 px-4 py-14 text-center">
+      <section className={innerHeroMutedBand}>
         <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">Resources</h1>
-        <p className="mx-auto mt-3 max-w-xl text-white/60">
+        <p className="mx-auto mt-4 max-w-xl text-white/60">
           Download certificates, documents, infographics, brochures and more.
         </p>
       </section>

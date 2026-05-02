@@ -15,6 +15,7 @@ import {
 } from 'lucide-react'
 import React from 'react'
 
+import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { cn } from '@/utilities/ui'
 
 export const metadata: Metadata = {
@@ -60,16 +61,13 @@ export default function SHEQPage() {
   return (
     <article className="min-h-screen text-pretty">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-10 text-white sm:py-12 md:py-14">
+      <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/35 via-transparent to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <div className="mb-3 flex size-14 shrink-0 items-center justify-center rounded-2xl bg-emerald-500/20 md:mb-4 md:size-16">
-            <Shield className="size-7 text-emerald-400 md:size-8" aria-hidden />
-          </div>
           <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-emerald-400/95 sm:text-sm sm:tracking-[0.18em]">
             Safety · Health · Environment · Quality
           </p>
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2.5 md:text-5xl">SHEQ &amp; IMS</h1>
+          <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2 md:text-5xl">SHEQ &amp; IMS</h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-white/75 md:text-lg md:leading-relaxed">
             Integrated Management System commitments covering ISO&nbsp;9001, ISO&nbsp;14001, and ISO&nbsp;45001 — from
             certified processes to analytical capability and responsible community engagement.

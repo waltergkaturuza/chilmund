@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
+import { innerHeroMutedBand } from '@/utilities/pageHero'
 import { Award, Calendar, Search, Star, Trophy, Building2 } from 'lucide-react'
 import React, { useMemo, useState } from 'react'
 
@@ -62,16 +63,13 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
   return (
     <article className="min-h-screen bg-slate-950 pb-20 text-white">
       {/* Hero */}
-      <section className="relative overflow-hidden border-b border-white/10 bg-slate-900/50 px-4 py-16 text-center">
+      <section className={innerHeroMutedBand}>
         <div className="absolute inset-0 flex items-center justify-center opacity-[0.03]">
           <Trophy className="size-96" />
         </div>
         <div className="relative">
-          <div className="mx-auto mb-4 flex size-16 items-center justify-center rounded-2xl bg-amber-500/20">
-            <Trophy className="size-8 text-amber-400" />
-          </div>
           <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">Industry Awards</h1>
-          <p className="mx-auto mt-3 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-white/60">
             Recognitions and achievements that reflect Chilmund Chemicals&apos; commitment to
             quality, safety, innovation and community.
           </p>

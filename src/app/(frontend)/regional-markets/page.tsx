@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import React from 'react'
+import { innerHeroGradientInner, innerHeroGradientOuter } from '@/utilities/pageHero'
 import { RegionalMarketsMap } from './RegionalMarketsMap'
 
 export const metadata: Metadata = {
@@ -100,9 +101,9 @@ export default function RegionalMarketsPage() {
   return (
     <article className="pb-20 pt-0">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
-        <div className="container relative z-10 px-4 py-20 text-center md:py-28">
+        <div className={innerHeroGradientInner}>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Regional Markets
           </h1>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { chilmundCopy } from '@/content/chilmundCopy'
+import { aboutHeroSection } from '@/utilities/pageHero'
 import { CheckCircle, Eye, Target, Factory, Users, Globe, Droplets } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
@@ -20,10 +21,10 @@ export default function AboutChilmundPage() {
   return (
     <article className="min-h-screen">
       {/* Hero — logo left, copy centered in right column */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-16 text-white md:py-24 lg:py-28">
+      <section className={aboutHeroSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
-          <div className="flex items-center justify-center md:min-h-[280px] lg:min-h-[320px]">
+        <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-14">
+          <div className="flex items-center justify-center md:min-h-[220px] lg:min-h-[248px]">
             <Image
               src="/chilmund-logo.png"
               alt="Chilmund Chemicals"
@@ -38,7 +39,7 @@ export default function AboutChilmundPage() {
             <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
               About Chilmund Chemicals
             </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+            <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
               {chilmundCopy.about.intro}
             </p>
           </div>

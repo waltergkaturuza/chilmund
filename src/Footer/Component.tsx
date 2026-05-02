@@ -10,7 +10,6 @@ import { CMSLink } from '@/components/Link'
 import { Logo } from '@/components/Logo/Logo'
 import { ThemeSelector } from '@/providers/Theme/ThemeSelector'
 import { FooterQuoteButton } from './QuoteButton'
-import { isTrustedGoogleMapsEmbedUrl } from '@/utilities/googleMapsEmbed'
 
 /* ── Brand SVG icons (not in lucide) ────────────────────────────────── */
 
@@ -295,27 +294,17 @@ export async function Footer() {
           </div>
         </div>
 
-        {/* ── Map embed ──────────────────────────────────────────── */}
-        {contact?.googleMapsEmbedUrl &&
-        isTrustedGoogleMapsEmbedUrl(contact.googleMapsEmbedUrl) ? (
-          <div className="mt-14 border-t border-white/10 pt-12">
-            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
-              Map
-            </h3>
-            <p className="mt-2 max-w-xl text-sm text-white/65">
-              Bindura plant location (configure embed URL under Company contact → Addresses &amp; quote).
-            </p>
-            <div className="mt-4 aspect-[21/9] min-h-[200px] w-full overflow-hidden rounded-2xl border border-white/10 bg-black/25 md:min-h-[260px]">
-              <iframe
-                className="h-full w-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src={contact.googleMapsEmbedUrl.trim()}
-                title="Chilmund Chemicals Bindura manufacturing plant map"
-              />
-            </div>
-          </div>
-        ) : null}
+        {/* ── Plant map link (full map on /bindura-map) ───────────── */}
+        <div className="mt-14 border-t border-white/10 pt-8 md:pt-10">
+          <p className="text-sm leading-relaxed text-white/72">
+            <Link
+              className="font-semibold text-white underline-offset-4 transition-colors hover:text-blue-300 hover:underline"
+              href="/bindura-map"
+            >
+              Bindura manufacturing plant — view interactive map →
+            </Link>
+          </p>
+        </div>
 
         {/* ── Copyright ──────────────────────────────────────────── */}
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-xs text-white/45 md:flex-row md:text-left">

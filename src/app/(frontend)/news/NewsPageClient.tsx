@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
+import { innerHeroNewsHeader } from '@/utilities/pageHero'
 import { Calendar, CheckCircle, Clock, Mail, MapPin, Search, ArrowRight, Tag } from 'lucide-react'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
@@ -91,9 +92,9 @@ export function NewsPageClient({
   return (
     <article className="min-h-screen bg-slate-950 pb-20 pt-0 text-white">
       {/* Header */}
-      <section className="border-b border-white/10 bg-slate-900/50 px-4 py-12 text-center">
+      <section className={innerHeroNewsHeader}>
         <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">News & Events</h1>
-        <p className="mx-auto mt-3 max-w-xl text-white/60">
+        <p className="mx-auto mt-4 max-w-xl text-white/60">
           Stay updated with the latest from Chilmund Chemicals — industry news, events, awards, and community initiatives.
         </p>
       </section>

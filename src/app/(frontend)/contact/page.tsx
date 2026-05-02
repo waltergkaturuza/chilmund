@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
+import { innerHeroGradientInner, innerHeroGradientOuter } from '@/utilities/pageHero'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { CompanyContact } from '@/payload-types'
 import { Building2, Factory, Globe, Mail, MapPin, Phone } from 'lucide-react'
 import React from 'react'
-import { isTrustedGoogleMapsEmbedUrl } from '@/utilities/googleMapsEmbed'
 import { ContactForm } from './ContactForm'
 
 export const metadata: Metadata = {
@@ -19,9 +20,9 @@ export default async function ContactPage() {
   return (
     <article className="pb-20 pt-0">
       {/* Hero banner */}
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
-        <div className="container relative z-10 px-4 py-20 text-center md:py-28">
+        <div className={innerHeroGradientInner}>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Contact Us
           </h1>
@@ -128,21 +129,17 @@ export default async function ContactPage() {
         </div>
       </section>
 
-      {/* Map section */}
-      {contact?.googleMapsEmbedUrl &&
-        isTrustedGoogleMapsEmbedUrl(contact.googleMapsEmbedUrl) && (
-        <section className="container px-4 pb-16">
-          <div className="overflow-hidden rounded-2xl border border-border shadow-lg">
-            <iframe
-              className="h-80 w-full border-0 md:h-96"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              src={contact.googleMapsEmbedUrl.trim()}
-              title="Chilmund manufacturing plant — Bindura"
-            />
-          </div>
-        </section>
-      )}
+      {/* Plant map */}
+      <section className="container px-4 pb-16">
+        <p className="text-center text-sm text-muted-foreground">
+          <Link
+            className="font-semibold text-primary underline-offset-4 transition-colors hover:text-primary/80 hover:underline"
+            href="/bindura-map"
+          >
+            View Bindura manufacturing plant on map →
+          </Link>
+        </p>
+      </section>
     </article>
   )
 }

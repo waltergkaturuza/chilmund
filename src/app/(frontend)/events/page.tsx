@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import configPromise from '@payload-config'
+import { innerHeroGradientInner, innerHeroGradientOuter } from '@/utilities/pageHero'
 import { getPayload } from 'payload'
 import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
@@ -49,9 +50,9 @@ export default async function EventsPage() {
 
   return (
     <article className="pb-20 pt-0">
-      <section className="relative bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+      <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
-        <div className="container relative z-10 px-4 py-20 text-center md:py-28">
+        <div className={innerHeroGradientInner}>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">Events</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75 md:text-xl">
             Conferences, exhibitions, award ceremonies, and community outreach.

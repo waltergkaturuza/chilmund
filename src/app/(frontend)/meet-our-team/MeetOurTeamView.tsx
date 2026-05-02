@@ -1,7 +1,8 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { Linkedin, Mail, User, Users } from 'lucide-react'
+import { innerHeroRadialSection } from '@/utilities/pageHero'
+import { Linkedin, Mail, User } from 'lucide-react'
 import React, { useState } from 'react'
 
 import { TeamProfileModal } from './TeamProfileModal'
@@ -55,14 +56,11 @@ export function MeetOurTeamView({ members }: Props) {
       <TeamProfileModal member={active} onClose={() => setActive(null)} />
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-950 px-4 py-20 text-center text-white md:py-28">
+      <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
-          <div className="mx-auto mb-5 flex size-16 items-center justify-center rounded-2xl bg-blue-500/20">
-            <Users className="size-8 text-blue-400" />
-          </div>
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">Meet Our Team</h1>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/70">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
             Our experienced leadership team combines deep industry knowledge with a passion for
             sustainable water solutions across Africa.
           </p>
