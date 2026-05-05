@@ -5,11 +5,20 @@ import { NextResponse } from 'next/server'
 /** Public-safe pattern for Chilmund quote tracking IDs (e.g. CHM-260415-A1B2C3). */
 const TRACKING_ID_RE = /^CHM-\d{6}-[A-Z0-9]{6}$/i
 
+/** Normalise pasted IDs: strip spaces + convert Unicode hyphen variants (en/em dash etc.) to ASCII `-`. */
+function normalizeTrackingIdInput(raw: string): string {
+  return raw
+    .trim()
+    .toUpperCase()
+    .replace(/[\u2010\u2011\u2012\u2013\u2014\u2212\uFE58\uFE63\uFF0D]/g, '-')
+    .replace(/\s+/g, '')
+}
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
     const raw = searchParams.get('trackingId')?.trim() ?? ''
-    const normalized = raw.toUpperCase().replace(/\s+/g, '')
+    const normalized = normalizeTrackingIdInput(raw)
 
     if (!normalized || !TRACKING_ID_RE.test(normalized)) {
       return NextResponse.json(
@@ -24,6 +33,8 @@ export async function GET(request: Request) {
       where: { trackingId: { equals: normalized } },
       limit: 1,
       depth: 2,
+      /** Public lookup route — must bypass collection `read: authenticated` for staff-only collection. */
+      overrideAccess: true,
     })
 
     const doc = result.docs[0]
@@ -31,10 +42,13 @@ export async function GET(request: Request) {
       return NextResponse.json({ found: false })
     }
 
-    const messageToClient =
-      'messageToClient' in doc && typeof doc.messageToClient === 'string'
-        ? doc.messageToClient.trim()
-        : ''
+    const rawMsg =
+      (doc &&
+        typeof doc === 'object' &&
+        'messageToClient' in doc &&
+        (doc as { messageToClient?: unknown }).messageToClient) ??
+      undefined
+    const messageToClient = typeof rawMsg === 'string' ? rawMsg.trim() : ''
 
     const downloads: { label: string; url: string }[] = []
     const rows = 'clientDownloads' in doc ? doc.clientDownloads : undefined

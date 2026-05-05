@@ -1,13 +1,20 @@
 'use client'
 
-import { cn } from '@/utilities/ui'
 import { ArrowRight, Download, Loader2, Search, X } from 'lucide-react'
-import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
 const BG = '#152a42'
 const GOLD = '#a08442'
+
+/** Match server-side quote-track normalisation (Unicode dashes → ASCII hyphen). */
+function normalizeTrackingIdInput(raw: string): string {
+  return raw
+    .trim()
+    .toUpperCase()
+    .replace(/[\u2010\u2011\u2012\u2013\u2014\u2212\uFE58\uFE63\uFF0D]/g, '-')
+    .replace(/\s+/g, '')
+}
 
 const STATUS_COPY: Record<string, { title: string; detail: string }> = {
   pending: {
@@ -42,6 +49,7 @@ export type TrackQuotePanelProps = {
 }
 
 export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }: TrackQuotePanelProps) {
+  const router = useRouter()
   const searchParams = useSearchParams()
   const fromQuery = searchParams.get('trackingId') || searchParams.get('id')
   const [input, setInput] = useState('')
@@ -63,14 +71,14 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
       initialTrackingId?.trim() ||
       fromQuery?.trim() ||
       ''
-    if (pre) setInput(pre)
+    if (pre) setInput(normalizeTrackingIdInput(pre))
   }, [initialTrackingId, fromQuery])
 
   const lookup = async (e?: React.FormEvent) => {
     e?.preventDefault()
     setError(null)
     setResult(null)
-    const id = input.trim().toUpperCase().replace(/\s+/g, '')
+    const id = normalizeTrackingIdInput(input)
     if (!id) {
       setError('Enter your tracking ID.')
       return
@@ -169,7 +177,12 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
             {STATUS_COPY[result.status]?.title || result.status}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-white/70">
-            {STATUS_COPY[result.status]?.detail || ''}
+            {(() => {
+              const custom = result.messageToClient?.trim()
+              if (custom)
+                return <span className="block whitespace-pre-wrap text-white/[0.88]">{custom}</span>
+              return STATUS_COPY[result.status]?.detail || ''
+            })()}
           </p>
           {result.trackingId && (
             <p className="mt-4 font-mono text-sm text-white/90">
@@ -193,13 +206,6 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
               Company: <span className="text-white/85">{result.company}</span>
             </p>
           )}
-
-          {result.messageToClient ? (
-            <div className="mt-5 rounded-xl border border-white/20 bg-blue-950/35 px-4 py-4 text-left">
-              <p className="text-xs font-semibold uppercase tracking-wider text-white/55">From Chilmund</p>
-              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-white/85">{result.messageToClient}</p>
-            </div>
-          ) : null}
 
           {result.downloads && result.downloads.length > 0 ? (
             <div className="mt-5 text-left">
@@ -234,13 +240,17 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
       </p>
 
       <div className="mt-6 text-center">
-        <Link
-          href="/contact"
+        <button
+          type="button"
           className="inline-flex items-center gap-1.5 text-sm font-semibold transition-opacity hover:opacity-90"
           style={{ color: GOLD }}
+          onClick={() => {
+            onClose?.()
+            router.push('/contact')
+          }}
         >
-          Contact us <ArrowRight className="size-4" />
-        </Link>
+          Contact us <ArrowRight className="size-4" aria-hidden />
+        </button>
       </div>
     </div>
   )

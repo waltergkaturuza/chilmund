@@ -51,7 +51,7 @@ function TrackQuoteModalShell({ onClose }: { onClose: () => void }) {
         aria-label="Close"
         onClick={onClose}
       />
-      <div className="relative z-10 max-h-[min(92vh,820px)] w-full max-w-lg overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-white/10">
+      <div className="relative z-10 max-h-[min(92vh,820px)] w-full max-w-lg overflow-y-auto pointer-events-auto rounded-2xl shadow-2xl ring-1 ring-white/10">
         <div className="bg-[#0f1f32] py-4">
           <Suspense fallback={<div className="px-8 py-16 text-center text-sm text-white/60">Loading…</div>}>
             <TrackQuotePanel variant="modal" onClose={onClose} />
