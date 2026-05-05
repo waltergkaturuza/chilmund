@@ -2,10 +2,12 @@ import React from 'react'
 
 const BeforeLogin: React.FC = () => {
   return (
-    <div>
-      <p>
-        <b>Welcome to your dashboard!</b>
-        {' This is where site admins will log in to manage your website.'}
+    <div className="chilmund-login-intro">
+      <p className="chilmund-login-intro__lead">
+        <strong>Chilmund CMS</strong>
+      </p>
+      <p className="chilmund-login-intro__muted">
+        Sign in with your administrator account to edit the corporate site.
       </p>
     </div>
   )

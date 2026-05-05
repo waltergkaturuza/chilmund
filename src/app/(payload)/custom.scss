@@ -1,0 +1,474 @@
+/**
+ * Chilmund admin chrome — loaded after `@payloadcms/next/css` in `(payload)/layout.tsx`.
+ * Tuned for `html[data-theme=dark]` to match brand navies (#0f1f32 / #152a42) and gold (#a08442).
+ */
+
+@layer payload-default {
+  :root {
+    --chilmund-navy-void: #060b14;
+    --chilmund-navy-deep: #0a1422;
+    --chilmund-navy: #0f1f32;
+    --chilmund-navy-panel: #152a42;
+    --chilmund-gold: #a08442;
+    --chilmund-gold-hover: #b89552;
+    --chilmund-gold-muted: rgba(160, 132, 66, 0.22);
+    --chilmund-gold-glow: rgba(160, 132, 66, 0.12);
+    --chilmund-emerald: #2e9d73;
+    --chilmund-emerald-muted: rgba(46, 157, 115, 0.2);
+
+    --style-radius-s: 6px;
+    --style-radius-m: 10px;
+    --style-radius-l: 14px;
+  }
+
+  /* Navy-tinted neutrals (Payload maps theme elevation → these in dark mode). */
+  html[data-theme='dark'] {
+    --color-base-1000: #020408;
+    --color-base-950: #060b14;
+    --color-base-900: #0a1422;
+    --color-base-850: #0e1a2a;
+    --color-base-800: #122132;
+    --color-base-750: #16283a;
+    --color-base-700: #1c3146;
+    --color-base-650: #223a52;
+    --color-base-600: #2a445f;
+    --color-base-550: #324f6d;
+    --color-base-500: #3d5c7c;
+    --color-base-450: #4c6c8d;
+    --color-base-400: #5e7e9f;
+    --color-base-350: #7490b0;
+    --color-base-300: #8ca3c0;
+    --color-base-250: #a6b6d0;
+    --color-base-200: #c0cadf;
+    --color-base-150: #d6deec;
+    --color-base-100: #e8edf6;
+    --color-base-50: #f3f6fb;
+    --color-base-0: #fbfcfe;
+
+    --color-success-400: #4fd4a3;
+    --color-success-500: #2e9d73;
+    --color-success-600: #268763;
+    --color-success-750: #1a5a44;
+  }
+
+  /* Light mode: softer blue-gray shell, same gold primary actions. */
+  html[data-theme='light'] .btn--style-primary {
+    --bg-color: var(--chilmund-gold);
+    --hover-bg: var(--chilmund-gold-hover);
+    --color: #162430;
+    --hover-color: var(--color);
+    font-weight: 600;
+    border-radius: var(--style-radius-m);
+  }
+
+  html[data-theme='light'] .nav__link.active {
+    color: var(--chilmund-navy-deep);
+    box-shadow: inset 3px 0 0 0 var(--chilmund-gold);
+    background-color: rgba(160, 132, 66, 0.12);
+    border-radius: var(--style-radius-m);
+  }
+
+  html[data-theme='dark'] .template-default__wrap {
+    background-color: var(--chilmund-navy);
+  }
+
+  html[data-theme='dark'] .nav {
+    background: linear-gradient(180deg, var(--chilmund-navy-deep) 0%, var(--chilmund-navy-void) 100%);
+    border-right: 1px solid var(--chilmund-gold-muted);
+  }
+
+  html[data-theme='dark'] .nav__label {
+    color: var(--color-base-450);
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  html[data-theme='dark'] .nav__link {
+    border-radius: var(--style-radius-m);
+    padding-block: 6px;
+    padding-inline: 10px 28px;
+    margin-inline: 4px 0;
+    text-decoration: none !important;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  html[data-theme='dark'] .nav__link:hover {
+    background-color: var(--chilmund-gold-glow);
+    color: var(--theme-text);
+  }
+
+  html[data-theme='dark'] .nav__link.active {
+    background-color: var(--chilmund-gold-muted);
+    color: var(--theme-text);
+    box-shadow: inset 3px 0 0 0 var(--chilmund-gold);
+  }
+
+  html[data-theme='dark'] .nav__link-indicator {
+    display: none;
+  }
+
+  html[data-theme='dark'] .app-header {
+    background: color-mix(in srgb, var(--chilmund-navy-deep) 88%, transparent);
+    border-bottom: 1px solid var(--chilmund-gold-muted);
+    backdrop-filter: blur(10px);
+  }
+
+  html[data-theme='dark'] .btn--style-primary {
+    --color: #0a121c;
+    --bg-color: var(--chilmund-gold);
+    --hover-bg: var(--chilmund-gold-hover);
+    --hover-color: var(--color);
+    font-weight: 600;
+    border-radius: var(--style-radius-m);
+  }
+
+  html[data-theme='dark'] .btn--style-primary.btn--disabled {
+    --bg-color: var(--color-base-600);
+    --color: var(--color-base-300);
+    --hover-bg: var(--bg-color);
+    --hover-color: var(--color);
+  }
+
+  html[data-theme='dark'] .btn--style-secondary {
+    --btn-border: 1px solid var(--chilmund-gold-muted);
+    border-radius: var(--style-radius-m);
+  }
+
+  html[data-theme='dark'] .search-filter__input,
+  html[data-theme='dark'] input[type='text'],
+  html[data-theme='dark'] input[type='search'],
+  html[data-theme='dark'] textarea,
+  html[data-theme='dark'] .field-type.text input {
+    border-radius: var(--style-radius-m) !important;
+  }
+
+  html[data-theme='dark'] ::selection {
+    background: var(--chilmund-gold-muted);
+    color: var(--theme-text);
+  }
+
+  /**
+   * Auth / login (`template-minimal`) — navy + gold regardless of Payload light/dark toggle.
+   */
+  .template-minimal {
+    position: relative;
+    --theme-bg-color: transparent;
+
+    padding: clamp(28px, 6vw, 80px) 22px;
+
+    background-color: var(--chilmund-navy-deep);
+    background-image:
+      radial-gradient(ellipse 130% 90% at 50% -15%, rgba(160, 132, 66, 0.2), transparent 58%),
+      linear-gradient(
+        168deg,
+        var(--chilmund-navy-deep) 0%,
+        var(--chilmund-navy) 42%,
+        var(--chilmund-navy-void) 100%
+      );
+    color: #e8eef8;
+
+    &::before {
+      pointer-events: none;
+      position: absolute;
+      inset-inline: clamp(14px, 5vw, 48px);
+      top: clamp(18px, 4vw, 36px);
+
+      margin: 0 auto;
+      max-width: 480px;
+      content: '';
+      height: 2px;
+
+      opacity: 0.35;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(160, 132, 66, 0.55) 42%,
+        rgba(160, 132, 66, 0.55) 58%,
+        transparent
+      );
+    }
+  }
+
+  .template-minimal .template-minimal__wrap {
+    position: relative;
+    z-index: 1;
+
+    margin-top: clamp(36px, 8vh, 64px);
+
+    padding: clamp(28px, 4vw, 40px);
+
+    border-radius: 18px;
+
+    border: 1px solid var(--chilmund-gold-muted);
+
+    background: rgba(21, 42, 66, 0.45);
+
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 28px 80px rgba(5, 9, 16, 0.55),
+      0 0 0 1px rgba(5, 9, 16, 0.25);
+
+    backdrop-filter: blur(14px);
+
+    html[data-theme='light'] & {
+      border-color: rgba(160, 132, 66, 0.3);
+      background: rgba(21, 42, 66, 0.55);
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 28px 80px rgba(5, 9, 16, 0.45),
+        0 0 0 1px rgba(5, 9, 16, 0.2);
+    }
+  }
+
+  .template-minimal .login__brand {
+    margin-bottom: calc(var(--base) * 1.25);
+
+    justify-content: center;
+  }
+
+  /* Wordmark contrasts on navy card */
+  .template-minimal .chilmund-admin-logo__title {
+    font-size: 19px;
+
+    letter-spacing: -0.015em;
+
+    font-weight: 700;
+
+    color: #fdfefe;
+    text-shadow: 0 1px 28px rgba(160, 132, 66, 0.2);
+  }
+
+  .template-minimal .chilmund-login-intro {
+    margin-block: calc(var(--base) * 0.75);
+
+    padding-bottom: 2px;
+
+    text-align: center;
+  }
+
+  .template-minimal .chilmund-login-intro__lead {
+    margin-block: 0 6px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    line-height: 1.35;
+
+    color: #f4f7fc;
+
+    letter-spacing: -0.01em;
+  }
+
+  .template-minimal .chilmund-login-intro__muted {
+    margin: 0 auto;
+
+    max-width: 28rem;
+
+    font-size: 14px;
+
+    line-height: 1.48;
+
+    color: rgba(214, 222, 236, 0.78);
+  }
+
+  .template-minimal form .field-type.email input,
+  .template-minimal form .field-type.password input {
+    height: 48px !important;
+
+    border-radius: 12px !important;
+
+    padding-inline: 14px !important;
+
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background 0.15s ease !important;
+
+    border: 1px solid rgba(160, 132, 66, 0.32) !important;
+
+    background-color: rgba(10, 20, 34, 0.55) !important;
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 1px 14px rgba(0, 0, 0, 0.12) !important;
+
+    font-size: 15px !important;
+
+    color: #f8fbff !important;
+  }
+
+  .template-minimal form .field-type.email input:hover,
+  .template-minimal form .field-type.password input:hover {
+    border-color: rgba(160, 132, 66, 0.55) !important;
+  }
+
+  .template-minimal form .field-type.email input:focus,
+  .template-minimal form .field-type.password input:focus {
+    outline: none !important;
+
+    border-color: rgba(184, 149, 82, 0.85) !important;
+
+    box-shadow:
+      0 0 0 3px rgba(160, 132, 66, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  }
+
+  .template-minimal form .field-label:not(.unstyled) {
+    color: #c6d3e6 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 500 !important;
+
+    letter-spacing: 0.01em;
+  }
+
+  .template-minimal form .field-label .required {
+    color: #e8a38a !important;
+  }
+
+  .template-minimal .btn--style-primary {
+    width: 100%;
+
+    height: 48px;
+
+    margin-top: 4px;
+
+    justify-content: center;
+
+    font-size: 15px !important;
+
+    font-weight: 650 !important;
+
+    letter-spacing: 0.02em;
+
+    border-radius: 12px !important;
+
+    --color: #0c141e !important;
+
+    --bg-color: var(--chilmund-gold) !important;
+
+    --hover-bg: var(--chilmund-gold-hover) !important;
+
+    --hover-color: var(--color) !important;
+
+    box-shadow: 0 10px 28px rgba(160, 132, 66, 0.18);
+  }
+
+  .template-minimal .btn--style-primary:hover {
+    box-shadow: 0 12px 32px rgba(160, 132, 66, 0.24);
+  }
+
+  .template-minimal form a:not(.chilmund-login-return__link) {
+    color: rgba(210, 220, 236, 0.88) !important;
+
+    font-size: 13px;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid rgba(160, 132, 66, 0.35);
+
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .template-minimal form a:not(.chilmund-login-return__link):hover {
+    color: #fff !important;
+
+    border-bottom-color: rgba(184, 149, 82, 0.85);
+  }
+}
+
+.chilmund-login-return {
+  margin-top: calc(var(--base) * 1.15);
+
+  padding-top: calc(var(--base) * 0.75);
+
+  text-align: center;
+
+  border-top: 1px solid rgba(160, 132, 66, 0.15);
+}
+
+.chilmund-login-return__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+
+  text-decoration: none !important;
+
+  color: #f0f4fb !important;
+
+  background: rgba(160, 132, 66, 0.12);
+
+  border: 1px solid rgba(160, 132, 66, 0.28);
+  border-bottom: 1px solid rgba(160, 132, 66, 0.28) !important;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.chilmund-login-return__link:hover {
+  color: #fff !important;
+
+  background: rgba(160, 132, 66, 0.18);
+
+  border-color: rgba(184, 149, 82, 0.55);
+}
+
+.chilmund-login-return__link:focus-visible {
+  outline: 2px solid rgba(184, 149, 82, 0.75);
+
+  outline-offset: 2px;
+}
+
+/* Full-bleed navy behind login while the shell hydrates. */
+html:has(.template-minimal) {
+  background-color: var(--chilmund-navy-deep, #0a1422);
+}
+
+/* Wordmark hook from `AdminLogo` — global, outside layer so it reliably applies. */
+.chilmund-admin-logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+  gap: 2px;
+
+  &__title {
+    font-size: 15px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--theme-text);
+  }
+
+  &__tag {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    color: var(--chilmund-gold, #a08442);
+    opacity: 0.92;
+  }
+}

@@ -5,9 +5,9 @@ import React from 'react'
  */
 export default function AdminLogo() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1.15 }}>
-      <span style={{ fontSize: 15, fontWeight: 600 }}>Chilmund</span>
-      <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: '0.18em', opacity: 0.7 }}>CHEMICALS</span>
+    <div className="chilmund-admin-logo">
+      <span className="chilmund-admin-logo__title">Chilmund</span>
+      <span className="chilmund-admin-logo__tag">CHEMICALS</span>
     </div>
   )
 }

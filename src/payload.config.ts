@@ -110,9 +110,9 @@ export default buildConfig({
       graphics: {
         Logo: '@/components/AdminLogo',
       },
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
+      // Login copy + link back to public site (`AdminAfterLogin` is client — import map required).
       beforeLogin: ['@/components/BeforeLogin'],
+      afterLogin: ['@/components/AdminAfterLogin'],
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
