@@ -1,13 +1,20 @@
+import Image from 'next/image'
 import React from 'react'
 
 /**
- * Wordmark shown in the Payload admin sidebar (replaces default Payload logo).
+ * Brand mark for Payload admin (sidebar + login). Uses the same asset as the public site.
  */
 export default function AdminLogo() {
   return (
     <div className="chilmund-admin-logo">
-      <span className="chilmund-admin-logo__title">Chilmund</span>
-      <span className="chilmund-admin-logo__tag">CHEMICALS</span>
+      <Image
+        src="/chilmund-logo.png"
+        alt="Chilmund Chemicals"
+        width={220}
+        height={66}
+        className="chilmund-admin-logo__img"
+        priority
+      />
     </div>
   )
 }

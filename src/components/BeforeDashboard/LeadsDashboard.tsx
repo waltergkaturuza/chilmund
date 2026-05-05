@@ -42,55 +42,54 @@ export async function LeadsDashboard() {
   })
 
   const cards = [
-    { label: 'Quote Requests', total: quotesAll.totalDocs, last30: quotesRecent.totalDocs, last7: quotes7d.totalDocs, pending: quotesPending.totalDocs, pendingLabel: 'Pending', color: '#2563eb' },
-    { label: 'Contact Messages', total: contactsAll.totalDocs, last30: contactsRecent.totalDocs, last7: contacts7d.totalDocs, pending: contactsNew.totalDocs, pendingLabel: 'Unread', color: '#059669' },
+    {
+      label: 'Quote Requests',
+      total: quotesAll.totalDocs,
+      last30: quotesRecent.totalDocs,
+      last7: quotes7d.totalDocs,
+      pending: quotesPending.totalDocs,
+      pendingLabel: 'Pending',
+      pillTone: 'quotes' as const,
+    },
+    {
+      label: 'Contact Messages',
+      total: contactsAll.totalDocs,
+      last30: contactsRecent.totalDocs,
+      last7: contacts7d.totalDocs,
+      pending: contactsNew.totalDocs,
+      pendingLabel: 'Unread',
+      pillTone: 'contacts' as const,
+    },
   ]
 
   return (
-    <div style={{ marginBottom: '2rem' }}>
-      <h3 style={{ fontSize: '1.1rem', fontWeight: 700, marginBottom: '1rem' }}>
-        Leads & Enquiries Dashboard
-      </h3>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem' }}>
+    <div className="chilmund-leads-stats">
+      <h3 className="chilmund-leads-stats__title">Leads & Enquiries Dashboard</h3>
+      <div className="chilmund-leads-stats__grid">
         {cards.map((c) => (
-          <div
-            key={c.label}
-            style={{
-              border: '1px solid var(--theme-elevation-150)',
-              borderRadius: '0.75rem',
-              padding: '1.25rem',
-              background: 'var(--theme-elevation-50)',
-            }}
-          >
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>{c.label}</span>
+          <div key={c.label} className="chilmund-leads-stats__card">
+            <div className="chilmund-leads-stats__card-head">
+              <span className="chilmund-leads-stats__card-label">{c.label}</span>
               {c.pending > 0 && (
                 <span
-                  style={{
-                    background: c.color,
-                    color: 'white',
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    padding: '0.2rem 0.6rem',
-                    borderRadius: '999px',
-                  }}
+                  className={`chilmund-leads-stats__pill chilmund-leads-stats__pill--${c.pillTone}`}
                 >
                   {c.pending} {c.pendingLabel}
                 </span>
               )}
             </div>
-            <div style={{ marginTop: '0.75rem', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem', textAlign: 'center' }}>
-              <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800 }}>{c.total}</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--theme-elevation-400)' }}>All time</div>
+            <div className="chilmund-leads-stats__metrics">
+              <div className="chilmund-leads-stats__metric">
+                <div className="chilmund-leads-stats__metric-val">{c.total}</div>
+                <div className="chilmund-leads-stats__metric-lbl">All time</div>
               </div>
-              <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800 }}>{c.last30}</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--theme-elevation-400)' }}>Last 30 days</div>
+              <div className="chilmund-leads-stats__metric">
+                <div className="chilmund-leads-stats__metric-val">{c.last30}</div>
+                <div className="chilmund-leads-stats__metric-lbl">Last 30 days</div>
               </div>
-              <div>
-                <div style={{ fontSize: '1.5rem', fontWeight: 800 }}>{c.last7}</div>
-                <div style={{ fontSize: '0.7rem', color: 'var(--theme-elevation-400)' }}>Last 7 days</div>
+              <div className="chilmund-leads-stats__metric">
+                <div className="chilmund-leads-stats__metric-val">{c.last7}</div>
+                <div className="chilmund-leads-stats__metric-lbl">Last 7 days</div>
               </div>
             </div>
           </div>

@@ -1,5 +1,193 @@
 @import '~@payloadcms/ui/scss';
 
+.chilmund-leads-stats {
+  margin-bottom: base(2);
+
+  &__title {
+    font-size: 1.175rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.02em;
+
+    margin-block: 0 base(1);
+
+    color: #0f1f32;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  }
+
+  &__grid {
+    display: grid;
+
+    gap: base(1);
+
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+
+  &__card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: base(1.25);
+
+    border-radius: base(1);
+
+    border: 1px solid rgba(100, 140, 190, 0.22);
+
+    background: linear-gradient(145deg, #ffffff 0%, #f4f9fe 72%, #edf4fc 100%);
+
+    box-shadow:
+      0 2px 16px rgba(15, 31, 50, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+
+    &::before {
+      pointer-events: none;
+
+      position: absolute;
+
+      inset: 0 auto 0 0;
+
+      width: 4px;
+
+      content: '';
+
+      opacity: 0.65;
+
+      background: linear-gradient(180deg, #4a93e0 0%, #2967b3 55%, rgba(160, 132, 66, 0.45));
+    }
+
+    &:hover {
+      border-color: rgba(80, 130, 200, 0.35);
+
+      box-shadow:
+        0 10px 32px rgba(21, 42, 66, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+  }
+
+  &__card-head {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: base(0.5);
+    padding-inline-start: 4px;
+
+    margin-block-end: 2px;
+  }
+
+  &__card-label {
+    font-weight: 650;
+
+    color: var(--theme-elevation-900);
+
+    letter-spacing: -0.01em;
+  }
+
+  &__pill {
+    font-size: 0.6875rem;
+
+    font-weight: 700;
+
+    padding: 0.2rem 0.625rem;
+
+    border-radius: 999px;
+
+    color: white;
+
+    text-transform: capitalize;
+
+    box-shadow: 0 4px 12px rgba(0, 30, 60, 0.12);
+
+    letter-spacing: 0.03em;
+
+    &--quotes {
+      background: linear-gradient(135deg, #3b74c9 0%, #2563b8 45%, #1d4fab 100%);
+    }
+
+    &--contacts {
+      background: linear-gradient(135deg, #11a875 0%, #059669 50%, #047857 100%);
+    }
+  }
+
+  &__metrics {
+    display: grid;
+
+    gap: base(0.5);
+
+    margin-top: base(1);
+
+    grid-template-columns: 1fr 1fr 1fr;
+
+    text-align: center;
+  }
+
+  &__metric-val {
+    font-size: 1.5625rem;
+
+    font-weight: 800;
+
+    letter-spacing: -0.025em;
+
+    color: var(--theme-elevation-900);
+
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  &__metric-lbl {
+    margin-top: 3px;
+
+    font-size: 0.6625rem;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.06em;
+
+    color: rgba(80, 120, 160, 0.88);
+  }
+}
+
+html[data-theme='dark'] {
+  .chilmund-leads-stats__title {
+    color: var(--theme-elevation-100);
+
+    text-shadow: none;
+  }
+
+  .chilmund-leads-stats__card {
+    border-color: rgba(120, 170, 220, 0.15);
+
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.02) 100%
+    );
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.04),
+      0 8px 28px rgba(0, 0, 0, 0.2);
+
+    &::before {
+      opacity: 0.55;
+      background: linear-gradient(180deg, #6aa7e8 0%, #3f78c8 65%, rgba(160, 132, 66, 0.35));
+    }
+  }
+
+  .chilmund-leads-stats__metric-lbl {
+    color: var(--theme-elevation-500);
+  }
+}
+
 .dashboard .before-dashboard {
   margin-bottom: base(1.5);
 
