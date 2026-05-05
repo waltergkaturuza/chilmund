@@ -85,6 +85,55 @@ export const QuoteRequests: CollectionConfig = {
             { name: 'message', type: 'textarea', label: 'Additional notes' },
           ],
         },
+        {
+          label: 'Client portal (track quote)',
+          fields: [
+            {
+              name: 'messageToClient',
+              type: 'textarea',
+              label: 'Message for customer',
+              admin: {
+                description:
+                  'Shown on the public Track your quote page when the customer enters this tracking ID. Keep it professional — do not include confidential pricing details you would not email directly.',
+              },
+            },
+            {
+              name: 'clientDownloads',
+              type: 'array',
+              label: 'Documents for customer',
+              labels: { singular: 'Document', plural: 'Documents' },
+              admin: {
+                description:
+                  'Official quotation PDFs, invoices, or other files the customer can download from Track your quote.',
+                initCollapsed: false,
+              },
+              fields: [
+                {
+                  type: 'row',
+                  fields: [
+                    {
+                      name: 'label',
+                      type: 'text',
+                      required: true,
+                      defaultValue: 'Official quotation',
+                      admin: {
+                        width: '40%',
+                        description: 'e.g. Official quotation, Pro-forma invoice',
+                      },
+                    },
+                    {
+                      name: 'file',
+                      type: 'upload',
+                      relationTo: 'media',
+                      required: true,
+                      admin: { width: '60%' },
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {

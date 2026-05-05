@@ -901,6 +901,23 @@ export interface QuoteRequest {
   urgency?: string | null;
   message?: string | null;
   /**
+   * Shown on the public Track your quote page when the customer enters this tracking ID. Keep it professional — do not include confidential pricing details you would not email directly.
+   */
+  messageToClient?: string | null;
+  /**
+   * Official quotation PDFs, invoices, or other files the customer can download from Track your quote.
+   */
+  clientDownloads?:
+    | {
+        /**
+         * e.g. Official quotation, Pro-forma invoice
+         */
+        label: string;
+        file: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
    * Private notes — not visible to the customer.
    */
   adminNotes?: string | null;
@@ -1917,6 +1934,14 @@ export interface QuoteRequestsSelect<T extends boolean = true> {
   deliveryAddress?: T;
   urgency?: T;
   message?: T;
+  messageToClient?: T;
+  clientDownloads?:
+    | T
+    | {
+        label?: T;
+        file?: T;
+        id?: T;
+      };
   adminNotes?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2477,7 +2502,7 @@ export interface CompanyContact {
    */
   quotePagePath?: string | null;
   /**
-   * Google Maps → Share → Embed a map → copy only the URL inside src="..." (HTTPS). Shown in the footer when set.
+   * Google Maps → Share → Embed a map → copy the URL from src="..." (HTTPS). Or use the classic coordinate embed: https://maps.google.com/maps?q=LAT,LNG&z=17&hl=en&output=embed — shown in footer and contact when set.
    */
   googleMapsEmbedUrl?: string | null;
   socialTwitter?: string | null;

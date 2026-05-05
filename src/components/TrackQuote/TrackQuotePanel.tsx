@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { ArrowRight, Loader2, Search, X } from 'lucide-react'
+import { ArrowRight, Download, Loader2, Search, X } from 'lucide-react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -54,6 +54,8 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
     submittedAt?: string
     company?: string
     products?: string
+    messageToClient?: string
+    downloads?: { label: string; url: string }[]
   } | null>(null)
 
   useEffect(() => {
@@ -92,6 +94,8 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
         submittedAt: data.submittedAt,
         company: data.company,
         products: data.products,
+        messageToClient: typeof data.messageToClient === 'string' ? data.messageToClient : '',
+        downloads: Array.isArray(data.downloads) ? data.downloads : [],
       })
     } catch {
       setError('Connection error. Please try again.')
@@ -119,7 +123,8 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
         Track your quote
       </h1>
       <p className="mx-auto mt-4 max-w-md text-center text-sm leading-relaxed text-white/75">
-        Enter your quote tracking ID to see the current status of your request.
+        Enter your quote tracking ID for status updates. If we have shared a message or quotation PDF, it will
+        appear here.
       </p>
 
       <form onSubmit={lookup} className="mt-8">
@@ -188,6 +193,35 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
               Company: <span className="text-white/85">{result.company}</span>
             </p>
           )}
+
+          {result.messageToClient ? (
+            <div className="mt-5 rounded-xl border border-white/20 bg-blue-950/35 px-4 py-4 text-left">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/55">From Chilmund</p>
+              <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-white/85">{result.messageToClient}</p>
+            </div>
+          ) : null}
+
+          {result.downloads && result.downloads.length > 0 ? (
+            <div className="mt-5 text-left">
+              <p className="text-xs font-semibold uppercase tracking-wider text-white/55">Downloads</p>
+              <ul className="mt-3 flex flex-col gap-2.5">
+                {result.downloads.map((d) => (
+                  <li key={`${d.url}-${d.label}`}>
+                    <a
+                      href={d.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 rounded-xl border border-white/15 bg-white/8 px-4 py-3 text-sm font-semibold text-white transition-colors hover:border-white/30 hover:bg-white/12"
+                    >
+                      <Download className="size-5 shrink-0 text-white/80" aria-hidden />
+                      <span className="min-w-0 flex-1 underline-offset-4 hover:underline">{d.label}</span>
+                      <ArrowRight className="size-4 shrink-0 text-white/55" aria-hidden />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       )}
 

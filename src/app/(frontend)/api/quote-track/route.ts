@@ -23,12 +23,36 @@ export async function GET(request: Request) {
       collection: 'quote-requests',
       where: { trackingId: { equals: normalized } },
       limit: 1,
-      depth: 0,
+      depth: 2,
     })
 
     const doc = result.docs[0]
     if (!doc) {
       return NextResponse.json({ found: false })
+    }
+
+    const messageToClient =
+      'messageToClient' in doc && typeof doc.messageToClient === 'string'
+        ? doc.messageToClient.trim()
+        : ''
+
+    const downloads: { label: string; url: string }[] = []
+    const rows = 'clientDownloads' in doc ? doc.clientDownloads : undefined
+    if (Array.isArray(rows)) {
+      for (const row of rows) {
+        if (!row || typeof row !== 'object') continue
+        const label =
+          'label' in row && typeof row.label === 'string' && row.label.trim()
+            ? row.label.trim()
+            : 'Document'
+        const file = 'file' in row ? row.file : undefined
+        if (!file || typeof file !== 'object') continue
+        const path =
+          'url' in file && typeof file.url === 'string' && file.url.length > 0 ? file.url : null
+        if (!path) continue
+        const url = path.startsWith('http') ? path : path.startsWith('/') ? path : `/${path}`
+        downloads.push({ label, url })
+      }
     }
 
     return NextResponse.json({
@@ -38,6 +62,8 @@ export async function GET(request: Request) {
       submittedAt: doc.createdAt,
       company: doc.company,
       products: doc.products || '',
+      messageToClient,
+      downloads,
     })
   } catch (err) {
     console.error('[quote-track] Error:', err)

@@ -5,6 +5,7 @@ import * as migration_20260414_095050_add_resources_collection from './20260414_
 import * as migration_20260414_113848_add_awards_and_csr from './20260414_113848_add_awards_and_csr';
 import * as migration_20260414_115825_add_team_members from './20260414_115825_add_team_members';
 import * as migration_20260415_094920_add_newsletter_subscribers from './20260415_094920_add_newsletter_subscribers';
+import * as migration_20260505_090724_quote_request_client_portal_fields from './20260505_090724_quote_request_client_portal_fields';
 
 export const migrations = [
   {
@@ -40,6 +41,11 @@ export const migrations = [
   {
     up: migration_20260415_094920_add_newsletter_subscribers.up,
     down: migration_20260415_094920_add_newsletter_subscribers.down,
-    name: '20260415_094920_add_newsletter_subscribers'
+    name: '20260415_094920_add_newsletter_subscribers',
+  },
+  {
+    up: migration_20260505_090724_quote_request_client_portal_fields.up,
+    down: migration_20260505_090724_quote_request_client_portal_fields.down,
+    name: '20260505_090724_quote_request_client_portal_fields'
   },
 ];
