@@ -244,7 +244,7 @@ export function AboutMegaMenu({
                     Product Excellence
                   </h4>
                   <p className={cn('text-xs leading-relaxed', dark ? 'text-white/65' : 'text-slate-600')}>
-                    <span className="font-semibold">Core product:</span> Granular, liquid and kibbled aluminium
+                    <span className="font-semibold">Products:</span> Granular, liquid and kibbled aluminium
                     sulphate — the &quot;universal coagulant&quot; for municipal water treatment, industrial
                     processing, agriculture and mining.
                   </p>

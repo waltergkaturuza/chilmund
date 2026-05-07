@@ -19,7 +19,7 @@ const specs = [
   { label: 'Appearance', value: 'Off-white granules / lumps' },
   { label: 'Solubility', value: 'Readily soluble in water' },
   { label: 'Packaging', value: '25 kg, 50 kg bags & bulk' },
-  { label: 'Daily capacity', value: '70 tonnes' },
+  { label: 'Daily capacity', value: '240 tonnes' },
 ]
 
 const applications = [

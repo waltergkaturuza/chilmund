@@ -70,13 +70,25 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
       'Oswell brings more than 25 years of experience in auditing, finance and administration across the insurance, banking, aviation, energy and manufacturing sectors. He has recently been assigned to the Production and Distribution department in a drive to make the company more customer-centric.',
   },
   {
+    id: 'nicholas-bhero',
+    name: 'Nicholas Bhero',
+    jobTitle: 'Business Development Director',
+    department: 'business',
+    imageFile: 'Nicholas Bhero - Business Development Director.jpg',
+    featured: true,
+    order: 3,
+    credentials: 'MBA, BSc (Hons) Development Studies',
+    fullProfile:
+      'Nicholas Bhero is a dynamic business development strategist with over 20 years of experience in marketing, sales and brand positioning. He leads the marketing function, driving growth initiatives and spearheading the expansion of the Chilmund brand across Zimbabwe and into regional markets. Nicholas brings strong expertise in market development, strategic partnerships and revenue growth, underpinned by well-established relationships across both the private sector and government.',
+  },
+  {
     id: 'gratitude-charis',
     name: 'Dr Gratitude Charis',
     jobTitle: 'Business Consultant in the office of the CEO',
     department: 'management',
     imageFile: 'Dr Gratitude Charis -  Business Consultant in the office of the CEO.jpg',
     featured: false,
-    order: 3,
+    order: 4,
     credentials: 'PhD Chem Eng, MEng MSOM, BEng Chem Eng, Prof Eng (ECZ)',
     fullProfile:
       'Dr Charis is a versatile resource person who proffers techno-economic advice and assists in drafting, reviewing and executing reports, policies, plans and proposals. He draws on 15+ years of combined experience in R&D, innovation and commercialisation pipelines, and consultancy work.',
@@ -88,23 +100,11 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     department: 'finance',
     imageFile: 'Sabina Magosvongwe- Finance Manager.jpg',
     featured: false,
-    order: 4,
+    order: 5,
     credentials:
       'CA (Z), PGD in Applied Accounting Science, PGD in Advanced Accounting Science, BCom Accounting (Hons)',
     fullProfile:
       'Sabina is a strategic chartered accountant who leads the finance function at Chilmund Chemicals, overseeing financial planning, cost management and compliance. She brings deep expertise in manufacturing finance, including costing models, budgeting and internal controls. She has 8+ years of financial leadership experience, including roles as acting FD in the FMCG sector, financial accountant in the life assurance sector, and audit manager at an international firm of chartered accountants.',
-  },
-  {
-    id: 'nicholas-bhero',
-    name: 'Nicholas Bhero',
-    jobTitle: 'Business Development Manager',
-    department: 'business',
-    imageFile: 'Nicholas Bhero - Business Development Manager.jpg',
-    featured: false,
-    order: 5,
-    credentials: 'MBA, BSc (Hons) Development Studies',
-    fullProfile:
-      'Nicholas Bhero is a dynamic business development strategist with over 20 years of experience in marketing, sales and brand positioning. He leads the marketing function, driving growth initiatives and spearheading the expansion of the Chilmund brand across Zimbabwe and into regional markets. Nicholas brings strong expertise in market development, strategic partnerships and revenue growth, underpinned by well-established relationships across both the private sector and government.',
   },
   {
     id: 'faith-mushete',
@@ -217,6 +217,19 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
       'MSc in Strategic Management, BSc in Chemical Technology, ISO 9001:2015 QMS lead auditor (SAATCA certified), quality assurance SAZ-UZ business studies certified',
     fullProfile:
       'Sikhangele is a seasoned quality systems professional with a decade of experience optimising chemical laboratory operations, including six years of managerial expertise. She specialises in establishing robust quality control test protocols and leading cross-functional departments to implement corrective actions that eliminate recurrence of identified nonconformities and process deviations. She has demonstrated success in spearheading ISO 9001:2008 and ISO 9001:2015 certifications and is currently architecting the transition to a comprehensive integrated management system (IMS).',
+  },
+  {
+    id: 'gamuchirai-chidakwa',
+    name: 'Gamuchirai Pauline Chidakwa',
+    jobTitle: 'Administrator',
+    department: 'management',
+    imageFile: 'Gamuchirai Pauline Chidakwa.jpg',
+    featured: false,
+    order: 15,
+    credentials:
+      'BSc (Hons) Development Studies; certificate in Project Management Monitoring & Evaluation',
+    fullProfile:
+      'Gamuchirai is an experienced, detail-oriented Administrator with a strong background in office management, operations coordination and organisational support. Skilled in managing daily administrative functions, streamlining processes and ensuring efficient communication across departments. Adept at handling scheduling, documentation, reporting, customer relations and team coordination with professionalism and confidentiality.',
   },
 ]
 

@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { innerHeroNewsHeader } from '@/utilities/pageHero'
+import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Calendar, CheckCircle, Clock, Mail, MapPin, Search, ArrowRight, Tag } from 'lucide-react'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
@@ -90,17 +90,25 @@ export function NewsPageClient({
   const rest = filtered.slice(1)
 
   return (
-    <article className="min-h-screen bg-slate-950 pb-20 pt-0 text-white">
-      {/* Header */}
-      <section className={innerHeroNewsHeader}>
-        <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">News & Events</h1>
-        <p className="mx-auto mt-4 max-w-xl text-white/60">
-          Stay updated with the latest from Chilmund Chemicals — industry news, events, awards, and community initiatives.
-        </p>
+    <article className="min-h-screen bg-slate-50 pb-20 text-slate-900 dark:bg-slate-950 dark:text-white">
+      <section className={innerHeroRadialSection}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/35 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/45 to-transparent" />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center px-4">
+          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-blue-400/95 sm:text-sm sm:tracking-[0.18em]">
+            News &amp; events
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">News &amp; Events</h1>
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
+            Stay updated with the latest from Chilmund Chemicals — industry news, events, awards, and community
+            initiatives.
+          </p>
+        </div>
       </section>
 
-      <div className="container px-4 py-10">
-        {/* Filter pills */}
+      <div className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
+        <div className="container px-4">
+          {/* Filter pills */}
         <div className="mb-10 flex flex-wrap gap-2">
           {FILTERS.map((f) => (
             <button
@@ -110,8 +118,8 @@ export function NewsPageClient({
               className={cn(
                 'rounded-full px-5 py-2 text-sm font-semibold transition-colors',
                 filter === f
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white/10 text-white/70 hover:bg-white/15 hover:text-white',
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/15 dark:hover:text-white',
               )}
             >
               {f}
@@ -137,10 +145,10 @@ export function NewsPageClient({
             )}
 
             {filtered.length === 0 && (
-              <div className="rounded-xl border border-white/10 bg-white/5 py-16 text-center">
-                <Search className="mx-auto size-10 text-white/30" />
-                <p className="mt-4 text-lg font-semibold text-white/60">No results found</p>
-                <p className="mt-1 text-sm text-white/40">Try adjusting your search or filter.</p>
+              <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
+                <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
+                <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No results found</p>
+                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
               </div>
             )}
           </div>
@@ -155,7 +163,7 @@ export function NewsPageClient({
                   placeholder="Search updates..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30"
+                  className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40"
                 />
               </div>
             </SidebarCard>
@@ -165,11 +173,11 @@ export function NewsPageClient({
               <div className="space-y-3">
                 {recentPosts.map((p) => (
                   <Link key={p.id} href={p.href} className="group block">
-                    <h4 className="text-sm font-semibold text-white/90 transition-colors group-hover:text-blue-400">
+                    <h4 className="text-sm font-semibold text-slate-800 transition-colors group-hover:text-blue-600 dark:text-white/90 dark:group-hover:text-blue-400">
                       {p.title}
                     </h4>
-                    <div className="mt-0.5 flex items-center gap-2 text-xs text-white/40">
-                      {p.categories[0] && <span className="text-blue-400">{p.categories[0]}</span>}
+                    <div className="mt-0.5 flex items-center gap-2 text-xs text-slate-500 dark:text-white/40">
+                      {p.categories[0] && <span className="text-blue-600 dark:text-blue-400">{p.categories[0]}</span>}
                       {p.date && (
                         <span>{new Date(p.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'numeric', year: 'numeric' })}</span>
                       )}
@@ -177,7 +185,7 @@ export function NewsPageClient({
                   </Link>
                 ))}
                 {recentPosts.length === 0 && (
-                  <p className="text-sm text-white/40">No posts yet.</p>
+                  <p className="text-sm text-slate-500 dark:text-white/40">No posts yet.</p>
                 )}
               </div>
             </SidebarCard>
@@ -190,7 +198,9 @@ export function NewsPageClient({
                   onClick={() => setActiveCategory(null)}
                   className={cn(
                     'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors',
-                    !activeCategory ? 'bg-blue-600/20 font-semibold text-blue-400' : 'text-white/60 hover:bg-white/5 hover:text-white',
+                    !activeCategory
+                      ? 'bg-blue-100 font-semibold text-blue-700 dark:bg-blue-600/20 dark:text-blue-400'
+                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white',
                   )}
                 >
                   All
@@ -202,7 +212,9 @@ export function NewsPageClient({
                     onClick={() => setActiveCategory(c)}
                     className={cn(
                       'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors',
-                      activeCategory === c ? 'bg-blue-600/20 font-semibold text-blue-400' : 'text-white/60 hover:bg-white/5 hover:text-white',
+                      activeCategory === c
+                        ? 'bg-blue-100 font-semibold text-blue-700 dark:bg-blue-600/20 dark:text-blue-400'
+                        : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white',
                     )}
                   >
                     {c}
@@ -215,6 +227,7 @@ export function NewsPageClient({
             <NewsletterWidget />
           </aside>
         </div>
+        </div>
       </div>
     </article>
   )
@@ -222,8 +235,8 @@ export function NewsPageClient({
 
 function SidebarCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-slate-900/80 p-5">
-      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-400">
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
+      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         {icon}
         {title}
       </h3>
@@ -238,7 +251,10 @@ function FeaturedCard({ item }: { item: AnyItem }) {
   const event = isEvent ? (item as EventItem) : null
 
   return (
-    <Link href={item.href} className="group block overflow-hidden rounded-xl border border-white/10 bg-slate-900/60 transition-colors hover:border-white/20">
+    <Link
+      href={item.href}
+      className="group block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-slate-300 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-none dark:hover:border-white/20"
+    >
       {item.image && (
         <div className="relative aspect-[16/9] overflow-hidden">
           <img src={item.image} alt={item.title} className="size-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -258,7 +274,7 @@ function FeaturedCard({ item }: { item: AnyItem }) {
         </div>
       )}
       <div className="p-6">
-        <div className="flex flex-wrap items-center gap-3 text-sm text-white/50">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-white/50">
           {date && (
             <span className="flex items-center gap-1.5">
               <Calendar className="size-3.5" />
@@ -272,13 +288,13 @@ function FeaturedCard({ item }: { item: AnyItem }) {
             </span>
           )}
         </div>
-        <h2 className="mt-3 text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-blue-400">
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
           {item.title}
         </h2>
         {item.excerpt && (
-          <p className="mt-3 line-clamp-3 text-white/60">{item.excerpt}</p>
+          <p className="mt-3 line-clamp-3 text-slate-600 dark:text-white/60">{item.excerpt}</p>
         )}
-        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-400 transition-colors group-hover:text-blue-300">
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
           Read more <ArrowRight className="size-3.5" />
         </span>
       </div>
@@ -318,17 +334,17 @@ function NewsletterWidget() {
   }
 
   return (
-    <div className="rounded-xl border border-blue-500/20 bg-gradient-to-br from-blue-950/80 to-slate-900/80 p-5">
-      <h3 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-400">
+    <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-slate-50 p-5 dark:border-blue-500/20 dark:from-blue-950/80 dark:to-slate-900/80">
+      <h3 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         <Mail className="size-4" />
         Never Miss an Update
       </h3>
-      <p className="mb-4 text-sm text-white/50">
+      <p className="mb-4 text-sm text-slate-600 dark:text-white/50">
         Subscribe for the latest news, events, and industry updates from Chilmund Chemicals.
       </p>
 
       {status === 'success' ? (
-        <div className="flex items-center gap-2 rounded-lg bg-emerald-500/15 px-4 py-3 text-sm font-medium text-emerald-300">
+        <div className="flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-3 text-sm font-medium text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300">
           <CheckCircle className="size-4 shrink-0" />
           {message}
         </div>
@@ -340,7 +356,7 @@ function NewsletterWidget() {
             value={email}
             onChange={(e) => { setEmail(e.target.value); setStatus('idle') }}
             required
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30"
+            className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40"
           />
           <button
             type="submit"
@@ -350,7 +366,7 @@ function NewsletterWidget() {
             {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
           </button>
           {status === 'error' && (
-            <p className="text-xs text-red-400">{message}</p>
+            <p className="text-xs text-red-600 dark:text-red-400">{message}</p>
           )}
         </form>
       )}
@@ -364,7 +380,10 @@ function SmallCard({ item }: { item: AnyItem }) {
   const event = isEvent ? (item as EventItem) : null
 
   return (
-    <Link href={item.href} className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-slate-900/60 transition-colors hover:border-white/20">
+    <Link
+      href={item.href}
+      className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-slate-300 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-none dark:hover:border-white/20"
+    >
       {item.image && (
         <div className="relative aspect-video overflow-hidden">
           <img src={item.image} alt={item.title} className="size-full object-cover transition-transform duration-500 group-hover:scale-105" />
@@ -378,24 +397,24 @@ function SmallCard({ item }: { item: AnyItem }) {
         </div>
       )}
       <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-center gap-2 text-xs text-white/40">
+        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-white/40">
           {date && (
             <span>{date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
           )}
           {event?.venue && (
             <>
-              <span className="text-white/20">·</span>
+              <span className="text-slate-300 dark:text-white/20">·</span>
               <span>{event.venue}</span>
             </>
           )}
         </div>
-        <h3 className="mt-2 font-bold text-white transition-colors group-hover:text-blue-400 line-clamp-2">
+        <h3 className="mt-2 line-clamp-2 font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
           {item.title}
         </h3>
         {item.excerpt && (
-          <p className="mt-2 text-sm text-white/50 line-clamp-2">{item.excerpt}</p>
+          <p className="mt-2 line-clamp-2 text-sm text-slate-600 dark:text-white/50">{item.excerpt}</p>
         )}
-        <span className="mt-auto pt-3 text-sm font-semibold text-blue-400 transition-colors group-hover:text-blue-300">
+        <span className="mt-auto pt-3 text-sm font-semibold text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
           Read more →
         </span>
       </div>

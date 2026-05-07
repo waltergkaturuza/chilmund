@@ -9,20 +9,6 @@ import { TeamProfileModal } from './TeamProfileModal'
 import { TeamPortraitImage } from './TeamPortraitImage'
 import type { MeetOurTeamMember } from './types'
 
-const DEPT_LABELS: Record<string, string> = {
-  management: 'Executive / Management',
-  finance: 'Finance & Admin',
-  business: 'Business Development',
-  production: 'Production & Maintenance',
-  research: 'Research & Compliance',
-  engineering: 'Engineering',
-  hr: 'Human Resources',
-  quality: 'Quality Assurance',
-  sheq: 'SHEQ & Safety',
-  logistics: 'Supply Chain & Logistics',
-  other: 'Other',
-}
-
 const GRADIENT_COLORS = [
   'from-blue-600 to-blue-800',
   'from-emerald-600 to-emerald-800',
@@ -76,7 +62,7 @@ export function MeetOurTeamView({ members }: Props) {
             <p className="mx-auto mt-2 max-w-xl text-center text-sm text-slate-500 dark:text-white/50">
               Select a profile to read the full biography.
             </p>
-            <div className="mx-auto mt-10 grid max-w-4xl gap-8 sm:grid-cols-2">
+            <div className="mx-auto mt-10 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((m, i) => (
                 <FeaturedCard key={m.id} member={m} colorIdx={i} onOpen={() => setActive(m)} />
               ))}
@@ -112,8 +98,7 @@ export function MeetOurTeamView({ members }: Props) {
             <User className="mx-auto size-10 text-blue-600 dark:text-blue-400" />
             <h3 className="mt-4 text-xl font-bold text-slate-900 dark:text-white">Join Our Team</h3>
             <p className="mt-2 text-slate-600 dark:text-white/60">
-              We&apos;re always looking for talented individuals to join our growing team. Currently
-              employing 120+ people with plans to grow to 250.
+              We&apos;re always looking for talented individuals to join our growing team — currently 200+, with plans for continued growth.
             </p>
             <a
               href="/contact"
@@ -168,11 +153,6 @@ function FeaturedCard({
       <div className="p-6">
         <h3 className="text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
         <p className="mt-1 text-sm font-semibold text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
-        {member.department && (
-          <p className="mt-1 text-xs text-slate-400 dark:text-white/40">
-            {DEPT_LABELS[member.department] || member.department}
-          </p>
-        )}
         {member.bioShort && (
           <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/60 line-clamp-4">
             {member.bioShort}
@@ -250,11 +230,6 @@ function MemberCard({
       )}
       <h3 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">{member.name}</h3>
       <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
-      {member.department && (
-        <p className="mt-1 text-xs text-slate-400 dark:text-white/40">
-          {DEPT_LABELS[member.department] || member.department}
-        </p>
-      )}
       {member.bioShort && (
         <p className="mt-3 text-sm text-slate-500 dark:text-white/50 line-clamp-3">{member.bioShort}</p>
       )}

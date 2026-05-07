@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const stats = [
   { label: 'Established', value: '2007', icon: <Factory className="size-5" /> },
   { label: 'Monthly capacity', value: '6,000t', icon: <Droplets className="size-5" /> },
-  { label: 'Employees', value: '120+', icon: <Users className="size-5" /> },
+  { label: 'Employees', value: '200+', icon: <Users className="size-5" /> },
   { label: 'Markets served', value: '10+', icon: <Globe className="size-5" /> },
 ]
 

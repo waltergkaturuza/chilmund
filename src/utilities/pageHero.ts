@@ -17,10 +17,6 @@ export const innerHeroGradientOuter =
 export const innerHeroGradientInner =
   'container relative z-10 px-4 py-10 text-center sm:py-12 md:py-14'
 
-/** CSR / Industry Awards / similar dark band heroes. */
-export const innerHeroMutedBand =
-  'relative overflow-hidden border-b border-white/10 bg-slate-900/50 px-4 py-10 text-center md:py-11'
-
 /** News hub header strip. */
 export const innerHeroNewsHeader =
   'border-b border-white/10 bg-slate-900/50 px-4 py-9 text-center md:py-10'

@@ -40,11 +40,11 @@ const facilityGallery = [
 export const metadata: Metadata = {
   title: 'Manufacturing Plant | Chilmund Chemicals',
   description:
-    'Tour our state-of-the-art aluminium sulphate manufacturing plant in Bindura, Zimbabwe — 70 tonnes daily capacity.',
+    'Tour our state-of-the-art aluminium sulphate manufacturing plant in Bindura, Zimbabwe — 240 tonnes daily capacity.',
 }
 
 const highlights = [
-  { icon: <Gauge className="size-5" />, title: '70 tonnes/day', desc: 'Daily production capacity with plans for expansion' },
+  { icon: <Gauge className="size-5" />, title: '240 tonnes/day', desc: 'Daily production capacity with plans for expansion' },
   { icon: <Factory className="size-5" />, title: 'State-of-the-art', desc: 'Modern plant commissioned July 2023' },
   { icon: <Shield className="size-5" />, title: 'Quality assured', desc: 'Continuous testing and SAZ-certified output' },
   { icon: <Recycle className="size-5" />, title: 'Sustainable', desc: 'Environmentally responsible manufacturing processes' },
@@ -77,7 +77,7 @@ export default async function ManufacturingPlantPage() {
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
             Our state-of-the-art aluminium sulphate manufacturing facility in Bindura, Zimbabwe,
-            commissioned in July 2023, produces 70 tonnes of high-purity product daily.
+            commissioned in July 2023, produces 240 tonnes of high-purity product daily.
           </p>
         </div>
       </section>

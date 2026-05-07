@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { innerHeroMutedBand } from '@/utilities/pageHero'
+import { innerHeroRadialSection } from '@/utilities/pageHero'
 import {
   Calendar,
   Droplets,
@@ -66,25 +66,27 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
   const rest = filtered.filter((i) => i !== featuredItem)
 
   return (
-    <article className="min-h-screen bg-slate-950 pb-20 text-white">
-      {/* Hero */}
-      <section className={innerHeroMutedBand}>
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.03]">
-          <HandHeart className="size-96" />
-        </div>
-        <div className="relative">
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+    <article className="min-h-screen bg-slate-50 pb-20 text-slate-900 dark:bg-slate-950 dark:text-white">
+      <section className={innerHeroRadialSection}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/35 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-500/45 to-transparent" />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center">
+          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-emerald-400/95 sm:text-sm sm:tracking-[0.18em]">
+            Community &amp; impact
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Corporate Social Responsibility
           </h1>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
             Making a positive impact in our communities through education, environment,
             health, and youth empowerment programmes.
           </p>
         </div>
       </section>
 
-      <div className="container px-4 py-10">
-        <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
+      <div className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
+        <div className="container px-4">
+          <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
           {/* Main */}
           <div className="space-y-8">
             {/* Category filter pills */}
@@ -95,8 +97,8 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 className={cn(
                   'rounded-full px-5 py-2 text-sm font-semibold transition-colors',
                   !activeCategory
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-white/10 text-white/70 hover:bg-white/15 hover:text-white',
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/15 dark:hover:text-white',
                 )}
               >
                 All
@@ -111,8 +113,8 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                     className={cn(
                       'inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-colors',
                       activeCategory === c
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-white/10 text-white/70 hover:bg-white/15 hover:text-white',
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/15 dark:hover:text-white',
                     )}
                   >
                     {meta.icon}
@@ -133,10 +135,10 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 ))}
               </div>
             ) : !featuredItem ? (
-              <div className="rounded-xl border border-white/10 bg-white/5 py-16 text-center">
-                <Search className="mx-auto size-10 text-white/30" />
-                <p className="mt-4 text-lg font-semibold text-white/60">No initiatives found</p>
-                <p className="mt-1 text-sm text-white/40">Try adjusting your search or filter.</p>
+              <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
+                <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
+                <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No initiatives found</p>
+                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
               </div>
             ) : null}
           </div>
@@ -150,7 +152,7 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 placeholder="Search initiatives..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-white placeholder:text-white/40 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30"
+                className="w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none placeholder:text-slate-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 dark:border-white/15 dark:bg-white/5 dark:text-white dark:placeholder:text-white/40"
               />
             </SidebarCard>
 
@@ -163,8 +165,8 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                   className={cn(
                     'block w-full rounded-md px-3 py-2 text-left text-sm transition-colors',
                     !activeCategory
-                      ? 'bg-blue-600/20 font-semibold text-blue-400'
-                      : 'text-white/60 hover:bg-white/5 hover:text-white',
+                      ? 'bg-blue-100 font-semibold text-blue-700 dark:bg-blue-600/20 dark:text-blue-400'
+                      : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white',
                   )}
                 >
                   All ({items.length})
@@ -180,13 +182,13 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                       className={cn(
                         'flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm transition-colors',
                         activeCategory === c
-                          ? 'bg-blue-600/20 font-semibold text-blue-400'
-                          : 'text-white/60 hover:bg-white/5 hover:text-white',
+                          ? 'bg-blue-100 font-semibold text-blue-700 dark:bg-blue-600/20 dark:text-blue-400'
+                          : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white',
                       )}
                     >
                       {meta.icon}
                       {meta.label}
-                      <span className="ml-auto text-xs text-white/30">{count}</span>
+                      <span className="ml-auto text-xs text-slate-400 dark:text-white/30">{count}</span>
                     </button>
                   )
                 })}
@@ -195,13 +197,14 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
 
             {/* Impact summary */}
             <SidebarCard title="Our commitment" icon={<Heart className="size-4" />}>
-              <p className="text-sm leading-relaxed text-white/50">
+              <p className="text-sm leading-relaxed text-slate-600 dark:text-white/50">
                 Chilmund Chemicals is committed to sustainable development and giving back to
                 the communities where we operate. Our CSR programmes focus on education, clean water,
                 environmental stewardship, and youth empowerment.
               </p>
             </SidebarCard>
           </aside>
+          </div>
         </div>
       </div>
     </article>
@@ -210,8 +213,8 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
 
 function SidebarCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-slate-900/80 p-5">
-      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-400">
+    <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
+      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         {icon}
         {title}
       </h3>
@@ -225,7 +228,7 @@ function FeaturedCard({ item }: { item: CSRItem }) {
   const date = item.date ? new Date(item.date) : null
 
   return (
-    <div className="group overflow-hidden rounded-xl border border-white/10 bg-slate-900/60 transition-colors hover:border-white/20">
+    <div className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-slate-300 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-none dark:hover:border-white/20">
       {item.image && (
         <div className="relative aspect-[16/9] overflow-hidden">
           <img
@@ -247,7 +250,7 @@ function FeaturedCard({ item }: { item: CSRItem }) {
         </div>
       )}
       <div className="p-6">
-        <div className="flex flex-wrap items-center gap-3 text-sm text-white/50">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600 dark:text-white/50">
           {date && (
             <span className="flex items-center gap-1.5">
               <Calendar className="size-3.5" />
@@ -267,15 +270,15 @@ function FeaturedCard({ item }: { item: CSRItem }) {
             </span>
           )}
         </div>
-        <h2 className="mt-3 text-2xl font-bold tracking-tight text-white transition-colors group-hover:text-blue-400">
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
           {item.title}
         </h2>
         {item.summary && (
-          <p className="mt-3 text-white/60 line-clamp-3">{item.summary}</p>
+          <p className="mt-3 line-clamp-3 text-slate-600 dark:text-white/60">{item.summary}</p>
         )}
         {item.impact && (
-          <div className="mt-4 rounded-lg border border-emerald-500/20 bg-emerald-500/10 px-4 py-3">
-            <p className="text-sm font-medium text-emerald-300">
+          <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 dark:border-emerald-500/20 dark:bg-emerald-500/10">
+            <p className="text-sm font-medium text-emerald-800 dark:text-emerald-300">
               <Sparkles className="mr-1.5 inline size-4" />
               {item.impact}
             </p>
@@ -291,8 +294,8 @@ function CSRCard({ item }: { item: CSRItem }) {
   const date = item.date ? new Date(item.date) : null
 
   return (
-    <div className="group flex flex-col overflow-hidden rounded-xl border border-white/10 bg-slate-900/60 transition-colors hover:border-white/20">
-      <div className="relative aspect-video overflow-hidden bg-slate-800">
+    <div className="group flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-colors hover:border-slate-300 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-none dark:hover:border-white/20">
+      <div className="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
         {item.image ? (
           <img
             src={item.image}
@@ -300,8 +303,8 @@ function CSRCard({ item }: { item: CSRItem }) {
             className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex size-full items-center justify-center bg-gradient-to-br from-emerald-900/30 to-slate-900">
-            <HandHeart className="size-16 text-emerald-500/30" />
+          <div className="flex size-full items-center justify-center bg-gradient-to-br from-emerald-100 to-slate-100 dark:from-emerald-900/30 dark:to-slate-900">
+            <HandHeart className="size-16 text-emerald-500/35 dark:text-emerald-500/30" />
           </div>
         )}
         <div className="absolute left-3 top-3">
@@ -321,13 +324,13 @@ function CSRCard({ item }: { item: CSRItem }) {
       </div>
 
       <div className="flex flex-1 flex-col p-4">
-        <div className="flex items-center gap-2 text-xs text-white/40">
+        <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-white/40">
           {date && (
             <span>{date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
           )}
           {item.location && (
             <>
-              <span className="text-white/20">·</span>
+              <span className="text-slate-300 dark:text-white/20">·</span>
               <span className="flex items-center gap-1">
                 <MapPin className="size-3" />
                 {item.location}
@@ -335,14 +338,14 @@ function CSRCard({ item }: { item: CSRItem }) {
             </>
           )}
         </div>
-        <h3 className="mt-2 font-bold text-white transition-colors group-hover:text-blue-400 line-clamp-2">
+        <h3 className="mt-2 line-clamp-2 font-bold text-slate-900 transition-colors group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
           {item.title}
         </h3>
         {item.summary && (
-          <p className="mt-2 text-sm text-white/50 line-clamp-2">{item.summary}</p>
+          <p className="mt-2 line-clamp-2 text-sm text-slate-600 dark:text-white/50">{item.summary}</p>
         )}
         {item.impact && (
-          <p className="mt-3 rounded-md bg-emerald-500/10 px-3 py-2 text-xs font-medium text-emerald-300 line-clamp-2">
+          <p className="mt-3 line-clamp-2 rounded-md border border-emerald-100 bg-emerald-50 px-3 py-2 text-xs font-medium text-emerald-800 dark:border-transparent dark:bg-emerald-500/10 dark:text-emerald-300">
             <Sparkles className="mr-1 inline size-3" />
             {item.impact}
           </p>

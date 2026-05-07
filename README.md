@@ -23,6 +23,8 @@ Core features:
 - [Jobs and Scheduled Publishing](#jobs-and-scheduled-publish)
 - [Website](#website)
 
+**Chilmund / editor documentation:** see [docs/CMS_USER_GUIDE.md](docs/CMS_USER_GUIDE.md) for step-by-step CMS usage (Pages, Media, Header, Products, Forms, etc.).
+
 ## Quick Start
 
 To spin up this example locally, follow these steps:

@@ -38,8 +38,8 @@ export const chilmundCopy = {
   facts: [
     'Chilmund Chemicals commissioned its Aluminium Sulphate plant on 1 July 2023 and is currently supplying various local authorities.',
     'The company is now on a drive to service the regional market.',
-    'Currently producing 70 tonnes per day.',
-    'The company employs 120 permanent employees and is looking forward to increasing the number to 250.',
+    'Currently producing 240 tonnes per day.',
+    'The company employs 200+ permanent employees and continues to expand its workforce.',
     'The Aluminium Sulphate is non-ferric and has 17% Alum content.',
   ],
 
@@ -47,9 +47,9 @@ export const chilmundCopy = {
   team: [
     { name: 'Jeffrey Mazonde', role: 'Managing Director' },
     { name: 'Oswell Matore', role: 'Production and Distribution Director' },
+    { name: 'Nicholas Bhero', role: 'Business Development Director' },
     { name: 'Dr Gratitude Charis', role: 'Business Consultant in the office of the CEO' },
     { name: 'Sabina Magosvongwe', role: 'Finance Manager' },
-    { name: 'Nicholas Bhero', role: 'Business Development Manager' },
     { name: 'Faith Mushete', role: 'Human Resources Manager' },
     { name: 'Leo Zulu', role: 'Compliance Manager' },
     { name: 'Allen Mukwasi', role: 'Safety, Health and Environmental (SHE) Officer' },
@@ -59,5 +59,6 @@ export const chilmundCopy = {
     { name: 'Milton Dangaiso', role: 'ICT Officer' },
     { name: 'Saka Shingirai Madzudzo', role: 'Systems Developer / Software Engineer' },
     { name: 'Ms Sikhangele Muhle E Mhene', role: 'QC/QA Officer' },
+    { name: 'Gamuchirai Pauline Chidakwa', role: 'Administrator' },
   ],
 } as const
