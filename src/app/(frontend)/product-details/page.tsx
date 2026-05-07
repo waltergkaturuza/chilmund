@@ -11,17 +11,6 @@ export const metadata: Metadata = {
     'Technical specifications and product details for Chilmund Chemicals non-ferric Aluminium Sulphate with 17% Al₂O₃ content.',
 }
 
-const specs = [
-  { label: 'Chemical formula', value: 'Al₂(SO₄)₃ · nH₂O' },
-  { label: 'Al₂O₃ content', value: '≥ 17%' },
-  { label: 'Iron (Fe) content', value: 'Non-ferric (< 0.01%)' },
-  { label: 'pH (1% solution)', value: '3.0 – 3.5' },
-  { label: 'Appearance', value: 'Off-white granules / lumps' },
-  { label: 'Solubility', value: 'Readily soluble in water' },
-  { label: 'Packaging', value: '25 kg, 50 kg bags & bulk' },
-  { label: 'Daily capacity', value: '240 tonnes' },
-]
-
 const applications = [
   { icon: <Droplets className="size-5" />, title: 'Municipal water treatment', desc: 'Primary coagulant for drinking water purification used by local authorities nationwide.' },
   { icon: <FlaskConical className="size-5" />, title: 'Industrial wastewater', desc: 'Effective flocculation for mining, manufacturing, and food processing effluent.' },
@@ -77,36 +66,17 @@ export default function ProductDetailsPage() {
               </div>
             </figure>
 
-            <div className="flex min-h-0 flex-col">
-              <h3 className="text-center text-lg font-bold text-slate-900 dark:text-white lg:mb-4 lg:text-left">
-                Technical specifications
-              </h3>
-              <div className="mt-5 overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-950 shadow-inner lg:mt-0 dark:border-white/10">
-                <table className="w-full border-collapse text-sm">
-                  <caption className="sr-only">
-                    Aluminium sulphate technical specifications for Chilmund Chemicals products
-                  </caption>
-                  <tbody className="divide-y divide-white/[0.06]">
-                    {specs.map((row, i) => (
-                      <tr
-                        key={row.label}
-                        className={i % 2 === 0 ? 'bg-slate-900/60' : 'bg-slate-900/40'}
-                      >
-                        <th
-                          scope="row"
-                          className="w-[44%] px-4 py-3.5 text-left font-medium text-slate-400 md:px-5"
-                        >
-                          {row.label}
-                        </th>
-                        <td className="px-4 py-3.5 text-right font-semibold text-white md:px-5">
-                          {row.value}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+            <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
+              <div className="relative aspect-square w-full min-h-[260px] shrink-0 lg:aspect-auto lg:min-h-0 lg:flex-1">
+                <Image
+                  src="/Liquid Product.jpg"
+                  alt="Liquid aluminium sulphate product at Chilmund Chemicals."
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
-            </div>
+            </figure>
           </div>
         </div>
       </section>
