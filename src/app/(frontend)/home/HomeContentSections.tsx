@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Award,
   BadgeCheck,
@@ -174,8 +175,8 @@ export function HomeContentSections() {
       {/* Products & applications */}
       <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/50 md:py-22">
         <div className="container mx-auto max-w-6xl px-4">
-          <div className="grid gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
-            <div className="lg:col-span-7">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-8">
+            <div className="lg:col-span-4">
               <div className="inline-flex items-center gap-2 rounded-full bg-blue-600/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-800 dark:bg-blue-500/20 dark:text-blue-300">
                 <Sparkles className="size-3.5" />
                 Portfolio
@@ -188,6 +189,16 @@ export function HomeContentSections() {
                 kibbled aluminium sulphate — the &quot;universal coagulant&quot; for high-performance municipal water
                 treatment, industrial processes, agriculture and mining.
               </p>
+              <figure className="relative mt-6 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md dark:border-white/10 dark:bg-slate-950 lg:hidden">
+                <Image
+                  src="/WTP-for-modern-infrastructure-1024x683.webp"
+                  alt="Modern water treatment and infrastructure serving communities and industry"
+                  width={1024}
+                  height={683}
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="h-auto w-full object-cover"
+                />
+              </figure>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   className="inline-flex rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-500"
@@ -203,7 +214,20 @@ export function HomeContentSections() {
                 </Link>
               </div>
             </div>
-            <div className="rounded-3xl border border-white/70 bg-white p-8 shadow-lg dark:border-white/15 dark:bg-slate-950/80 lg:col-span-5">
+            <div className="hidden lg:col-span-4 lg:block">
+              <figure className="sticky top-24 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-md dark:border-white/10 dark:bg-slate-950">
+                <Image
+                  src="/WTP-for-modern-infrastructure-1024x683.webp"
+                  alt="Modern water treatment and infrastructure serving communities and industry"
+                  width={1024}
+                  height={683}
+                  sizes="360px"
+                  className="h-auto w-full object-cover"
+                  priority={false}
+                />
+              </figure>
+            </div>
+            <div className="rounded-3xl border border-white/70 bg-white p-8 shadow-lg dark:border-white/15 dark:bg-slate-950/80 lg:col-span-4">
               <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
                 <Building2 className="size-5 text-blue-600" />
                 Applications

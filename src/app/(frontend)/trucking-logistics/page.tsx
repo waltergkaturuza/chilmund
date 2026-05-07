@@ -3,6 +3,8 @@ import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Clock, Globe, MapPin, Package, Route, Shield, Truck, Warehouse } from 'lucide-react'
 import React from 'react'
 
+const TRUCKS_VIDEO_SRC = `/${encodeURIComponent('trucks.mp4')}`
+
 export const metadata: Metadata = {
   title: 'Trucking & Logistics | Chilmund Chemicals',
   description:
@@ -72,30 +74,49 @@ export default function TruckingLogisticsPage() {
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
             Delivery Estimates
           </h2>
-          <div className="mx-auto mt-10 max-w-3xl overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
-            <div className="grid grid-cols-[1fr_1fr_auto] bg-blue-600 px-6 py-3 text-sm font-semibold text-white">
-              <span>From</span>
-              <span>To</span>
-              <span>Est. time</span>
-            </div>
-            {routes.map((r, i) => (
-              <div
-                key={r.to}
-                className={`grid grid-cols-[1fr_1fr_auto] items-center px-6 py-4 text-sm ${i % 2 === 0 ? 'bg-white dark:bg-slate-800/50' : 'bg-slate-50 dark:bg-slate-900'}`}
-              >
-                <span className="flex items-center gap-2 text-slate-500 dark:text-white/50">
-                  <Route className="size-3.5 shrink-0" />
-                  {r.from}
-                </span>
-                <span className="flex items-center gap-2 font-medium text-slate-900 dark:text-white">
-                  <MapPin className="size-3.5 shrink-0 text-blue-600 dark:text-blue-400" />
-                  {r.to}
-                </span>
-                <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700 dark:bg-blue-500/20 dark:text-blue-300">
-                  {r.time}
-                </span>
+          <div className="mx-auto mt-10 grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-stretch">
+            <div className="min-w-0">
+              <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
+                <div className="grid grid-cols-[1fr_1fr_auto] bg-blue-600 px-4 py-3 text-xs font-semibold text-white sm:px-6 sm:text-sm">
+                  <span>From</span>
+                  <span>To</span>
+                  <span>Est. time</span>
+                </div>
+                {routes.map((r, i) => (
+                  <div
+                    key={r.to}
+                    className={`grid grid-cols-[1fr_1fr_auto] items-center gap-1 px-4 py-3 text-xs sm:px-6 sm:py-4 sm:text-sm ${i % 2 === 0 ? 'bg-white dark:bg-slate-800/50' : 'bg-slate-50 dark:bg-slate-900'}`}
+                  >
+                    <span className="flex items-center gap-2 text-slate-500 dark:text-white/50">
+                      <Route className="size-3.5 shrink-0" />
+                      {r.from}
+                    </span>
+                    <span className="flex min-w-0 items-center gap-2 font-medium text-slate-900 dark:text-white">
+                      <MapPin className="size-3.5 shrink-0 text-blue-600 dark:text-blue-400" />
+                      {r.to}
+                    </span>
+                    <span className="shrink-0 rounded-full bg-blue-100 px-2 py-1 text-[0.65rem] font-semibold whitespace-nowrap text-blue-700 sm:px-3 sm:text-xs dark:bg-blue-500/20 dark:text-blue-300">
+                      {r.time}
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div>
+              <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-lg dark:border-white/10">
+                <video
+                  className="absolute inset-0 size-full object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-label="Chilmund trucking and delivery fleet"
+                >
+                  <source src={TRUCKS_VIDEO_SRC} type="video/mp4" />
+                </video>
+              </div>
+            </div>
           </div>
         </div>
       </section>

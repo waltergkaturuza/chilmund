@@ -1,10 +1,12 @@
-import Image from 'next/image'
 import React from 'react'
 
 import type { Page } from '@/payload-types'
 
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
+
+/** Public / filename with spaces — URL-encoded for `<source>` */
+const HOME_HERO_DRONE_MP4_SRC = `/${encodeURIComponent('Chilmund drone mp4.mp4')}`
 
 export type LowImpactHeroProps = Page['hero'] & {
   pageSlug?: string
@@ -56,18 +58,21 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
               )}
             </div>
             <div className="relative flex min-h-0 flex-col lg:min-h-[min(520px,_62vh)]">
-              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.5)] ring-1 ring-white/10 sm:min-h-[280px] lg:min-h-0">
-                <Image
-                  src="/chilmund-products-warehouse.png"
-                  alt="Chilmund Chemicals aluminium sulphate — stacked 50 kg bags"
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                />
+              <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.5)] ring-1 ring-white/10 sm:min-h-[280px] lg:min-h-0">
+                <video
+                  className="absolute inset-0 size-full object-cover object-center"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="auto"
+                  aria-label="Aerial view of Chilmund manufacturing and infrastructure"
+                >
+                  <source src={HOME_HERO_DRONE_MP4_SRC} type="video/mp4" />
+                </video>
               </div>
               <p className="mt-3 shrink-0 text-center text-[0.7rem] uppercase tracking-[0.12em] text-white/50 lg:text-right">
-                Aluminium sulphate — plant &amp; warehouse
+                Manufacturing campus — aerial view
               </p>
             </div>
           </div>
