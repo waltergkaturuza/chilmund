@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { MutedAutoplayLoopVideo } from '@/heros/LowImpact/MutedAutoplayLoopVideo'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Clock, Globe, MapPin, Package, Route, Shield, Truck, Warehouse } from 'lucide-react'
 import React from 'react'
@@ -45,30 +46,7 @@ export default function TruckingLogisticsPage() {
         </div>
       </section>
 
-      {/* Capabilities */}
-      <section className="bg-white dark:bg-slate-950">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Our Logistics Capabilities
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilities.map((c) => (
-              <div
-                key={c.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-lg dark:border-white/10 dark:bg-slate-900/60"
-              >
-                <div className="mb-3 flex size-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
-                  {c.icon}
-                </div>
-                <h3 className="font-bold text-slate-900 dark:text-white">{c.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-white/60">{c.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Delivery routes */}
+      {/* Delivery routes — first content band after hero */}
       <section className="bg-slate-50 dark:bg-slate-900">
         <div className="container mx-auto px-4 py-16">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
@@ -104,19 +82,36 @@ export default function TruckingLogisticsPage() {
             </div>
             <div>
               <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-lg dark:border-white/10">
-                <video
+                <MutedAutoplayLoopVideo
+                  src={TRUCKS_VIDEO_SRC}
                   className="absolute inset-0 size-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
                   aria-label="Chilmund trucking and delivery fleet"
-                >
-                  <source src={TRUCKS_VIDEO_SRC} type="video/mp4" />
-                </video>
+                />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Capabilities */}
+      <section className="bg-white dark:bg-slate-950">
+        <div className="container mx-auto px-4 py-16">
+          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
+            Our Logistics Capabilities
+          </h2>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((c) => (
+              <div
+                key={c.title}
+                className="rounded-2xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-lg dark:border-white/10 dark:bg-slate-900/60"
+              >
+                <div className="mb-3 flex size-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
+                  {c.icon}
+                </div>
+                <h3 className="font-bold text-slate-900 dark:text-white">{c.title}</h3>
+                <p className="mt-2 text-sm text-slate-600 dark:text-white/60">{c.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
