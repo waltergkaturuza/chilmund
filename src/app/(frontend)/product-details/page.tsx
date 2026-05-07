@@ -55,7 +55,7 @@ export default function ProductDetailsPage() {
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
             <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
-              <div className="relative aspect-square w-full min-h-[260px] shrink-0 lg:aspect-auto lg:min-h-0 lg:flex-1">
+              <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
                 <Image
                   src="/manufacturing/aluminium-sulphate-product-bags.png"
                   alt="Stacks of Chilmund Chemicals branded 50 kg bags of aluminium sulphate in warehouse storage, showing product name and grade markings."
@@ -67,7 +67,7 @@ export default function ProductDetailsPage() {
             </figure>
 
             <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
-              <div className="relative aspect-square w-full min-h-[260px] shrink-0 lg:aspect-auto lg:min-h-0 lg:flex-1">
+              <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
                 <Image
                   src="/Liquid Product.jpg"
                   alt="Liquid aluminium sulphate product at Chilmund Chemicals."
