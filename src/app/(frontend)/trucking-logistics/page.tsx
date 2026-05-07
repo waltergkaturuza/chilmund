@@ -46,14 +46,14 @@ export default function TruckingLogisticsPage() {
         </div>
       </section>
 
-      {/* Delivery routes — first content band after hero */}
+      {/* Delivery routes — near full-bleed like home hero; wider video column */}
       <section className="bg-slate-50 dark:bg-slate-900">
-        <div className="container mx-auto px-4 py-16">
+        <div className="relative mx-auto w-full max-w-none px-3 py-16 sm:px-4 md:px-5 lg:px-7 xl:px-10">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
             Delivery Estimates
           </h2>
-          <div className="mx-auto mt-10 grid max-w-6xl gap-10 lg:grid-cols-2 lg:items-stretch">
-            <div className="min-w-0">
+          <div className="mx-auto mt-10 grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
+            <div className="min-w-0 lg:col-span-5">
               <div className="overflow-hidden rounded-2xl border border-slate-200 dark:border-white/10">
                 <div className="grid grid-cols-[1fr_1fr_auto] bg-blue-600 px-4 py-3 text-xs font-semibold text-white sm:px-6 sm:text-sm">
                   <span>From</span>
@@ -80,8 +80,8 @@ export default function TruckingLogisticsPage() {
                 ))}
               </div>
             </div>
-            <div>
-              <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-lg dark:border-white/10">
+            <div className="min-w-0 lg:col-span-7">
+              <div className="relative aspect-video overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-lg dark:border-white/10 sm:rounded-3xl sm:shadow-xl lg:sticky lg:top-24 lg:aspect-auto lg:min-h-[min(36rem,calc(100vh-7rem))]">
                 <MutedAutoplayLoopVideo
                   src={TRUCKS_VIDEO_SRC}
                   className="absolute inset-0 size-full object-cover"
