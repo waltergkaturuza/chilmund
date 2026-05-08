@@ -27,7 +27,7 @@ export function HomeContentSections() {
   return (
     <div className="home-content-sections space-y-0 [&_section]:scroll-mt-20">
       {/* Three pillars */}
-      <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
+      <section className="border-b border-slate-200/90 bg-white pb-16 pt-8 dark:border-white/10 dark:bg-slate-950 md:pb-22 md:pt-12">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center md:mb-14">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-700 dark:text-blue-400">Foundation</p>

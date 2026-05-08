@@ -9,39 +9,8 @@ import { MutedAutoplayLoopVideo } from './MutedAutoplayLoopVideo'
 
 /** Public / filename with spaces — URL-encoded for `<source>` */
 const HOME_HERO_DRONE_MP4_SRC = `/${encodeURIComponent('Chilmund drone mp4.mp4')}`
-const REMOVE_HOME_HERO_TEXT =
+const HOME_HERO_READ_MORE_TEXT =
   'Experience the unmatched performance and reliability of our world-class products. We are dedicated to making clean, safe water accessible to all, driving sustainable development, and building a brighter future for Africa.'
-
-type LexicalNode = {
-  type?: string
-  text?: string
-  children?: LexicalNode[]
-}
-
-const getNodeText = (node: LexicalNode): string => {
-  const own = node.text ?? ''
-  if (!Array.isArray(node.children) || node.children.length === 0) return own
-  return `${own}${node.children.map(getNodeText).join('')}`
-}
-
-const sanitizeHomeHeroRichText = <T,>(richText: T): T => {
-  if (!richText || typeof richText !== 'object') return richText
-
-  const value = richText as { root?: { children?: LexicalNode[] } }
-  const children = value.root?.children
-  if (!Array.isArray(children)) return richText
-
-  const filteredChildren = children.filter((node) => getNodeText(node).trim() !== REMOVE_HOME_HERO_TEXT)
-  if (filteredChildren.length === children.length) return richText
-
-  return {
-    ...(richText as object),
-    root: {
-      ...(value.root ?? {}),
-      children: filteredChildren,
-    },
-  } as T
-}
 
 export type LowImpactHeroProps = Page['hero'] & {
   pageSlug?: string
@@ -54,8 +23,6 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
   links,
   pageSlug,
 }) => {
-  const sanitizedRichText = pageSlug === 'home' ? sanitizeHomeHeroRichText(richText) : richText
-
   const summitHome = pageSlug === 'home'
 
   if (summitHome) {
@@ -70,18 +37,28 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
         />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-600/50 to-transparent" />
         {/* Near full-bleed: avoid global .container max-width so the hero (esp. video) uses almost the viewport. */}
-        <div className="relative mx-auto w-full max-w-none px-3 py-12 sm:px-4 md:px-5 md:py-16 lg:px-7 lg:py-20 xl:px-10">
+        <div className="relative mx-auto w-full max-w-none px-3 pb-12 pt-5 sm:px-4 sm:pt-6 md:px-5 md:pb-16 md:pt-7 lg:px-7 lg:pb-20 lg:pt-8 xl:px-10">
           {/* Slightly wider video column than copy on lg+ */}
           <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
             <div className="flex max-w-3xl flex-col justify-center lg:col-span-5 xl:max-w-none">
               {children ||
-                (sanitizedRichText && (
+                (richText && (
                   <RichText
                     className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-justify prose-p:text-lg prose-p:leading-relaxed prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline md:prose-p:text-xl [&_h1]:text-3xl [&_h1]:md:text-4xl [&_h1]:leading-tight [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:text-white/95"
-                    data={sanitizedRichText}
+                    data={richText}
                     enableGutter={false}
                   />
                 ))}
+              {!children && (
+                <details className="mt-3">
+                  <summary className="cursor-pointer text-sm font-semibold text-blue-400 underline-offset-4 transition-colors hover:text-blue-300 hover:underline">
+                    Read more
+                  </summary>
+                  <p className="mt-2 text-justify text-base leading-relaxed text-white/78 md:text-lg">
+                    {HOME_HERO_READ_MORE_TEXT}
+                  </p>
+                </details>
+              )}
               {Array.isArray(links) && links.length > 0 && (
                 <ul className="summit-hero-actions mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                   {links.map(({ link }, i) => {
