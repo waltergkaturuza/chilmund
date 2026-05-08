@@ -14,6 +14,7 @@ type Props = {
  */
 export function MutedAutoplayLoopVideo({ src, className, 'aria-label': ariaLabel }: Props) {
   const ref = useRef<HTMLVideoElement>(null)
+  const userPausedRef = useRef(false)
 
   useEffect(() => {
     const video = ref.current
@@ -30,6 +31,7 @@ export function MutedAutoplayLoopVideo({ src, className, 'aria-label': ariaLabel
     }
 
     const tryPlay = () => {
+      if (userPausedRef.current) return
       void video.play().catch(() => {
         /* Autoplay blocked or not ready; a later canplay / visibility event may succeed. */
       })
@@ -51,16 +53,34 @@ export function MutedAutoplayLoopVideo({ src, className, 'aria-label': ariaLabel
     }
   }, [src])
 
+  const onVideoClick = () => {
+    const video = ref.current
+    if (!video) return
+
+    if (video.paused) {
+      userPausedRef.current = false
+      void video.play().catch(() => {
+        /* Ignore blocked play attempts; user can click again. */
+      })
+      return
+    }
+
+    userPausedRef.current = true
+    video.pause()
+  }
+
   return (
     <video
       ref={ref}
-      className={className}
+      className={`cursor-pointer ${className ?? ''}`}
       autoPlay
       muted
       loop
       playsInline
       preload="auto"
       aria-label={ariaLabel}
+      onClick={onVideoClick}
+      title="Click to pause or play"
     >
       <source src={src} type="video/mp4" />
     </video>
