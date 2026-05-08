@@ -12,13 +12,13 @@ import React from 'react'
 
 const facilityGallery = [
   {
-    src: '/manufacturing/plant-reactors.png',
+    src: '/manufacturing plant.jpg',
     alt: 'Four large industrial chemical reactors suspended from a steel platform with yellow guardrails inside a modern factory.',
     caption:
-      'State-of-the-art chemical reactors at our primary Bindura manufacturing facility — engineered for dependable, high-volume output.',
+      'State-of-the-art chemical reactors at our primary Bindura manufacturing facility, engineered for dependable high-volume output.',
   },
   {
-    src: '/manufacturing/plant-processing.png',
+    src: '/Storage tanks.jpg',
     alt: 'Controlled liquid streams dispensing from a perforated pipe onto a metal processing surface.',
     caption:
       'Precise automated distribution along our chemical processing line — consistency you can rely on batch after batch.',
