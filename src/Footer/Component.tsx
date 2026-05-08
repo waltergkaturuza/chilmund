@@ -114,7 +114,7 @@ export async function Footer() {
               <Logo variant="light" />
             </Link>
             <p className="mt-6 max-w-md text-sm leading-relaxed text-white/70">
-              Trailblazing water treatment manufacturing from Bindura — up to 7,200 metric tons of
+              Trailblazing water treatment manufacturing from Bindura — up to 6,000 metric tons of
               aluminium sulphate per month. Quality, affordability, and service excellence for
               municipalities, industry, and communities across Southern Africa.
             </p>

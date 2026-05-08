@@ -32,7 +32,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
     richText: richRoot([
       heading('h1', HOME_HERO_H1),
       line(
-        'Chilmund Chemicals is a trailblazer in the water treatment industry. Our state-of-the-art manufacturing plant in Bindura, Zimbabwe — 86 km from Harare — is the fifth of its kind globally and the only one in Africa. Since transitioning from trading to manufacturing in July 2023, we have built capacity for up to 7,200 metric tons of aluminium sulphate per month.',
+        'Chilmund Chemicals is a trailblazer in the water treatment industry. Our state-of-the-art manufacturing plant in Bindura, Zimbabwe — 86 km from Harare — is the fifth of its kind globally and the only one in Africa. Since transitioning from trading to manufacturing in July 2023, we have built capacity for up to 6,000 metric tons of aluminium sulphate per month.',
       ),
       line(
         'Experience the unmatched performance and reliability of our world-class products. We are dedicated to making clean, safe water accessible to all, driving sustainable development, and building a brighter future for Africa.',
@@ -41,7 +41,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
   },
   meta: {
     description:
-      'Chilmund Chemicals — aluminium sulphate and water treatment chemicals from Bindura, Zimbabwe. 7,200 MT/month capacity. SAZ certified. Sales: sales@chilmund.co.zw',
+      'Chilmund Chemicals — aluminium sulphate and water treatment chemicals from Bindura, Zimbabwe. 6,000 MT/month capacity. SAZ certified. Sales: sales@chilmund.co.zw',
     title: 'Chilmund Chemicals | Water treatment chemicals — Bindura, Zimbabwe',
   },
   title: 'Home',
