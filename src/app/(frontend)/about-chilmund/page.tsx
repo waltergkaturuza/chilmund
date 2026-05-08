@@ -26,7 +26,7 @@ export default function AboutChilmundPage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-14">
           <div className="flex items-center justify-center md:min-h-[220px] lg:min-h-[248px]">
             <Image
-              src="/chilmund-logo.png"
+              src="/logo-new.svg"
               alt="Chilmund Chemicals"
               width={560}
               height={168}
