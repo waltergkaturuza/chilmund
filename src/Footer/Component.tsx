@@ -236,6 +236,49 @@ export async function Footer() {
                 </Link>
               </nav>
             </div>
+
+            <div className="sm:col-span-2">
+              <nav
+                aria-label="Legal"
+                className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[0.6875rem] leading-snug sm:text-xs"
+              >
+                <Link
+                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
+                  href="/privacy-policy"
+                >
+                  Privacy Policy
+                </Link>
+                <span aria-hidden className="text-white/20">
+                  ·
+                </span>
+                <Link
+                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
+                  href="/terms-of-use"
+                >
+                  Terms of Use
+                </Link>
+                <span aria-hidden className="text-white/20">
+                  ·
+                </span>
+                <Link
+                  className="text-white/[0.07] underline-offset-2 transition-colors hover:text-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  href="/admin"
+                >
+                  Admin
+                </Link>
+              </nav>
+              <p className="mt-2 text-[0.6875rem] leading-snug text-white/58 sm:text-xs">
+                Platform developed by{' '}
+                <a
+                  className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+                  href="https://www.quantistechnologies.co.zw/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Quantis Technologies
+                </a>
+              </p>
+            </div>
           </div>
 
           {/* ── Column 4: social ─────────────────────────────────── */}
@@ -304,49 +347,9 @@ export async function Footer() {
         {/* ── Copyright, legal links, attribution ─ */}
         <div className="mt-10 border-t border-white/10 pt-5 md:pt-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-6">
-            <div className="space-y-2.5 text-center md:text-left">
+            <div className="text-center md:text-left">
               <p className="text-xs text-white/50">
                 © {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.
-              </p>
-              <nav
-                aria-label="Legal"
-                className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.6875rem] leading-snug sm:text-xs md:justify-start"
-              >
-                <Link
-                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
-                  href="/privacy-policy"
-                >
-                  Privacy Policy
-                </Link>
-                <span aria-hidden className="text-white/20">
-                  ·
-                </span>
-                <Link
-                  className="text-white/55 underline-offset-2 transition-colors hover:text-white/95 hover:underline"
-                  href="/terms-of-use"
-                >
-                  Terms of Use
-                </Link>
-                <span aria-hidden className="text-white/20">
-                  ·
-                </span>
-                <Link
-                  className="text-white/[0.07] underline-offset-2 transition-colors hover:text-white/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/35 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-                  href="/admin"
-                >
-                  Admin
-                </Link>
-              </nav>
-              <p className="text-[0.6875rem] leading-snug text-white/58 sm:text-xs">
-                Platform developed by{' '}
-                <a
-                  className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
-                  href="https://www.quantistechnologies.co.zw/"
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Quantis Technologies
-                </a>
               </p>
             </div>
             <p className="max-w-md self-center text-justify text-xs text-white/45 md:self-start md:text-right">

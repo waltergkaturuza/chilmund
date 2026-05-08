@@ -17,6 +17,7 @@ import React from 'react'
 
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { cn } from '@/utilities/ui'
+import { SheqImageSlideshow } from './SheqImageSlideshow'
 
 export const metadata: Metadata = {
   title: 'SHEQ & Integrated Management System | Chilmund Chemicals',
@@ -96,27 +97,33 @@ export default function SHEQPage() {
                   an Integrated Management System comprising <strong className="font-semibold">ISO&nbsp;9001</strong>,{' '}
                   <strong className="font-semibold">ISO&nbsp;14001</strong>, and <strong className="font-semibold">ISO&nbsp;45001</strong>.
                 </p>
-                <p>
-                  Chilmund Chemicals is in the{' '}
-                  <strong className="font-semibold text-slate-900 dark:text-white">final follow-up audit and verification</strong>{' '}
-                  stages toward <strong className="font-semibold text-slate-900 dark:text-white">SAZ IMS certification</strong>.
-                  Throughout this journey we have cultivated a congruent IMS organisational culture, resolving
-                  non-conformities and issues of concern through structured root cause analysis, corrective actions, and
-                  strengthened internal audits. That persistence shows we are committed to continual improvement and compliance
-                  across Quality, Safety, Health, and Environment.
-                </p>
+                <details>
+                  <summary className="cursor-pointer text-sm font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
+                    Read more
+                  </summary>
+                  <p className="mt-3">
+                    Chilmund Chemicals is in the final follow-up audit and verification stages toward SAZ IMS certification.
+                    Throughout this journey we have cultivated a congruent IMS organisational culture, resolving
+                    non-conformities and issues of concern through structured root cause analysis, corrective actions, and
+                    strengthened internal audits. That persistence shows we are committed to continual improvement and
+                    compliance across Quality, Safety, Health, and Environment.
+                  </p>
+                </details>
               </div>
             </div>
             <figure className="lg:col-span-6">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-900/60">
-                <Image
-                  src="/Chilmund Employees on on Asembly point.jpg"
-                  alt="Chilmund team at assembly point during a SHEQ safety briefing."
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
+              <SheqImageSlideshow
+                slides={[
+                  {
+                    src: '/Chilmund Employees on on Asembly point.jpg',
+                    alt: 'Chilmund team at assembly point during a SHEQ safety briefing.',
+                  },
+                  {
+                    src: '/SHEQ Info.jpeg',
+                    alt: 'SHEQ information visual showing Chilmund safety and quality systems.',
+                  },
+                ]}
+              />
               <figcaption className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/55">
                 SHEQ culture in action: team readiness and assembly-point discipline supporting safe operations.
               </figcaption>

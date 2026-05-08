@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MutedAutoplayLoopVideo } from '@/heros/LowImpact/MutedAutoplayLoopVideo'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import {
@@ -9,6 +10,8 @@ import {
 } from '@/utilities/manufacturingPlantMapsEmbed'
 import { Factory, Gauge, HardHat, MapPin, Recycle, Shield, Truck, Zap } from 'lucide-react'
 import React from 'react'
+
+const HOME_HERO_DRONE_MP4_SRC = `/${encodeURIComponent('Chilmund drone mp4.mp4')}`
 
 const facilityGallery = [
   {
@@ -107,13 +110,21 @@ export default async function ManufacturingPlantPage() {
                 className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/80 dark:shadow-none"
               >
                 <div className="relative aspect-[4/3] w-full bg-slate-200 dark:bg-slate-800">
-                  <Image
-                    src={item.src}
-                    alt={item.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
+                  {item.src === '/manufacturing plant.jpg' ? (
+                    <MutedAutoplayLoopVideo
+                      src={HOME_HERO_DRONE_MP4_SRC}
+                      className="absolute inset-0 size-full object-cover object-center"
+                      aria-label="Aerial view of Chilmund manufacturing facility"
+                    />
+                  ) : (
+                    <Image
+                      src={item.src}
+                      alt={item.alt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                  )}
                 </div>
                 <figcaption className="border-t border-slate-100 px-5 py-4 text-sm leading-relaxed text-slate-600 dark:border-white/10 dark:text-white/70 md:px-6 md:py-5 md:text-[0.9375rem]">
                   {item.caption}
