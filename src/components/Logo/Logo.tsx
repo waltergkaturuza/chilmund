@@ -4,14 +4,14 @@ import React from 'react'
 
 interface Props {
   className?: string
-  /** Light-on-dark wordmark (e.g. over hero) */
+  /** Preserved for compatibility with existing call sites */
   variant?: 'default' | 'light'
   loading?: 'lazy' | 'eager'
   priority?: 'auto' | 'high' | 'low'
 }
 
 export const Logo = (props: Props) => {
-  const { className, variant = 'default' } = props
+  const { className } = props
 
   return (
     <span
@@ -25,10 +25,7 @@ export const Logo = (props: Props) => {
         alt="Chilmund Chemicals"
         width={160}
         height={48}
-        className={clsx(
-          'h-8 w-auto md:h-10',
-          variant === 'light' && 'brightness-0 invert',
-        )}
+        className="h-8 w-auto md:h-10"
         priority
       />
     </span>
