@@ -20,18 +20,18 @@ const stats = [
 export default function AboutChilmundPage() {
   return (
     <article className="min-h-screen">
-      {/* Hero — logo left, copy centered in right column */}
+      {/* Hero — photo left, copy centered in right column */}
       <section className={aboutHeroSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-14">
           <div className="flex items-center justify-center md:min-h-[220px] lg:min-h-[248px]">
             <Image
-              src="/chilmund-logo.png"
-              alt="Chilmund Chemicals"
-              width={560}
-              height={168}
-              className="h-auto w-full max-w-[min(100%,22rem)] brightness-0 invert md:max-w-none md:w-[min(100%,28rem)] lg:w-[min(100%,32rem)]"
-              sizes="(max-width: 768px) 100vw, 50vw"
+              src="/Chilmund Employees on on Asembly point.jpg"
+              alt="Chilmund team at assembly point"
+              width={1200}
+              height={800}
+              className="h-auto w-full max-w-[min(100%,24rem)] rounded-2xl border border-white/15 object-cover shadow-2xl md:max-w-none md:w-[min(100%,30rem)] lg:w-[min(100%,34rem)]"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 560px"
               priority
             />
           </div>
