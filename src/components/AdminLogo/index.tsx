@@ -8,7 +8,7 @@ export default function AdminLogo() {
   return (
     <div className="chilmund-admin-logo">
       <Image
-        src="/logo-new.svg"
+        src="/chilmund-logo.png"
         alt="Chilmund Chemicals"
         width={220}
         height={66}

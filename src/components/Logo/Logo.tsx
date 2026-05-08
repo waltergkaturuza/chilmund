@@ -21,7 +21,7 @@ export const Logo = (props: Props) => {
       )}
     >
       <Image
-        src="/logo-new.svg"
+        src="/chilmund-logo.png"
         alt="Chilmund Chemicals"
         width={160}
         height={48}
