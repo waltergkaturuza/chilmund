@@ -497,7 +497,7 @@ export function HeaderNavMobileDrawer({
   return (
     <div
       id={id}
-      className="fixed inset-0 z-50 lg:hidden"
+      className="fixed inset-0 z-[2000] lg:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Main navigation"
