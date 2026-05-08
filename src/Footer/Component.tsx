@@ -238,8 +238,8 @@ export async function Footer() {
             </div>
           </div>
 
-          {/* ── Column 3: social + appearance ────────────────────── */}
-          <div className="flex flex-col justify-between gap-8 border-t border-white/10 pt-10 lg:col-span-4 lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+          {/* ── Column 4: social ─────────────────────────────────── */}
+          <div className="border-t border-white/10 pt-10 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Social
@@ -287,16 +287,17 @@ export async function Footer() {
                 )}
               </ul>
             </div>
+          </div>
 
-            <div>
-              <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
-                Appearance
-              </h3>
-              <div className="mt-4 text-white/80 [&_button]:border-white/20 [&_button]:text-white">
-                <ThemeSelector />
-              </div>
-              <FooterQuoteButton />
+          {/* ── Column 5: appearance + quote ─────────────────────── */}
+          <div className="border-t border-white/10 pt-10 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+            <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
+              Appearance
+            </h3>
+            <div className="mt-4 text-white/80 [&_button]:border-white/20 [&_button]:text-white">
+              <ThemeSelector />
             </div>
+            <FooterQuoteButton />
           </div>
         </div>
 
@@ -336,23 +337,22 @@ export async function Footer() {
                   Admin
                 </Link>
               </nav>
+              <p className="text-[0.6875rem] leading-snug text-white/58 sm:text-xs">
+                Platform developed by{' '}
+                <a
+                  className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
+                  href="https://www.quantistechnologies.co.zw/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Quantis Technologies
+                </a>
+              </p>
             </div>
             <p className="max-w-md self-center text-justify text-xs text-white/45 md:self-start md:text-right">
               MSDS, COA, and company profile available on request from sales.
             </p>
           </div>
-
-          <p className="mt-6 border-t border-white/10 pb-2 pt-5 text-center text-[0.6875rem] leading-snug text-white/58 sm:text-xs">
-            Platform developed by{' '}
-            <a
-              className="font-semibold text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline"
-              href="https://www.quantistechnologies.co.zw/"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              Quantis Technologies
-            </a>
-          </p>
         </div>
       </div>
     </footer>
