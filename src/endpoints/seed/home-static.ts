@@ -34,9 +34,6 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
       line(
         'Chilmund Chemicals is a trailblazer in the water treatment industry. Our state-of-the-art manufacturing plant in Bindura, Zimbabwe — 86 km from Harare — is the fifth of its kind globally and the only one in Africa. Since transitioning from trading to manufacturing in July 2023, we have built capacity for up to 6,000 metric tons of aluminium sulphate per month.',
       ),
-      line(
-        'Experience the unmatched performance and reliability of our world-class products. We are dedicated to making clean, safe water accessible to all, driving sustainable development, and building a brighter future for Africa.',
-      ),
     ]),
   },
   meta: {
