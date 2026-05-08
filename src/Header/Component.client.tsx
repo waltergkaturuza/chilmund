@@ -17,7 +17,6 @@ import {
   HeaderNavDesktopStrip,
   HeaderNavMobileButton,
   HeaderNavMobileDrawer,
-  HeaderSearchTrigger,
 } from './Nav'
 
 interface HeaderClientProps {
@@ -111,11 +110,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
           {/* Utilities + CTA — far right */}
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
-            {/* Desktop-only: search bar, language selector */}
-            <HeaderSearchTrigger
-              dark={isDarkHeader}
-              className="hidden lg:inline-flex"
-            />
+            {/* Desktop-only: language selector */}
             <div className="hidden sm:block">
               <LanguageSelector dark={isDarkHeader} />
             </div>

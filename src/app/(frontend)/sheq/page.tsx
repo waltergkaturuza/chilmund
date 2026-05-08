@@ -262,7 +262,7 @@ export default function SHEQPage() {
                 'Incident reporting with investigation and corrective actions',
                 'Ongoing safety training and behavioural awareness',
               ]}
-              accent="bg-amber-600"
+              accent="bg-blue-600"
             />
             <PillarCard
               title="Health"
@@ -272,7 +272,7 @@ export default function SHEQPage() {
                 'Employee wellness initiatives',
                 'Workplace hygiene and ergonomics reviews',
               ]}
-              accent="bg-rose-600"
+              accent="bg-blue-600"
             />
             <PillarCard
               title="Environment"
@@ -282,7 +282,7 @@ export default function SHEQPage() {
                 'Pollution-prevention safeguards',
                 'Alignment with prevailing environmental statutes',
               ]}
-              accent="bg-emerald-600"
+              accent="bg-blue-600"
             />
             <PillarCard
               title="Quality"
@@ -403,7 +403,9 @@ function PillarCard({
       <ul className="space-y-2.5 px-5 py-4 text-sm leading-relaxed text-slate-600 dark:text-white/60">
         {bullets.map((b) => (
           <li key={b} className="flex gap-2">
-            <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-slate-400 dark:bg-white/40" aria-hidden />
+            <span className="mt-0.5 shrink-0 text-blue-600 dark:text-blue-400" aria-hidden>
+              ✓
+            </span>
             {b}
           </li>
         ))}
