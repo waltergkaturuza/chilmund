@@ -77,32 +77,50 @@ export default function SHEQPage() {
 
       {/* Overview */}
       <section className="border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            SHEQ &amp; Integrated Management System (IMS)
-          </h2>
-          <div className="mt-6 space-y-5 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
-            <p>
-              At Chilmund Chemicals, Safety, Health, Environment, and Quality (SHEQ) are fundamental to how we operate.
-              Our commitment is embedded in an{' '}
-              <strong className="font-semibold text-slate-900 dark:text-white">Integrated Management System (IMS)</strong>{' '}
-              that ensures responsible operations, protection of people and the environment, and consistent delivery of
-              high-quality products and services.
-            </p>
-            <p className="font-medium text-slate-800 dark:text-white/85">
-              Our dedication to safety, health, environmental integrity and quality underpins an arduous journey toward
-              an Integrated Management System comprising <strong className="font-semibold">ISO&nbsp;9001</strong>,{' '}
-              <strong className="font-semibold">ISO&nbsp;14001</strong>, and <strong className="font-semibold">ISO&nbsp;45001</strong>.
-            </p>
-            <p>
-              Chilmund Chemicals is in the{' '}
-              <strong className="font-semibold text-slate-900 dark:text-white">final follow-up audit and verification</strong>{' '}
-              stages toward <strong className="font-semibold text-slate-900 dark:text-white">SAZ IMS certification</strong>.
-              Throughout this journey we have cultivated a congruent IMS organisational culture, resolving
-              non-conformities and issues of concern through structured root cause analysis, corrective actions, and
-              strengthened internal audits. That persistence shows we are committed to continual improvement and compliance
-              across Quality, Safety, Health, and Environment.
-            </p>
+        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
+            <div className="lg:col-span-6">
+              <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                Integrated Management System (IMS)
+              </h2>
+              <div className="mt-6 space-y-5 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
+                <p>
+                  At Chilmund Chemicals, Safety, Health, Environment, and Quality (SHEQ) are fundamental to how we operate.
+                  Our commitment is embedded in an{' '}
+                  <strong className="font-semibold text-slate-900 dark:text-white">Integrated Management System (IMS)</strong>{' '}
+                  that ensures responsible operations, protection of people and the environment, and consistent delivery of
+                  high-quality products and services.
+                </p>
+                <p className="font-medium text-slate-800 dark:text-white/85">
+                  Our dedication to safety, health, environmental integrity and quality underpins an arduous journey toward
+                  an Integrated Management System comprising <strong className="font-semibold">ISO&nbsp;9001</strong>,{' '}
+                  <strong className="font-semibold">ISO&nbsp;14001</strong>, and <strong className="font-semibold">ISO&nbsp;45001</strong>.
+                </p>
+                <p>
+                  Chilmund Chemicals is in the{' '}
+                  <strong className="font-semibold text-slate-900 dark:text-white">final follow-up audit and verification</strong>{' '}
+                  stages toward <strong className="font-semibold text-slate-900 dark:text-white">SAZ IMS certification</strong>.
+                  Throughout this journey we have cultivated a congruent IMS organisational culture, resolving
+                  non-conformities and issues of concern through structured root cause analysis, corrective actions, and
+                  strengthened internal audits. That persistence shows we are committed to continual improvement and compliance
+                  across Quality, Safety, Health, and Environment.
+                </p>
+              </div>
+            </div>
+            <figure className="lg:col-span-6">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-900/60">
+                <Image
+                  src="/Chilmund Employees on on Asembly point.jpg"
+                  alt="Chilmund team at assembly point during a SHEQ safety briefing."
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <figcaption className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/55">
+                SHEQ culture in action: team readiness and assembly-point discipline supporting safe operations.
+              </figcaption>
+            </figure>
           </div>
         </div>
       </section>
