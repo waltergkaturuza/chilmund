@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const accreditations = [
   {
-    title: 'ISO 9001:2015',
+    title: 'IMS ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015',
     body: 'International Organization for Standardization',
     desc: 'Quality Management System certification ensuring consistent product quality and continuous improvement in all processes.',
     icon: <Shield className="size-6" />,

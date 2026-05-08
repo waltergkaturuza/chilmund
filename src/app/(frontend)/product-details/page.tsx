@@ -19,10 +19,9 @@ const applications = [
 ]
 
 const certifications = [
-  'ISO 9001:2015 Quality Management',
-  'SAZ (Standards Association of Zimbabwe) certified',
+  'IMS ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015',
+  'Standards Association of Zimbabwe (SAZ) certified Product',
   'SHEQ compliance verified',
-  'Environmental Impact Assessment approved',
 ]
 
 export default function ProductDetailsPage() {
