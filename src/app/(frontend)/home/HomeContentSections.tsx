@@ -191,7 +191,7 @@ export function HomeContentSections() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Link
                   className="inline-flex rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-500"
-                  href="/products"
+                  href="/product-details"
                 >
                   Browse products
                 </Link>

@@ -48,8 +48,8 @@ export default function ProductDetailsPage() {
             Aluminium sulphate — product at a glance
           </h2>
           <p className="mx-auto mt-3 max-w-none text-center text-sm leading-snug text-slate-600 text-balance md:max-w-4xl md:text-base dark:text-white/55">
-            SAZ-aligned labelling and controlled batch release — the same quality that leaves our warehouse for
-            municipalities, industry, and agriculture across the region.
+            We cater for various Granular size, fine poweder, and liquid product. All certified with SAZ product MArk
+            (ZWS 1120.2024)
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">

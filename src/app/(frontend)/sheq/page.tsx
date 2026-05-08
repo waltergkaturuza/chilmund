@@ -232,9 +232,9 @@ export default function SHEQPage() {
                   aspectClass="aspect-[4/3] sm:aspect-[3/2]"
                 />
                 <SheqPhoto
-                  src="/sheq/lab-analyst-titration.png"
-                  alt="Analyst in PPE performing titration at fume hood with burettes and labelled reagents."
-                  caption="Analyst-controlled titrations and fume-hood disciplines aligned with SHEQ protocols."
+                  src="/DSC02575.jpg"
+                  alt="Atomic absorption spectrometer used for laboratory quality analysis."
+                  caption="Atomic absorption spectrometer supporting precise SHEQ-aligned laboratory analysis."
                   aspectClass="aspect-[4/3] sm:aspect-[3/2]"
                 />
               </div>

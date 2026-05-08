@@ -180,7 +180,7 @@ export function FloatingContactClient({
         aria-label={open ? 'Close contact menu' : 'Open contact menu'}
         className={cn(
           'pointer-events-auto flex size-14 items-center justify-center rounded-full shadow-lg transition-transform active:scale-95',
-          'bg-primary text-primary-foreground hover:opacity-90',
+          'bg-blue-600 text-white hover:bg-blue-500',
         )}
         type="button"
         onClick={() => setOpen((v) => !v)}
