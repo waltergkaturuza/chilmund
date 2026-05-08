@@ -5,10 +5,7 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
 
-import { MutedAutoplayLoopVideo } from './MutedAutoplayLoopVideo'
-
-/** Public / filename with spaces — URL-encoded for `<source>` */
-const HOME_HERO_DRONE_MP4_SRC = `/${encodeURIComponent('Chilmund drone mp4.mp4')}`
+import { HomeHeroSlideshow } from './HomeHeroSlideshow'
 const HOME_HERO_READ_MORE_TEXT =
   'Experience the unmatched performance and reliability of our world-class products. We are dedicated to making clean, safe water accessible to all, driving sustainable development, and building a brighter future for Africa.'
 
@@ -73,14 +70,10 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
             </div>
             <div className="relative flex min-h-0 flex-col lg:col-span-7 lg:min-h-[min(520px,_62vh)]">
               <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.5)] ring-1 ring-white/10 sm:min-h-[280px] lg:min-h-0">
-                <MutedAutoplayLoopVideo
-                  src={HOME_HERO_DRONE_MP4_SRC}
-                  className="absolute inset-0 size-full object-cover object-center"
-                  aria-label="Aerial view of Chilmund manufacturing and infrastructure"
-                />
+                <HomeHeroSlideshow className="absolute inset-0 size-full" />
               </div>
               <p className="mt-3 shrink-0 text-center text-[0.7rem] uppercase tracking-[0.12em] text-white/50 lg:text-right">
-                Manufacturing campus — aerial view
+                Manufacturing campus — photo highlights
               </p>
             </div>
           </div>
