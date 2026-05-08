@@ -113,8 +113,8 @@ export async function Footer() {
             <Link className="inline-flex" href="/">
               <Logo variant="light" />
             </Link>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-white/70">
-              Trailblazing water treatment manufacturing from Bindura — up to 6,000 metric tons of
+            <p className="mt-6 max-w-md text-justify text-sm leading-relaxed text-white/70">
+              Trailblazing water treatment manufacturing from Bindura, with up to 6,000 metric tons of
               aluminium sulphate per month. Quality, affordability, and service excellence for
               municipalities, industry, and communities across Southern Africa.
             </p>
@@ -337,7 +337,7 @@ export async function Footer() {
                 </Link>
               </nav>
             </div>
-            <p className="max-w-md self-center text-center text-xs text-white/45 md:self-start md:text-right">
+            <p className="max-w-md self-center text-justify text-xs text-white/45 md:self-start md:text-right">
               MSDS, COA, and company profile available on request from sales.
             </p>
           </div>
