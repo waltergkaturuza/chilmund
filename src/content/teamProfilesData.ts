@@ -176,6 +176,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     imageFile: 'Fungai Gavu - Technical and Marketing Executive.jpg',
     featured: false,
     order: 11,
+    photoObjectPosition: 'object-top',
     credentials: 'Bachelor of Technology in Applied Chemistry, Chemical Processing Technology Hons',
     fullProfile:
       'Fungai brings 30+ years of experience in the industrial chemicals manufacturing and distribution industry. This extensive experience spans local and international trade, with deep expertise in industrial chemicals application and processes, industrial chemicals sales and marketing, international trade procedures and business administration.',
