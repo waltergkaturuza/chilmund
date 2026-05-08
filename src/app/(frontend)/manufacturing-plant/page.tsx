@@ -15,19 +15,19 @@ const facilityGallery = [
     src: '/manufacturing plant.jpg',
     alt: 'Four large industrial chemical reactors suspended from a steel platform with yellow guardrails inside a modern factory.',
     caption:
-      'State-of-the-art chemical reactors at our primary Bindura manufacturing facility, engineered for dependable high-volume output.',
+      'Bindura manufacturing facility, engineered for dependable high-volume output.',
   },
   {
     src: '/Storage tanks.jpg',
     alt: 'Controlled liquid streams dispensing from a perforated pipe onto a metal processing surface.',
     caption:
-      'Precise automated distribution along our chemical processing line — consistency you can rely on batch after batch.',
+      'Liquid Product Storage Tanks',
   },
   {
-    src: '/manufacturing/plant-packaging.png',
+    src: '/Storage Tanks (2).jpg',
     alt: 'Chilmund Chemicals personnel in branded coveralls packing large bags of Aluminium sulphate beside industrial bagging machinery.',
     caption:
-      'Our trained team oversees packaging under strict SHEQ standards — alum and ancillary products labelled and pallet-ready for shipment.',
+      'Storage Tanks',
   },
   {
     src: '/manufacturing/plant-logistics.png',
@@ -100,14 +100,7 @@ export default async function ManufacturingPlantPage() {
       {/* Facility gallery */}
       <section className="border-b border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16 md:py-20">
-          <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
-            Inside the plant
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/55 md:text-base">
-            A glimpse of Bindura&apos;s reactors, finishing line, packaging floor, and warehouse — where SAZ-aligned
-            quality meets scale.
-          </p>
-          <div className="mt-12 grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
+          <div className="grid gap-8 md:grid-cols-2 md:gap-10 lg:gap-12">
             {facilityGallery.map((item) => (
               <figure
                 key={item.src}
