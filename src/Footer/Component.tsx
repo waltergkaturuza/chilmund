@@ -106,8 +106,8 @@ export async function Footer() {
 
   return (
     <footer className="mt-auto border-t border-white/10 bg-[linear-gradient(180deg,oklch(16%_0.04_250deg)_0%,oklch(12%_0.035_250deg)_100%)] text-white">
-      <div className="container py-14 md:py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+      <div className="mx-auto w-full max-w-[1920px] px-4 py-10 sm:px-5 md:px-7 md:py-12 lg:px-10">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* ── Column 1: brand + addresses ──────────────────────── */}
           <div className="lg:col-span-4">
             <Link className="inline-flex" href="/">
@@ -239,7 +239,7 @@ export async function Footer() {
           </div>
 
           {/* ── Column 4: social ─────────────────────────────────── */}
-          <div className="border-t border-white/10 pt-10 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+          <div className="border-t border-white/10 pt-8 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
             <div>
               <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
                 Social
@@ -290,7 +290,7 @@ export async function Footer() {
           </div>
 
           {/* ── Column 5: appearance + quote ─────────────────────── */}
-          <div className="border-t border-white/10 pt-10 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
+          <div className="border-t border-white/10 pt-8 lg:col-span-2 lg:border-l lg:border-t-0 lg:pl-6 lg:pt-0">
             <h3 className="text-xs font-bold uppercase tracking-[0.2em] text-blue-400/90">
               Appearance
             </h3>
@@ -302,8 +302,8 @@ export async function Footer() {
         </div>
 
         {/* ── Copyright, legal links, attribution ─ */}
-        <div className="mt-14 border-t border-white/10 pt-8 md:pt-10">
-          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between md:gap-8">
+        <div className="mt-10 border-t border-white/10 pt-5 md:pt-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between md:gap-6">
             <div className="space-y-2.5 text-center md:text-left">
               <p className="text-xs text-white/50">
                 © {new Date().getFullYear()} Chilmund Chemicals. All rights reserved.

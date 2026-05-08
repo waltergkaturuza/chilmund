@@ -99,7 +99,7 @@ export function HomeContentSections() {
       <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/50 md:py-22">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
+            <div className="home-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
               <BadgeCheck className="mb-5 size-9 text-blue-600 dark:text-blue-400" />
               <h2 className="text-xl font-bold uppercase tracking-wide text-slate-900 dark:text-white">Our vision</h2>
               <p className="mt-4 text-[1.05rem] leading-relaxed text-slate-700 dark:text-white/65">
@@ -117,7 +117,7 @@ export function HomeContentSections() {
                 and stakeholder commitments.
               </p>
             </div>
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
+            <div className="home-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
               <Sprout className="mb-5 size-9 text-emerald-600 dark:text-emerald-400" />
               <h2 className="text-xl font-bold uppercase tracking-wide text-slate-900 dark:text-white">Our mission</h2>
               <p className="mt-4 text-[1.05rem] leading-relaxed text-slate-700 dark:text-white/65">
@@ -156,7 +156,7 @@ export function HomeContentSections() {
             {coreValues.map((v, i) => (
               <li
                 key={v.title}
-                className="group flex gap-4 rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50/95 p-5 shadow-sm transition-colors hover:border-blue-100 hover:shadow-md dark:border-white/10 dark:from-slate-900 dark:to-slate-950 dark:hover:border-blue-900/60"
+                className="home-card group flex gap-4 rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50/95 p-5 shadow-sm transition-colors hover:border-blue-100 hover:shadow-md dark:border-white/10 dark:from-slate-900 dark:to-slate-950 dark:hover:border-blue-900/60"
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white dark:bg-blue-700">
                   {i + 1}
@@ -267,7 +267,7 @@ export function HomeContentSections() {
       {/* SHEQ */}
       <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
         <div className="container mx-auto max-w-6xl px-4">
-          <div className="overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:flex">
+          <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:flex">
             <div className="flex-1 p-8 md:p-12 lg:max-w-[58%]">
               <ShieldCheck className="size-10 text-blue-600 dark:text-blue-400" />
               <h2 className="mt-6 text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">
@@ -338,7 +338,7 @@ export function HomeContentSections() {
       {/* CSR + Awards row */}
       <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/40 md:py-22">
         <div className="container mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-2 lg:gap-12">
-          <div className="rounded-3xl border border-emerald-900/25 bg-emerald-950/[0.14] px-8 py-10 shadow-sm dark:bg-emerald-950/35">
+          <div className="home-card rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/12 dark:bg-slate-950/85">
             <Leaf className="size-10 text-emerald-500" />
             <h2 className="mt-4 text-2xl font-extrabold text-slate-900 dark:text-white">Impact (CSR)</h2>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
@@ -349,7 +349,7 @@ export function HomeContentSections() {
               CSR programmes &amp; stories →
             </Link>
           </div>
-          <div className="rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/12 dark:bg-slate-950/85">
+          <div className="home-card rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/12 dark:bg-slate-950/85">
             <Award className="size-10 text-amber-500" />
             <h2 className="mt-4 text-2xl font-extrabold text-slate-900 dark:text-white">Industry accolades</h2>
             <ul className="mt-6 space-y-3 text-[0.9375rem] text-slate-700 dark:text-white/60">
@@ -428,7 +428,7 @@ function PillarCard({
   accentClass: string
 }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white px-7 py-6 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
+    <div className="home-card flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white px-7 py-6 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
       <div className={`flex size-12 items-center justify-center rounded-xl ${accentClass}`}>{icon}</div>
       <h3 className="mt-4 text-xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h3>
       <p className="text-sm font-medium text-slate-600 dark:text-white/60">{subtitle}</p>
@@ -441,3 +441,4 @@ function PillarCard({
     </div>
   )
 }
+

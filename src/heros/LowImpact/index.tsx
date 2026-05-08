@@ -37,14 +37,14 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
         />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-600/50 to-transparent" />
         {/* Near full-bleed: avoid global .container max-width so the hero (esp. video) uses almost the viewport. */}
-        <div className="relative mx-auto w-full max-w-none px-3 pb-12 pt-5 sm:px-4 sm:pt-6 md:px-5 md:pb-16 md:pt-7 lg:px-7 lg:pb-20 lg:pt-8 xl:px-10">
+        <div className="relative mx-auto w-full max-w-none px-3 pb-6 pt-5 sm:px-4 sm:pt-6 md:px-5 md:pb-8 md:pt-7 lg:px-7 lg:pb-10 lg:pt-8 xl:px-10">
           {/* Slightly wider video column than copy on lg+ */}
           <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
             <div className="flex max-w-3xl flex-col justify-center lg:col-span-5 xl:max-w-none">
               {children ||
                 (richText && (
                   <RichText
-                    className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-justify prose-p:text-lg prose-p:leading-relaxed prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline md:prose-p:text-xl [&_h1]:text-3xl [&_h1]:md:text-4xl [&_h1]:leading-tight [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:text-white/95"
+                    className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-justify prose-p:text-lg prose-p:leading-relaxed prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline md:prose-p:text-xl [&_h1]:text-justify [&_h1]:text-3xl [&_h1]:text-blue-400 [&_h1]:md:text-4xl [&_h1]:leading-tight [&_h2]:text-2xl [&_h2]:md:text-3xl [&_h2]:text-white/95"
                     data={richText}
                     enableGutter={false}
                   />
@@ -60,7 +60,7 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
                 </details>
               )}
               {Array.isArray(links) && links.length > 0 && (
-                <ul className="summit-hero-actions mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+                <ul className="summit-hero-actions mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                   {links.map(({ link }, i) => {
                     return (
                       <li key={i}>
