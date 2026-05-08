@@ -45,7 +45,7 @@ export function HomeContentSections() {
           <div className="grid gap-6 md:grid-cols-3">
             <PillarCard
               icon={<Trophy className="size-7" />}
-              hue="from-amber-500/90 to-amber-700"
+              accentClass="bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
               title="Quality"
               subtitle="Highest global standards"
               body="We deliver world-class products that meet rigorous specifications and audit-driven consistency."
@@ -61,7 +61,7 @@ export function HomeContentSections() {
             />
             <PillarCard
               icon={<Handshake className="size-7" />}
-              hue="from-emerald-500/90 to-emerald-800"
+              accentClass="bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
               title="Affordability"
               subtitle="Inclusive access"
               body="We design solutions so that safe water chemistry remains accessible regardless of economic context."
@@ -77,7 +77,7 @@ export function HomeContentSections() {
             />
             <PillarCard
               icon={<HeartHandshake className="size-7" />}
-              hue="from-blue-600/95 to-blue-900"
+              accentClass="bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300"
               title="Service excellence"
               subtitle="Reliability on spec &amp; schedule"
               body="Customer satisfaction anchors every dispatch — disciplined logistics, proactive communication and follow-through."
@@ -99,20 +99,19 @@ export function HomeContentSections() {
       <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/50 md:py-22">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
-            <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-[linear-gradient(155deg,_oklch(22%_0.06_250deg)_0%,_oklch(16%_0.05_248deg)_100%)] px-8 py-10 text-white shadow-xl dark:border-white/15">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -right-8 -top-8 size-40 rounded-full bg-blue-400/25 blur-2xl"
-              />
-              <BadgeCheck className="relative mb-5 size-9 text-emerald-300" />
-              <h2 className="relative text-xl font-bold uppercase tracking-wide text-white/95">Our vision</h2>
-              <p className="relative mt-4 text-[1.05rem] leading-relaxed text-white/82">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
+              <BadgeCheck className="mb-5 size-9 text-blue-600 dark:text-blue-400" />
+              <h2 className="text-xl font-bold uppercase tracking-wide text-slate-900 dark:text-white">Our vision</h2>
+              <p className="mt-4 text-[1.05rem] leading-relaxed text-slate-700 dark:text-white/65">
                 To be the most sustainable and trusted Pan-African water treatment chemicals partner, empowering
                 communities to thrive through clean, accessible water.
               </p>
-              <p className="relative mt-6 text-sm font-medium text-white/55">
+              <p className="mt-6 text-sm font-medium text-slate-600 dark:text-white/55">
                 Aligned with our{' '}
-                <Link className="rounded-md bg-white/15 px-2 py-0.5 text-white underline-offset-4 hover:bg-white/25 hover:underline" href="/regional-markets">
+                <Link
+                  className="rounded-md bg-blue-50 px-2 py-0.5 text-blue-800 underline-offset-4 transition-colors hover:bg-blue-100 hover:underline dark:bg-blue-950/50 dark:text-blue-100 dark:hover:bg-blue-950"
+                  href="/regional-markets"
+                >
                   regional roadmap
                 </Link>{' '}
                 and stakeholder commitments.
@@ -419,23 +418,21 @@ function PillarCard({
   subtitle,
   body,
   foot,
-  hue,
+  accentClass,
 }: {
   icon: React.ReactNode
   title: string
   subtitle: string
   body: string
   foot: React.ReactNode
-  hue: string
+  accentClass: string
 }) {
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-md dark:border-white/12 dark:bg-slate-950/85">
-      <div className={`bg-gradient-to-br px-7 py-6 text-white shadow-inner ${hue}`}>
-        <div className="flex items-center gap-3 opacity-[0.98]">{icon}</div>
-        <h3 className="mt-4 text-xl font-bold tracking-tight">{title}</h3>
-        <p className="text-sm font-medium text-white/85">{subtitle}</p>
-      </div>
-      <div className="flex flex-1 flex-col p-7">
+    <div className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white px-7 py-6 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
+      <div className={`flex size-12 items-center justify-center rounded-xl ${accentClass}`}>{icon}</div>
+      <h3 className="mt-4 text-xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h3>
+      <p className="text-sm font-medium text-slate-600 dark:text-white/60">{subtitle}</p>
+      <div className="mt-5 flex flex-1 flex-col">
         <p className="flex-1 text-sm leading-relaxed text-slate-600 dark:text-white/58">{body}</p>
         <div className="mt-6 border-t border-slate-100 pt-5 text-[0.8125rem] leading-relaxed text-slate-500 dark:border-white/10 dark:text-white/45">
           {foot}
