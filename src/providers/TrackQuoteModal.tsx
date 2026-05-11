@@ -47,16 +47,14 @@ function TrackQuoteModalShell({ onClose }: { onClose: () => void }) {
     <div className="fixed inset-0 z-[110] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="track-quote-title">
       <button
         type="button"
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"
         aria-label="Close"
         onClick={onClose}
       />
-      <div className="relative z-10 max-h-[min(92vh,820px)] w-full max-w-lg overflow-y-auto pointer-events-auto rounded-2xl shadow-2xl ring-1 ring-white/10">
-        <div className="bg-[#0f1f32] py-4">
-          <Suspense fallback={<div className="px-8 py-16 text-center text-sm text-white/60">Loading…</div>}>
-            <TrackQuotePanel variant="modal" onClose={onClose} />
-          </Suspense>
-        </div>
+      <div className="relative z-10 max-h-[min(92vh,820px)] w-full max-w-2xl overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-white/15 pointer-events-auto">
+        <Suspense fallback={<div className="rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 px-8 py-16 text-center text-sm text-blue-100">Loading…</div>}>
+          <TrackQuotePanel variant="modal" onClose={onClose} />
+        </Suspense>
       </div>
     </div>
   )
