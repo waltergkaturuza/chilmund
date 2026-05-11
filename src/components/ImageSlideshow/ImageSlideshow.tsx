@@ -23,6 +23,11 @@ export type ImageSlideshowProps = {
   controlsOnLight?: boolean
   /** Certificates and diagrams: show full frame without cropping. */
   imageFit?: 'cover' | 'contain'
+  /**
+   * Grow to fill a column flex parent (e.g. partners page aside). Parent should be
+   * `flex flex-col` with `min-h-0`; row height typically comes from a sibling grid column.
+   */
+  growInFlexLayout?: boolean
 }
 
 export function ImageSlideshow({
@@ -32,6 +37,7 @@ export function ImageSlideshow({
   sizes = '(max-width: 1024px) 100vw, 50vw',
   controlsOnLight = false,
   imageFit = 'cover',
+  growInFlexLayout = false,
 }: ImageSlideshowProps) {
   const [index, setIndex] = useState(0)
   const [reduceMotion, setReduceMotion] = useState(false)
@@ -72,11 +78,17 @@ export function ImageSlideshow({
       : `size-2.5 rounded-full border border-white/70 transition-colors ${i === index ? 'bg-white' : 'bg-white/35 hover:bg-white/60'}`
 
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div
+      className={cn(
+        'flex w-full flex-col gap-3',
+        growInFlexLayout && 'min-h-0 flex-1',
+      )}
+    >
       <div
         className={cn(
           'relative w-full overflow-hidden',
           imageFit === 'contain' && 'bg-slate-100 dark:bg-slate-900/80',
+          growInFlexLayout && 'min-h-[13rem] flex-1 sm:min-h-[16rem] lg:min-h-0',
           className,
         )}
       >
@@ -135,7 +147,14 @@ export function ImageSlideshow({
         )}
       </div>
       {activeCaption ? (
-        <p className="text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">{activeCaption}</p>
+        <p
+          className={cn(
+            'text-center text-sm leading-relaxed text-slate-600 dark:text-white/60',
+            growInFlexLayout && 'shrink-0',
+          )}
+        >
+          {activeCaption}
+        </p>
       ) : null}
     </div>
   )

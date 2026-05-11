@@ -110,10 +110,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
           {/* Utilities + CTA — far right */}
           <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
-            {/* Desktop-only: language selector */}
-            <div className="hidden sm:block">
-              <LanguageSelector dark={isDarkHeader} />
-            </div>
+            <LanguageSelector dark={isDarkHeader} />
             <HeaderThemeToggle darkHeader={isDarkHeader} />
             <Button
               className={cn('hidden md:inline-flex', headerCtaClasses)}

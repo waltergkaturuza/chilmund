@@ -2,7 +2,7 @@
 
 import { cn } from '@/utilities/ui'
 import { isHrefActive, resolveCMSLinkHref } from '@/utilities/resolveCMSLinkHref'
-import { ChevronDown, Menu, SearchIcon, X } from 'lucide-react'
+import { ChevronDown, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
@@ -368,56 +368,6 @@ function MobileDropdownSection({
   )
 }
 
-/** Summit-style search control (separate from the pill row). */
-export function HeaderSearchTrigger({
-  dark,
-  className,
-  onNavigate,
-}: {
-  dark?: boolean
-  className?: string
-  onNavigate?: () => void
-}) {
-  const pathname = usePathname()
-  const active = pathname.startsWith('/search')
-  const [modKey, setModKey] = useState('⌘')
-
-  useEffect(() => {
-    if (typeof navigator === 'undefined') return
-    const mac = /mac|iphone|ipad|ipod/i.test(navigator.userAgent)
-    setModKey(mac ? '⌘' : 'Ctrl')
-  }, [])
-
-  return (
-    <Link
-      href="/search"
-      onClick={onNavigate}
-      className={cn(
-        'inline-flex min-w-0 max-w-[11rem] items-center gap-2 rounded-full border px-3 py-2 text-sm transition-colors sm:max-w-[13.5rem] sm:px-3.5',
-        active
-          ? dark
-            ? 'border-blue-600/50 bg-blue-600/15 text-white'
-            : 'border-blue-600/60 bg-blue-50 text-slate-900'
-          : dark
-            ? 'border-white/20 bg-black/20 text-white/80 hover:border-white/30 hover:bg-white/10 hover:text-white'
-            : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900',
-        className,
-      )}
-    >
-      <SearchIcon className="size-4 shrink-0 opacity-70" aria-hidden />
-      <span className="min-w-0 flex-1 truncate text-left font-medium opacity-90">Search</span>
-      <kbd
-        className={cn(
-          'hidden shrink-0 rounded-md border px-1.5 py-0.5 font-sans text-[0.65rem] font-semibold sm:inline',
-          dark ? 'border-white/25 bg-white/5 text-white/70' : 'border-slate-200 bg-slate-50 text-slate-500',
-        )}
-      >
-        {modKey} K
-      </kbd>
-    </Link>
-  )
-}
-
 /** Full-width navigation bar — tabs spread evenly, wrapping when needed. */
 export function HeaderNavDesktopStrip({ data, dark }: { data: HeaderType; dark?: boolean }) {
   const pathname = usePathname()
@@ -527,11 +477,6 @@ export function HeaderNavMobileDrawer({
           >
             <X className="size-5" />
           </button>
-        </div>
-
-        {/* Search */}
-        <div className="border-b border-inherit px-4 py-3">
-          <HeaderSearchTrigger dark={dark} onNavigate={onClose} className="w-full max-w-none py-2.5" />
         </div>
 
         {/* Nav items */}
