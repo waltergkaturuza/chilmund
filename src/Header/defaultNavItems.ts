@@ -43,7 +43,6 @@ export const defaultNavItems: NavItems = [
   link('SHEQ', '/sheq'),
   dropdown('Updates', [
     { label: 'News & events', url: '/news' },
-    { label: 'Industry awards', url: '/industry-awards' },
     { label: 'CSR', url: '/csr' },
   ]),
   dropdown('Resources', [
