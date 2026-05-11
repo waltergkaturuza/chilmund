@@ -115,7 +115,7 @@ export default function PartnershipsAccreditationsPage() {
               <div className="mt-4">
                 <ImageSlideshow
                   slides={awardsCertificatesSlides}
-                  className="relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-slate-200 shadow-inner dark:border-white/10"
+                  className="relative h-[min(42vh,360px)] w-full overflow-hidden rounded-xl border border-slate-200 shadow-inner dark:border-white/10 sm:h-[min(44vh,380px)] lg:h-[min(46vh,420px)]"
                   sizes="(max-width: 1024px) 100vw, 42vw"
                   intervalMs={6000}
                   controlsOnLight
