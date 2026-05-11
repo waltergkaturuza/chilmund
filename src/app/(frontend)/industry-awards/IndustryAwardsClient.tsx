@@ -83,31 +83,10 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
 
       <div className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
         <div className="container px-4">
-          {/* Highlight reel — same certificate assets as site gallery, with narrations */}
-          <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/90 p-6 shadow-sm dark:border-white/10 dark:bg-slate-900/50 sm:p-8">
-            <h2 className="text-center text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
-              Award highlights
-            </h2>
-            <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
-              Certificates and trophies behind our industry story — browse with the arrows or dots. Structured award
-              entries from the CMS appear below when published.
-            </p>
-            <div className="mx-auto mt-6 max-w-xl sm:max-w-2xl">
-              <ImageSlideshow
-                slides={industryAwardsSlideshowSlides}
-                controlsOnLight
-                imageFit="contain"
-                intervalMs={6500}
-                sizes="(max-width: 1024px) 100vw, 42rem"
-                className="relative h-[min(38vh,320px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(40vh,360px)] lg:h-[min(44vh,400px)]"
-              />
-            </div>
-          </div>
-
           <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
           {/* Main */}
-          <div className="space-y-8">
-            {/* Filter pills */}
+          <div className="space-y-6">
+            {/* Filter pills — stay above the main content card so nothing overlaps the panel */}
             <div className="flex flex-wrap gap-2">
               <button
                 type="button"
@@ -138,20 +117,46 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
               ))}
             </div>
 
-            {/* Awards grid */}
-            {filtered.length > 0 ? (
-              <div className="grid gap-6 sm:grid-cols-2">
-                {filtered.map((item) => (
-                  <AwardCard key={item.id} item={item} />
-                ))}
+            {/* One panel: certificate slideshow + CMS grid or empty hint */}
+            <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/60">
+              <div className="border-b border-slate-200 bg-slate-50/90 p-5 dark:border-white/10 dark:bg-slate-900/50 sm:p-6">
+                <h2 className="text-center text-lg font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-xl">
+                  Award highlights
+                </h2>
+                <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
+                  Certificates and recognition in rotation — use the arrows or dots. Catalogue entries from the CMS
+                  appear in the section below when they match your filters.
+                </p>
+                <div className="mx-auto mt-5 max-w-xl sm:max-w-2xl">
+                  <ImageSlideshow
+                    slides={industryAwardsSlideshowSlides}
+                    controlsOnLight
+                    imageFit="contain"
+                    intervalMs={6500}
+                    sizes="(max-width: 1024px) 100vw, 42rem"
+                    className="relative h-[min(36vh,300px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(38vh,340px)] lg:h-[min(40vh,380px)]"
+                  />
+                </div>
               </div>
-            ) : (
-              <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
-                <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
-                <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No awards found</p>
-                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
+
+              <div className="p-5 sm:p-6">
+                {filtered.length > 0 ? (
+                  <div className="grid gap-6 sm:grid-cols-2">
+                    {filtered.map((item) => (
+                      <AwardCard key={item.id} item={item} />
+                    ))}
+                  </div>
+                ) : (
+                  <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50/80 py-12 text-center dark:border-white/15 dark:bg-white/[0.03]">
+                    <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
+                    <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No awards match</p>
+                    <p className="mt-1 text-sm text-slate-500 dark:text-white/40">
+                      Try adjusting search or filters — highlights above always show our recognition gallery.
+                    </p>
+                  </div>
+                )}
               </div>
-            )}
+            </div>
           </div>
 
           {/* Sidebar */}
