@@ -11,7 +11,7 @@ export const recommendedCorporatePages = [
   { suggestedSlug: 'manufacturing-plant', label: 'Manufacturing Plant' },
   { suggestedSlug: 'trucking-logistics', label: 'Trucking & Logistics' },
   { suggestedSlug: 'regional-markets', label: 'Regional Markets' },
-  { suggestedSlug: 'partnerships-accreditations', label: 'Partnerships & Accreditations' },
+  { suggestedSlug: 'partnerships-accreditations', label: 'Partners and Certifications' },
   { suggestedSlug: 'sheq', label: 'SHEQ' },
   { suggestedSlug: 'csr', label: 'CSR' },
   { suggestedSlug: 'industry-awards', label: 'Industry Awards' },
@@ -57,9 +57,9 @@ export const recommendedHeaderNavBlueprint = [
   },
   {
     type: 'dropdown' as const,
-    label: 'Partnerships & Accreditations',
+    label: 'Partners',
     sub: [
-      { label: 'Partnerships & Accreditations', pageSlug: 'partnerships-accreditations' },
+      { label: 'Partners and Certifications', pageSlug: 'partnerships-accreditations' },
       { label: 'Regional Markets', pageSlug: 'regional-markets' },
     ],
   },

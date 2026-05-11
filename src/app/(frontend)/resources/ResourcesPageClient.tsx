@@ -72,7 +72,8 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
           </p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">Resources</h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
-            Download certificates, documents, infographics, brochures and more.
+            Download certificates, documents, infographics, brochures and more — including company policy PDFs from our
+            document library.
           </p>
         </div>
       </section>

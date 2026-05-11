@@ -14,7 +14,7 @@ export const chilmundCopy = {
     intro:
       'Chilmund Chemicals Pvt Ltd is a global Water Solutions driven company which manufactures Aluminium Sulphate. Established in 2007, the company started off with importing Aluminium Sulphate, Sulphuric Acid and Poly Aluminium Chloride but has been growing steadily over the years and has set its own state of the art Aluminium Sulphate manufacturing plant in Bindura, Zimbabwe.',
     capacity:
-      'Chilmund Chemicals is the leading manufacturer of aluminium sulphate in Zimbabwe, with a monthly capacity of producing up to 6,000 metric tons for local and regional markets.',
+      'Chilmund Chemicals is the leading manufacturer of aluminium sulphate in Zimbabwe, with a monthly capacity of producing up to 7,200 tonnes for local and regional markets.',
     whyChooseUs:
       'With over a decade of industry expertise, we\u2019ve evolved from importing to establishing a cutting-edge Aluminium Sulphate manufacturing plant in Bindura, Zimbabwe. Our commitment to professionalism, teamwork, integrity, and innovation drives our success. We prioritise sustainable practices, ensuring environmental responsibility and diverse, sustainable livelihoods.',
   },

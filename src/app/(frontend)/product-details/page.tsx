@@ -20,7 +20,7 @@ const applications = [
 ]
 
 const certifications = [
-  'IMS ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015',
+  'IMS- ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018',
   'Standards Association of Zimbabwe (SAZ) certified Product',
   'SHEQ compliance verified',
 ]
@@ -49,8 +49,8 @@ export default function ProductDetailsPage() {
             Aluminium sulphate — product at a glance
           </h2>
           <p className="mx-auto mt-3 max-w-none text-center text-sm leading-snug text-slate-600 text-balance md:max-w-4xl md:text-base dark:text-white/55">
-            We cater for various Granular size, fine poweder, and liquid product. All certified with SAZ product MArk
-            (ZWS 1120.2024)
+            We cater for various granular size, fine powder, and liquid product. All certified with SAZ product Mark
+            (ZWS 1120:2024)
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">

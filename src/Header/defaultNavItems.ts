@@ -37,7 +37,7 @@ export const defaultNavItems: NavItems = [
     { label: 'Logistics', url: '/trucking-logistics' },
   ]),
   dropdown('Partners', [
-    { label: 'Partnerships & accreditations', url: '/partnerships-accreditations' },
+    { label: 'Partners and Certifications', url: '/partnerships-accreditations' },
     { label: 'Regional markets', url: '/regional-markets' },
   ]),
   link('SHEQ', '/sheq'),

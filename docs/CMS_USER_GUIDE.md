@@ -276,7 +276,7 @@ These slugs align with the recommended sitemap in the project (`src/content/site
 | `manufacturing-plant` | Manufacturing Plant |
 | `trucking-logistics` | Trucking & Logistics |
 | `regional-markets` | Regional Markets |
-| `partnerships-accreditations` | Partnerships & Accreditations |
+| `partnerships-accreditations` | Partners and Certifications |
 | `sheq` | SHEQ |
 | `csr` | CSR |
 | `industry-awards` | Industry Awards |

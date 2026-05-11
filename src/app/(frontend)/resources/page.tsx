@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
+
+import { staticLibraryDocuments } from '@/content/staticLibraryDocuments'
+
 import { ResourcesPageClient } from './ResourcesPageClient'
 
 export const metadata: Metadata = {
@@ -57,7 +60,7 @@ export default async function ResourcesPage() {
     depth: 1,
   })
 
-  const items: ResourceItem[] = docs.map((doc) => ({
+  const cmsItems: ResourceItem[] = docs.map((doc) => ({
     id: String(doc.id),
     title: doc.title,
     resourceType: doc.resourceType,
@@ -70,6 +73,22 @@ export default async function ResourcesPage() {
     featured: doc.featured ?? false,
     publishedAt: (doc.publishedAt as string) || doc.createdAt,
   }))
+
+  const staticItems: ResourceItem[] = staticLibraryDocuments.map((d) => ({
+    id: `static:${d.slug}`,
+    title: d.title,
+    resourceType: d.resourceType,
+    description: d.description,
+    downloadUrl: d.href,
+    filename: d.href.split('/').pop() || null,
+    thumbnailUrl: null,
+    videoUrl: null,
+    fileSize: d.fileSize,
+    featured: d.featured,
+    publishedAt: null,
+  }))
+
+  const items = [...staticItems, ...cmsItems]
 
   return <ResourcesPageClient items={items} />
 }

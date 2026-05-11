@@ -292,7 +292,7 @@ export function HomeContentSections() {
                   className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-slate-800 dark:bg-blue-700 dark:hover:bg-blue-600"
                   href="/sheq"
                 >
-                  SHEQ &amp; IMS hub
+                  SHEQ hub
                   <span aria-hidden>→</span>
                 </Link>
                 <Link
@@ -320,15 +320,15 @@ export function HomeContentSections() {
               <div>
                 <Medal className="size-8 text-amber-400" />
                 <p className="mt-4 text-sm leading-relaxed text-white/72">
-                  Social proof dossiers — certification marks and partnership credentials — curated on our accreditations
-                  centre.
+                  Social proof dossiers — certification marks and partnership credentials — curated on our partners and
+                  certifications page.
                 </p>
               </div>
               <Link
                 className="inline-flex justify-center rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/25"
                 href="/partnerships-accreditations"
               >
-                Partnerships &amp; accreditations
+                Partners and Certifications
               </Link>
             </aside>
           </div>

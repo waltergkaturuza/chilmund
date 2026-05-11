@@ -5,6 +5,7 @@ import type { Header } from '@/payload-types'
 
 import { defaultNavItems } from '@/Header/defaultNavItems'
 import { getCachedGlobal } from '@/utilities/getGlobals'
+import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { resolveCMSLinkHref } from '@/utilities/resolveCMSLinkHref'
 
 export const metadata: Metadata = {
@@ -69,16 +70,21 @@ export default async function SiteMapPage() {
   const primary = buildSections(navItems)
 
   return (
-    <article className="container mx-auto max-w-4xl px-4 py-14 md:py-20">
-      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Site map
-      </h1>
-      <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 dark:text-white/60">
-        Navigate the main sections of our site using the headings below — the same destinations as the primary
-        header menu whenever your menu is curated in Payload.
-      </p>
+    <article className="min-h-screen">
+      <section className={innerHeroRadialSection}>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
+        <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">Site map</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
+            Navigate the main sections of our site using the headings below — the same destinations as the primary
+            header menu whenever your menu is curated in Payload.
+          </p>
+        </div>
+      </section>
 
-      <div className="mt-12 grid gap-10 md:grid-cols-2">
+      <section className="bg-white dark:bg-slate-950">
+        <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
+          <div className="grid gap-10 md:grid-cols-2">
         {primary.map(({ title, links }) => (
           <section key={title}>
             <h2 className="text-[0.7rem] font-bold uppercase tracking-[0.18em] text-blue-700 dark:text-blue-400">
@@ -118,7 +124,9 @@ export default async function SiteMapPage() {
             </ul>
           </section>
         ))}
-      </div>
+          </div>
+        </div>
+      </section>
     </article>
   )
 }

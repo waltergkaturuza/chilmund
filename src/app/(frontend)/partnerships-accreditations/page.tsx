@@ -6,14 +6,14 @@ import React from 'react'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 
 export const metadata: Metadata = {
-  title: 'Partnerships & Accreditations | Chilmund Chemicals',
+  title: 'Partners and Certifications | Chilmund Chemicals',
   description:
-    'Our strategic partnerships and industry accreditations that ensure quality, compliance, and market reach.',
+    'Our strategic partnerships and certifications that ensure quality, compliance, and market reach.',
 }
 
-const accreditations = [
+const certifications = [
   {
-    title: 'IMS ISO 9001:2015, ISO 14001:2015, and ISO 45001:2015',
+    title: 'IMS- ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018',
     body: 'International Organization for Standardization',
     desc: 'Quality Management System certification ensuring consistent product quality and continuous improvement in all processes.',
     icon: <Shield className="size-6" />,
@@ -21,7 +21,7 @@ const accreditations = [
   {
     title: 'SAZ Certification',
     body: 'Standards Association of Zimbabwe',
-    desc: 'National quality mark certifying that our aluminium sulphate meets Zimbabwean national standards for water treatment chemicals.',
+    desc: 'SAZ product mark (ZWS 1120:2024) certifying that our aluminium sulphate meets Zimbabwean national standards for water treatment chemicals.',
     icon: <Award className="size-6" />,
   },
   {
@@ -63,7 +63,7 @@ const partners = [
       'Logistics and freight partners across SADC',
     ],
   },
-]
+] as const
 
 export default function PartnershipsAccreditationsPage() {
   return (
@@ -73,7 +73,7 @@ export default function PartnershipsAccreditationsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-            Partnerships &amp; Accreditations
+            Partners and Certifications
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
             Built on trust, verified by standards — our partnerships and certifications underpin
@@ -82,14 +82,12 @@ export default function PartnershipsAccreditationsPage() {
         </div>
       </section>
 
-      {/* Accreditations */}
+      {/* Certifications */}
       <section className="bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Accreditations &amp; Certifications
-          </h2>
+          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">Certifications</h2>
           <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
-            {accreditations.map((a) => (
+            {certifications.map((a) => (
               <div
                 key={a.title}
                 className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60"

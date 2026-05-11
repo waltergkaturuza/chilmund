@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import {
   Award,
   Building2,
   CheckCircle,
-  ClipboardCheck,
-  FileCheck,
+  Download,
   Leaf,
   Microscope,
   Recycle,
@@ -15,12 +15,13 @@ import {
 } from 'lucide-react'
 import React from 'react'
 
+import { hrefForStaticLibraryDocument } from '@/content/staticLibraryDocuments'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { cn } from '@/utilities/ui'
-import { SheqImageSlideshow } from './SheqImageSlideshow'
+import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 
 export const metadata: Metadata = {
-  title: 'SHEQ & Integrated Management System | Chilmund Chemicals',
+  title: 'SHEQ | Chilmund Chemicals',
   description:
     'Safety, Health, Environment and Quality — SAZ-aligned IMS covering ISO 9001, ISO 14001 & ISO 45001. QC/QA processes, laboratory facilities, and community initiatives.',
 }
@@ -68,7 +69,7 @@ export default function SHEQPage() {
           <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-emerald-400/95 sm:text-sm sm:tracking-[0.18em]">
             Safety · Health · Environment · Quality
           </p>
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2 md:text-5xl">SHEQ &amp; IMS</h1>
+          <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2 md:text-5xl">SHEQ</h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-white/75 md:text-lg md:leading-relaxed">
             Integrated Management System commitments covering ISO&nbsp;9001, ISO&nbsp;14001, and ISO&nbsp;45001 — from
             certified processes to analytical capability and responsible community engagement.
@@ -84,21 +85,36 @@ export default function SHEQPage() {
               <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 Integrated Management System (IMS)
               </h2>
-              <div className="mt-6 space-y-5 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
+              <h3 className="mt-6 text-base font-medium text-slate-900 dark:text-white">
+                Integrated Management System policy
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">
+                The formal IMS policy is a controlled document (Rev&nbsp;1, September&nbsp;2025). For signed copies,
+                controlled dissemination, or integration into tender submissions, contact our SHEQ function or your Chilmund
+                account representative.
+              </p>
+              <p className="mt-4">
+                <Link
+                  href={hrefForStaticLibraryDocument('ims-policy-rev1-september-2025')}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 dark:border-white/20 dark:bg-slate-900 dark:text-white dark:hover:border-blue-400 dark:hover:text-blue-300"
+                >
+                  <Download className="size-4 shrink-0" aria-hidden />
+                  Download IMS policy (PDF)
+                </Link>
+              </p>
+              <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
                 <p>
                   At Chilmund Chemicals, Safety, Health, Environment, and Quality (SHEQ) are fundamental to how we operate.
-                  Our commitment is embedded in an{' '}
-                  <strong className="font-semibold text-slate-900 dark:text-white">Integrated Management System (IMS)</strong>{' '}
-                  that ensures responsible operations, protection of people and the environment, and consistent delivery of
-                  high-quality products and services.
+                  Our commitment is embedded in an Integrated Management System (IMS) that ensures responsible operations,
+                  protection of people and the environment, and consistent delivery of high-quality products and services.
                 </p>
-                <p className="font-medium text-slate-800 dark:text-white/85">
+                <p>
                   Our dedication to safety, health, environmental integrity and quality underpins an arduous journey toward
-                  an Integrated Management System comprising <strong className="font-semibold">ISO&nbsp;9001</strong>,{' '}
-                  <strong className="font-semibold">ISO&nbsp;14001</strong>, and <strong className="font-semibold">ISO&nbsp;45001</strong>.
+                  an Integrated Management System comprising ISO&nbsp;9001, ISO&nbsp;14001, and ISO&nbsp;45001.
                 </p>
                 <details>
-                  <summary className="cursor-pointer text-sm font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
+                  <summary className="cursor-pointer text-sm font-medium text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
                     Read more
                   </summary>
                   <p className="mt-3">
@@ -112,7 +128,8 @@ export default function SHEQPage() {
               </div>
             </div>
             <figure className="lg:col-span-6">
-              <SheqImageSlideshow
+              <ImageSlideshow
+                className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-900/60"
                 slides={[
                   {
                     src: '/Chilmund Employees on on Asembly point.jpg',
@@ -128,43 +145,6 @@ export default function SHEQPage() {
                 SHEQ culture in action: team readiness and assembly-point discipline supporting safe operations.
               </figcaption>
             </figure>
-          </div>
-        </div>
-      </section>
-
-      {/* IMS status */}
-      <section className="bg-slate-50 dark:bg-slate-900/80">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-            <div className="flex gap-3">
-              <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-white shadow-sm">
-                <FileCheck className="size-6" aria-hidden />
-              </span>
-              <div>
-                <h2 className="text-xl font-bold text-slate-900 dark:text-white">IMS implementation status</h2>
-                <p className="mt-1 text-sm font-medium uppercase tracking-wide text-blue-700 dark:text-blue-400">
-                  Standards Association of Zimbabwe (SAZ)
-                </p>
-              </div>
-            </div>
-          </div>
-          <p className="mt-6 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            We are implementing our Integrated Management System with discipline and transparency. We have{' '}
-            <strong className="font-semibold text-slate-900 dark:text-white">successfully completed a Stage&nbsp;2 certification audit</strong>{' '}
-            conducted by SAZ and are currently awaiting a{' '}
-            <strong className="font-semibold text-slate-900 dark:text-white">follow-up audit for final certification</strong>. This milestone
-            demonstrates the effectiveness of our systems and our readiness for full IMS certification.
-          </p>
-
-          <div className="mt-10 rounded-2xl border border-dashed border-slate-300 bg-white/90 p-6 dark:border-white/15 dark:bg-slate-950/60">
-            <div className="flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-800 dark:text-white/85">
-              <ClipboardCheck className="size-4 text-blue-600 dark:text-blue-400" aria-hidden />
-              Integrated Management System policy
-            </div>
-            <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/55">
-              The formal IMS policy is a controlled document. For signed copies, controlled dissemination, or integration
-              into tender submissions, please contact our SHEQ function or your Chilmund account representative.
-            </p>
           </div>
         </div>
       </section>
@@ -195,13 +175,13 @@ export default function SHEQPage() {
               >
                 <CheckCircle className="mt-0.5 size-5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
                 <div>
-                  <p className="font-semibold text-slate-900 dark:text-white">{step.title}</p>
+                  <p className="font-medium text-slate-900 dark:text-white">{step.title}</p>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">{step.body}</p>
                 </div>
               </li>
             ))}
           </ul>
-          <p className="mt-10 rounded-xl bg-blue-50/90 px-5 py-4 text-sm font-medium leading-relaxed text-blue-950 dark:bg-blue-950/35 dark:text-blue-100/95">
+          <p className="mt-10 rounded-xl bg-blue-50/90 px-5 py-4 text-sm leading-relaxed text-blue-950 dark:bg-blue-950/35 dark:text-blue-100/95">
             This closed-loop system ensures non-conforming product can be intercepted early, quality data informs continual improvement, and full batch traceability is maintained from raw material to authorised release.
           </p>
         </div>
@@ -218,11 +198,10 @@ export default function SHEQPage() {
               <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory facilities</h2>
               <p className="mt-2 max-w-4xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
                 As a testament to our commitment to Quality, Chilmund has established a laboratory equipped with analytical
-                instruments including an <strong className="font-semibold text-slate-900 dark:text-white">Atomic Absorption Spectrophotometer (AAS)</strong>,{' '}
-                digital temperature / conductivity / pH meters, and a{' '}
-                <strong className="font-semibold text-slate-900 dark:text-white">thermogravimetric moisture-content analyser</strong>. Quarterly
-                calibrated equipment and certified volumetric glassware allow competent analysts to execute routine QC testing,
-                complexometric titrations, and method-validation work underpinning authorised product release.
+                instruments including an Atomic Absorption Spectrophotometer (AAS), digital temperature / conductivity / pH
+                meters, and a thermogravimetric moisture-content analyser. Quarterly calibrated equipment and certified
+                volumetric glassware allow competent analysts to execute routine QC testing, complexometric titrations, and
+                method-validation work underpinning authorised product release.
               </p>
               <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
                 <SheqPhoto
@@ -248,9 +227,8 @@ export default function SHEQPage() {
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Our SHEQ approach</h2>
           <p className="mt-4 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            We apply a structured{' '}
-            <strong className="text-slate-900 dark:text-white">Plan → Do → Check → Act (PDCA)</strong> model to reinforce
-            continuous improvement across Safety, Health, Environment, and Quality.
+            We apply a structured Plan → Do → Check → Act (PDCA) model to reinforce continuous improvement across Safety,
+            Health, Environment, and Quality.
           </p>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
@@ -329,7 +307,7 @@ export default function SHEQPage() {
           </div>
           <div className="mt-8 rounded-2xl border border-amber-200/80 bg-white p-8 shadow-sm dark:border-amber-900/40 dark:bg-slate-950/60">
             <p className="text-[1.05rem] leading-relaxed text-slate-800 dark:text-white/80">
-              <strong className="font-semibold text-slate-900 dark:text-white">National Social Security Authority — 2023</strong>
+              National Social Security Authority — 2023
               <br />
               Recognised for <em>exemplary leadership in occupational safety &amp; health management</em> and good workplace safety practices.
             </p>
