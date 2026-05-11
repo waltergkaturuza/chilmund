@@ -1,5 +1,7 @@
 'use client'
 
+import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
+import { industryAwardsSlideshowSlides } from '@/content/industryAwardsSlideshowSlides'
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Award, Calendar, Search, Star, Trophy, Building2 } from 'lucide-react'
@@ -81,6 +83,27 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
 
       <div className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
         <div className="container px-4">
+          {/* Highlight reel — same certificate assets as site gallery, with narrations */}
+          <div className="mb-10 rounded-2xl border border-slate-200 bg-slate-50/90 p-6 shadow-sm dark:border-white/10 dark:bg-slate-900/50 sm:p-8">
+            <h2 className="text-center text-xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-2xl">
+              Award highlights
+            </h2>
+            <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
+              Certificates and trophies behind our industry story — browse with the arrows or dots. Structured award
+              entries from the CMS appear below when published.
+            </p>
+            <div className="mx-auto mt-6 max-w-xl sm:max-w-2xl">
+              <ImageSlideshow
+                slides={industryAwardsSlideshowSlides}
+                controlsOnLight
+                imageFit="contain"
+                intervalMs={6500}
+                sizes="(max-width: 1024px) 100vw, 42rem"
+                className="relative h-[min(38vh,320px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(40vh,360px)] lg:h-[min(44vh,400px)]"
+              />
+            </div>
+          </div>
+
           <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
           {/* Main */}
           <div className="space-y-8">
