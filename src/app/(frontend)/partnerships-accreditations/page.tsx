@@ -3,6 +3,8 @@ import { Award, Building2, CheckCircle, Globe, Handshake, Shield } from 'lucide-
 import Link from 'next/link'
 import React from 'react'
 
+import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
+import { awardsCertificatesSlides } from '@/content/awardsCertificatesSlides'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 
 export const metadata: Metadata = {
@@ -86,20 +88,41 @@ export default function PartnershipsAccreditationsPage() {
       <section className="bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">Certifications</h2>
-          <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
-            {certifications.map((a) => (
-              <div
-                key={a.title}
-                className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60"
-              >
-                <div className="mb-3 flex size-12 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
-                  {a.icon}
+          <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-slate-600 dark:text-white/55">
+            Standards, licences, and awards — summary cards alongside original certificates and recognition documents.
+          </p>
+          <div className="mx-auto mt-10 grid max-w-7xl gap-8 lg:grid-cols-3 lg:items-start">
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-2">
+              {certifications.map((a) => (
+                <div
+                  key={a.title}
+                  className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60"
+                >
+                  <div className="mb-3 flex size-12 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
+                    {a.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white">{a.title}</h3>
+                  <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-400">{a.body}</p>
+                  <p className="mt-3 text-sm text-slate-600 dark:text-white/60">{a.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">{a.title}</h3>
-                <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-400">{a.body}</p>
-                <p className="mt-3 text-sm text-slate-600 dark:text-white/60">{a.desc}</p>
+              ))}
+            </div>
+            <aside className="rounded-2xl border border-slate-200 bg-slate-50/90 p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/55 lg:sticky lg:top-28 lg:self-start">
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">Certificates &amp; awards</h3>
+              <p className="mt-1 text-sm leading-snug text-slate-600 dark:text-white/55">
+                Original certificates and awards. Use the arrows or dots to browse each image.
+              </p>
+              <div className="mt-4">
+                <ImageSlideshow
+                  slides={awardsCertificatesSlides}
+                  className="relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-slate-200 shadow-inner dark:border-white/10"
+                  sizes="(max-width: 1024px) 100vw, 320px"
+                  intervalMs={6000}
+                  controlsOnLight
+                  imageFit="contain"
+                />
               </div>
-            ))}
+            </aside>
           </div>
         </div>
       </section>

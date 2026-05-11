@@ -130,20 +130,22 @@ export default function SHEQPage() {
             <figure className="lg:col-span-6">
               <ImageSlideshow
                 className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-900/60"
+                controlsOnLight
                 slides={[
                   {
                     src: '/Chilmund Employees on on Asembly point.jpg',
                     alt: 'Chilmund team at assembly point during a SHEQ safety briefing.',
+                    caption:
+                      'Assembly point discipline: crews briefed and ready before work begins — core to our SHEQ culture.',
                   },
                   {
                     src: '/SHEQ Info.jpeg',
                     alt: 'SHEQ information visual showing Chilmund safety and quality systems.',
+                    caption:
+                      'On-site SHEQ messaging reinforces safety, health, environment, and quality expectations for every shift.',
                   },
                 ]}
               />
-              <figcaption className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/55">
-                SHEQ culture in action: team readiness and assembly-point discipline supporting safe operations.
-              </figcaption>
             </figure>
           </div>
         </div>
