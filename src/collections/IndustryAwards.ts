@@ -79,7 +79,10 @@ export const IndustryAwards: CollectionConfig = {
       name: 'image',
       type: 'upload',
       relationTo: 'media',
-      admin: { description: 'Award photo, certificate scan, or trophy image.' },
+      filterOptions: {
+        mimeType: { contains: 'image' },
+      },
+      admin: { description: 'Award photo, certificate scan, or trophy image (images only; PDFs live in Media for datasheets).' },
     },
     {
       name: 'summary',

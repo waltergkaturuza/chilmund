@@ -28,6 +28,8 @@ export type ImageSlideshowProps = {
    * `flex flex-col` with `min-h-0`; row height typically comes from a sibling grid column.
    */
   growInFlexLayout?: boolean
+  /** Caption tuned for a dark panel (e.g. home SHEQ rail) while the site is in light mode. */
+  captionOnDark?: boolean
 }
 
 export function ImageSlideshow({
@@ -38,6 +40,7 @@ export function ImageSlideshow({
   controlsOnLight = false,
   imageFit = 'cover',
   growInFlexLayout = false,
+  captionOnDark = false,
 }: ImageSlideshowProps) {
   const [index, setIndex] = useState(0)
   const [reduceMotion, setReduceMotion] = useState(false)
@@ -87,7 +90,8 @@ export function ImageSlideshow({
       <div
         className={cn(
           'relative w-full overflow-hidden',
-          imageFit === 'contain' && 'bg-slate-100 dark:bg-slate-900/80',
+          imageFit === 'contain' &&
+            (captionOnDark ? 'bg-slate-950/75' : 'bg-slate-100 dark:bg-slate-900/80'),
           growInFlexLayout && 'min-h-[13rem] flex-1 sm:min-h-[16rem] lg:min-h-0',
           className,
         )}
@@ -149,7 +153,8 @@ export function ImageSlideshow({
       {activeCaption ? (
         <p
           className={cn(
-            'text-center text-sm leading-relaxed text-slate-600 dark:text-white/60',
+            'text-center text-sm leading-relaxed',
+            captionOnDark ? 'text-white/75' : 'text-slate-600 dark:text-white/60',
             growInFlexLayout && 'shrink-0',
           )}
         >

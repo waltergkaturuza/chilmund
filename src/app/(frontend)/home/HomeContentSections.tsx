@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
+import { awardsCertificatesSlides } from '@/content/awardsCertificatesSlides'
 import {
   Award,
   BadgeCheck,
@@ -316,16 +318,27 @@ export function HomeContentSections() {
                 </div>
               </div>
             </div>
-            <aside className="flex flex-shrink-0 flex-col justify-between border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0 lg:max-w-sm">
-              <div>
+            <aside className="flex min-h-0 w-full flex-shrink-0 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:w-auto md:border-l md:border-t-0 lg:max-w-sm">
+              <div className="shrink-0">
                 <Medal className="size-8 text-amber-400" />
                 <p className="mt-4 text-sm leading-relaxed text-white/72">
-                  Social proof dossiers — certification marks and partnership credentials — curated on our partners and
+                  Certification highlights in rotation — full dossiers, marks, and partnership context on our partners and
                   certifications page.
                 </p>
               </div>
+              <div className="flex min-h-[15rem] flex-1 flex-col sm:min-h-[18rem] lg:min-h-0">
+                <ImageSlideshow
+                  slides={awardsCertificatesSlides}
+                  growInFlexLayout
+                  captionOnDark
+                  imageFit="contain"
+                  intervalMs={6000}
+                  sizes="(max-width: 768px) 100vw, 360px"
+                  className="rounded-xl border border-white/12 bg-slate-950/55 shadow-inner"
+                />
+              </div>
               <Link
-                className="inline-flex justify-center rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/25"
+                className="inline-flex shrink-0 justify-center rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/25"
                 href="/partnerships-accreditations"
               >
                 Partners and Certifications
