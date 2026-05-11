@@ -270,7 +270,7 @@ export function HomeContentSections() {
       <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:flex">
-            <div className="flex-1 p-8 md:p-12 lg:max-w-[58%]">
+            <div className="w-full p-8 md:w-[58%] md:max-w-[58%] md:shrink-0 md:p-12">
               <ShieldCheck className="size-10 text-blue-600 dark:text-blue-400" />
               <h2 className="mt-6 text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">
                 Operational integrity (SHEQ)
@@ -318,7 +318,7 @@ export function HomeContentSections() {
                 </div>
               </div>
             </div>
-            <aside className="flex min-h-0 w-full flex-shrink-0 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:w-auto md:border-l md:border-t-0 lg:max-w-sm">
+            <aside className="flex min-h-0 w-full min-w-0 flex-1 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0">
               <div className="shrink-0">
                 <Medal className="size-8 text-amber-400" />
                 <p className="mt-4 text-sm leading-relaxed text-white/72">
@@ -333,7 +333,7 @@ export function HomeContentSections() {
                   captionOnDark
                   imageFit="contain"
                   intervalMs={6000}
-                  sizes="(max-width: 768px) 100vw, 360px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
                   className="rounded-xl border border-white/12 bg-slate-950/55 shadow-inner"
                 />
               </div>
