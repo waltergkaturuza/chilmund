@@ -91,12 +91,12 @@ export default function PartnershipsAccreditationsPage() {
           <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-slate-600 dark:text-white/55">
             Standards, licences, and awards — summary cards alongside original certificates and recognition documents.
           </p>
-          <div className="mx-auto mt-10 grid max-w-7xl gap-8 lg:grid-cols-3 lg:items-start">
-            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-2">
+          <div className="mx-auto mt-10 grid max-w-[92rem] gap-8 lg:grid-cols-12 lg:items-start lg:gap-10">
+            <div className="grid gap-6 sm:grid-cols-2 lg:col-span-5">
               {certifications.map((a) => (
                 <div
                   key={a.title}
-                  className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60"
+                  className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md shadow-slate-200/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-300/90 dark:border-white/10 dark:bg-slate-900/60 dark:shadow-lg dark:shadow-black/30 dark:hover:shadow-2xl dark:hover:shadow-black/50"
                 >
                   <div className="mb-3 flex size-12 items-center justify-center rounded-xl bg-emerald-600/10 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400">
                     {a.icon}
@@ -107,7 +107,7 @@ export default function PartnershipsAccreditationsPage() {
                 </div>
               ))}
             </div>
-            <aside className="rounded-2xl border border-slate-200 bg-slate-50/90 p-5 shadow-sm dark:border-white/10 dark:bg-slate-900/55 lg:sticky lg:top-28 lg:self-start">
+            <aside className="rounded-2xl border border-slate-200 bg-slate-50/90 p-5 shadow-md shadow-slate-200/50 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/80 dark:border-white/10 dark:bg-slate-900/55 dark:shadow-lg dark:shadow-black/25 dark:hover:shadow-2xl dark:hover:shadow-black/45 lg:sticky lg:top-28 lg:col-span-7 lg:self-start">
               <h3 className="text-lg font-bold text-slate-900 dark:text-white">Certificates &amp; awards</h3>
               <p className="mt-1 text-sm leading-snug text-slate-600 dark:text-white/55">
                 Original certificates and awards. Use the arrows or dots to browse each image.
@@ -116,7 +116,7 @@ export default function PartnershipsAccreditationsPage() {
                 <ImageSlideshow
                   slides={awardsCertificatesSlides}
                   className="relative aspect-[4/5] w-full overflow-hidden rounded-xl border border-slate-200 shadow-inner dark:border-white/10"
-                  sizes="(max-width: 1024px) 100vw, 320px"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
                   intervalMs={6000}
                   controlsOnLight
                   imageFit="contain"
