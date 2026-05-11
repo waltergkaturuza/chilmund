@@ -52,7 +52,7 @@ function TrackQuoteModalShell({ onClose }: { onClose: () => void }) {
         onClick={onClose}
       />
       <div className="relative z-10 max-h-[min(92vh,820px)] w-full max-w-2xl overflow-y-auto rounded-2xl shadow-2xl ring-1 ring-white/15 pointer-events-auto">
-        <Suspense fallback={<div className="rounded-2xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 px-8 py-16 text-center text-sm text-blue-100">Loading…</div>}>
+        <Suspense fallback={<div className="rounded-2xl border border-white/10 bg-slate-950 px-8 py-16 text-center text-sm text-white/70">Loading…</div>}>
           <TrackQuotePanel variant="modal" onClose={onClose} />
         </Suspense>
       </div>
