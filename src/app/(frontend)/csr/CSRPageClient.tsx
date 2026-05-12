@@ -68,10 +68,10 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
   return (
     <article className="min-h-screen bg-slate-50 pb-20 text-slate-900 dark:bg-slate-950 dark:text-white">
       <section className={innerHeroRadialSection}>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/35 via-transparent to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-emerald-500/45 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/35 via-transparent to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/45 to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center">
-          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-emerald-400/95 sm:text-sm sm:tracking-[0.18em]">
+          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-blue-400/95 sm:text-sm sm:tracking-[0.18em]">
             Community &amp; impact
           </p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">

@@ -66,7 +66,7 @@ export default function SHEQPage() {
       <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/35 via-transparent to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-emerald-400/95 sm:text-sm sm:tracking-[0.18em]">
+          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-blue-400/95 sm:text-sm sm:tracking-[0.18em]">
             Safety · Health · Environment · Quality
           </p>
           <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2 md:text-5xl">SHEQ</h1>
