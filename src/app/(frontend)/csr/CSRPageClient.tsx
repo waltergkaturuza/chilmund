@@ -71,10 +71,7 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/35 via-transparent to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/45 to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center px-4 text-center">
-          <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-blue-400/95 sm:text-sm sm:tracking-[0.18em]">
-            Community &amp; impact
-          </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">
             Corporate Social Responsibility
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
