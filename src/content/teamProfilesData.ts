@@ -137,7 +137,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     department: 'sheq',
     imageFile: 'Allen Mukwasi - Safety, Health and Environmental (SHE) Officer.jpg',
     featured: false,
-    order: 8,
+    order: 11,
     credentials:
       'MSc in Safety, Health and Environmental Management, BSc in Geography and Environmental Studies, certificate in ISO 9001, ISO 14001 and ISO 45001 internal auditing, development and implementation, OSHEMAC certificate; additional training in root cause analysis, first aid, firefighting, and hazardous substances handling.',
     fullProfile:
@@ -175,7 +175,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
     department: 'business',
     imageFile: 'Fungai Gavu - Technical and Marketing Executive.jpg',
     featured: false,
-    order: 11,
+    order: 8,
     photoObjectPosition: 'object-top',
     credentials: 'Bachelor of Technology in Applied Chemistry, Chemical Processing Technology Hons',
     fullProfile:
