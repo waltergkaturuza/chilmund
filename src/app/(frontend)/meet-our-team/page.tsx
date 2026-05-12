@@ -75,7 +75,8 @@ function mergeTeamWithCms(docs: TeamMember[]): MeetOurTeamMember[] {
       email: cms.email?.trim() ? cms.email : null,
       linkedIn: cms.linkedIn?.trim() ? cms.linkedIn : null,
       featured: cms.featured ?? base.featured,
-      order: typeof cms.order === 'number' ? cms.order : base.order,
+      /** Brochure roster order from `teamProfilesData` — do not let CMS `order` override (keeps editorial sort in sync). */
+      order: base.order,
     }
   })
 
