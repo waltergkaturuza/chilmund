@@ -151,10 +151,10 @@ function FeaturedCard({
         </span>
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
-        <p className="mt-1 text-sm font-semibold text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
+        <h3 className="text-justify text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
+        <p className="mt-1 text-justify text-sm font-semibold text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
         {member.bioShort && (
-          <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-white/60 line-clamp-4">
+          <p className="mt-3 text-justify text-sm leading-relaxed text-slate-600 dark:text-white/60 line-clamp-4">
             {member.bioShort}
           </p>
         )}
@@ -206,7 +206,7 @@ function MemberCard({
       onClick={onOpen}
       aria-label={`View full profile: ${member.name}`}
       className={cn(
-        'group rounded-2xl border border-slate-200 bg-white p-6 text-center transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-slate-900/60 dark:focus-visible:ring-offset-slate-950',
+        'group rounded-2xl border border-slate-200 bg-white p-6 text-left transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-slate-900/60 dark:focus-visible:ring-offset-slate-950',
       )}
     >
       {member.photo ? (
@@ -228,10 +228,10 @@ function MemberCard({
           {getInitials(member.name)}
         </div>
       )}
-      <h3 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">{member.name}</h3>
-      <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
+      <h3 className="mt-4 text-justify text-lg font-bold text-slate-900 dark:text-white">{member.name}</h3>
+      <p className="mt-1 text-justify text-sm font-medium text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
       {member.bioShort && (
-        <p className="mt-3 text-sm text-slate-500 dark:text-white/50 line-clamp-3">{member.bioShort}</p>
+        <p className="mt-3 text-justify text-sm text-slate-500 dark:text-white/50 line-clamp-3">{member.bioShort}</p>
       )}
       {(member.email || member.linkedIn) && (
         <div

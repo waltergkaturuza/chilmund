@@ -167,7 +167,7 @@ export default async function ManufacturingPlantPage() {
           <h2 className="mt-3 text-2xl font-extrabold text-slate-900 dark:text-white md:mt-2">Location</h2>
           <p className="mx-auto mt-2 max-w-none text-pretty text-base leading-snug text-slate-600 text-balance dark:text-white/60 md:text-lg md:leading-normal">
             Our manufacturing plant is strategically located in <strong>Bindura, Zimbabwe</strong>,
-            providing easy access to bauxite raw materials and key transport routes for distribution
+            providing easy access to raw materials and key transport routes for distribution
             across Southern and East Africa.
           </p>
           <p className="mx-auto mt-1.5 max-w-none text-pretty text-sm text-slate-500 text-balance dark:text-white/45 md:text-[0.9375rem]">

@@ -40,7 +40,7 @@ export const chilmundCopy = {
     'The company is now on a drive to service the regional market.',
     'Currently producing 240 tonnes per day.',
     'The company employs 200+ permanent employees and continues to expand its workforce.',
-    'The Aluminium Sulphate is non-ferric and has 17% Alum content.',
+    'Contact us for enquiries on technical specifications.',
   ],
 
   /** Aligned with Website Biographies PDF + Meet Our Team page */
