@@ -13,6 +13,9 @@ import React from 'react'
 
 const HOME_HERO_DRONE_MP4_SRC = `/${encodeURIComponent('Chilmund drone mp4.mp4')}`
 
+/** Public filename contains parentheses — encode for valid URLs. */
+const LIQUID_STORAGE_TANKS_IMAGE = `/${encodeURIComponent('AIEnhancer_DJI_0333(1).png')}`
+
 const facilityGallery = [
   {
     src: '/manufacturing plant.jpg',
@@ -21,8 +24,8 @@ const facilityGallery = [
       'Bindura manufacturing facility, engineered for dependable high-volume output.',
   },
   {
-    src: '/Storage tanks.jpg',
-    alt: 'Controlled liquid streams dispensing from a perforated pipe onto a metal processing surface.',
+    src: LIQUID_STORAGE_TANKS_IMAGE,
+    alt: 'Outdoor liquid storage tanks with yellow safety railings, concrete basins and process piping at the Chilmund facility.',
     caption:
       'Liquid Product Storage Tanks',
   },
