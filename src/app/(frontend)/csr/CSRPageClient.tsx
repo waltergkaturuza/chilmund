@@ -128,17 +128,14 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 <h2 className="text-center text-lg font-extrabold text-slate-900 dark:text-white sm:text-xl">
                   CSR in focus
                 </h2>
-                <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
-                  Photos from our community programmes. Initiative cards from the CMS appear below when published.
-                </p>
-                <div className="mx-auto mt-6 max-w-xl sm:max-w-2xl">
+                <div className="mt-4 w-full">
                   <ImageSlideshow
                     slides={csrHighlightSlides}
                     controlsOnLight
                     imageFit="contain"
                     intervalMs={6500}
-                    sizes="(max-width: 1024px) 100vw, 42rem"
-                    className="relative h-[min(36vh,300px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(38vh,340px)]"
+                    sizes="(max-width: 1024px) 100vw, min(100%, 72rem)"
+                    className="relative h-[min(40vh,360px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(42vh,400px)]"
                   />
                 </div>
               </div>
@@ -159,8 +156,7 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
                 <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No initiatives found</p>
                 <p className="mt-1 text-sm text-slate-500 dark:text-white/40">
-                  Try adjusting your search or filter
-                  {csrHighlightSlides.length > 0 ? ' — CSR photos stay available in the section above.' : '.'}
+                  Try adjusting your search or filter.
                 </p>
               </div>
             ) : null}
