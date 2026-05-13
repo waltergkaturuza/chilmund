@@ -322,8 +322,7 @@ export function HomeContentSections() {
               <div className="shrink-0">
                 <Medal className="size-8 text-amber-400" />
                 <p className="mt-4 text-sm leading-relaxed text-white/72">
-                  Certification highlights in rotation — full dossiers, marks, and partnership context on our partners and
-                  certifications page.
+                  Full dossiers, marks, and partnership context on our partners and certifications page.
                 </p>
               </div>
               <div className="flex min-h-[15rem] flex-1 flex-col sm:min-h-[18rem] lg:min-h-0">
