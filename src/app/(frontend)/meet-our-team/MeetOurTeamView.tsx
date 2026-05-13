@@ -58,9 +58,6 @@ export function MeetOurTeamView({ members }: Props) {
           <div className="container mx-auto px-4 pt-16">
             <div className="mx-auto max-w-2xl text-center">
               <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Leadership</h2>
-              <p className="mt-2 text-pretty text-sm text-slate-500 dark:text-white/50">
-                Select a profile to read the full biography.
-              </p>
             </div>
             <div className="mx-auto mt-10 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((m, i) => (
@@ -76,9 +73,6 @@ export function MeetOurTeamView({ members }: Props) {
           {featured.length > 0 && (
             <div className="mx-auto mb-10 max-w-2xl text-center">
               <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">The Team</h2>
-              <p className="mt-2 text-pretty text-sm text-slate-500 dark:text-white/50">
-                Click any team member for qualifications and full profile.
-              </p>
             </div>
           )}
           <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
