@@ -1,5 +1,7 @@
 'use client'
 
+import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
+import { csrHighlightSlides } from '@/content/csrHighlightSlides'
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import {
@@ -121,6 +123,27 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
               })}
             </div>
 
+            {csrHighlightSlides.length > 0 && (
+              <div className="rounded-xl border border-slate-200 bg-slate-50/90 p-6 dark:border-white/10 dark:bg-slate-900/50 sm:p-8">
+                <h2 className="text-center text-lg font-extrabold text-slate-900 dark:text-white sm:text-xl">
+                  CSR in focus
+                </h2>
+                <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
+                  Photos from our community programmes. Initiative cards from the CMS appear below when published.
+                </p>
+                <div className="mx-auto mt-6 max-w-xl sm:max-w-2xl">
+                  <ImageSlideshow
+                    slides={csrHighlightSlides}
+                    controlsOnLight
+                    imageFit="contain"
+                    intervalMs={6500}
+                    sizes="(max-width: 1024px) 100vw, 42rem"
+                    className="relative h-[min(36vh,300px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(38vh,340px)]"
+                  />
+                </div>
+              </div>
+            )}
+
             {/* Featured hero card */}
             {featuredItem && <FeaturedCard item={featuredItem} />}
 
@@ -135,7 +158,10 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
               <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
                 <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
                 <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No initiatives found</p>
-                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
+                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">
+                  Try adjusting your search or filter
+                  {csrHighlightSlides.length > 0 ? ' — CSR photos stay available in the section above.' : '.'}
+                </p>
               </div>
             ) : null}
           </div>
