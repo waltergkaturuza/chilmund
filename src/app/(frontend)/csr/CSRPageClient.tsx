@@ -135,7 +135,7 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                     imageFit="contain"
                     intervalMs={6500}
                     sizes="(max-width: 1024px) 100vw, min(100%, 72rem)"
-                    className="relative h-[min(40vh,360px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(42vh,400px)]"
+                    className="relative h-[min(46vh,400px)] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-100 shadow-inner dark:border-white/10 dark:bg-slate-950 sm:h-[min(48vh,440px)]"
                   />
                 </div>
               </div>
