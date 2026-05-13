@@ -56,12 +56,12 @@ export function MeetOurTeamView({ members }: Props) {
       {featured.length > 0 && (
         <section className="bg-white dark:bg-slate-950">
           <div className="container mx-auto px-4 pt-16">
-            <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-              Leadership
-            </h2>
-            <p className="mx-auto mt-2 max-w-xl text-center text-sm text-slate-500 dark:text-white/50">
-              Select a profile to read the full biography.
-            </p>
+            <div className="mx-auto max-w-2xl text-center">
+              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Leadership</h2>
+              <p className="mt-2 text-pretty text-sm text-slate-500 dark:text-white/50">
+                Select a profile to read the full biography.
+              </p>
+            </div>
             <div className="mx-auto mt-10 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((m, i) => (
                 <FeaturedCard key={m.id} member={m} colorIdx={i} onOpen={() => setActive(m)} />
@@ -74,14 +74,12 @@ export function MeetOurTeamView({ members }: Props) {
       <section className="bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16">
           {featured.length > 0 && (
-            <h2 className="mb-2 text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-              The Team
-            </h2>
-          )}
-          {featured.length > 0 && (
-            <p className="mx-auto mb-10 max-w-xl text-center text-sm text-slate-500 dark:text-white/50">
-              Click any team member for qualifications and full profile.
-            </p>
+            <div className="mx-auto mb-10 max-w-2xl text-center">
+              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">The Team</h2>
+              <p className="mt-2 text-pretty text-sm text-slate-500 dark:text-white/50">
+                Click any team member for qualifications and full profile.
+              </p>
+            </div>
           )}
           <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((member, i) => (
@@ -151,10 +149,10 @@ function FeaturedCard({
         </span>
       </div>
       <div className="p-6">
-        <h3 className="text-justify text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
-        <p className="mt-1 text-justify text-sm font-semibold text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
+        <h3 className="text-center text-xl font-bold text-slate-900 dark:text-white">{member.name}</h3>
+        <p className="mt-1 text-center text-sm font-semibold text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
         {member.bioShort && (
-          <p className="mt-3 text-justify text-sm leading-relaxed text-slate-600 dark:text-white/60 line-clamp-4">
+          <p className="mt-3 text-left text-pretty text-sm leading-relaxed text-slate-600 dark:text-white/60 line-clamp-4">
             {member.bioShort}
           </p>
         )}
@@ -206,7 +204,7 @@ function MemberCard({
       onClick={onOpen}
       aria-label={`View full profile: ${member.name}`}
       className={cn(
-        'group rounded-2xl border border-slate-200 bg-white p-6 text-left transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-slate-900/60 dark:focus-visible:ring-offset-slate-950',
+        'group rounded-2xl border border-slate-200 bg-white p-6 text-center transition-shadow hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 dark:border-white/10 dark:bg-slate-900/60 dark:focus-visible:ring-offset-slate-950',
       )}
     >
       {member.photo ? (
@@ -228,10 +226,10 @@ function MemberCard({
           {getInitials(member.name)}
         </div>
       )}
-      <h3 className="mt-4 text-justify text-lg font-bold text-slate-900 dark:text-white">{member.name}</h3>
-      <p className="mt-1 text-justify text-sm font-medium text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
+      <h3 className="mt-4 text-lg font-bold text-slate-900 dark:text-white">{member.name}</h3>
+      <p className="mt-1 text-sm font-medium text-blue-600 dark:text-blue-400">{member.jobTitle}</p>
       {member.bioShort && (
-        <p className="mt-3 text-justify text-sm text-slate-500 dark:text-white/50 line-clamp-3">{member.bioShort}</p>
+        <p className="mt-3 text-left text-pretty text-sm text-slate-500 dark:text-white/50 line-clamp-3">{member.bioShort}</p>
       )}
       {(member.email || member.linkedIn) && (
         <div

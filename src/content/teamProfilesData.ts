@@ -131,17 +131,17 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
       'A chemical engineer with vast experience in the mining, heavy chemical, pharmaceutical and food industries and research, Leo is currently responsible for ensuring that all company operations, products and processes adhere to stringent local and international regulations regarding health, safety, environment and chemical management.',
   },
   {
-    id: 'allen-mukwasi',
-    name: 'Allen Mukwasi',
-    jobTitle: 'Safety, Health and Environmental (SHE) Officer',
-    department: 'sheq',
-    imageFile: 'Allen Mukwasi - Safety, Health and Environmental (SHE) Officer.jpg',
+    id: 'fungai-gavu',
+    name: 'Fungai Gavu',
+    jobTitle: 'Technical and Marketing Executive',
+    department: 'business',
+    imageFile: 'Fungai Gavu - Technical and Marketing Executive.jpg',
     featured: false,
-    order: 11,
-    credentials:
-      'MSc in Safety, Health and Environmental Management, BSc in Geography and Environmental Studies, certificate in ISO 9001, ISO 14001 and ISO 45001 internal auditing, development and implementation, OSHEMAC certificate; additional training in root cause analysis, first aid, firefighting, and hazardous substances handling.',
+    order: 8,
+    photoObjectPosition: 'object-top',
+    credentials: 'Bachelor of Technology in Applied Chemistry, Chemical Processing Technology Hons',
     fullProfile:
-      'Allen has over five years of experience in safety, health, environmental and quality (SHEQ) management within the manufacturing and construction sectors, with hands-on involvement in ISO certification processes and chemical manufacturing plant construction projects. He leads SHEQ initiatives, focusing on integrated management systems, regulatory compliance and risk management.',
+      'Fungai brings 30+ years of experience in the industrial chemicals manufacturing and distribution industry. This extensive experience spans local and international trade, with deep expertise in industrial chemicals application and processes, industrial chemicals sales and marketing, international trade procedures and business administration.',
   },
   {
     id: 'brenda-munyai',
@@ -169,17 +169,17 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
       'Francis is an experienced strategic supply chain leader with over seven years of expertise in diverse sectors, including FMCG, mining, chemicals manufacturing and construction. He has proven proficiency in transport and logistics management, strategic procurement, and warehouse and distribution management. In his engagements, he has fostered strong relationships with suppliers and delivered cost-containment strategies for organisations to improve their bottom line.',
   },
   {
-    id: 'fungai-gavu',
-    name: 'Fungai Gavu',
-    jobTitle: 'Technical and Marketing Executive',
-    department: 'business',
-    imageFile: 'Fungai Gavu - Technical and Marketing Executive.jpg',
+    id: 'allen-mukwasi',
+    name: 'Allen Mukwasi',
+    jobTitle: 'Safety, Health and Environmental (SHE) Officer',
+    department: 'sheq',
+    imageFile: 'Allen Mukwasi - Safety, Health and Environmental (SHE) Officer.jpg',
     featured: false,
-    order: 8,
-    photoObjectPosition: 'object-top',
-    credentials: 'Bachelor of Technology in Applied Chemistry, Chemical Processing Technology Hons',
+    order: 11,
+    credentials:
+      'MSc in Safety, Health and Environmental Management, BSc in Geography and Environmental Studies, certificate in ISO 9001, ISO 14001 and ISO 45001 internal auditing, development and implementation, OSHEMAC certificate; additional training in root cause analysis, first aid, firefighting, and hazardous substances handling.',
     fullProfile:
-      'Fungai brings 30+ years of experience in the industrial chemicals manufacturing and distribution industry. This extensive experience spans local and international trade, with deep expertise in industrial chemicals application and processes, industrial chemicals sales and marketing, international trade procedures and business administration.',
+      'Allen has over five years of experience in safety, health, environmental and quality (SHEQ) management within the manufacturing and construction sectors, with hands-on involvement in ISO certification processes and chemical manufacturing plant construction projects. He leads SHEQ initiatives, focusing on integrated management systems, regulatory compliance and risk management.',
   },
   {
     id: 'milton-dangaiso',

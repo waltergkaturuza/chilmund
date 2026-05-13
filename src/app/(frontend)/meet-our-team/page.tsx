@@ -126,6 +126,8 @@ export default async function MeetOurTeamPage() {
     // Published PDF + /public portraits remain the source of truth offline.
   }
 
+  members = [...members].sort((a, b) => a.order - b.order)
+
   return (
     <article className="min-h-screen">
       <MeetOurTeamView members={members} />
