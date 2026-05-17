@@ -48,9 +48,9 @@ export default function ProductDetailsPage() {
           <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
             Aluminium sulphate — product at a glance
           </h2>
-          <p className="mx-auto mt-3 max-w-none text-center text-sm leading-snug text-slate-600 text-balance md:max-w-4xl md:text-base dark:text-white/55">
-            We cater for various granular sizes, powder, kibbles and liquid product. All certified with SAZ product Mark
-            (ZWS 1120:2024)
+          <p className="mx-auto mt-3 w-full max-w-6xl px-2 text-center text-sm leading-relaxed text-slate-600 !text-center md:text-base dark:text-white/55">
+            We cater for various granular sizes, powder, kibbles and liquid product. All certified with SAZ product
+            Mark (ZWS 1120:2024)
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
