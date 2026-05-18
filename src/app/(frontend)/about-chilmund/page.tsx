@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { CHILMUND_LOGO_ALT, CHILMUND_LOGO_SRC } from '@/constants/brand'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
 import { Eye, Target, Factory, Users, Globe, Droplets } from 'lucide-react'
@@ -26,8 +27,8 @@ export default function AboutChilmundPage() {
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-10 lg:gap-14">
           <div className="flex items-center justify-center md:min-h-[220px] lg:min-h-[248px]">
             <Image
-              src="/chilmund-logo.png"
-              alt="Chilmund Chemicals"
+              src={CHILMUND_LOGO_SRC}
+              alt={CHILMUND_LOGO_ALT}
               width={560}
               height={168}
               className="h-auto w-full max-w-[min(100%,22rem)] md:max-w-none md:w-[min(100%,28rem)] lg:w-[min(100%,32rem)]"
