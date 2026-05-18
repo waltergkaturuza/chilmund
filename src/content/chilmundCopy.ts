@@ -12,7 +12,7 @@ export const chilmundCopy = {
 
   about: {
     intro:
-      'Established in 2007, the company has moved into manufacturing, building a production capacity of over 90,000 tonnes of aluminium sulphate per annum.',
+      'Chilmund Chemicals Pvt Ltd is a global water solution driven company which manufactures Aluminum Sulphate. Established in 2007, the company has moved into manufacturing, building a production capacity of over 90,000 tonnes of aluminium sulphate per annum.',
     capacity:
       'Chilmund Chemicals is the leading manufacturer of aluminium sulphate in Zimbabwe, with a monthly capacity of producing up to 7,200 tonnes for local and regional markets.',
     whyChooseUs:
