@@ -6,8 +6,6 @@ import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
 
 import { HomeHeroSlideshow } from './HomeHeroSlideshow'
-const HOME_HERO_READ_MORE_TEXT =
-  'Experience the unmatched performance and reliability of our world-class products. We are dedicated to making clean, safe water accessible to all, driving sustainable development, and building a brighter future for Africa.'
 
 export type LowImpactHeroProps = Page['hero'] & {
   pageSlug?: string
@@ -46,16 +44,6 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
                     enableGutter={false}
                   />
                 ))}
-              {!children && (
-                <details className="mt-3">
-                  <summary className="cursor-pointer text-sm font-semibold text-blue-400 underline-offset-4 transition-colors hover:text-blue-300 hover:underline">
-                    Read more
-                  </summary>
-                  <p className="mt-2 text-justify text-base leading-relaxed text-white/78 md:text-lg">
-                    {HOME_HERO_READ_MORE_TEXT}
-                  </p>
-                </details>
-              )}
               {Array.isArray(links) && links.length > 0 && (
                 <ul className="summit-hero-actions mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                   {links.map(({ link }, i) => {

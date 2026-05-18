@@ -1,6 +1,6 @@
 import type { RequiredDataFromCollectionSlug } from 'payload'
 
-import { HOME_HERO_H1 } from '@/content/homeHero'
+import { HOME_HERO_H1, HOME_HERO_INTRO } from '@/content/homeHero'
 import { heading, line, richRoot } from '@/content/lexicalBuilders'
 
 /** Fallback home when no `home` page exists in the database — from client “Chilmund website content” PDF */
@@ -31,9 +31,7 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
     ],
     richText: richRoot([
       heading('h1', HOME_HERO_H1),
-      line(
-        'Chilmund Chemicals is a trailblazer in the water treatment industry. Our state-of-the-art manufacturing plant in Bindura, Zimbabwe — 86 km from Harare — is the fifth of its kind globally and the only one in Africa. Since transitioning from trading to manufacturing in July 2023, we have built capacity for up to 7,200 tonnes of aluminium sulphate per month.',
-      ),
+      line(HOME_HERO_INTRO),
     ]),
   },
   meta: {
