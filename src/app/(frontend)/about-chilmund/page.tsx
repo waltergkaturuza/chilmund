@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
-import { CheckCircle, Eye, Target, Factory, Users, Globe, Droplets } from 'lucide-react'
+import { Eye, Target, Factory, Users, Globe, Droplets } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
 
@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 const stats = [
   { label: 'Established', value: '2007', icon: <Factory className="size-5" /> },
-  { label: 'Monthly capacity', value: '7,200 t', icon: <Droplets className="size-5" /> },
+  { label: 'Monthly capacity', value: '7500t+', icon: <Droplets className="size-5" /> },
   { label: 'Employees', value: '200+', icon: <Users className="size-5" /> },
-  { label: 'Markets served', value: '10+', icon: <Globe className="size-5" /> },
+  { label: 'Countries served', value: '10+', icon: <Globe className="size-5" /> },
 ]
 
 export default function AboutChilmundPage() {
@@ -37,7 +37,7 @@ export default function AboutChilmundPage() {
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-              About Chilmund Chemicals
+              Company Overview
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
               {chilmundCopy.about.intro}
@@ -58,36 +58,6 @@ export default function AboutChilmundPage() {
               <div className="mt-1 text-sm text-slate-500 dark:text-white/50">{s.label}</div>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Capacity & Why Choose Us */}
-      <section className="bg-slate-50 dark:bg-slate-950">
-        <div className="container mx-auto grid gap-12 px-4 py-16 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              Leading Manufacturer
-            </h2>
-            <p className="mt-4 leading-relaxed text-slate-600 dark:text-white/60">
-              {chilmundCopy.about.capacity}
-            </p>
-            <div className="mt-6 space-y-3">
-              {chilmundCopy.facts.map((f, i) => (
-                <div key={i} className="flex gap-3">
-                  <CheckCircle className="mt-0.5 size-5 shrink-0 text-blue-600 dark:text-blue-400" />
-                  <p className="text-sm text-slate-600 dark:text-white/60">{f}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">
-              Why Choose Us
-            </h2>
-            <p className="mt-4 leading-relaxed text-slate-600 dark:text-white/60">
-              {chilmundCopy.about.whyChooseUs}
-            </p>
-          </div>
         </div>
       </section>
 
