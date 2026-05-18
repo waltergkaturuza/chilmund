@@ -31,7 +31,7 @@ export default function AboutChilmundPage() {
               alt={CHILMUND_LOGO_ALT}
               width={560}
               height={168}
-              className="h-auto w-full max-w-[min(100%,22rem)] md:max-w-none md:w-[min(100%,28rem)] lg:w-[min(100%,32rem)]"
+              className="h-auto w-full max-w-[min(100%,22rem)] contrast-[1.08] saturate-[1.12] mix-blend-multiply md:max-w-none md:w-[min(100%,28rem)] lg:w-[min(100%,32rem)]"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
             />
