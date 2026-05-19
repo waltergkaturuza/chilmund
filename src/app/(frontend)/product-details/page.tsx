@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { Beaker, Droplets, FlaskConical, Package, Shield } from 'lucide-react'
-import Link from 'next/link'
+import { Shield } from 'lucide-react'
 import React from 'react'
 import { ProductImageSlideshow } from './ProductImageSlideshow'
 
@@ -11,13 +10,6 @@ export const metadata: Metadata = {
   description:
     'Technical specifications and product details for Chilmund Chemicals non-ferric Aluminium Sulphate with 17% Al₂O₃ content.',
 }
-
-const applications = [
-  { icon: <Droplets className="size-5" />, title: 'Municipal water treatment', desc: 'Primary coagulant for drinking water purification used by local authorities nationwide.' },
-  { icon: <FlaskConical className="size-5" />, title: 'Industrial wastewater', desc: 'Effective flocculation for mining, manufacturing, and food processing effluent.' },
-  { icon: <Package className="size-5" />, title: 'Paper & pulp industry', desc: 'Sizing agent that improves water resistance and printability of paper products.' },
-  { icon: <Beaker className="size-5" />, title: 'Textile processing', desc: 'Mordant for dye fixation and pH adjustment in textile finishing processes.' },
-]
 
 const certifications = [
   'IMS- ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018',
@@ -69,34 +61,6 @@ export default function ProductDetailsPage() {
                 />
               </div>
             </figure>
-          </div>
-        </div>
-      </section>
-
-      {/* Applications */}
-      <section className="bg-slate-50 dark:bg-slate-950">
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Applications
-          </h2>
-          <div className="mx-auto mt-10 grid max-w-4xl gap-6 sm:grid-cols-2">
-            {applications.map((a) => (
-              <div key={a.title} className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-white/10 dark:bg-slate-900/60">
-                <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
-                  {a.icon}
-                </div>
-                <h3 className="font-bold text-slate-900 dark:text-white">{a.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-white/60">{a.desc}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link
-              href="/uses-aluminium-sulphate"
-              className="inline-flex rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
-            >
-              View all uses of Aluminium Sulphate →
-            </Link>
           </div>
         </div>
       </section>
