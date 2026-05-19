@@ -49,8 +49,8 @@ export default function ProductDetailsPage() {
             Aluminium sulphate — product at a glance
           </h2>
           <p className="mx-auto mt-3 w-full max-w-6xl px-2 text-center text-sm leading-relaxed text-slate-600 !text-center md:text-base dark:text-white/55">
-            We cater for various granular sizes, powder, kibbles and liquid product. All certified with SAZ product
-            Mark (ZWS 1120:2024)
+            We cater for a wide range of granular sizes (from kibbles to fines) and liquid products. All certified with
+            SAZ product mark (ZWS 1120:2024)
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
