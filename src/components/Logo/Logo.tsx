@@ -21,7 +21,13 @@ export const Logo = (props: Props) => {
         className,
       )}
     >
-      <BrandLogo width={160} height={113} className="h-8 w-auto md:h-10" priority />
+      <BrandLogo
+        width={280}
+        height={198}
+        className="h-10 w-auto sm:h-11 md:h-12"
+        sizes="(max-width: 768px) 200px, 280px"
+        priority
+      />
     </span>
   )
 }
