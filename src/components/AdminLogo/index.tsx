@@ -10,7 +10,6 @@ export default function AdminLogo() {
     <div className="chilmund-admin-logo">
       <BrandLogo
         width={280}
-        height={198}
         className="chilmund-admin-logo__img h-auto w-full max-w-[280px]"
         priority
       />

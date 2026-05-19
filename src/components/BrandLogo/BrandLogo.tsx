@@ -21,15 +21,17 @@ export function BrandLogo({
   sizes,
 }: BrandLogoProps) {
   return (
-    <Image
-      src={CHILMUND_LOGO_SRC}
-      alt={CHILMUND_LOGO_ALT}
-      width={width}
-      height={height}
-      className={clsx('h-auto w-auto', className)}
-      priority={priority}
-      sizes={sizes}
-      unoptimized
-    />
+    <span className="inline-flex shrink-0 overflow-visible p-0.5">
+      <Image
+        src={CHILMUND_LOGO_SRC}
+        alt={CHILMUND_LOGO_ALT}
+        width={width}
+        height={height}
+        className={clsx('h-auto w-auto', className)}
+        priority={priority}
+        sizes={sizes}
+        unoptimized
+      />
+    </span>
   )
 }
