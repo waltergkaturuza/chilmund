@@ -1,8 +1,7 @@
 import clsx from 'clsx'
-import Image from 'next/image'
 import React from 'react'
 
-import { CHILMUND_LOGO_ALT, CHILMUND_LOGO_SRC } from '@/constants/brand'
+import { BrandLogo } from '@/components/BrandLogo/BrandLogo'
 
 interface Props {
   className?: string
@@ -22,14 +21,7 @@ export const Logo = (props: Props) => {
         className,
       )}
     >
-      <Image
-        src={CHILMUND_LOGO_SRC}
-        alt={CHILMUND_LOGO_ALT}
-        width={160}
-        height={48}
-        className="h-8 w-auto md:h-10"
-        priority
-      />
+      <BrandLogo width={160} height={113} className="h-8 w-auto md:h-10" priority />
     </span>
   )
 }

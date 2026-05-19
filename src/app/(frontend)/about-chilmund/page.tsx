@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
-import { CHILMUND_LOGO_ALT, CHILMUND_LOGO_SRC } from '@/constants/brand'
+import { BrandLogo } from '@/components/BrandLogo/BrandLogo'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
 import { AboutFoundationSections } from './AboutFoundationSections'
 import { Factory, Users, Globe, Droplets } from 'lucide-react'
-import Image from 'next/image'
 import React from 'react'
 
 export const metadata: Metadata = {
@@ -27,17 +26,13 @@ export default function AboutChilmundPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-2 md:gap-8">
           <div className="flex items-center justify-center">
-            <div className="w-full max-w-[min(100%,20rem)] rounded-xl border border-white/15 bg-white px-3 py-2 shadow-lg shadow-black/30 sm:px-4 sm:py-2.5 md:max-w-none md:w-[min(100%,26rem)] lg:w-[min(100%,28rem)]">
-              <Image
-                src={CHILMUND_LOGO_SRC}
-                alt={CHILMUND_LOGO_ALT}
-                width={560}
-                height={168}
-                className="h-auto w-full"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </div>
+            <BrandLogo
+              width={560}
+              height={396}
+              className="h-auto w-full max-w-[min(100%,20rem)] md:max-w-none md:w-[min(100%,26rem)] lg:w-[min(100%,28rem)]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+              priority
+            />
           </div>
           <div className="text-center">
             <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
