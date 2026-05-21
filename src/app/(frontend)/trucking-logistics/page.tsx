@@ -7,9 +7,9 @@ import React from 'react'
 const TRUCKS_VIDEO_SRC = `/${encodeURIComponent('trucks.mp4')}`
 
 export const metadata: Metadata = {
-  title: 'Trucking & Logistics | Chilmund Chemicals',
+  title: 'Our Fleet | Chilmund Chemicals',
   description:
-    'Reliable trucking and logistics services for aluminium sulphate delivery across Zimbabwe and the Southern African region.',
+    'Our well-maintained fleet of trucks caters for swift product deliveries and raw material transportation.',
 }
 
 const capabilities = [
@@ -37,11 +37,11 @@ export default function TruckingLogisticsPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
-            Trucking &amp; Logistics
+            Our Fleet
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
-            From our Bindura plant to your door — reliable, safe, and on-time delivery of
-            aluminium sulphate across the region.
+            Our well-maintained fleet of trucks caters for swift product deliveries and raw
+            material transportation.
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ export default function TruckingLogisticsPage() {
       <section className="bg-slate-50 dark:bg-slate-900">
         <div className="relative mx-auto w-full max-w-none px-3 py-16 sm:px-4 md:px-5 lg:px-7 xl:px-10">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Delivery Estimates
+            Our fleet
           </h2>
           <div className="mx-auto mt-10 grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
             <div className="min-w-0 lg:col-span-5">

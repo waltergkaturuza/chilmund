@@ -17,18 +17,8 @@ export const awardsCertificatesSlides: ImageSlideshowSlide[] = [
     caption: 'NSSA recognition for occupational safety and health management.',
   },
   {
-    src: awardSrc('National Business Award 2024 awarded to Chilmund for Best Industrial Innovations.png'),
-    alt: 'National Business Award 2024 certificate for Chilmund Chemicals as best industrial innovations.',
-    caption: 'National Business Award 2024 — best industrial innovations.',
-  },
-  {
     src: awardSrc('Water treatment Chemicals manufacturer of the Year.png'),
     alt: 'Award certificate naming Chilmund Chemicals water treatment chemicals manufacturer of the year.',
     caption: 'Water treatment chemicals manufacturer of the year.',
-  },
-  {
-    src: awardSrc('Global Honorary Award Chilmund Chemicals for OutstandingServices 2025 Global ZAA Fellow.png'),
-    alt: 'Global honorary award certificate for outstanding services and Global ZAA Fellow recognition in 2025.',
-    caption: 'Global honorary award (2025) for outstanding services; Global ZAA Fellow.',
   },
 ]

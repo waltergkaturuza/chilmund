@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const certifications = [
   {
     title: 'IMS- ISO 9001:2015, ISO 14001:2015, and ISO 45001:2018',
-    body: 'International Organization for Standardization',
+    body: 'Integrated Management System',
     desc: 'Quality Management System certification ensuring consistent product quality and continuous improvement in all processes.',
     icon: <Shield className="size-6" />,
   },
@@ -89,7 +89,7 @@ export default function PartnershipsAccreditationsPage() {
         <div className="container mx-auto px-4 py-16">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">Certifications</h2>
           <p className="mx-auto mt-2 max-w-2xl text-center text-sm text-slate-600 dark:text-white/55">
-            Standards, licences, and awards — summary cards alongside original certificates and recognition documents.
+            Standards, licenses and awards demonstrating global and national recognition for excellence
           </p>
           <div className="mx-auto mt-10 grid max-w-[92rem] gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-10">
             <div className="grid h-full min-h-0 grid-cols-1 content-start gap-6 sm:grid-cols-2 lg:col-span-5">
@@ -109,10 +109,6 @@ export default function PartnershipsAccreditationsPage() {
             </div>
             <aside className="flex h-full min-h-0 flex-col rounded-2xl border border-slate-200 bg-slate-50/90 p-5 shadow-md shadow-slate-200/50 transition-all duration-300 hover:shadow-xl hover:shadow-slate-300/80 dark:border-white/10 dark:bg-slate-900/55 dark:shadow-lg dark:shadow-black/25 dark:hover:shadow-2xl dark:hover:shadow-black/45 lg:col-span-7">
               <h3 className="shrink-0 text-lg font-bold text-slate-900 dark:text-white">Certificates &amp; awards</h3>
-              <p className="mt-1 shrink-0 text-sm leading-snug text-slate-600 dark:text-white/55">
-                Original certificates and awards (portrait and landscape). Use the arrows or dots to browse — each image
-                scales to fit without cropping.
-              </p>
               <div className="mt-4 flex min-h-[15rem] flex-1 flex-col sm:min-h-[18rem] lg:min-h-0">
                 <ImageSlideshow
                   slides={awardsCertificatesSlides}

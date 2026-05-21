@@ -21,7 +21,7 @@ const stats = [
 export default function AboutChilmundPage() {
   return (
     <article className="min-h-screen">
-      {/* Hero — logo left, copy centered in right column */}
+      {/* Hero, logo left, copy centered in right column */}
       <section className={aboutHeroSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-2 md:gap-8">

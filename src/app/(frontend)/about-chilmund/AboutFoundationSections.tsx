@@ -6,22 +6,13 @@ const linkCls =
   'font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300'
 
 const coreValues = [
-  { title: 'Quality', body: 'Rigorous monitoring at every stage ensures world-class products.' },
-  { title: 'Integrity & excellence', body: 'Transparency and commitment to the highest standards guide our actions.' },
-  { title: 'Teamwork & innovation', body: 'Collaboration drives us to evolve and deliver superior solutions.' },
-  {
-    title: 'Sustainable livelihoods & environment',
-    body: 'We build a brighter future for people and the planet in harmony.',
-  },
-  { title: 'Diversity & inclusion', body: 'We celebrate the strengths of our talented team to drive collective success.' },
-  {
-    title: 'Growth-oriented partnerships',
-    body: "We invest in employees' well-being and growth, fostering mutual success.",
-  },
-  {
-    title: 'Positivity & empowerment',
-    body: 'We cultivate optimism and resilience across teams and partnerships — approaching challenges with energy and conviction.',
-  },
+  'Quality',
+  'Integrity & excellence',
+  'Teamwork & innovation',
+  'Sustainable livelihoods & environment',
+  'Diversity & inclusion',
+  'Growth-oriented partnerships',
+  'We create and deliver value beyond compare',
 ]
 
 function PillarCard({
@@ -63,10 +54,10 @@ export function AboutFoundationSections() {
           <div className="mb-12 text-center md:mb-14">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-700 dark:text-blue-400">Foundation</p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
-              Our three pillars
+              Our Key Pillars
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-white/55">
-              How we prioritise excellence at every interaction — grounded in who we are.
+              How we prioritise excellence at every interaction, grounded in who we are.
             </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
@@ -91,7 +82,7 @@ export function AboutFoundationSections() {
               accentClass="bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
               title="Affordability"
               subtitle="Inclusive access"
-              body="We design solutions so that safe water chemistry remains accessible regardless of economic context."
+              body="We design solutions so that safe water remains accessible regardless of economic context."
               foot={
                 <>
                   Explore{' '}
@@ -106,13 +97,13 @@ export function AboutFoundationSections() {
               icon={<HeartHandshake className="size-7" />}
               accentClass="bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300"
               title="Service excellence"
-              subtitle="Reliability on spec &amp; schedule"
-              body="Customer satisfaction anchors every dispatch — disciplined logistics, proactive communication and follow-through."
+              subtitle="Reliability on specification &amp; schedule"
+              body="Customer satisfaction anchors every dispatch, disciplined logistics, proactive communication and follow-through."
               foot={
                 <>
-                  Logistics &amp; fleet:{' '}
+                  Explore our{' '}
                   <Link className={linkCls} href="/trucking-logistics">
-                    trucking &amp; fulfilment
+                    trucking &amp; logistics
                   </Link>
                   .
                 </>
@@ -172,7 +163,7 @@ export function AboutFoundationSections() {
               Core values
             </h2>
             <p className="mt-3 text-slate-600 dark:text-white/55">
-              Values we embed from boardroom to plant floor — also reflected across{' '}
+              Values we embed from boardroom to plant floor, also reflected across{' '}
               <Link className={linkCls} href="/meet-our-team">
                 leadership &amp; teams
               </Link>
@@ -180,18 +171,15 @@ export function AboutFoundationSections() {
             </p>
           </div>
           <ol className="grid gap-4 sm:grid-cols-2 lg:gap-5">
-            {coreValues.map((v, i) => (
+            {coreValues.map((value, i) => (
               <li
-                key={v.title}
-                className="home-card group flex gap-4 rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50/95 p-5 shadow-sm transition-colors hover:border-blue-100 hover:shadow-md dark:border-white/10 dark:from-slate-900 dark:to-slate-950 dark:hover:border-blue-900/60"
+                key={value}
+                className="home-card group flex items-center gap-4 rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50/95 p-5 shadow-sm transition-colors hover:border-blue-100 hover:shadow-md dark:border-white/10 dark:from-slate-900 dark:to-slate-950 dark:hover:border-blue-900/60"
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white dark:bg-blue-700">
                   {i + 1}
                 </span>
-                <div>
-                  <h3 className="font-bold text-slate-900 dark:text-white">{v.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">{v.body}</p>
-                </div>
+                <p className="font-bold text-slate-900 dark:text-white">{value}</p>
               </li>
             ))}
           </ol>

@@ -1076,7 +1076,7 @@ export interface IndustryAward {
    */
   category?: ('quality' | 'safety' | 'innovation' | 'export' | 'community' | 'leadership' | 'other') | null;
   /**
-   * Award photo, certificate scan, or trophy image.
+   * Award photo, certificate scan, or trophy image (images only; PDFs live in Media for datasheets).
    */
   image?: (number | null) | Media;
   /**

@@ -173,7 +173,7 @@ export function AboutMegaMenu({
               <div className="mb-5">
                 <h4 className={sectionTitle}>
                   <Award className="mr-1.5 inline size-3.5 align-[-0.15em]" aria-hidden />
-                  Our Three Pillars
+                  Our Key Pillars
                 </h4>
                 <div className="grid gap-2 sm:grid-cols-3">
                   {pillars.map((p) => (

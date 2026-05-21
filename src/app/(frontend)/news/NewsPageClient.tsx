@@ -142,10 +142,14 @@ export function NewsPageClient({
             )}
 
             {filtered.length === 0 && (
-              <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
-                <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
-                <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No results found</p>
-                <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
+              <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
+                <Search className="size-10 text-slate-400 dark:text-white/30" aria-hidden />
+                <p className="mt-4 text-lg font-semibold !text-center text-slate-700 dark:text-white/60">
+                  No results found
+                </p>
+                <p className="mt-1 text-sm !text-center text-slate-500 dark:text-white/40">
+                  Try adjusting your search or filter.
+                </p>
               </div>
             )}
           </div>

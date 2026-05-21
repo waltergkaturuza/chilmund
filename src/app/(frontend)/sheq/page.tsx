@@ -11,7 +11,6 @@ import {
   Recycle,
   Shield,
   Sprout,
-  Users,
 } from 'lucide-react'
 import React from 'react'
 
@@ -27,36 +26,12 @@ export const metadata: Metadata = {
 }
 
 const qcSteps = [
-  {
-    title: 'Process definition & SOPs',
-    body:
-      'All manufacturing steps are documented in controlled standard operating procedures. Staff receive documented training prior to implementation, with competency records maintained.',
-  },
-  {
-    title: 'Change & deviation control',
-    body:
-      'Process changes follow formal change control with risk assessment and IMS Technical Committee approval. Deviations are logged, investigated via root cause analysis, and closed with corrective actions.',
-  },
-  {
-    title: 'Raw material control',
-    body:
-      'Incoming raw materials are sampled per the sampling plan and tested against defined specifications. Only approved materials are released to production.',
-  },
-  {
-    title: 'In-process QC & GLP',
-    body:
-      'Critical process parameters are monitored and recorded during production. Laboratory testing follows Good Laboratory Practices with calibrated equipment, traceable standards, and documented methods.',
-  },
-  {
-    title: 'Final product testing & release',
-    body:
-      'Each batch is tested for key quality parameters including Al₂O₃ content, pH, insoluble matter, and heavy metals. Release is authorized only after QC/QA Officer review and sign-off against the Certificate of Analysis.',
-  },
-  {
-    title: 'Batch sample retention',
-    body:
-      'Representative samples from every batch are retained under controlled conditions for the defined retention period to support investigations, customer queries, or regulatory review.',
-  },
+  'Process definition & SOPs',
+  'Change & deviation control',
+  'Raw material control',
+  'In-process QC & GLP',
+  'Final product testing & release',
+  'Batch sample retention',
 ]
 
 export default function SHEQPage() {
@@ -85,46 +60,22 @@ export default function SHEQPage() {
               <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 Integrated Management System (IMS)
               </h2>
-              <h3 className="mt-6 text-base font-medium text-slate-900 dark:text-white">
-                Integrated Management System policy
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">
-                The formal IMS policy is a controlled document (Rev&nbsp;1, September&nbsp;2025). For signed copies,
-                controlled dissemination, or integration into tender submissions, contact our SHEQ function or your Chilmund
-                account representative.
-              </p>
-              <p className="mt-4">
-                <Link
-                  href={hrefForStaticLibraryDocument('ims-policy-rev1-september-2025')}
-                  download
-                  className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 dark:border-white/20 dark:bg-slate-900 dark:text-white dark:hover:border-blue-400 dark:hover:text-blue-300"
-                >
-                  <Download className="size-4 shrink-0" aria-hidden />
-                  Download IMS policy (PDF)
-                </Link>
-              </p>
-              <div className="mt-8 space-y-5 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
+              <div className="mt-6 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
                 <p>
                   At Chilmund Chemicals, Safety, Health, Environment, and Quality (SHEQ) are fundamental to how we operate.
                   Our commitment is embedded in an Integrated Management System (IMS) that ensures responsible operations,
                   protection of people and the environment, and consistent delivery of high-quality products and services.
                 </p>
-                <p>
-                  Our dedication to safety, health, environmental integrity and quality underpins an arduous journey toward
-                  an Integrated Management System comprising ISO&nbsp;9001, ISO&nbsp;14001, and ISO&nbsp;45001.
+                <p className="mt-4">
+                  <Link
+                    href={hrefForStaticLibraryDocument('ims-policy-rev1-september-2025')}
+                    download
+                    className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 dark:border-white/20 dark:bg-slate-900 dark:text-white dark:hover:border-blue-400 dark:hover:text-blue-300"
+                  >
+                    <Download className="size-4 shrink-0" aria-hidden />
+                    Download IMS policy
+                  </Link>
                 </p>
-                <details>
-                  <summary className="cursor-pointer text-sm font-medium text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300">
-                    Read more
-                  </summary>
-                  <p className="mt-3">
-                    Chilmund Chemicals is in the final follow-up audit and verification stages toward SAZ IMS certification.
-                    Throughout this journey we have cultivated a congruent IMS organisational culture, resolving
-                    non-conformities and issues of concern through structured root cause analysis, corrective actions, and
-                    strengthened internal audits. That persistence shows we are committed to continual improvement and
-                    compliance across Quality, Safety, Health, and Environment.
-                  </p>
-                </details>
               </div>
             </div>
             <figure className="lg:col-span-6">
@@ -170,16 +121,13 @@ export default function SHEQPage() {
             compliance, and traceability throughout the manufacturing lifecycle:
           </p>
           <ul className="mt-10 space-y-6">
-            {qcSteps.map((step) => (
+            {qcSteps.map((title) => (
               <li
-                key={step.title}
-                className="flex gap-4 rounded-xl border border-slate-100 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-slate-900/40"
+                key={title}
+                className="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-slate-900/40"
               >
-                <CheckCircle className="mt-0.5 size-5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
-                <div>
-                  <p className="font-medium text-slate-900 dark:text-white">{step.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">{step.body}</p>
-                </div>
+                <CheckCircle className="size-5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
+                <p className="font-medium text-slate-900 dark:text-white">{title}</p>
               </li>
             ))}
           </ul>
@@ -199,11 +147,8 @@ export default function SHEQPage() {
             <div className="min-w-0 flex-1">
               <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory facilities</h2>
               <p className="mt-2 max-w-4xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-                As a testament to our commitment to Quality, Chilmund has established a laboratory equipped with analytical
-                instruments including an Atomic Absorption Spectrophotometer (AAS), digital temperature / conductivity / pH
-                meters, and a thermogravimetric moisture-content analyser. Quarterly calibrated equipment and certified
-                volumetric glassware allow competent analysts to execute routine QC testing, complexometric titrations, and
-                method-validation work underpinning authorised product release.
+                As a testament to our commitment to quality, Chilmund has established a laboratory equipped with
+                state-of-the-art analytical instruments.
               </p>
               <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
                 <SheqPhoto
@@ -224,14 +169,10 @@ export default function SHEQPage() {
         </div>
       </section>
 
-      {/* SHEQ Approach PDCA */}
+      {/* SHEQ approach */}
       <section className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Our SHEQ approach</h2>
-          <p className="mt-4 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            We apply a structured Plan → Do → Check → Act (PDCA) model to reinforce continuous improvement across Safety,
-            Health, Environment, and Quality.
-          </p>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <PillarCard
@@ -274,29 +215,6 @@ export default function SHEQPage() {
               accent="bg-blue-600"
             />
           </div>
-
-          <h3 className="mt-16 text-lg font-bold text-slate-900 dark:text-white">How the SHEQ system is implemented</h3>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {[
-              'Integrated policies, procedures, and operational controls',
-              'Periodic internal audits and externally witnessed SAZ certification audits',
-              'Risk assessments and method statements prior to changing conditions',
-              'Targeted competency development and SHEQ competency records',
-              'Incident investigation paired with corrective & preventive actions',
-              'Performance monitoring dashboards and escalation to leadership',
-              'Scheduled management reviews of IMS effectiveness',
-            ].map((line) => (
-              <li
-                key={line}
-                className="flex gap-3 rounded-lg border border-slate-100 bg-slate-50 px-4 py-3 text-sm leading-snug text-slate-700 dark:border-white/10 dark:bg-slate-900/50 dark:text-white/65"
-              >
-                <span className="shrink-0 text-blue-600 dark:text-blue-400" aria-hidden>
-                  ›
-                </span>
-                {line}
-              </li>
-            ))}
-          </ul>
         </div>
       </section>
 
@@ -352,13 +270,6 @@ export default function SHEQPage() {
           <p className="mt-8 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
             These initiatives strengthen ISO&nbsp;14001-aligned objectives — reducing preventable pollution while nurturing a pragmatic culture of sustainability.
           </p>
-
-          <div className="mt-12 rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-10 text-center dark:border-white/12 dark:bg-slate-900/40">
-            <Users className="mx-auto size-10 text-slate-400 dark:text-white/35" aria-hidden />
-            <p className="mt-3 text-sm text-slate-600 dark:text-white/55">
-              Community stewardship photography — placeholders for forthcoming assets.
-            </p>
-          </div>
         </div>
       </section>
     </article>

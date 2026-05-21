@@ -10,77 +10,16 @@ export const metadata: Metadata = {
 }
 
 const MARKETS = [
-  {
-    country: 'Zimbabwe',
-    code: 'zw',
-    lat: -19.0,
-    lng: 29.9,
-    desc: 'Headquarters (Harare) & manufacturing plant (Bindura). Nationwide municipal, industrial and mining supply.',
-    highlight: true,
-  },
-  {
-    country: 'South Africa',
-    code: 'za',
-    lat: -29.0,
-    lng: 24.0,
-    desc: 'Municipal water treatment and mining chemicals across all provinces.',
-  },
-  {
-    country: 'Mozambique',
-    code: 'mz',
-    lat: -18.7,
-    lng: 35.5,
-    desc: 'Maputo, Beira, and northern corridor municipalities.',
-  },
-  {
-    country: 'Zambia',
-    code: 'zm',
-    lat: -15.4,
-    lng: 28.3,
-    desc: 'Copperbelt mining sector and Lusaka municipal supply.',
-  },
-  {
-    country: 'Malawi',
-    code: 'mw',
-    lat: -13.3,
-    lng: 34.3,
-    desc: 'Lilongwe and Blantyre water boards.',
-  },
-  {
-    country: 'Botswana',
-    code: 'bw',
-    lat: -22.3,
-    lng: 24.7,
-    desc: 'Water Utilities Corporation and mining operations.',
-  },
-  {
-    country: 'Namibia',
-    code: 'na',
-    lat: -22.6,
-    lng: 17.1,
-    desc: 'NamWater and municipal water treatment plants.',
-  },
-  {
-    country: 'Tanzania',
-    code: 'tz',
-    lat: -6.4,
-    lng: 34.9,
-    desc: 'Dar es Salaam and regional mining operations.',
-  },
-  {
-    country: 'DRC',
-    code: 'cd',
-    lat: -4.3,
-    lng: 15.3,
-    desc: 'Mining sector in the Katanga (Haut-Katanga) copper belt.',
-  },
-  {
-    country: 'Kenya',
-    code: 'ke',
-    lat: -1.3,
-    lng: 36.8,
-    desc: 'Nairobi Water and Sewerage Company, industrial chemicals.',
-  },
+  { country: 'Zimbabwe', code: 'zw', lat: -19.0, lng: 29.9, highlight: true },
+  { country: 'South Africa', code: 'za', lat: -29.0, lng: 24.0 },
+  { country: 'Mozambique', code: 'mz', lat: -18.7, lng: 35.5 },
+  { country: 'Zambia', code: 'zm', lat: -15.4, lng: 28.3 },
+  { country: 'Malawi', code: 'mw', lat: -13.3, lng: 34.3 },
+  { country: 'Botswana', code: 'bw', lat: -22.3, lng: 24.7 },
+  { country: 'Namibia', code: 'na', lat: -22.6, lng: 17.1 },
+  { country: 'Tanzania', code: 'tz', lat: -6.4, lng: 34.9 },
+  { country: 'DRC', code: 'cd', lat: -4.3, lng: 15.3 },
+  { country: 'Kenya', code: 'ke', lat: -1.3, lng: 36.8 },
 ] as const
 
 function FlagImg({ code, size = 24 }: { code: string; size?: number }) {
@@ -108,14 +47,14 @@ export default function RegionalMarketsPage() {
             Regional Markets
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75 md:text-xl">
-            Serving 10+ countries across Southern and East Africa with world-class water treatment chemicals.
+            Serving 10+ countries across Southern and East Africa with world-class water treatment coagulants.
           </p>
         </div>
       </section>
 
       {/* Map + cards */}
       <section className="container px-4 py-16 md:py-20">
-        <RegionalMarketsMap markets={MARKETS as any} />
+        <RegionalMarketsMap markets={[...MARKETS]} />
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {MARKETS.map((m) => (
@@ -127,7 +66,6 @@ export default function RegionalMarketsPage() {
                 <FlagImg code={m.code} size={32} />
                 <h3 className="text-lg font-bold">{m.country}</h3>
               </div>
-              <p className="mt-2 text-sm text-muted-foreground">{m.desc}</p>
             </div>
           ))}
         </div>
