@@ -30,6 +30,8 @@ export type ImageSlideshowProps = {
   growInFlexLayout?: boolean
   /** Caption tuned for a dark panel (e.g. home SHEQ rail) while the site is in light mode. */
   captionOnDark?: boolean
+  /** Next.js Image quality 1–100 (default 85). Use 90+ for hero product photography. */
+  imageQuality?: number
 }
 
 export function ImageSlideshow({
@@ -41,6 +43,7 @@ export function ImageSlideshow({
   imageFit = 'cover',
   growInFlexLayout = false,
   captionOnDark = false,
+  imageQuality = 85,
 }: ImageSlideshowProps) {
   const [index, setIndex] = useState(0)
   const [reduceMotion, setReduceMotion] = useState(false)
@@ -108,6 +111,7 @@ export function ImageSlideshow({
               i === index ? 'opacity-100' : 'opacity-0',
             )}
             sizes={sizes}
+            quality={imageQuality}
             priority={i === 0}
           />
         ))}

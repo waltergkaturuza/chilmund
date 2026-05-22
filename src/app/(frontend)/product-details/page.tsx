@@ -4,6 +4,7 @@ import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Shield } from 'lucide-react'
 import React from 'react'
 import { ProductExcellenceSection } from './ProductExcellenceSection'
+import { ProductFormsDescription } from './ProductFormsDescription'
 import { ProductImageSlideshow } from './ProductImageSlideshow'
 
 export const metadata: Metadata = {
@@ -48,56 +49,25 @@ export default function ProductDetailsPage() {
             SAZ product mark (ZWS 1120:2024)
           </p>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
-            <figure className="order-2 flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-1">
-              <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
-                <Image
-                  src={`/${encodeURIComponent('liquid storage tanks .jpeg')}`}
-                  alt="Liquid aluminium sulphate storage tanks at Chilmund Chemicals."
-                  fill
-                  className="object-cover object-center"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </figure>
+          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
+            <div className="order-2 flex min-w-0 flex-col gap-6 lg:order-1">
+              <figure className="flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
+                <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
+                  <Image
+                    src={`/${encodeURIComponent('liquid storage tanks .jpeg')}`}
+                    alt="Liquid aluminium sulphate storage tanks at Chilmund Chemicals."
+                    fill
+                    className="object-cover object-center"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                  />
+                </div>
+              </figure>
+              <ProductFormsDescription />
+            </div>
 
-            <figure className="order-1 flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-2">
+            <figure className="order-1 flex min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-2 lg:sticky lg:top-24 lg:self-start">
               <ProductImageSlideshow />
             </figure>
-          </div>
-
-          <div className="mx-auto mt-12 max-w-3xl space-y-8 text-left text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">1. Solid Aluminium sulphate</h3>
-              <p className="mt-3 !text-left">
-                Is a white to off-white crystalline salt with a particle size ranging from 2&nbsp;-&nbsp;6.5&nbsp;mm.
-                Comes in four product forms:
-              </p>
-              <ol className="mt-4 list-decimal space-y-2 pl-6 marker:font-semibold marker:text-slate-900 dark:marker:text-white">
-                <li>
-                  <span className="font-semibold text-slate-900 dark:text-white">Granular</span> - coarse product with a
-                  particle size ranging from 2 to 6.5&nbsp;mm
-                </li>
-                <li>
-                  <span className="font-semibold text-slate-900 dark:text-white">Fines</span> - finely crushed product
-                  with a particle size ranging from 0.5 to 2&nbsp;mm
-                </li>
-                <li>
-                  <span className="font-semibold text-slate-900 dark:text-white">Kibble</span> - loosely crushed product
-                  with a particle size ranging from 30 to 60&nbsp;mm
-                </li>
-                <li>
-                  <span className="font-semibold text-slate-900 dark:text-white">Flakes</span> - flaked sheets with a
-                  thickness between 3 to 6.5&nbsp;mm
-                </li>
-              </ol>
-            </div>
-            <div>
-              <h3 className="text-lg font-bold text-slate-900 dark:text-white">2. Liquid Alum</h3>
-              <p className="mt-3 !text-left">
-                A pale yellow to light brown liquid with customer specified Al₂O₃ content.
-              </p>
-            </div>
           </div>
         </div>
       </section>
