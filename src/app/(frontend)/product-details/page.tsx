@@ -49,20 +49,20 @@ export default function ProductDetailsPage() {
           </p>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-stretch lg:gap-12">
-            <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
-              <ProductImageSlideshow />
-            </figure>
-
-            <figure className="flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
+            <figure className="order-2 flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-1">
               <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
                 <Image
-                  src="/Liquid Product.jpg"
-                  alt="Liquid aluminium sulphate product at Chilmund Chemicals."
+                  src={`/${encodeURIComponent('liquid storage tanks .jpeg')}`}
+                  alt="Liquid aluminium sulphate storage tanks at Chilmund Chemicals."
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
+            </figure>
+
+            <figure className="order-1 flex h-full min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-2">
+              <ProductImageSlideshow />
             </figure>
           </div>
         </div>

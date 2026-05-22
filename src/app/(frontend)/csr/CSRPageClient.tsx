@@ -22,7 +22,7 @@ import {
 import React, { useMemo, useState } from 'react'
 
 import type { CSRItem } from './page'
-import { ImpactSection } from './ImpactSection'
+import { ImpactCard } from './ImpactSection'
 
 const CATEGORY_META: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
   community: { label: 'Community Development', icon: <HandHeart className="size-4" />, color: 'bg-rose-600' },
@@ -83,8 +83,6 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
           </p>
         </div>
       </section>
-
-      <ImpactSection />
 
       <div id="csr-programmes" className="scroll-mt-24 border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
         <div className="container px-4">
@@ -227,6 +225,8 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
                 environmental stewardship, and youth empowerment.
               </p>
             </SidebarCard>
+
+            <ImpactCard />
           </aside>
           </div>
         </div>
