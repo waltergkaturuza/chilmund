@@ -65,6 +65,40 @@ export default function ProductDetailsPage() {
               <ProductImageSlideshow />
             </figure>
           </div>
+
+          <div className="mx-auto mt-12 max-w-3xl space-y-8 text-left text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">1. Solid Aluminium sulphate</h3>
+              <p className="mt-3 !text-left">
+                Is a white to off-white crystalline salt with a particle size ranging from 2&nbsp;-&nbsp;6.5&nbsp;mm.
+                Comes in four product forms:
+              </p>
+              <ol className="mt-4 list-decimal space-y-2 pl-6 marker:font-semibold marker:text-slate-900 dark:marker:text-white">
+                <li>
+                  <span className="font-semibold text-slate-900 dark:text-white">Granular</span> - coarse product with a
+                  particle size ranging from 2 to 6.5&nbsp;mm
+                </li>
+                <li>
+                  <span className="font-semibold text-slate-900 dark:text-white">Fines</span> - finely crushed product
+                  with a particle size ranging from 0.5 to 2&nbsp;mm
+                </li>
+                <li>
+                  <span className="font-semibold text-slate-900 dark:text-white">Kibble</span> - loosely crushed product
+                  with a particle size ranging from 30 to 60&nbsp;mm
+                </li>
+                <li>
+                  <span className="font-semibold text-slate-900 dark:text-white">Flakes</span> - flaked sheets with a
+                  thickness between 3 to 6.5&nbsp;mm
+                </li>
+              </ol>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">2. Liquid Alum</h3>
+              <p className="mt-3 !text-left">
+                A pale yellow to light brown liquid with customer specified Al₂O₃ content.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 

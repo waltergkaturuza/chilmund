@@ -13,7 +13,7 @@ const uses = [
   {
     icon: <Droplets className="size-6" />,
     title: 'Drinking Water Purification',
-    desc: 'The primary use of aluminium sulphate is as a coagulant in municipal water treatment. It causes suspended impurities to clump together (flocculate) so they can be easily removed through sedimentation and filtration, producing clear, safe drinking water.',
+    desc: 'The primary use of aluminium sulphate is as a coagulant in raw water treatment. It causes suspended impurities to clump together (flocculate) so they can be easily removed through sedimentation and filtration, producing clear, safe potable water.',
     color: 'bg-blue-600',
   },
   {
@@ -83,7 +83,7 @@ export default function UsesOfAluminiumSulphatePage() {
             Uses of Aluminium Sulphate
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
-            From purifying drinking water for millions to enabling industrial processes — aluminium
+            From purifying drinking water for millions to enabling industrial processes - aluminium
             sulphate is one of the most versatile chemical compounds in use today.
           </p>
         </div>

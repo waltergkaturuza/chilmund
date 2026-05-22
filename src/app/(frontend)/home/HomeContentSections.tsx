@@ -19,6 +19,12 @@ export function HomeContentSections() {
             <Link className={linkCls} href="/resources">
               MSDS, COAs, brochures &amp; downloads — browse Resources →
             </Link>
+            <span className="mx-3 text-slate-400 dark:text-white/30" aria-hidden>
+              |
+            </span>
+            <Link className={linkCls} href="/about-chilmund">
+              View Company Overview →
+            </Link>
           </p>
         </div>
       </section>
