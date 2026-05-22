@@ -14,6 +14,8 @@ export type ImageSlideshowSlide = {
   fit?: 'cover' | 'contain'
   /** Per-slide focal point when using cover (e.g. `top center` for portraits). */
   objectPosition?: string
+  /** Slight zoom past baked-in margins on graphics (e.g. 1.12). Only applies with cover. */
+  coverScale?: number
 }
 
 export type ImageSlideshowProps = {
@@ -105,6 +107,7 @@ export function ImageSlideshow({
       >
         {slides.map((slide, i) => {
           const fit = slide.fit ?? imageFit
+          const scale = fit === 'cover' && slide.coverScale && slide.coverScale > 1 ? slide.coverScale : 1
           return (
             <Image
               key={slide.src}
@@ -116,7 +119,10 @@ export function ImageSlideshow({
                 fit === 'contain' ? 'object-contain' : 'object-cover',
                 i === index ? 'opacity-100' : 'opacity-0',
               )}
-              style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+              style={{
+                ...(slide.objectPosition ? { objectPosition: slide.objectPosition } : {}),
+                ...(scale > 1 ? { transform: `scale(${scale})` } : {}),
+              }}
               sizes={sizes}
               quality={imageQuality}
               priority={i === 0}

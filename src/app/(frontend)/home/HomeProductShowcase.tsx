@@ -19,7 +19,7 @@ export function HomeProductShowcase() {
               slides={homeProductHighlightSlides}
               intervalMs={6500}
               controlsOnLight
-              imageFit="contain"
+              imageFit="cover"
               imageQuality={92}
               sizes="(max-width: 1024px) 100vw, min(640px, 50vw)"
               className="relative aspect-[4/3] min-h-[280px] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg dark:border-white/10 dark:bg-slate-900 sm:min-h-[360px] lg:min-h-[420px]"
@@ -39,6 +39,7 @@ export function HomeProductShowcase() {
               slides={homeTrucksHighlightSlides}
               intervalMs={6500}
               controlsOnLight
+              imageFit="cover"
               imageQuality={92}
               sizes="(max-width: 1024px) 100vw, min(640px, 50vw)"
               className="relative aspect-[4/3] min-h-[280px] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-lg dark:border-white/10 dark:bg-slate-900 sm:min-h-[360px] lg:min-h-[420px]"

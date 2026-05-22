@@ -67,10 +67,12 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   const { hero, layout } = page
 
-  /** Home fallback uses designed sections; omit legacy Payload `content` blocks to avoid duplication. */
+  /** Home uses designed sections; omit legacy Payload blocks that duplicate or are no longer wanted. */
   const blocks =
     decodedSlug === 'home'
-      ? (layout ?? []).filter((block) => block.blockType !== 'content')
+      ? (layout ?? []).filter(
+          (block) => block.blockType !== 'content' && block.blockType !== 'cta',
+        )
       : (layout ?? [])
 
   return (

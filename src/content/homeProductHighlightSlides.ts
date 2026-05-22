@@ -13,14 +13,14 @@ export const homeProductHighlightSlides: ImageSlideshowSlide[] = [
   {
     src: publicSrc('chilmund-products-warehouse.png'),
     alt: 'Chilmund Chemicals product warehouse with stacked aluminium sulphate bags.',
-    fit: 'contain',
     objectPosition: 'top center',
+    coverScale: 1.14,
   },
   {
     src: publicSrc('solid product.15.35.jpeg'),
     alt: 'Chilmund team member with aluminium sulphate product bags and usage highlights.',
-    fit: 'contain',
     objectPosition: 'top center',
+    coverScale: 1.12,
   },
   {
     src: publicSrc('manufacturing/plant-logistics.png'),

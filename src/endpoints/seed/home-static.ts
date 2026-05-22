@@ -40,36 +40,6 @@ export const homeStatic: RequiredDataFromCollectionSlug<'pages'> = {
     title: 'Chilmund Chemicals | Water treatment chemicals — Bindura, Zimbabwe',
   },
   title: 'Home',
-  /** Rich home body is `HomeContentSections` (see `src/app/(frontend)/home`). Keep CTA block for bottom strip. */
-  layout: [
-    {
-      id: 'home-cta-footer',
-      blockName: 'Supply CTA',
-      blockType: 'cta',
-      richText: richRoot([
-        heading('h2', 'Ready to secure your chemical supply?'),
-        line('Speak to our sales team for quotations, specifications, logistics across Zimbabwe and the region.'),
-      ]),
-      links: [
-        {
-          id: 'cta-contact',
-          link: {
-            type: 'custom',
-            url: '/contact',
-            label: 'Contact us',
-            appearance: 'default',
-          },
-        },
-        {
-          id: 'cta-quote',
-          link: {
-            type: 'custom',
-            url: '/contact',
-            label: 'Request a quote',
-            appearance: 'outline',
-          },
-        },
-      ],
-    },
-  ],
+  /** Rich home body is `HomeContentSections` (see `src/app/(frontend)/home`). */
+  layout: [],
 }
