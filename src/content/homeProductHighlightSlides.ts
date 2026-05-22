@@ -7,16 +7,20 @@ function publicSrc(path: string): string {
 /** Home page product gallery — high-resolution assets from `public/`. */
 export const homeProductHighlightSlides: ImageSlideshowSlide[] = [
   {
-    src: publicSrc('Liquid Product.jpg'),
-    alt: 'Liquid aluminium sulphate storage and handling at Chilmund Chemicals.',
+    src: publicSrc('liquid storage tanks .jpeg'),
+    alt: 'Liquid aluminium sulphate storage tanks at Chilmund Chemicals.',
   },
   {
     src: publicSrc('chilmund-products-warehouse.png'),
     alt: 'Chilmund Chemicals product warehouse with stacked aluminium sulphate bags.',
+    fit: 'contain',
+    objectPosition: 'top center',
   },
   {
     src: publicSrc('solid product.15.35.jpeg'),
-    alt: 'Solid aluminium sulphate product showing crystalline granules.',
+    alt: 'Chilmund team member with aluminium sulphate product bags and usage highlights.',
+    fit: 'contain',
+    objectPosition: 'top center',
   },
   {
     src: publicSrc('manufacturing/plant-logistics.png'),

@@ -10,6 +10,10 @@ export type ImageSlideshowSlide = {
   alt: string
   /** Shown below the image when set (updates with the active slide). */
   caption?: string
+  /** Per-slide fit; falls back to the slideshow `imageFit` prop. */
+  fit?: 'cover' | 'contain'
+  /** Per-slide focal point when using cover (e.g. `top center` for portraits). */
+  objectPosition?: string
 }
 
 export type ImageSlideshowProps = {
@@ -99,22 +103,26 @@ export function ImageSlideshow({
           className,
         )}
       >
-        {slides.map((slide, i) => (
-          <Image
-            key={slide.src}
-            src={slide.src}
-            alt={slide.alt}
-            fill
-            className={cn(
-              'object-center transition-opacity duration-500',
-              imageFit === 'contain' ? 'object-contain' : 'object-cover',
-              i === index ? 'opacity-100' : 'opacity-0',
-            )}
-            sizes={sizes}
-            quality={imageQuality}
-            priority={i === 0}
-          />
-        ))}
+        {slides.map((slide, i) => {
+          const fit = slide.fit ?? imageFit
+          return (
+            <Image
+              key={slide.src}
+              src={slide.src}
+              alt={slide.alt}
+              fill
+              className={cn(
+                'object-center transition-opacity duration-500',
+                fit === 'contain' ? 'object-contain' : 'object-cover',
+                i === index ? 'opacity-100' : 'opacity-0',
+              )}
+              style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
+              sizes={sizes}
+              quality={imageQuality}
+              priority={i === 0}
+            />
+          )
+        })}
 
         {slides.length > 1 && (
           <>
