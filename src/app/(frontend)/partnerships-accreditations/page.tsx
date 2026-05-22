@@ -6,6 +6,7 @@ import React from 'react'
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import { awardsCertificatesSlides } from '@/content/awardsCertificatesSlides'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
+import { IndustryAccoladesSection } from './IndustryAccoladesSection'
 
 export const metadata: Metadata = {
   title: 'Partners and Certifications | Chilmund Chemicals',
@@ -125,8 +126,10 @@ export default function PartnershipsAccreditationsPage() {
         </div>
       </section>
 
+      <IndustryAccoladesSection />
+
       {/* Partners */}
-      <section className="bg-slate-50 dark:bg-slate-900">
+      <section className="bg-white dark:bg-slate-950">
         <div className="container mx-auto px-4 py-16">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
             Our Partners &amp; Clients
@@ -158,7 +161,7 @@ export default function PartnershipsAccreditationsPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-white dark:bg-slate-950">
+      <section className="bg-slate-50 dark:bg-slate-900">
         <div className="container mx-auto px-4 py-16 text-center">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Explore Our Markets</h2>
           <p className="mx-auto mt-3 max-w-lg text-slate-600 dark:text-white/60">

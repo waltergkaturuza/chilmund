@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Shield } from 'lucide-react'
 import React from 'react'
+import { ProductExcellenceSection } from './ProductExcellenceSection'
 import { ProductImageSlideshow } from './ProductImageSlideshow'
 
 export const metadata: Metadata = {
@@ -34,8 +35,10 @@ export default function ProductDetailsPage() {
         </div>
       </section>
 
+      <ProductExcellenceSection />
+
       {/* Product at a glance: photo + technical specs */}
-      <section className="bg-white dark:bg-slate-900">
+      <section id="product-at-a-glance" className="scroll-mt-24 bg-white dark:bg-slate-900">
         <div className="container mx-auto max-w-6xl px-4 py-12 md:py-16">
           <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
             Aluminium sulphate — product at a glance

@@ -18,6 +18,7 @@ import { hrefForStaticLibraryDocument } from '@/content/staticLibraryDocuments'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { cn } from '@/utilities/ui'
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
+import { OperationalIntegritySection } from './OperationalIntegritySection'
 
 export const metadata: Metadata = {
   title: 'SHEQ | Chilmund Chemicals',
@@ -51,6 +52,8 @@ export default function SHEQPage() {
           </p>
         </div>
       </section>
+
+      <OperationalIntegritySection />
 
       {/* Overview */}
       <section className="border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">

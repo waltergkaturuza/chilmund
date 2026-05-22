@@ -22,6 +22,7 @@ import {
 import React, { useMemo, useState } from 'react'
 
 import type { CSRItem } from './page'
+import { ImpactSection } from './ImpactSection'
 
 const CATEGORY_META: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
   community: { label: 'Community Development', icon: <HandHeart className="size-4" />, color: 'bg-rose-600' },
@@ -83,7 +84,9 @@ export function CSRPageClient({ items }: { items: CSRItem[] }) {
         </div>
       </section>
 
-      <div className="border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
+      <ImpactSection />
+
+      <div id="csr-programmes" className="scroll-mt-24 border-b border-slate-200 bg-white py-10 dark:border-white/10 dark:bg-slate-950">
         <div className="container px-4">
           <div className="grid gap-10 lg:grid-cols-[1fr_300px]">
           {/* Main */}
