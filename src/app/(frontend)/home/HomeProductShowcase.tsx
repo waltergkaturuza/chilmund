@@ -6,6 +6,8 @@ import { homeProductHighlightSlides } from '@/content/homeProductHighlightSlides
 import { homeTrucksHighlightSlides } from '@/content/homeTrucksHighlightSlides'
 import React from 'react'
 
+import { HomeWaterTreatmentVideo } from './HomeWaterTreatmentVideo'
+
 export function HomeProductShowcase() {
   return (
     <section
@@ -56,6 +58,8 @@ export function HomeProductShowcase() {
             </p>
           </div>
         </div>
+
+        <HomeWaterTreatmentVideo />
       </div>
     </section>
   )
