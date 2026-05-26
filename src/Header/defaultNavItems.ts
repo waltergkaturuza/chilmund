@@ -33,9 +33,9 @@ export const defaultNavItems: NavItems = [
   dropdown('Products', [
     { label: 'Product details', url: '/product-details' },
     { label: 'Aluminium sulphate uses', url: '/uses-aluminium-sulphate' },
-    { label: 'Manufacturing plant', url: '/manufacturing-plant' },
     { label: 'Logistics', url: '/trucking-logistics' },
   ]),
+  link('Manufacturing plant', '/manufacturing-plant'),
   dropdown('Partners', [
     { label: 'Partners and Certifications', url: '/partnerships-accreditations' },
     { label: 'Regional markets', url: '/regional-markets' },

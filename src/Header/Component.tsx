@@ -21,6 +21,18 @@ function isLogisticsTopItem(item: NavItem): boolean {
   return label === 'logistics' || url === '/trucking-logistics'
 }
 
+function isManufacturingSubItem(subItem: SubItem): boolean {
+  const label = subItem?.link?.label?.toLowerCase?.() ?? ''
+  const url = subItem?.link?.url ?? ''
+  return label.includes('manufacturing') || url === '/manufacturing-plant'
+}
+
+function isManufacturingTopItem(item: NavItem): boolean {
+  const label = item?.link?.label?.toLowerCase?.() ?? ''
+  const url = item?.link?.url ?? ''
+  return label.includes('manufacturing') || url === '/manufacturing-plant'
+}
+
 function normalizeNavItems(navItems: Header['navItems']): NavItems {
   const items: NavItems = [...(navItems ?? [])]
   const productsIndex = items.findIndex(
@@ -31,29 +43,50 @@ function normalizeNavItems(navItems: Header['navItems']): NavItems {
 
   const productsItem = items[productsIndex]
   const subItems = Array.isArray(productsItem.subItems) ? [...productsItem.subItems] : []
-  const logisticsSubItem = subItems.find(isLogisticsSubItem)
+  const hadLogisticsInProducts = subItems.some(isLogisticsSubItem)
+  const hadManufacturingInProducts = subItems.some(isManufacturingSubItem)
 
-  if (!logisticsSubItem) return items
+  const filteredSubItems = subItems.filter(
+    (subItem) => !isLogisticsSubItem(subItem) && !isManufacturingSubItem(subItem),
+  )
 
-  const filteredSubItems = subItems.filter((subItem) => !isLogisticsSubItem(subItem))
-  items[productsIndex] = {
-    ...productsItem,
-    subItems: filteredSubItems,
+  if (filteredSubItems.length !== subItems.length) {
+    items[productsIndex] = {
+      ...productsItem,
+      subItems: filteredSubItems,
+    }
   }
-
-  if (items.some(isLogisticsTopItem)) return items
 
   const partnersIndex = items.findIndex(
     (item) => item?.style === 'dropdown' && item?.dropdownLabel?.toLowerCase?.() === 'partners',
   )
-  const insertAt = partnersIndex >= 0 ? partnersIndex + 1 : productsIndex + 1
 
-  const logisticsTopItem: NavItem = {
-    style: 'link',
-    link: { type: 'custom', url: '/trucking-logistics', label: 'Logistics', newTab: false },
+  if (hadManufacturingInProducts && !items.some(isManufacturingTopItem)) {
+    const manufacturingTopItem: NavItem = {
+      style: 'link',
+      link: {
+        type: 'custom',
+        url: '/manufacturing-plant',
+        label: 'Manufacturing plant',
+        newTab: false,
+      },
+    }
+    const insertAt = partnersIndex >= 0 ? partnersIndex : productsIndex + 1
+    items.splice(insertAt, 0, manufacturingTopItem)
   }
 
-  items.splice(insertAt, 0, logisticsTopItem)
+  if (hadLogisticsInProducts && !items.some(isLogisticsTopItem)) {
+    const logisticsTopItem: NavItem = {
+      style: 'link',
+      link: { type: 'custom', url: '/trucking-logistics', label: 'Logistics', newTab: false },
+    }
+    const partnersAfterInsert = items.findIndex(
+      (item) => item?.style === 'dropdown' && item?.dropdownLabel?.toLowerCase?.() === 'partners',
+    )
+    const insertAt = partnersAfterInsert >= 0 ? partnersAfterInsert + 1 : productsIndex + 1
+    items.splice(insertAt, 0, logisticsTopItem)
+  }
+
   return items
 }
 

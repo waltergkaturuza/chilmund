@@ -51,9 +51,13 @@ export const recommendedHeaderNavBlueprint = [
     sub: [
       { label: 'Product Details', pageSlug: 'product-details' },
       { label: 'Uses of Aluminium Sulphate', pageSlug: 'uses-aluminium-sulphate' },
-      { label: 'Manufacturing Plant', pageSlug: 'manufacturing-plant' },
       { label: 'Trucking & Logistics', pageSlug: 'trucking-logistics' },
     ],
+  },
+  {
+    type: 'link' as const,
+    label: 'Manufacturing Plant',
+    pageSlug: 'manufacturing-plant',
   },
   {
     type: 'dropdown' as const,
