@@ -114,10 +114,9 @@ export async function Footer() {
               <Logo variant="light" />
             </Link>
             <p className="mt-6 max-w-md text-justify text-sm leading-relaxed text-white/70">
-              Chilmund Chemicals is a trailblazing aluminium sulphate manufacturer, a key component in water
-              treatment chemicals, that upholds quality, affordability and service excellence for
-              municipalities, industries, and communities across Africa. We supply products in liquid form or
-              various granule sizes.
+              Chilmund Chemicals is a trailblazing aluminium sulphate manufacturer that upholds quality,
+              affordability and service excellence for municipalities, industries, and communities across
+              Africa. We supply products in liquid form or various granule sizes.
             </p>
 
             {(contact?.headOfficeAddress || contact?.manufacturingPlantAddress) && (
