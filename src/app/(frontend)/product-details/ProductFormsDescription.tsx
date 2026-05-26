@@ -18,13 +18,13 @@ type ProductFormCardProps = {
 function ProductFormCard({ name, detail, image, imageAlt }: ProductFormCardProps) {
   return (
     <article className="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-white/10 dark:bg-slate-950/40">
-      <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800">
+      <div className="relative aspect-[4/3] w-full min-h-[200px] bg-slate-100 sm:min-h-[240px] md:aspect-[3/2] md:min-h-[280px] lg:min-h-[320px] dark:bg-slate-800">
         <Image
           src={image}
           alt={imageAlt}
           fill
           className="object-cover object-center"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
+          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 560px"
           quality={92}
         />
       </div>
@@ -65,7 +65,7 @@ const solidForms = [
 
 export function ProductFormsDescription() {
   return (
-    <div className="rounded-xl border border-slate-200/90 bg-slate-50/90 px-5 py-6 text-left text-[0.9375rem] leading-relaxed text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/50 dark:text-white/62 sm:px-6 sm:py-7 sm:text-base">
+    <div className="rounded-xl border border-slate-200/90 bg-slate-50/90 px-4 py-6 text-left text-[0.9375rem] leading-relaxed text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/50 dark:text-white/62 sm:px-6 sm:py-8 sm:text-base lg:px-8">
       <div className="space-y-6">
         <div>
           <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
@@ -76,7 +76,7 @@ export function ProductFormsDescription() {
             Comes in four product forms:
           </p>
 
-          <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2">
+          <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2 sm:gap-8 lg:gap-10">
             {solidForms.map((form) => (
               <li key={form.name}>
                 <ProductFormCard
@@ -94,7 +94,7 @@ export function ProductFormsDescription() {
           <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
             2. Liquid Alum
           </h3>
-          <div className="mt-6 max-w-md">
+          <div className="mt-6 sm:max-w-xl lg:max-w-2xl">
             <ProductFormCard
               name="Liquid Alum"
               detail="A pale yellow to light brown liquid with customer specified Al₂O₃ content."

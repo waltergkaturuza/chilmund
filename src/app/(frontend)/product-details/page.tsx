@@ -47,7 +47,7 @@ export default function ProductDetailsPage() {
             SAZ product mark (ZWS 1120:2024)
           </p>
 
-          <div className="mx-auto mt-10 max-w-4xl">
+          <div className="mt-10 w-full">
             <ProductFormsDescription />
           </div>
         </div>
