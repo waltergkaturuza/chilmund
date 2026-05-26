@@ -1,51 +1,107 @@
+import Image from 'next/image'
 import React from 'react'
+
+const SOLID_PRODUCTS_DIR = 'solid products'
+const LIQUID_PRODUCT_SRC = `/${encodeURIComponent('liquid product.jpeg')}`
+
+function solidProductSrc(filename: string) {
+  return `/${encodeURIComponent(SOLID_PRODUCTS_DIR)}/${encodeURIComponent(filename)}`
+}
+
+type ProductFormCardProps = {
+  name: string
+  detail: string
+  image: string
+  imageAlt: string
+}
+
+function ProductFormCard({ name, detail, image, imageAlt }: ProductFormCardProps) {
+  return (
+    <article className="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-white/10 dark:bg-slate-950/40">
+      <div className="relative aspect-[4/3] w-full bg-slate-100 dark:bg-slate-800">
+        <Image
+          src={image}
+          alt={imageAlt}
+          fill
+          className="object-cover object-center"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
+          quality={92}
+        />
+      </div>
+      <div className="px-4 py-3.5 sm:px-4 sm:py-4">
+        <h4 className="font-bold text-slate-900 dark:text-white">{name}</h4>
+        <p className="mt-1.5 text-pretty text-sm leading-relaxed text-slate-600 dark:text-white/60">{detail}</p>
+      </div>
+    </article>
+  )
+}
 
 const solidForms = [
   {
     name: 'Granular',
-    detail: 'coarse product with a particle size ranging from 2 to 6.5 mm',
+    detail: 'Coarse product with a particle size ranging from 2 to 6.5 mm',
+    image: solidProductSrc('Granular 2.jpeg'),
+    imageAlt: 'Granular aluminium sulphate — coarse crystals, 2 to 6.5 mm particle size.',
   },
   {
     name: 'Fines',
-    detail: 'finely crushed product with a particle size ranging from 0.5 to 2 mm',
+    detail: 'Finely crushed product with a particle size ranging from 0.5 to 2 mm',
+    image: solidProductSrc('Fines 2.jpeg'),
+    imageAlt: 'Fines aluminium sulphate — finely crushed product, 0.5 to 2 mm particle size.',
   },
   {
     name: 'Kibble',
-    detail: 'loosely crushed product with a particle size ranging from 30 to 60 mm',
+    detail: 'Loosely crushed product with a particle size ranging from 30 to 60 mm',
+    image: solidProductSrc('Kibbles 1.jpeg'),
+    imageAlt: 'Kibbled aluminium sulphate — loosely crushed product, 30 to 60 mm particle size.',
   },
   {
     name: 'Flakes',
-    detail: 'flaked sheets with a thickness between 3 to 6.5 mm',
+    detail: 'Flaked sheets with a thickness between 3 to 6.5 mm',
+    image: solidProductSrc('Flakes 2.jpeg'),
+    imageAlt: 'Flaked aluminium sulphate — sheet form, 3 to 6.5 mm thickness.',
   },
 ] as const
 
 export function ProductFormsDescription() {
   return (
-    <div className="rounded-xl border border-slate-200/90 bg-slate-50/90 px-5 py-6 text-justify text-[0.9375rem] leading-relaxed text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/50 dark:text-white/62 sm:px-6 sm:py-7 sm:text-base">
+    <div className="rounded-xl border border-slate-200/90 bg-slate-50/90 px-5 py-6 text-left text-[0.9375rem] leading-relaxed text-slate-700 shadow-sm dark:border-white/10 dark:bg-slate-900/50 dark:text-white/62 sm:px-6 sm:py-7 sm:text-base">
       <div className="space-y-6">
         <div>
-          <h3 className="text-left text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
+          <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
             1. Solid Aluminium sulphate
           </h3>
-          <p className="mt-3 text-justify">
+          <p className="mt-3 text-pretty">
             Is a white to off-white crystalline salt with a particle size ranging from 2&nbsp;-&nbsp;6.5&nbsp;mm.
             Comes in four product forms:
           </p>
-          <ol className="mt-4 list-[lower-roman] space-y-2.5 pl-6 marker:font-medium marker:text-slate-800 dark:marker:text-white/80">
+
+          <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2">
             {solidForms.map((form) => (
-              <li key={form.name} className="text-justify pl-1">
-                <span className="font-semibold text-slate-900 dark:text-white">{form.name}</span> - {form.detail}
+              <li key={form.name}>
+                <ProductFormCard
+                  name={form.name}
+                  detail={form.detail}
+                  image={form.image}
+                  imageAlt={form.imageAlt}
+                />
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
+
         <div className="border-t border-slate-200/80 pt-6 dark:border-white/10">
-          <h3 className="text-left text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
+          <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
             2. Liquid Alum
           </h3>
-          <p className="mt-3 text-justify">
-            A pale yellow to light brown liquid with customer specified Al₂O₃ content.
-          </p>
+          <div className="mt-6 max-w-md">
+            <ProductFormCard
+              name="Liquid Alum"
+              detail="A pale yellow to light brown liquid with customer specified Al₂O₃ content."
+              image={LIQUID_PRODUCT_SRC}
+              imageAlt="Liquid aluminium sulphate (alum) at Chilmund Chemicals."
+            />
+          </div>
         </div>
       </div>
     </div>
