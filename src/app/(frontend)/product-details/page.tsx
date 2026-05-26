@@ -1,11 +1,9 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Shield } from 'lucide-react'
 import React from 'react'
 import { ProductExcellenceSection } from './ProductExcellenceSection'
 import { ProductFormsDescription } from './ProductFormsDescription'
-import { ProductImageSlideshow } from './ProductImageSlideshow'
 
 export const metadata: Metadata = {
   title: 'Product Details — Aluminium Sulphate | Chilmund Chemicals',
@@ -38,7 +36,7 @@ export default function ProductDetailsPage() {
 
       <ProductExcellenceSection />
 
-      {/* Product at a glance: photo + technical specs */}
+      {/* Product at a glance */}
       <section id="product-at-a-glance" className="scroll-mt-24 bg-white dark:bg-slate-900">
         <div className="container mx-auto max-w-6xl px-4 py-12 md:py-16">
           <h2 className="text-center text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-3xl">
@@ -49,25 +47,8 @@ export default function ProductDetailsPage() {
             SAZ product mark (ZWS 1120:2024)
           </p>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">
-            <div className="order-2 flex min-w-0 flex-col gap-6 lg:order-1">
-              <figure className="flex w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800">
-                <div className="relative aspect-[4/3] w-full min-h-[260px] shrink-0 lg:min-h-[380px]">
-                  <Image
-                    src={`/${encodeURIComponent('liquid storage tanks .jpeg')}`}
-                    alt="Liquid aluminium sulphate storage tanks at Chilmund Chemicals."
-                    fill
-                    className="object-cover object-center"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-              </figure>
-              <ProductFormsDescription />
-            </div>
-
-            <figure className="order-1 flex min-h-0 w-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-white/10 dark:bg-slate-800 lg:order-2 lg:sticky lg:top-24 lg:self-start">
-              <ProductImageSlideshow />
-            </figure>
+          <div className="mx-auto mt-10 max-w-4xl">
+            <ProductFormsDescription />
           </div>
         </div>
       </section>

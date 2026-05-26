@@ -61,15 +61,6 @@ export function ProductExcellenceSection() {
               <Link className={`mt-8 inline-flex text-sm ${linkCls}`} href="/uses-aluminium-sulphate">
                 Uses of aluminium sulphate — full overview →
               </Link>
-
-              <div className="mt-10 border-t border-slate-200/90 pt-8 dark:border-white/10">
-                <h4 className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  Full-spectrum chemistry
-                </h4>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-white/55">
-                  Beyond alum, we formulate coagulants &amp; flocculants plus disinfectants to match your treatment train.
-                </p>
-              </div>
             </div>
 
             <figure className="relative mt-10 overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-lg dark:border-white/10 dark:bg-slate-950 lg:hidden">
