@@ -8,13 +8,11 @@ export const recommendedCorporatePages = [
   { suggestedSlug: 'products-services', label: 'Products & Services', notes: 'Overview; link to /products for catalog.' },
   { suggestedSlug: 'product-details', label: 'Product Details', notes: 'Detailed specifications; or use /products catalog.' },
   { suggestedSlug: 'uses-aluminium-sulphate', label: 'Uses of Aluminium Sulphate' },
-  { suggestedSlug: 'manufacturing-plant', label: 'Manufacturing Plant' },
   { suggestedSlug: 'trucking-logistics', label: 'Trucking & Logistics' },
   { suggestedSlug: 'regional-markets', label: 'Regional Markets' },
   { suggestedSlug: 'partnerships-accreditations', label: 'Partners and Certifications' },
   { suggestedSlug: 'sheq', label: 'SHEQ' },
   { suggestedSlug: 'csr', label: 'CSR' },
-  { suggestedSlug: 'industry-awards', label: 'Industry Awards' },
   { suggestedSlug: 'news', label: 'News & Events', notes: 'Optional listing page; blog uses /posts.' },
   { suggestedSlug: 'bindura-map', label: 'Bindura plant map', notes: 'Static Next route `/bindura-map` — embed driven by Company contact global.' },
   { suggestedSlug: 'contact', label: 'Contact Us' },
@@ -55,11 +53,6 @@ export const recommendedHeaderNavBlueprint = [
     ],
   },
   {
-    type: 'link' as const,
-    label: 'Manufacturing Plant',
-    pageSlug: 'manufacturing-plant',
-  },
-  {
     type: 'dropdown' as const,
     label: 'Partners',
     sub: [
@@ -77,7 +70,6 @@ export const recommendedHeaderNavBlueprint = [
     label: 'News & Events',
     sub: [
       { label: 'News & Events', pageSlug: 'news' },
-      { label: 'Industry Awards', pageSlug: 'industry-awards' },
       { label: 'CSR', pageSlug: 'csr' },
     ],
   },

@@ -27,10 +27,16 @@ function isManufacturingSubItem(subItem: SubItem): boolean {
   return label.includes('manufacturing') || url === '/manufacturing-plant'
 }
 
-function isManufacturingTopItem(item: NavItem): boolean {
+function isIndustryAwardsSubItem(subItem: SubItem): boolean {
+  const label = subItem?.link?.label?.toLowerCase?.() ?? ''
+  const url = subItem?.link?.url ?? ''
+  return label.includes('industry awards') || url === '/industry-awards'
+}
+
+function isIndustryAwardsTopItem(item: NavItem): boolean {
   const label = item?.link?.label?.toLowerCase?.() ?? ''
   const url = item?.link?.url ?? ''
-  return label.includes('manufacturing') || url === '/manufacturing-plant'
+  return label.includes('industry awards') || url === '/industry-awards'
 }
 
 function normalizeNavItems(navItems: Header['navItems']): NavItems {
@@ -44,10 +50,12 @@ function normalizeNavItems(navItems: Header['navItems']): NavItems {
   const productsItem = items[productsIndex]
   const subItems = Array.isArray(productsItem.subItems) ? [...productsItem.subItems] : []
   const hadLogisticsInProducts = subItems.some(isLogisticsSubItem)
-  const hadManufacturingInProducts = subItems.some(isManufacturingSubItem)
 
   const filteredSubItems = subItems.filter(
-    (subItem) => !isLogisticsSubItem(subItem) && !isManufacturingSubItem(subItem),
+    (subItem) =>
+      !isLogisticsSubItem(subItem) &&
+      !isManufacturingSubItem(subItem) &&
+      !isIndustryAwardsSubItem(subItem),
   )
 
   if (filteredSubItems.length !== subItems.length) {
@@ -55,24 +63,6 @@ function normalizeNavItems(navItems: Header['navItems']): NavItems {
       ...productsItem,
       subItems: filteredSubItems,
     }
-  }
-
-  const partnersIndex = items.findIndex(
-    (item) => item?.style === 'dropdown' && item?.dropdownLabel?.toLowerCase?.() === 'partners',
-  )
-
-  if (hadManufacturingInProducts && !items.some(isManufacturingTopItem)) {
-    const manufacturingTopItem: NavItem = {
-      style: 'link',
-      link: {
-        type: 'custom',
-        url: '/manufacturing-plant',
-        label: 'Manufacturing plant',
-        newTab: false,
-      },
-    }
-    const insertAt = partnersIndex >= 0 ? partnersIndex : productsIndex + 1
-    items.splice(insertAt, 0, manufacturingTopItem)
   }
 
   if (hadLogisticsInProducts && !items.some(isLogisticsTopItem)) {
@@ -87,7 +77,7 @@ function normalizeNavItems(navItems: Header['navItems']): NavItems {
     items.splice(insertAt, 0, logisticsTopItem)
   }
 
-  return items
+  return items.filter((item) => !isIndustryAwardsTopItem(item))
 }
 
 export async function Header() {

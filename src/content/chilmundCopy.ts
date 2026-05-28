@@ -58,7 +58,7 @@ export const chilmundCopy = {
     { name: 'Allen Mukwasi', role: 'Safety, Health and Environmental (SHE) Officer' },
     { name: 'Milton Dangaiso', role: 'ICT Officer' },
     { name: 'Saka Shingirai Madzudzo', role: 'Systems Developer / Software Engineer' },
-    { name: 'Ms Sikhangele Muhle E Mhene', role: 'QC/QA Officer' },
+    { name: 'Sikhangele Muhle E Mhene', role: 'QC/QA Officer' },
     { name: 'Gamuchirai Pauline Chidakwa', role: 'Administrator' },
   ],
 } as const

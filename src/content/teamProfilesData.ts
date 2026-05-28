@@ -208,7 +208,7 @@ export const teamProfilesFromPdf: TeamProfileSource[] = [
   },
   {
     id: 'sikhangele-mhene',
-    name: 'Ms Sikhangele Muhle E Mhene',
+    name: 'Sikhangele Muhle E Mhene',
     jobTitle: 'Quality Control / Quality Assurance Officer (QC/QA Officer)',
     department: 'quality',
     imageFile: 'Ms Sikhangele Muhle E Mhene- Quality ControlQuality Assurance Officer (QCQA Officer).jpg',

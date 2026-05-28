@@ -143,13 +143,9 @@ export function AboutFoundationSections() {
                 responsible manufacturing and environmental stewardship, we aim to create lasting impact on people and
                 the planet.
               </p>
-              <Link
-                className="mt-8 inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-5 py-2.5 text-sm font-semibold text-blue-800 transition-colors hover:bg-blue-100 dark:border-blue-900/80 dark:bg-blue-950/50 dark:text-blue-100 dark:hover:bg-blue-950"
-                href="/manufacturing-plant"
-              >
-                See the Bindura plant
-                <span aria-hidden>→</span>
-              </Link>
+              <p className="mt-8 text-sm font-medium text-slate-600 dark:text-white/55">
+                We continue advancing responsible operations at our Bindura plant.
+              </p>
             </div>
           </div>
         </div>

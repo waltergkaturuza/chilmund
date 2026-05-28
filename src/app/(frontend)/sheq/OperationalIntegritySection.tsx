@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import { awardsCertificatesSlides } from '@/content/awardsCertificatesSlides'
-import { Medal, ShieldCheck, Video } from 'lucide-react'
+import { Medal, ShieldCheck } from 'lucide-react'
 import React from 'react'
 
 const linkCls =
@@ -43,21 +43,8 @@ export function OperationalIntegritySection() {
                 className={`inline-flex items-center gap-1 text-sm ${linkCls}`}
                 href="#laboratory"
               >
-                Laboratory capability
+                Explore our Laboratory facilities
               </Link>
-            </div>
-            <div className="mt-10 rounded-xl border border-dashed border-slate-300 bg-white/70 p-4 dark:border-white/25 dark:bg-slate-900/60">
-              <div className="flex items-start gap-3">
-                <Video className="size-5 shrink-0 text-slate-500 dark:text-white/45" aria-hidden />
-                <p className="text-xs leading-relaxed text-slate-600 dark:text-white/45">
-                  <strong className="font-semibold text-slate-900 dark:text-white">Brand story video</strong> — production,
-                  fleet logistics, QC laboratory and stakeholder interviews will sit here once finalised alongside{' '}
-                  <Link className={linkCls} href="/partnerships-accreditations">
-                    SAZ, PRAZ &amp; innovator honours
-                  </Link>
-                  .
-                </p>
-              </div>
             </div>
           </div>
           <aside className="flex min-h-0 w-full min-w-0 flex-1 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0">

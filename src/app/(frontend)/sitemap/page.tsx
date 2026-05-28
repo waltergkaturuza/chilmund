@@ -13,6 +13,92 @@ export const metadata: Metadata = {
   description: 'Structured directory of primary pages across the Chilmund Chemicals website.',
 }
 
+type NavItems = NonNullable<Header['navItems']>
+type NavItem = NavItems[number]
+type SubItem = NonNullable<NavItem['subItems']>[number]
+
+function isLogisticsSubItem(subItem: SubItem): boolean {
+  const label = subItem?.link?.label?.toLowerCase?.() ?? ''
+  const url = subItem?.link?.url ?? ''
+  return label === 'logistics' || url === '/trucking-logistics'
+}
+
+function isLogisticsTopItem(item: NavItem): boolean {
+  const label = item?.link?.label?.toLowerCase?.() ?? ''
+  const url = item?.link?.url ?? ''
+  return label === 'logistics' || url === '/trucking-logistics'
+}
+
+function isManufacturingSubItem(subItem: SubItem): boolean {
+  const label = subItem?.link?.label?.toLowerCase?.() ?? ''
+  const url = subItem?.link?.url ?? ''
+  return label.includes('manufacturing') || url === '/manufacturing-plant'
+}
+
+function isManufacturingTopItem(item: NavItem): boolean {
+  const label = item?.link?.label?.toLowerCase?.() ?? ''
+  const url = item?.link?.url ?? ''
+  return label.includes('manufacturing') || url === '/manufacturing-plant'
+}
+
+function isIndustryAwardsSubItem(subItem: SubItem): boolean {
+  const label = subItem?.link?.label?.toLowerCase?.() ?? ''
+  const url = subItem?.link?.url ?? ''
+  return label.includes('industry awards') || url === '/industry-awards'
+}
+
+function isIndustryAwardsTopItem(item: NavItem): boolean {
+  const label = item?.link?.label?.toLowerCase?.() ?? ''
+  const url = item?.link?.url ?? ''
+  return label.includes('industry awards') || url === '/industry-awards'
+}
+
+function normalizeNavItems(navItems: Header['navItems']): NavItems {
+  const items: NavItems = [...(navItems ?? [])]
+  const productsIndex = items.findIndex(
+    (item) => item?.style === 'dropdown' && item?.dropdownLabel?.toLowerCase?.() === 'products',
+  )
+
+  if (productsIndex === -1) {
+    return items.filter((item) => !isManufacturingTopItem(item))
+  }
+
+  const productsItem = items[productsIndex]
+  const subItems = Array.isArray(productsItem.subItems) ? [...productsItem.subItems] : []
+  const hadLogisticsInProducts = subItems.some(isLogisticsSubItem)
+
+  const filteredSubItems = subItems.filter(
+    (subItem) =>
+      !isLogisticsSubItem(subItem) &&
+      !isManufacturingSubItem(subItem) &&
+      !isIndustryAwardsSubItem(subItem),
+  )
+
+  if (filteredSubItems.length !== subItems.length) {
+    items[productsIndex] = {
+      ...productsItem,
+      subItems: filteredSubItems,
+    }
+  }
+
+  const withoutManufacturing = items.filter(
+    (item) => !isManufacturingTopItem(item) && !isIndustryAwardsTopItem(item),
+  )
+
+  if (hadLogisticsInProducts && !withoutManufacturing.some(isLogisticsTopItem)) {
+    const partnersIndex = withoutManufacturing.findIndex(
+      (item) => item?.style === 'dropdown' && item?.dropdownLabel?.toLowerCase?.() === 'partners',
+    )
+    const insertAt = partnersIndex >= 0 ? partnersIndex + 1 : productsIndex + 1
+    withoutManufacturing.splice(insertAt, 0, {
+      style: 'link',
+      link: { type: 'custom', url: '/trucking-logistics', label: 'Logistics', newTab: false },
+    })
+  }
+
+  return withoutManufacturing
+}
+
 function buildSections(items: NonNullable<Header['navItems']>): {
   title: string
   links: { label: string; href: string }[]
@@ -54,7 +140,7 @@ const extraSections: {
     title: 'Tools & policies',
     links: [
       { label: 'Search', href: '/search' },
-      { label: 'Bindura manufacturing plant map', href: '/bindura-map' },
+      { label: 'Bindura plant map', href: '/bindura-map' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'Terms of Use', href: '/terms-of-use' },
     ],
@@ -65,7 +151,8 @@ export default async function SiteMapPage() {
   const headerData = await getCachedGlobal('header', 1)()
 
   const hasNavItems = headerData?.navItems && headerData.navItems.length > 0
-  const navItems = (hasNavItems ? headerData.navItems : defaultNavItems)!
+  const sourceNavItems = (hasNavItems ? headerData.navItems : defaultNavItems)!
+  const navItems = normalizeNavItems(sourceNavItems)
 
   const primary = buildSections(navItems)
 

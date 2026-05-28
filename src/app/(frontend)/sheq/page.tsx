@@ -2,15 +2,11 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
-  Award,
   Building2,
   CheckCircle,
   Download,
-  Leaf,
   Microscope,
-  Recycle,
   Shield,
-  Sprout,
 } from 'lucide-react'
 import React from 'react'
 
@@ -221,60 +217,6 @@ export default function SHEQPage() {
         </div>
       </section>
 
-      {/* Recognition */}
-      <section className="bg-slate-50 dark:bg-slate-900/80">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <div className="flex items-center gap-3">
-            <Award className="size-8 text-amber-600 dark:text-amber-400" aria-hidden />
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Recognition &amp; achievements</h2>
-          </div>
-          <div className="mt-8 rounded-2xl border border-amber-200/80 bg-white p-8 shadow-sm dark:border-amber-900/40 dark:bg-slate-950/60">
-            <p className="text-[1.05rem] leading-relaxed text-slate-800 dark:text-white/80">
-              National Social Security Authority — 2023
-              <br />
-              Recognised for <em>exemplary leadership in occupational safety &amp; health management</em> and good workplace safety practices.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Environmental & community */}
-      <section className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:pb-24 md:pt-20">
-          <div className="flex flex-wrap items-center gap-3">
-            <Sprout className="size-8 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
-            <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Environmental &amp; community initiatives</h2>
-              <p className="mt-1 text-sm text-slate-500 dark:text-white/45">
-                Extending stewardship beyond manufacturing
-              </p>
-            </div>
-          </div>
-          <p className="mt-8 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            Chilmund extends environmental accountability beyond factory boundaries by collaborating with neighbouring communities toward cleaner, safer surroundings.
-          </p>
-          <h3 className="mt-10 flex flex-wrap items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
-            <Recycle className="size-5 shrink-0 text-emerald-600" aria-hidden />
-            Clean-up campaign participation
-          </h3>
-          <ul className="mt-6 space-y-4">
-            {[
-              'Engagement with workplace-led and municipality-linked clean-ups',
-              'Participation in national programmes such as National Clean-Up Day Zimbabwe',
-              'Visible environmental awareness reinforcement for crews and stakeholder partners',
-              'Promoting segregation, recycling, and responsible waste stewardship',
-            ].map((t) => (
-              <li key={t} className="flex gap-3 text-slate-700 dark:text-white/65">
-                <Leaf className="mt-1 size-4 shrink-0 text-emerald-600 dark:text-emerald-500/90" aria-hidden />
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-            These initiatives strengthen ISO&nbsp;14001-aligned objectives — reducing preventable pollution while nurturing a pragmatic culture of sustainability.
-          </p>
-        </div>
-      </section>
     </article>
   )
 }

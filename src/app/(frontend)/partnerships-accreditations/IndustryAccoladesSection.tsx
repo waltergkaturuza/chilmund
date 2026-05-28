@@ -1,9 +1,5 @@
-import Link from 'next/link'
 import { Award, BadgeCheck } from 'lucide-react'
 import React from 'react'
-
-const linkCls =
-  'font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300'
 
 const accolades = [
   'Best Exhibitor — SADC Industrialization Week',
@@ -27,9 +23,6 @@ export function IndustryAccoladesSection() {
               </li>
             ))}
           </ul>
-          <Link className={`mt-8 inline-flex text-sm ${linkCls}`} href="/industry-awards">
-            Trophy cabinet &amp; citations →
-          </Link>
         </div>
       </div>
     </section>
