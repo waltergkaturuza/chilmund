@@ -31,6 +31,7 @@ export default function AboutChilmundPage() {
               className="h-auto w-full max-w-[min(100%,20rem)] md:max-w-none md:w-[min(100%,26rem)] lg:w-[min(100%,28rem)]"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
+              variant="light"
             />
           </div>
           <div className="text-center">
