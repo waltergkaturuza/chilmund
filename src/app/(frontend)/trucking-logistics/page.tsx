@@ -4,7 +4,7 @@ import { innerHeroRadialSection } from '@/utilities/pageHero'
 import { Clock, Globe, MapPin, Package, Route, Shield, Truck, Warehouse } from 'lucide-react'
 import React from 'react'
 
-const TRUCKS_VIDEO_SRC = `/${encodeURIComponent('trucks.mp4')}`
+const TRUCKS_VIDEO_SRC = `/${encodeURIComponent('Trucks Fixed(1).mp4')}`
 
 export const metadata: Metadata = {
   title: 'Our Fleet | Chilmund Chemicals',
