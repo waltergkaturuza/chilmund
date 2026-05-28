@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Logo = (props: Props) => {
-  const { className } = props
+  const { className, variant = 'default' } = props
 
   return (
     <span
@@ -26,6 +26,7 @@ export const Logo = (props: Props) => {
         className="h-10 w-auto sm:h-11 md:h-12"
         sizes="(max-width: 768px) 200px, 280px"
         priority
+        variant={variant}
       />
     </span>
   )

@@ -151,9 +151,9 @@ export default function SHEQPage() {
               </p>
               <div className="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
                 <SheqPhoto
-                  src="/sheq/lab-workstation-documentation.png"
-                  alt="Laboratory bench with labelled volumetric flasks, EDTA and standard preparation documentation for QC testing."
-                  caption="Documented preparations and calibrated glassware supporting traceable QC work."
+                  src={`/${encodeURIComponent('Lady Titrating .jpg')}`}
+                  alt="Laboratory technician titrating samples using beakers and calibrated glassware."
+                  caption="Laboratory beakers and live titration work supporting traceable QC operations."
                   aspectClass="aspect-[4/3] sm:aspect-[3/2]"
                 />
                 <SheqPhoto
