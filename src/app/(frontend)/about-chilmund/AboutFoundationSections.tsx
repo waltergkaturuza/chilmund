@@ -52,7 +52,6 @@ export function AboutFoundationSections() {
       <section className="border-b border-slate-200/90 bg-white pb-16 pt-8 dark:border-white/10 dark:bg-slate-950 md:pb-22 md:pt-12">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center md:mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-700 dark:text-blue-400">Foundation</p>
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
               Our Key Pillars
             </h2>
