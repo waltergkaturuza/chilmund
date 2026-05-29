@@ -28,7 +28,7 @@ export default function AboutChilmundPage() {
           <div className="flex items-center justify-center">
             <BrandLogo
               width={560}
-              className="h-auto w-full max-w-[min(100%,20rem)] md:max-w-none md:w-[min(100%,26rem)] lg:w-[min(100%,28rem)]"
+              className="h-auto w-full max-w-[min(100%,22rem)] md:max-w-none md:w-[min(100%,32rem)] lg:w-[min(100%,36rem)]"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
               variant="light"
