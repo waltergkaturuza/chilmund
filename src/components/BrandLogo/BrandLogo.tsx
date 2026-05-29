@@ -36,13 +36,13 @@ export function BrandLogo({
   variant = 'default',
 }: BrandLogoProps) {
   return (
-    <span className="inline-flex shrink-0 overflow-visible p-0.5">
+    <span className="inline-flex min-w-0 shrink p-0.5">
       <Image
         src={CHILMUND_LOGO_SRC}
         alt={CHILMUND_LOGO_ALT}
         width={width}
         height={height}
-        className={cn('h-auto w-auto', className)}
+        className={cn('h-auto max-w-full w-auto', className)}
         style={variant === 'light' ? { filter: 'brightness(0) invert(1)' } : undefined}
         priority={priority}
         sizes={sizes}
