@@ -39,7 +39,7 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
               {children ||
                 (richText && (
                   <RichText
-                    className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-pretty prose-p:leading-relaxed prose-p:text-white/85 prose-p:text-[clamp(1.0625rem,3.6vw,1.3rem)] prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline [&_h1]:text-justify [&_h1]:[text-align-last:justify] [&_h1]:text-blue-400 [&_h1]:leading-[1.08] [&_h1]:text-[clamp(1.6rem,6.8vw,2.6rem)] [&_h2]:text-white/95 [&_h2]:text-[clamp(1.4rem,5vw,1.9rem)]"
+                    className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-pretty prose-p:leading-relaxed prose-p:text-white/85 prose-p:text-[clamp(1.0625rem,3.6vw,1.3rem)] prose-strong:text-white prose-a:text-blue-500 prose-a:no-underline hover:prose-a:underline [&_h1]:text-justify [&_h1]:[text-align-last:left] [&_h1]:text-blue-400 [&_h1]:leading-[1.08] [&_h1]:text-[clamp(1.1rem,5vw,2.6rem)] [&_h2]:text-white/95 [&_h2]:text-[clamp(1.4rem,5vw,1.9rem)]"
                     data={richText}
                     enableGutter={false}
                   />
