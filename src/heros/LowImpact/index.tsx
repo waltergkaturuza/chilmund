@@ -35,7 +35,7 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
         <div className="relative mx-auto w-full max-w-none px-3 pb-6 pt-5 sm:px-4 sm:pt-6 md:px-5 md:pb-8 md:pt-7 lg:px-7 lg:pb-10 lg:pt-8 xl:px-10">
           {/* Slightly wider video column than copy on lg+ */}
           <div className="grid items-stretch gap-10 lg:grid-cols-12 lg:gap-8 xl:gap-10">
-            <div className="flex max-w-3xl flex-col justify-center lg:col-span-5 xl:max-w-none">
+            <div className="flex max-w-3xl flex-col justify-center lg:col-span-6 xl:max-w-none">
               {children ||
                 (richText && (
                   <RichText
@@ -56,7 +56,7 @@ export const LowImpactHero: React.FC<LowImpactHeroProps> = ({
                 </ul>
               )}
             </div>
-            <div className="relative flex min-h-0 flex-col lg:col-span-7 lg:min-h-[min(520px,_62vh)]">
+            <div className="relative flex min-h-0 flex-col lg:col-span-6 lg:min-h-[min(520px,_62vh)]">
               <div className="relative min-h-[220px] flex-1 overflow-hidden rounded-2xl border border-white/10 bg-slate-950 shadow-[0_28px_70px_-14px_rgba(0,0,0,0.5)] ring-1 ring-white/10 sm:min-h-[280px] lg:min-h-0">
                 <HomeHeroSlideshow className="absolute inset-0 size-full" />
               </div>
