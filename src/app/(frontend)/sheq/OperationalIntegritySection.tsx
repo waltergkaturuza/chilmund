@@ -11,7 +11,7 @@ export function OperationalIntegritySection() {
   return (
     <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
       <div className="container mx-auto max-w-6xl px-4">
-        <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:flex">
+        <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:flex md:items-stretch">
           <div className="w-full p-8 md:w-[58%] md:max-w-[58%] md:shrink-0 md:p-12">
             <ShieldCheck className="size-10 text-blue-600 dark:text-blue-400" />
             <h2 className="mt-6 text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">
@@ -47,7 +47,7 @@ export function OperationalIntegritySection() {
               </Link>
             </div>
           </div>
-          <aside className="flex min-h-0 w-full min-w-0 flex-1 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0">
+          <aside className="flex min-h-0 w-full min-w-0 flex-1 flex-col gap-5 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0 md:p-10">
             <div className="shrink-0">
               <ShieldCheck className="size-8 text-emerald-400" />
               <p className="mt-3 text-xs font-bold uppercase tracking-[0.22em] text-blue-300/95">
@@ -58,7 +58,7 @@ export function OperationalIntegritySection() {
                 delegated to a single department.
               </p>
             </div>
-            <div className="flex min-h-[15rem] flex-1 flex-col sm:min-h-[18rem] lg:min-h-0">
+            <div className="flex min-h-[18rem] flex-1 flex-col sm:min-h-[22rem] md:min-h-0">
               <ImageSlideshow
                 slides={sheqOperationalIntegritySlides}
                 growInFlexLayout
@@ -67,7 +67,7 @@ export function OperationalIntegritySection() {
                 imageQuality={92}
                 intervalMs={6000}
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
-                className="rounded-xl border border-white/12 bg-slate-950/55 shadow-inner"
+                className="min-h-[18rem] flex-1 rounded-xl border border-white/12 bg-slate-950/55 shadow-inner sm:min-h-[22rem] md:min-h-[20rem] lg:min-h-[26rem]"
               />
             </div>
             <Link
