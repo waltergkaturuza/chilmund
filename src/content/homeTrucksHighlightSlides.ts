@@ -4,8 +4,16 @@ function truckSrc(filename: string): string {
   return `/Trucks/${encodeURIComponent(filename)}`
 }
 
-/** Home page trucking gallery — assets in `public/Trucks/`. */
+function publicSrc(filename: string): string {
+  return `/${encodeURIComponent(filename)}`
+}
+
+/** Home page trucking gallery — assets in `public/Trucks/` and selected fleet photos. */
 export const homeTrucksHighlightSlides: ImageSlideshowSlide[] = [
+  {
+    src: publicSrc('20260519_121531.jpg (1).jpeg'),
+    alt: 'Chilmund fleet trucks lined up for dispatch.',
+  },
   {
     src: truckSrc('Trucks1.jpeg'),
     alt: 'Chilmund Chemicals delivery truck at the plant.',

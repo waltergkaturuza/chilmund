@@ -3,11 +3,15 @@
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import React from 'react'
 
-/** Campus / plant highlights — no truck photos in the home hero carousel. */
+function homeSlideSrc(filename: string): string {
+  return `/homeslide/${encodeURIComponent(filename)}`
+}
+
+/** Enhanced campus / plant highlights from `public/homeslide/`. */
 const HOME_SLIDES = [
-  '/slide/slide6.jpeg',
-  `/${encodeURIComponent('Storage tanks.jpg')}`,
-  `/${encodeURIComponent('AIEnhancer_DJI_0333(1).png')}`,
+  homeSlideSrc('AIEnhancer_slide1 (1).png'),
+  homeSlideSrc('ChatGPT Image May 27, 2026, 04_52_34 PM (1).png'),
+  homeSlideSrc('ChatGPT Image May 27, 2026, 05_01_38 PM (1).png'),
 ] as const
 
 const HOME_SLIDE_ALT = 'Chilmund manufacturing campus and operations'
@@ -26,6 +30,7 @@ export function HomeHeroSlideshow({ className, intervalMs = 5000 }: HomeHeroSlid
       intervalMs={intervalMs}
       className={className}
       sizes="(max-width: 1280px) 55vw, 700px"
+      imageQuality={92}
     />
   )
 }

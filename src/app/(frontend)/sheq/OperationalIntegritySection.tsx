@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
-import { awardsCertificatesSlides } from '@/content/awardsCertificatesSlides'
-import { Medal, ShieldCheck } from 'lucide-react'
+import { sheqOperationalIntegritySlides } from '@/content/sheqOperationalIntegritySlides'
+import { ShieldCheck } from 'lucide-react'
 import React from 'react'
 
 const linkCls =
@@ -49,17 +49,22 @@ export function OperationalIntegritySection() {
           </div>
           <aside className="flex min-h-0 w-full min-w-0 flex-1 flex-col gap-6 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0">
             <div className="shrink-0">
-              <Medal className="size-8 text-amber-400" />
-              <p className="mt-4 text-sm leading-relaxed text-white/72">
-                Full dossiers, marks, and partnership context on our partners and certifications page.
+              <ShieldCheck className="size-8 text-emerald-400" />
+              <p className="mt-3 text-xs font-bold uppercase tracking-[0.22em] text-blue-300/95">
+                SHEQ as a culture
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-white/72">
+                Safety signage, site discipline, and team briefings show how SHEQ is lived on the plant — not
+                delegated to a single department.
               </p>
             </div>
             <div className="flex min-h-[15rem] flex-1 flex-col sm:min-h-[18rem] lg:min-h-0">
               <ImageSlideshow
-                slides={awardsCertificatesSlides}
+                slides={sheqOperationalIntegritySlides}
                 growInFlexLayout
                 captionOnDark
                 imageFit="contain"
+                imageQuality={92}
                 intervalMs={6000}
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
                 className="rounded-xl border border-white/12 bg-slate-950/55 shadow-inner"
@@ -67,9 +72,9 @@ export function OperationalIntegritySection() {
             </div>
             <Link
               className="inline-flex shrink-0 justify-center rounded-full bg-white/15 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/25"
-              href="/partnerships-accreditations"
+              href="#laboratory"
             >
-              Partners and Certifications
+              Laboratory facilities
             </Link>
           </aside>
         </div>
