@@ -4,11 +4,15 @@ import type { Media, Page, Post, Product, Config } from '../payload-types'
 
 import { mergeOpenGraph } from './mergeOpenGraph'
 import { getServerSideURL } from './getURL'
+import {
+  CHILMUND_DEFAULT_OG_IMAGE_PATH,
+  CHILMUND_SITE_NAME,
+} from '@/constants/seo'
 
 const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
   const serverUrl = getServerSideURL()
 
-  let url = serverUrl + '/website-template-OG.webp'
+  let url = serverUrl + CHILMUND_DEFAULT_OG_IMAGE_PATH
 
   if (image && typeof image === 'object' && 'url' in image) {
     const ogUrl = image.sizes?.og?.url
@@ -20,7 +24,7 @@ const getImageURL = (image?: Media | Config['db']['defaultIDType'] | null) => {
 }
 
 const siteTitleSuffix = ' | Chilmund Chemicals'
-const siteName = 'Chilmund Chemicals'
+const siteName = CHILMUND_SITE_NAME
 
 export const generateMeta = async (args: {
   doc: Partial<Page> | Partial<Post> | Partial<Product> | null

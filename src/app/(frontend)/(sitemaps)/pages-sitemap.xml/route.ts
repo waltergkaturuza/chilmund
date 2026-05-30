@@ -3,13 +3,13 @@ import { getPayload } from 'payload'
 import config from '@payload-config'
 import { unstable_cache } from 'next/cache'
 
+import { staticPublicRoutes } from '@/content/staticPublicRoutes'
+import { getServerSideURL } from '@/utilities/getURL'
+
 const getPagesSitemap = unstable_cache(
   async () => {
     const payload = await getPayload({ config })
-    const SITE_URL =
-      process.env.NEXT_PUBLIC_SERVER_URL ||
-      process.env.VERCEL_PROJECT_PRODUCTION_URL ||
-      'https://example.com'
+    const SITE_URL = getServerSideURL()
 
     const results = await payload.find({
       collection: 'pages',
@@ -31,29 +31,28 @@ const getPagesSitemap = unstable_cache(
 
     const dateFallback = new Date().toISOString()
 
-    const defaultSitemap = [
-      {
-        loc: `${SITE_URL}/search`,
-        lastmod: dateFallback,
-      },
-      {
-        loc: `${SITE_URL}/posts`,
-        lastmod: dateFallback,
-      },
-    ]
-
-    const sitemap = results.docs
+    const cmsEntries = results.docs
       ? results.docs
           .filter((page) => Boolean(page?.slug))
-          .map((page) => {
-            return {
-              loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
-              lastmod: page.updatedAt || dateFallback,
-            }
-          })
+          .map((page) => ({
+            loc: page?.slug === 'home' ? `${SITE_URL}/` : `${SITE_URL}/${page?.slug}`,
+            lastmod: page.updatedAt || dateFallback,
+          }))
       : []
 
-    return [...defaultSitemap, ...sitemap]
+    const staticEntries = staticPublicRoutes.map((path) => ({
+      loc: path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`,
+      lastmod: dateFallback,
+    }))
+
+    const seen = new Set<string>()
+    const merged = [...staticEntries, ...cmsEntries].filter((entry) => {
+      if (seen.has(entry.loc)) return false
+      seen.add(entry.loc)
+      return true
+    })
+
+    return merged
   },
   ['pages-sitemap'],
   {

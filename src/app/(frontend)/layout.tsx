@@ -16,6 +16,8 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import React from 'react'
 
 import { GoogleAnalytics } from '@/components/Analytics/GoogleAnalytics'
+import { OrganizationJsonLd } from '@/components/SEO/OrganizationJsonLd'
+import { CHILMUND_DEFAULT_DESCRIPTION, CHILMUND_SITE_NAME } from '@/constants/seo'
 
 import './globals.css'
 
@@ -34,6 +36,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <head>
         <InitTheme />
         <GoogleAnalytics />
+        <OrganizationJsonLd />
         <link href="/favicon.ico" rel="icon" sizes="32x32" />
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
@@ -62,8 +65,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
+  title: {
+    default: CHILMUND_SITE_NAME,
+    template: `%s | ${CHILMUND_SITE_NAME}`,
+  },
+  description: CHILMUND_DEFAULT_DESCRIPTION,
   openGraph: mergeOpenGraph(),
   twitter: {
     card: 'summary_large_image',
+    title: CHILMUND_SITE_NAME,
+    description: CHILMUND_DEFAULT_DESCRIPTION,
   },
 }
