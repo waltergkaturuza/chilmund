@@ -45,22 +45,19 @@ export function OperationalIntegritySection() {
               </Link>
             </div>
           </div>
-          <aside className="flex min-h-0 w-full min-w-0 flex-col gap-4 border-t border-slate-200 bg-slate-900/92 p-8 text-white dark:border-white/10 md:border-l md:border-t-0 md:p-10">
-            <div className="shrink-0">
-              <p className="text-xs font-bold uppercase tracking-[0.22em] text-blue-300/95">
-                SHEQ as a culture
-              </p>
-            </div>
+          <aside className="flex min-h-0 w-full min-w-0 flex-col border-t border-slate-200 bg-slate-900/92 text-white dark:border-white/10 md:border-l md:border-t-0 [&_p.text-sm]:px-8 [&_p.text-sm]:pb-8">
+            <p className="shrink-0 px-8 pt-8 pb-4 text-xs font-bold uppercase tracking-[0.22em] text-blue-300/95 md:px-10 md:pt-10">
+              SHEQ as a culture
+            </p>
             <div className="flex min-h-[18rem] flex-1 flex-col sm:min-h-[22rem] md:min-h-0">
               <ImageSlideshow
                 slides={sheqOperationalIntegritySlides}
                 growInFlexLayout
                 captionOnDark
-                imageFit="contain"
                 imageQuality={92}
                 intervalMs={6000}
                 sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 640px"
-                className="min-h-[18rem] flex-1 rounded-xl border border-white/12 bg-slate-950/55 shadow-inner sm:min-h-[22rem] md:min-h-[20rem] lg:min-h-[26rem]"
+                className="relative min-h-[18rem] w-full flex-1 overflow-hidden sm:min-h-[22rem] md:min-h-[20rem] lg:min-h-[26rem]"
               />
             </div>
           </aside>
