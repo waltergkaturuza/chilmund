@@ -3,13 +3,11 @@
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import React from 'react'
 
+/** Campus / plant highlights — no truck photos in the home hero carousel. */
 const HOME_SLIDES = [
-  '/slide/slide1.jpeg',
-  '/slide/slide2.jpeg',
-  '/slide/slide3.jpeg',
-  '/slide/slide4.jpeg',
-  '/slide/slide5.jpeg',
   '/slide/slide6.jpeg',
+  `/${encodeURIComponent('Storage tanks.jpg')}`,
+  `/${encodeURIComponent('AIEnhancer_DJI_0333(1).png')}`,
 ] as const
 
 const HOME_SLIDE_ALT = 'Chilmund manufacturing campus and operations'
