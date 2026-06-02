@@ -72,8 +72,7 @@ export function ProductFormsDescription() {
             1. Solid Aluminium sulphate
           </h3>
           <p className="mt-3 text-pretty">
-            Is a white to off-white crystalline salt with a particle size ranging from 2&nbsp;-&nbsp;6.5&nbsp;mm.
-            Comes in four product forms:
+            Is a white to off-white crystalline salt that comes in four product forms:
           </p>
 
           <ul className="mt-6 grid list-none gap-6 p-0 sm:grid-cols-2 sm:gap-8 lg:gap-10">
