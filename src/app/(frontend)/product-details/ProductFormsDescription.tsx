@@ -13,9 +13,12 @@ type ProductFormCardProps = {
   detail: string
   image: string
   imageAlt: string
+  imageFit?: 'cover' | 'contain'
 }
 
-function ProductFormCard({ name, detail, image, imageAlt }: ProductFormCardProps) {
+function ProductFormCard({ name, detail, image, imageAlt, imageFit = 'cover' }: ProductFormCardProps) {
+  const objectClass = imageFit === 'contain' ? 'object-contain' : 'object-cover'
+
   return (
     <article className="overflow-hidden rounded-xl border border-slate-200/90 bg-white shadow-sm dark:border-white/10 dark:bg-slate-950/40">
       <div className="relative aspect-[4/3] w-full min-h-[200px] bg-slate-100 sm:min-h-[240px] md:aspect-[3/2] md:min-h-[280px] lg:min-h-[320px] dark:bg-slate-800">
@@ -23,7 +26,7 @@ function ProductFormCard({ name, detail, image, imageAlt }: ProductFormCardProps
           src={image}
           alt={imageAlt}
           fill
-          className="object-cover object-center"
+          className={`${objectClass} object-center`}
           sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 560px"
           quality={92}
         />
@@ -99,6 +102,7 @@ export function ProductFormsDescription() {
               detail="A pale yellow to light brown liquid with customer specified Al₂O₃ content."
               image={LIQUID_PRODUCT_SRC}
               imageAlt="Liquid aluminium sulphate (alum) at Chilmund Chemicals."
+              imageFit="contain"
             />
           </div>
         </div>
