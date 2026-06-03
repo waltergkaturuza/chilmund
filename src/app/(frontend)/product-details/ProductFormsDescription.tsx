@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 
 const SOLID_PRODUCTS_DIR = 'solid products'
-const LIQUID_PRODUCT_SRC = `/${encodeURIComponent('liquid product.jpeg')}`
+const LIQUID_PRODUCT_SRC = `/${encodeURIComponent('liquid product 2.jpeg')}`
 
 function solidProductSrc(filename: string) {
   return `/${encodeURIComponent(SOLID_PRODUCTS_DIR)}/${encodeURIComponent(filename)}`
