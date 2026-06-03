@@ -130,7 +130,7 @@ export function LanguageSelector({ dark }: { dark?: boolean }) {
         >
           <Globe className="size-3.5" aria-hidden />
           <span className="font-bold text-blue-600">{activeLang.country}</span>
-          <span className="hidden sm:inline">{activeLang.label}</span>
+          <span className="hidden 2xl:inline">{activeLang.label}</span>
           <ChevronDown
             className={cn('size-3 opacity-70 transition-transform', open && 'rotate-180')}
             aria-hidden

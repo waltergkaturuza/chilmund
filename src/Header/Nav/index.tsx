@@ -24,7 +24,7 @@ type SubItem = NonNullable<NavItem['subItems']>[number]
  * absolutely-positioned dropdown panels. Short labels keep one row on ~15" screens.
  */
 const tabStripTrack =
-  'flex w-full flex-nowrap items-center justify-center gap-x-0.5 overflow-visible py-0.5'
+  'mx-auto flex w-max max-w-full flex-nowrap items-center justify-center gap-x-0.5 overflow-visible py-0.5'
 
 const tabStripTrackLight = ''
 
@@ -277,6 +277,10 @@ function renderNavItem(
   if (!href || !item.link) return null
   const active = isHrefActive(opts.pathname, href)
 
+  if (opts.mode === 'desktop' && href === '/') {
+    return null
+  }
+
   if (opts.mode === 'desktop') {
     return (
       <NavLinkTabStrip key={i} href={href} active={active} dark={opts.dark}>
@@ -395,7 +399,7 @@ export function HeaderNavMobileButton({
   ariaControlsId: string
 }) {
   return (
-    <div className="flex items-center lg:hidden">
+    <div className="flex items-center xl:hidden">
       <button
         type="button"
         className={cn(
@@ -447,7 +451,7 @@ export function HeaderNavMobileDrawer({
   return (
     <div
       id={id}
-      className="fixed inset-0 z-[2000] lg:hidden"
+      className="fixed inset-0 z-[2000] xl:hidden"
       role="dialog"
       aria-modal="true"
       aria-label="Main navigation"

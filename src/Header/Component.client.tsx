@@ -97,19 +97,21 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {...(theme ? { 'data-theme': theme } : {})}
       >
         {/* Single row: logo | nav tabs | utilities + CTA */}
-        <div className="mx-auto flex w-full max-w-[1920px] items-center px-5 py-2.5 sm:py-3">
-          {/* Logo — far left */}
-          <Link className="shrink-0" href="/">
-            <Logo variant={isDarkHeader ? 'light' : 'default'} />
+        <div className="mx-auto flex w-full max-w-[1920px] items-center gap-2 px-4 py-2.5 sm:gap-3 sm:px-5 sm:py-3 xl:gap-4">
+          {/* Logo — far left; stays above nav if space is tight */}
+          <Link className="relative z-10 shrink-0" href="/">
+            <Logo variant={isDarkHeader ? 'light' : 'default'} compactUntil2xl />
           </Link>
 
-          {/* Desktop nav tabs — centered between logo and CTA */}
-          <div className="mx-4 hidden min-w-0 flex-1 lg:block">
-            <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
+          {/* Desktop nav — xl+ only; scroll inside flex slot so tabs never cover the logo */}
+          <div className="hidden min-w-0 flex-1 xl:block">
+            <div className="min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
+            </div>
           </div>
 
           {/* Utilities + CTA — far right */}
-          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:ml-4">
+          <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5">
             <LanguageSelector dark={isDarkHeader} />
             <HeaderThemeToggle darkHeader={isDarkHeader} />
             <Button
