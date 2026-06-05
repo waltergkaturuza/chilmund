@@ -22,10 +22,8 @@ type BrandLogoProps = {
 }
 
 /**
- * Site logo — renders `Chilmund Chemicals copy-01.svg`.
- * On dark backgrounds pass `variant="light"` to render a clean all-white logo
- * (CSS brightness/invert filter; the baked-in white rect behind the tagline
- * becomes invisible because everything is white on dark).
+ * Site logo — renders `Chilmund Chemicals(Small-PNG)-01.png`.
+ * On dark backgrounds pass `variant="light"` for an inverted white mark.
  */
 export function BrandLogo({
   className,
@@ -46,7 +44,6 @@ export function BrandLogo({
         style={variant === 'light' ? { filter: 'brightness(0) invert(1)' } : undefined}
         priority={priority}
         sizes={sizes}
-        unoptimized
       />
     </span>
   )
