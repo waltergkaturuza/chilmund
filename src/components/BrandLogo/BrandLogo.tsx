@@ -22,7 +22,7 @@ type BrandLogoProps = {
 }
 
 /**
- * Site logo — always renders LOGO new.svg.
+ * Site logo — renders `Chilmund Chemicals copy-01.svg`.
  * On dark backgrounds pass `variant="light"` to render a clean all-white logo
  * (CSS brightness/invert filter; the baked-in white rect behind the tagline
  * becomes invisible because everything is white on dark).
