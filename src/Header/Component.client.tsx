@@ -89,7 +89,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     <>
       <header
         className={cn(
-          'sticky top-0 z-40 border-b transition-[background-color,box-shadow,color] duration-300',
+          'sticky top-0 z-40 overflow-visible border-b transition-[background-color,box-shadow,color] duration-300',
           isDarkHeader
             ? 'border-white/10 bg-slate-950/90 text-white shadow-md backdrop-blur-md'
             : 'border-border/80 bg-white/95 text-foreground shadow-sm backdrop-blur-md',
@@ -97,21 +97,19 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         {...(theme ? { 'data-theme': theme } : {})}
       >
         {/* Single row: logo | nav tabs | utilities + CTA */}
-        <div className="mx-auto flex w-full max-w-[1920px] items-center gap-2 px-4 py-2.5 sm:gap-3 sm:px-5 sm:py-3 xl:gap-4">
-          {/* Logo — far left; stays above nav if space is tight */}
-          <Link className="relative z-10 shrink-0" href="/">
+        <div className="mx-auto flex w-full max-w-[1920px] items-center gap-2 overflow-visible px-4 py-2.5 sm:gap-3 sm:px-5 sm:py-3 xl:gap-4">
+          {/* Logo — far left */}
+          <Link className="shrink-0" href="/">
             <Logo variant={isDarkHeader ? 'light' : 'default'} compactUntil2xl />
           </Link>
 
-          {/* Desktop nav — xl+ only; scroll inside flex slot so tabs never cover the logo */}
-          <div className="hidden min-w-0 flex-1 xl:block">
-            <div className="min-w-0 overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
-            </div>
+          {/* Desktop nav — xl+ only; overflow must stay visible so dropdown panels are not clipped */}
+          <div className="relative z-20 hidden min-w-0 flex-1 xl:block">
+            <HeaderNavDesktopStrip data={data} dark={isDarkHeader} />
           </div>
 
           {/* Utilities + CTA — far right */}
-          <div className="relative z-10 ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5">
+          <div className="relative z-20 ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5">
             <LanguageSelector dark={isDarkHeader} />
             <HeaderThemeToggle darkHeader={isDarkHeader} />
             <Button

@@ -18,25 +18,23 @@ interface Props {
 export const Logo = (props: Props) => {
   const { className, variant = 'default', compactUntil2xl = false, size = 'header' } = props
 
-  const width = size === 'footer' ? 360 : 320
   const heightClass =
     size === 'footer'
-      ? 'h-14 w-auto sm:h-16 md:h-[4.5rem]'
+      ? 'h-12 w-auto sm:h-14 md:h-16'
       : compactUntil2xl
-        ? 'h-12 w-auto sm:h-14 xl:h-12 2xl:h-16'
-        : 'h-12 w-auto sm:h-14 md:h-16'
+        ? 'h-10 w-auto sm:h-11 xl:h-10 2xl:h-12'
+        : 'h-10 w-auto sm:h-11 md:h-12'
 
   return (
     <span
       className={clsx(
-        'inline-flex items-center gap-2 transition-colors',
+        'inline-flex items-center transition-colors',
         className,
       )}
     >
       <BrandLogo
-        width={width}
         className={heightClass}
-        sizes={size === 'footer' ? '(max-width: 768px) 260px, 360px' : '(max-width: 768px) 240px, 320px'}
+        sizes={size === 'footer' ? '(max-width: 768px) 220px, 320px' : '(max-width: 768px) 180px, 260px'}
         priority
         variant={variant}
       />

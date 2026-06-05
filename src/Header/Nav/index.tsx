@@ -125,8 +125,8 @@ function DropdownDesktopStrip({
     const onDoc = (e: MouseEvent) => {
       if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false)
     }
-    document.addEventListener('mousedown', onDoc)
-    return () => document.removeEventListener('mousedown', onDoc)
+    document.addEventListener('click', onDoc)
+    return () => document.removeEventListener('click', onDoc)
   }, [open])
 
   useEffect(() => {
@@ -169,7 +169,7 @@ function DropdownDesktopStrip({
       {open ? (
         /* pt-2 bridges button → menu so pointer does not leave the wrapper in the gap */
         <div
-          className="absolute left-1/2 top-full z-[60] min-w-[14rem] -translate-x-1/2 pt-2"
+          className="absolute left-1/2 top-full z-[100] min-w-[14rem] -translate-x-1/2 pt-2"
           role="presentation"
         >
           <div

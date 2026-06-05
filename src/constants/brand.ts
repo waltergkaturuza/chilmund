@@ -8,5 +8,15 @@ export const CHILMUND_LOGO_COLOUR_SRC = '/Chilmund%20Chemicals(Small-PNG)-01.png
 
 export const CHILMUND_LOGO_ALT = 'Chilmund Chemicals'
 
-/** Matches `public/Chilmund Chemicals(Small-PNG)-01.png` (1136 × 737). */
-export const CHILMUND_LOGO_ASPECT = 1136 / 737
+/** Full raster dimensions of `Chilmund Chemicals(Small-PNG)-01.png`. */
+export const CHILMUND_LOGO_FULL = { width: 1136, height: 737 } as const
+
+/**
+ * Tight bounds of visible logo artwork inside the PNG (excludes empty margins).
+ * Derived from non-transparent / non-background pixels in the source file.
+ */
+export const CHILMUND_LOGO_CONTENT = { x: 193, y: 228, width: 748, height: 281 } as const
+
+/** Aspect ratio of the cropped mark — use for layout, not the full PNG canvas. */
+export const CHILMUND_LOGO_ASPECT =
+  CHILMUND_LOGO_CONTENT.width / CHILMUND_LOGO_CONTENT.height

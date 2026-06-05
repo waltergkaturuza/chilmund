@@ -85,8 +85,8 @@ export function AboutMegaMenu({
     const onDoc = (e: MouseEvent) => {
       if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false)
     }
-    document.addEventListener('mousedown', onDoc)
-    return () => document.removeEventListener('mousedown', onDoc)
+    document.addEventListener('click', onDoc)
+    return () => document.removeEventListener('click', onDoc)
   }, [open])
 
   useEffect(() => {
@@ -129,7 +129,7 @@ export function AboutMegaMenu({
 
       {open && (
         /* pt-2 bridges trigger → panel so the pointer does not leave wrapRef in the gap */
-        <div className="absolute left-0 top-full z-[60] w-[min(92vw,56rem)] pt-2" role="presentation">
+        <div className="absolute left-0 top-full z-[100] w-[min(92vw,56rem)] pt-2" role="presentation">
           <div
             className={cn(
               'rounded-2xl border shadow-2xl',
