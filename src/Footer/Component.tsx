@@ -111,7 +111,7 @@ export async function Footer() {
           {/* ── Column 1: brand + addresses ──────────────────────── */}
           <div className="lg:col-span-4">
             <Link className="inline-flex" href="/">
-              <Logo variant="light" size="footer" />
+              <Logo variant="default" size="footer" />
             </Link>
             <p className="mt-6 max-w-md text-justify text-sm leading-relaxed text-white/70">
               Chilmund Chemicals is a trailblazing aluminium sulphate manufacturer that upholds quality,

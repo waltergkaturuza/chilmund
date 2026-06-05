@@ -2,18 +2,10 @@ import Link from 'next/link'
 import { BadgeCheck, Handshake, HeartHandshake, Sprout, Trophy } from 'lucide-react'
 import React from 'react'
 
+import { ABOUT_CORE_VALUES } from '@/content/aboutCoreValues'
+
 const linkCls =
   'font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300'
-
-const coreValues = [
-  'Quality',
-  'Integrity & excellence',
-  'Teamwork & innovation',
-  'Sustainable livelihoods & environment',
-  'Diversity & inclusion',
-  'Growth-oriented partnerships',
-  'We create and deliver value beyond compare',
-]
 
 function PillarCard({
   icon,
@@ -55,7 +47,7 @@ export function AboutFoundationSections() {
             <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
               Our Key Pillars
             </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-slate-600 dark:text-white/55">
+            <p className="mx-auto mt-3 max-w-2xl !text-center text-slate-600 dark:text-white/55">
               How we prioritise excellence at every interaction, grounded in who we are.
             </p>
           </div>
@@ -166,7 +158,7 @@ export function AboutFoundationSections() {
             </p>
           </div>
           <ol className="grid gap-4 sm:grid-cols-2 lg:gap-5">
-            {coreValues.map((value, i) => (
+            {ABOUT_CORE_VALUES.map((value, i) => (
               <li
                 key={value}
                 className="home-card group flex items-center gap-4 rounded-2xl border border-slate-100 bg-gradient-to-br from-white to-slate-50/95 p-5 shadow-sm transition-colors hover:border-blue-100 hover:shadow-md dark:border-white/10 dark:from-slate-900 dark:to-slate-950 dark:hover:border-blue-900/60"

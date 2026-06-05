@@ -165,7 +165,7 @@ export default function PartnershipsAccreditationsPage() {
         <div className="container mx-auto px-4 py-16 text-center">
           <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Explore Our Markets</h2>
           <p className="mx-auto mt-3 max-w-lg text-slate-600 dark:text-white/60">
-            See where Chilmund Chemicals products are making an impact across Southern and East Africa.
+            See where Chilmund Chemicals products are making an impact across Africa.
           </p>
           <Link
             href="/regional-markets"

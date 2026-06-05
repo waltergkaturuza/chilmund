@@ -24,9 +24,13 @@ const capabilities = [
 const routes = [
   { from: 'Bindura Plant', to: 'Harare & surrounding municipalities', time: 'Same day' },
   { from: 'Bindura Plant', to: 'Bulawayo, Gweru, Mutare', time: '1–2 days' },
+  { from: 'Bindura Plant', to: 'Botswana', time: '1–2 days' },
+  { from: 'Bindura Plant', to: 'South Africa', time: '1–2 days' },
   { from: 'Bindura Plant', to: 'Zambia (Lusaka, Copperbelt)', time: '2–3 days' },
+  { from: 'Bindura Plant', to: 'Namibia', time: '2–3 days' },
   { from: 'Bindura Plant', to: 'Malawi, Mozambique', time: '3–5 days' },
   { from: 'Bindura Plant', to: 'DRC, Tanzania', time: '5–7 days' },
+  { from: 'Bindura Plant', to: 'Angola', time: '8–10 days' },
 ]
 
 export default function TruckingLogisticsPage() {

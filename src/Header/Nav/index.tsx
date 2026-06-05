@@ -277,10 +277,6 @@ function renderNavItem(
   if (!href || !item.link) return null
   const active = isHrefActive(opts.pathname, href)
 
-  if (opts.mode === 'desktop' && href === '/') {
-    return null
-  }
-
   if (opts.mode === 'desktop') {
     return (
       <NavLinkTabStrip key={i} href={href} active={active} dark={opts.dark}>

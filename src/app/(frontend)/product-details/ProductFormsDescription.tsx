@@ -41,10 +41,10 @@ function ProductFormCard({ name, detail, image, imageAlt, imageFit = 'cover' }: 
 
 const solidForms = [
   {
-    name: 'Granular',
+    name: 'Granules',
     detail: 'Coarse product with a particle size ranging from 2 to 6.5 mm',
     image: solidProductSrc('Granular 2.jpeg'),
-    imageAlt: 'Granular aluminium sulphate — coarse crystals, 2 to 6.5 mm particle size.',
+    imageAlt: 'Granules aluminium sulphate — coarse crystals, 2 to 6.5 mm particle size.',
   },
   {
     name: 'Fines',
@@ -53,10 +53,10 @@ const solidForms = [
     imageAlt: 'Fines aluminium sulphate — finely crushed product, 0.5 to 2 mm particle size.',
   },
   {
-    name: 'Kibble',
+    name: 'Kibbles',
     detail: 'Loosely crushed product with a particle size ranging from 30 to 60 mm',
     image: solidProductSrc('Kibbles 1.jpeg'),
-    imageAlt: 'Kibbled aluminium sulphate — loosely crushed product, 30 to 60 mm particle size.',
+    imageAlt: 'Kibbles aluminium sulphate — loosely crushed product, 30 to 60 mm particle size.',
   },
   {
     name: 'Flakes',
@@ -94,14 +94,14 @@ export function ProductFormsDescription() {
 
         <div className="border-t border-slate-200/80 pt-6 dark:border-white/10">
           <h3 className="text-base font-bold tracking-tight text-slate-900 dark:text-white sm:text-lg">
-            2. Liquid Alum
+            2. Liquid Aluminium sulphate
           </h3>
           <div className="mt-6 sm:max-w-xl lg:max-w-2xl">
             <ProductFormCard
-              name="Liquid Alum"
+              name="Liquid Aluminium sulphate"
               detail="A pale yellow to light brown liquid with customer specified Al₂O₃ content."
               image={LIQUID_PRODUCT_SRC}
-              imageAlt="Liquid aluminium sulphate (alum) at Chilmund Chemicals."
+              imageAlt="Liquid aluminium sulphate at Chilmund Chemicals."
               imageFit="contain"
             />
           </div>

@@ -1,5 +1,6 @@
 'use client'
 
+import { ABOUT_CORE_VALUES } from '@/content/aboutCoreValues'
 import { cn } from '@/utilities/ui'
 import { ChevronDown, Eye, Target, Heart, Award, Droplets, Shield, FlaskConical } from 'lucide-react'
 import Link from 'next/link'
@@ -17,34 +18,6 @@ const pillars = [
   {
     title: 'Service Excellence',
     text: 'We prioritize customer satisfaction through timely delivery and exceptional support.',
-  },
-]
-
-const coreValues = [
-  { title: 'Quality', text: 'Rigorous monitoring at every stage ensures world-class products.' },
-  {
-    title: 'Integrity & Excellence',
-    text: 'Transparency and commitment to the highest standards guide our actions.',
-  },
-  {
-    title: 'Teamwork & Innovation',
-    text: 'Collaboration drives us to evolve and deliver superior solutions.',
-  },
-  {
-    title: 'Sustainability',
-    text: 'We build a brighter future for people and the planet in harmony.',
-  },
-  {
-    title: 'Diversity & Inclusion',
-    text: 'We celebrate the strengths of our talented team to drive collective success.',
-  },
-  {
-    title: 'Growth Partnerships',
-    text: "We invest in our employees' well-being and growth, fostering mutual success.",
-  },
-  {
-    title: 'Positivity & Empowerment',
-    text: 'We cultivate optimism, empowering our team to approach challenges with resilience.',
   },
 ]
 
@@ -219,10 +192,9 @@ export function AboutMegaMenu({
                   Core Values
                 </h4>
                 <div className="flex flex-wrap gap-1.5">
-                  {coreValues.map((v) => (
+                  {ABOUT_CORE_VALUES.map((value) => (
                     <span
-                      key={v.title}
-                      title={v.text}
+                      key={value}
                       className={cn(
                         'inline-flex cursor-default rounded-full px-2.5 py-1 text-[0.65rem] font-semibold transition-colors',
                         dark
@@ -230,7 +202,7 @@ export function AboutMegaMenu({
                           : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900',
                       )}
                     >
-                      {v.title}
+                      {value}
                     </span>
                   ))}
                 </div>
