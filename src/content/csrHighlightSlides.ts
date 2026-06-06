@@ -10,11 +10,6 @@ function crsSrc(filename: string): string {
  */
 export const csrHighlightSlides: ImageSlideshowSlide[] = [
   {
-    src: crsSrc('WhatsApp Image 2026-05-12 at 09.10.37.jpeg'),
-    alt: 'Chilmund CSR community programme photo.',
-    caption: 'Community outreach and impact on the ground.',
-  },
-  {
     src: crsSrc('WhatsApp Image 2026-05-12 at 09.10.37 (2).jpeg'),
     alt: 'Chilmund CSR community programme photo.',
     caption: 'Education, environment, health, and youth programmes we support.',
