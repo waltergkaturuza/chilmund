@@ -147,7 +147,7 @@ export function AboutFoundationSections() {
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
-              Core values
+              Core Values
             </h2>
             <p className="mt-3 text-slate-600 dark:text-white/55">
               Values we embed from boardroom to plant floor, also reflected across{' '}

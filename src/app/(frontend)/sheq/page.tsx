@@ -109,7 +109,7 @@ export default function SHEQPage() {
               <Building2 className="size-6" aria-hidden />
             </span>
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">QC / QA process</h2>
+              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">QC / QA Process</h2>
               <p className="mt-1 text-sm text-slate-500 dark:text-white/45">
                 Aluminium sulphate — consistency, compliance, traceability across the lifecycle
               </p>
@@ -130,7 +130,7 @@ export default function SHEQPage() {
               </li>
             ))}
           </ul>
-          <p className="mt-10 rounded-xl bg-blue-50/90 px-5 py-4 text-sm leading-relaxed text-blue-950 dark:bg-blue-950/35 dark:text-blue-100/95">
+          <p className="mt-10 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
             This closed-loop system ensures non-conforming product can be intercepted early, quality data informs continual improvement, and full batch traceability is maintained from raw material to authorised release.
           </p>
         </div>
@@ -144,7 +144,7 @@ export default function SHEQPage() {
               <Microscope className="size-6" aria-hidden />
             </span>
             <div className="min-w-0 flex-1">
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory facilities</h2>
+              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory Facilities</h2>
               <p className="mt-2 max-w-4xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
                 As a testament to our commitment to quality, Chilmund has established a laboratory equipped with
                 state-of-the-art analytical instruments.
@@ -171,7 +171,7 @@ export default function SHEQPage() {
       {/* SHEQ approach */}
       <section className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Our SHEQ approach</h2>
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Our SHEQ Approach</h2>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <PillarCard

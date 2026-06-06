@@ -257,7 +257,7 @@ export const seed = async ({
                 link: { type: 'custom', label: 'CSR', url: '/csr' },
               },
               {
-                link: { type: 'custom', label: 'Site map', url: '/sitemap' },
+                link: { type: 'custom', label: 'Site Map', url: '/sitemap' },
               },
             ],
           },

@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import { TrackQuotePanel } from '@/components/TrackQuote/TrackQuotePanel'
 
 export const metadata: Metadata = {
-  title: 'Track your quote | Chilmund Chemicals',
+  title: 'Track Your Quote | Chilmund Chemicals',
   description: 'Look up the status of your quote request using your tracking ID.',
 }
 

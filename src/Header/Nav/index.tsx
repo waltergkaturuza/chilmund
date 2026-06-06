@@ -199,7 +199,7 @@ function DropdownDesktopStrip({
               return (
                 <TrackQuoteMenuItem
                   key={i}
-                  label={row.link?.label || 'Track your quote'}
+                  label={row.link?.label || 'Track Your Quote'}
                   className={itemCls}
                   onNavigate={() => setOpen(false)}
                 />
@@ -350,7 +350,7 @@ function MobileDropdownSection({
               return (
                 <TrackQuoteMenuItem
                   key={j}
-                  label={row.link?.label || 'Track your quote'}
+                  label={row.link?.label || 'Track Your Quote'}
                   className={itemCls}
                   onNavigate={onNavigate}
                 />

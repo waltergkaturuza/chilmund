@@ -54,7 +54,7 @@ export default function TruckingLogisticsPage() {
       <section className="bg-slate-50 dark:bg-slate-900">
         <div className="relative mx-auto w-full max-w-none px-3 py-16 sm:px-4 md:px-5 lg:px-7 xl:px-10">
           <h2 className="text-center text-2xl font-extrabold text-slate-900 dark:text-white">
-            Our fleet
+            Our Fleet
           </h2>
           <div className="mx-auto mt-10 grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-10 xl:gap-12">
             <div className="min-w-0 lg:col-span-5">

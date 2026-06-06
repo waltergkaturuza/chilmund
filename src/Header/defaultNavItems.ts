@@ -26,26 +26,26 @@ export const defaultNavItems: NavItems = [
   link('Home', '/'),
   dropdown('About', [
     { label: 'About Us', url: '/about-chilmund' },
-    { label: 'Meet our Team', url: '/meet-our-team' },
-    { label: 'Site map', url: '/sitemap' },
+    { label: 'Meet Our Team', url: '/meet-our-team' },
+    { label: 'Site Map', url: '/sitemap' },
     { label: 'Contact Us', url: '/contact' },
   ]),
   dropdown('Products', [
-    { label: 'Product details', url: '/product-details' },
-    { label: 'Aluminium sulphate uses', url: '/uses-aluminium-sulphate' },
+    { label: 'Product Details', url: '/product-details' },
+    { label: 'Uses of Aluminium Sulphate', url: '/uses-aluminium-sulphate' },
     { label: 'Logistics', url: '/trucking-logistics' },
   ]),
   dropdown('Partners', [
     { label: 'Partners and Certifications', url: '/partnerships-accreditations' },
-    { label: 'Regional markets', url: '/regional-markets' },
+    { label: 'Regional Markets', url: '/regional-markets' },
   ]),
   link('SHEQ', '/sheq'),
   dropdown('Updates', [
-    { label: 'News & events', url: '/news' },
+    { label: 'News & Events', url: '/news' },
     { label: 'CSR', url: '/csr' },
   ]),
   dropdown('Resources', [
     { label: 'Library', url: '/resources' },
-    { label: 'Track quote', url: '/track-quote' },
+    { label: 'Track Your Quote', url: '/track-quote' },
   ]),
 ]

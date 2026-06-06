@@ -124,7 +124,7 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
           </button>
         )}
         <h1 id="track-quote-title" className="text-center text-3xl font-bold tracking-tight text-white sm:text-4xl">
-          Track your quote
+          Track Your Quote
         </h1>
         <p className="mx-auto mt-4 max-w-xl text-center text-sm leading-relaxed text-white/75">
           Enter your quote tracking ID for status updates. If we have shared a message or quotation PDF, it will

@@ -38,7 +38,7 @@ export const recommendedHeaderNavBlueprint = [
     label: 'About Chilmund',
     sub: [
       { label: 'About Us', pageSlug: 'about-chilmund' },
-      { label: 'Meet our Team', pageSlug: 'meet-our-team' },
+      { label: 'Meet Our Team', pageSlug: 'meet-our-team' },
       { label: 'Bindura plant map', href: '/bindura-map' },
       { label: 'Contact Us', pageSlug: 'contact' },
     ],

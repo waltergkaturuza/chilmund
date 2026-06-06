@@ -1,5 +1,6 @@
 import { HeaderClient } from './Component.client'
 import { defaultNavItems } from './defaultNavItems'
+import { applyNavLabelOverrides } from './navLabelOverrides'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import React from 'react'
 
@@ -77,7 +78,7 @@ function normalizeNavItems(navItems: Header['navItems']): NavItems {
     items.splice(insertAt, 0, logisticsTopItem)
   }
 
-  return items.filter((item) => !isIndustryAwardsTopItem(item))
+  return applyNavLabelOverrides(items.filter((item) => !isIndustryAwardsTopItem(item)))
 }
 
 export async function Header() {

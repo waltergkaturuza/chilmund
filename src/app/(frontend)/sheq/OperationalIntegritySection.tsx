@@ -13,7 +13,7 @@ export function OperationalIntegritySection() {
         <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:grid md:grid-cols-2 md:items-stretch">
           <div className="w-full p-8 md:p-10">
             <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">
-              Operational integrity (SHEQ)
+              Operational Integrity (SHEQ)
             </h2>
             <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-slate-700 dark:text-white/65">
               Compromise is not an option. Safety and quality are not departmental silos — they are our licence to

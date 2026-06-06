@@ -7,7 +7,7 @@ export type HeaderSubItem = NonNullable<NonNullable<HeaderNavEntry['subItems']>[
 const SITE_ROW: HeaderSubItem = {
   link: {
     type: 'custom',
-    label: 'Site map',
+    label: 'Site Map',
     url: '/sitemap',
     newTab: false,
   },
