@@ -3,13 +3,18 @@
 import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import React from 'react'
 
+function publicSrc(filename: string): string {
+  return `/${encodeURIComponent(filename)}`
+}
+
 function homeSlideSrc(filename: string): string {
   return `/homeslide/${encodeURIComponent(filename)}`
 }
 
-/** Enhanced campus / plant highlights — first slide from `public/`, others from `public/homeslide/`. */
+/** Enhanced campus / plant highlights — `public/` root and `public/homeslide/`. */
 const HOME_SLIDES = [
-  `/${encodeURIComponent('chilmund plant.png')}`,
+  publicSrc('chilmund plant.png'),
+  publicSrc('AIEnhancer_slide1_1.png'),
   homeSlideSrc('ChatGPT Image May 27, 2026, 04_52_34 PM (1).png'),
   homeSlideSrc('ChatGPT Image May 27, 2026, 05_01_38 PM (1).png'),
 ] as const
