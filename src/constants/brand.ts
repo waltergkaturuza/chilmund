@@ -25,3 +25,6 @@ export const CHILMUND_LOGO_WORDMARK_TOP_RATIO = 58 / CHILMUND_LOGO_CONTENT.heigh
 
 /** Padding-top (% of equal-width column) to align body copy with the wordmark. */
 export const CHILMUND_LOGO_WORDMARK_TOP_PADDING = `${(58 / CHILMUND_LOGO_CONTENT.width) * 100}%`
+
+/** Gap between About hero title and intro paragraph (desktop). */
+export const CHILMUND_ABOUT_HERO_TITLE_GAP = '0.75rem'

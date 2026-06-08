@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { BrandLogo } from '@/components/BrandLogo/BrandLogo'
-import { CHILMUND_LOGO_WORDMARK_TOP_PADDING } from '@/constants/brand'
+import { CHILMUND_ABOUT_HERO_TITLE_GAP, CHILMUND_LOGO_WORDMARK_TOP_PADDING } from '@/constants/brand'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
 import { AboutFoundationSections } from './AboutFoundationSections'
@@ -35,16 +35,23 @@ export default function AboutChilmundPage() {
               variant="default"
             />
           </div>
-          <div
-            className="text-center md:grid md:text-left"
-            style={{ ['--wordmark-align' as string]: CHILMUND_LOGO_WORDMARK_TOP_PADDING }}
-          >
-            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:col-start-1 md:row-start-1 md:mb-0 md:text-left md:text-[2.75rem] md:leading-tight lg:text-5xl">
+          <div className="text-center md:text-left">
+            {/* Desktop: title sits above wordmark line; intro aligns with CHILMUND */}
+            <div
+              className="relative hidden md:block md:w-full"
+              style={{ paddingTop: CHILMUND_LOGO_WORDMARK_TOP_PADDING }}
+            >
+              <h1
+                className="absolute left-0 text-[2.75rem] font-extrabold leading-tight tracking-tight lg:text-5xl"
+                style={{ bottom: CHILMUND_ABOUT_HERO_TITLE_GAP }}
+              >
+                Company Overview
+              </h1>
+            </div>
+            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:hidden">
               Company Overview
             </h1>
-            <p
-              className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:col-start-1 md:row-start-1 md:mx-0 md:pt-[var(--wordmark-align)] md:text-lg"
-            >
+            <p className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:mx-0 md:text-lg">
               {chilmundCopy.about.intro}
             </p>
           </div>
