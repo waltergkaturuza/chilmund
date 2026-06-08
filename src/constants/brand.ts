@@ -17,6 +17,11 @@ export const CHILMUND_LOGO_FULL = { width: 1136, height: 737 } as const
  */
 export const CHILMUND_LOGO_CONTENT = { x: 193, y: 228, width: 748, height: 281 } as const
 
-/** Aspect ratio of the cropped mark — use for layout, not the full PNG canvas. */
-export const CHILMUND_LOGO_ASPECT =
-  CHILMUND_LOGO_CONTENT.width / CHILMUND_LOGO_CONTENT.height
+/**
+ * Top of "CHILMUND" wordmark within cropped logo, as fraction of crop height.
+ * Icon extends above the wordmark — use for About hero text alignment.
+ */
+export const CHILMUND_LOGO_WORDMARK_TOP_RATIO = 58 / CHILMUND_LOGO_CONTENT.height
+
+/** Padding-top (% of equal-width column) to align body copy with the wordmark. */
+export const CHILMUND_LOGO_WORDMARK_TOP_PADDING = `${(58 / CHILMUND_LOGO_CONTENT.width) * 100}%`

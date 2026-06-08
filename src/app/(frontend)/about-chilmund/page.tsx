@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { BrandLogo } from '@/components/BrandLogo/BrandLogo'
+import { CHILMUND_LOGO_WORDMARK_TOP_PADDING } from '@/constants/brand'
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
 import { AboutFoundationSections } from './AboutFoundationSections'
@@ -34,11 +35,16 @@ export default function AboutChilmundPage() {
               variant="default"
             />
           </div>
-          <div className="relative text-center md:text-left">
-            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:absolute md:bottom-full md:mb-2 md:w-full md:text-left md:text-[2.75rem] md:leading-tight lg:text-5xl">
+          <div
+            className="text-center md:grid md:text-left"
+            style={{ ['--wordmark-align' as string]: CHILMUND_LOGO_WORDMARK_TOP_PADDING }}
+          >
+            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:col-start-1 md:row-start-1 md:mb-0 md:text-left md:text-[2.75rem] md:leading-tight lg:text-5xl">
               Company Overview
             </h1>
-            <p className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:mx-0 md:text-lg">
+            <p
+              className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:col-start-1 md:row-start-1 md:mx-0 md:pt-[var(--wordmark-align)] md:text-lg"
+            >
               {chilmundCopy.about.intro}
             </p>
           </div>

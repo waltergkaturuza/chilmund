@@ -8,7 +8,7 @@ export const innerHeroRadialSection =
 
 /** About: logo + headline row — tighter than legacy py-16 md:py-28. */
 export const aboutHeroSection =
-  'relative overflow-hidden bg-slate-950 px-4 py-7 text-white sm:py-8 md:py-9'
+  'relative bg-slate-950 px-4 py-7 text-white sm:py-8 md:py-10'
 
 /** Contact / Events / Regional markets gradient shell. */
 export const innerHeroGradientOuter =
