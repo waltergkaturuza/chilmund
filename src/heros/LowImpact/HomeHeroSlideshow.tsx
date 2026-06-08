@@ -13,7 +13,6 @@ function homeSlideSrc(filename: string): string {
 
 /** Enhanced campus / plant highlights — `public/` root and `public/homeslide/`. */
 const HOME_SLIDES = [
-  publicSrc('chilmund plant.png'),
   publicSrc('AIEnhancer_slide1_1.png'),
   homeSlideSrc('ChatGPT Image May 27, 2026, 04_52_34 PM (1).png'),
   homeSlideSrc('ChatGPT Image May 27, 2026, 05_01_38 PM (1).png'),
