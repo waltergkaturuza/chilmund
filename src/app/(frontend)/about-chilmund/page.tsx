@@ -24,8 +24,8 @@ export default function AboutChilmundPage() {
       {/* Hero, logo left, copy centered in right column */}
       <section className={aboutHeroSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
-        <div className="relative mx-auto grid max-w-6xl items-center gap-6 md:grid-cols-2 md:gap-8">
-          <div className="flex items-center justify-center">
+        <div className="relative mx-auto grid max-w-6xl items-start gap-6 md:grid-cols-2 md:gap-8">
+          <div className="flex justify-center md:justify-start">
             <BrandLogo
               width={560}
               className="h-auto w-full max-w-[min(100%,22rem)] md:max-w-none md:w-[min(100%,32rem)] lg:w-[min(100%,36rem)]"
@@ -34,11 +34,11 @@ export default function AboutChilmundPage() {
               variant="default"
             />
           </div>
-          <div className="text-center">
-            <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+          <div className="relative text-center md:text-left">
+            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:absolute md:bottom-full md:mb-2 md:w-full md:text-left md:text-[2.75rem] md:leading-tight lg:text-5xl">
               Company Overview
             </h1>
-            <p className="mx-auto mt-3 max-w-2xl text-base leading-snug text-white/70 md:text-lg">
+            <p className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:mx-0 md:text-lg">
               {chilmundCopy.about.intro}
             </p>
           </div>

@@ -7,9 +7,9 @@ function homeSlideSrc(filename: string): string {
   return `/homeslide/${encodeURIComponent(filename)}`
 }
 
-/** Enhanced campus / plant highlights from `public/homeslide/`. */
+/** Enhanced campus / plant highlights — first slide from `public/`, others from `public/homeslide/`. */
 const HOME_SLIDES = [
-  homeSlideSrc('AIEnhancer_slide1 (1).png'),
+  `/${encodeURIComponent('chilmund plant.png')}`,
   homeSlideSrc('ChatGPT Image May 27, 2026, 04_52_34 PM (1).png'),
   homeSlideSrc('ChatGPT Image May 27, 2026, 05_01_38 PM (1).png'),
 ] as const

@@ -20,7 +20,7 @@ export function ProductExcellenceSection() {
               Product excellence
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
-              <strong className="font-semibold text-slate-900 dark:text-white">Products:</strong> granular, liquid and
+              <strong className="font-semibold text-slate-900 dark:text-white">Products:</strong> Granular, liquid and
               kibbled aluminium sulphate — the &quot;universal coagulant&quot; for high-performance municipal water
               treatment, industrial processes, agriculture and mining.
             </p>

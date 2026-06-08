@@ -46,8 +46,8 @@ export default function RegionalMarketsPage() {
           <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
             Regional Markets
           </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75 md:text-xl">
-            Serving 10+ countries across Southern and East Africa with world-class water treatment coagulants.
+          <p className="mx-auto mt-4 max-w-5xl text-lg text-white/75 md:text-xl lg:whitespace-nowrap">
+            Serving 10+ countries across Africa with world-class water treatment coagulants.
           </p>
         </div>
       </section>
