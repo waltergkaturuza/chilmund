@@ -41,9 +41,23 @@ const tabStripIdle = (dark?: boolean) =>
     ? 'text-white/85 hover:bg-white/10 hover:text-white'
     : 'text-slate-600 hover:bg-slate-200/80 hover:text-slate-900'
 
-/** Mobile drawer: pill chips */
-const pillBase =
-  'inline-flex items-center gap-1 rounded-full px-3 py-2 text-xs font-semibold uppercase tracking-wider transition-colors md:px-3.5 md:text-[0.8rem]'
+const mobileNavCardShell = (dark?: boolean) =>
+  cn(
+    'rounded-xl border',
+    dark ? 'border-white/15 bg-white/5' : 'border-slate-200 bg-slate-50/80',
+  )
+
+const mobileNavCardLabel = (dark?: boolean, active?: boolean) =>
+  cn(
+    'block w-full px-4 py-3 text-left text-sm font-semibold uppercase tracking-wider transition-colors',
+    active
+      ? dark
+        ? 'bg-blue-600/20 text-blue-200'
+        : 'bg-blue-100 text-blue-950'
+      : dark
+        ? 'text-white hover:bg-white/10'
+        : 'text-slate-800 hover:bg-slate-100',
+  )
 
 function NavLinkTabStrip({
   href,
@@ -66,7 +80,7 @@ function NavLinkTabStrip({
   )
 }
 
-function NavLinkPill({
+function MobileLinkSection({
   href,
   active,
   dark,
@@ -83,16 +97,7 @@ function NavLinkPill({
     <Link
       href={href}
       onClick={onNavigate}
-      className={cn(
-        pillBase,
-        active
-          ? dark
-            ? 'bg-blue-600 text-white ring-0'
-            : 'bg-blue-600 text-white ring-1 ring-blue-700/25'
-          : dark
-            ? 'text-white/80 hover:bg-white/10 hover:text-white'
-            : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
-      )}
+      className={cn(mobileNavCardShell(dark), mobileNavCardLabel(dark, active))}
     >
       {children}
     </Link>
@@ -286,7 +291,7 @@ function renderNavItem(
   }
 
   return (
-    <NavLinkPill
+    <MobileLinkSection
       key={i}
       href={href}
       active={active}
@@ -294,7 +299,7 @@ function renderNavItem(
       onNavigate={opts.onNavigate}
     >
       {item.link.label}
-    </NavLinkPill>
+    </MobileLinkSection>
   )
 }
 
@@ -313,18 +318,13 @@ function MobileDropdownSection({
   const subs = withInjectedSiteMapSubItems(item)
 
   return (
-    <div
-      className={cn(
-        'rounded-xl border',
-        dark ? 'border-white/15 bg-white/5' : 'border-slate-200 bg-slate-50/80',
-      )}
-    >
+    <div className={mobileNavCardShell(dark)}>
       <button
         type="button"
         onClick={() => setExpanded((e) => !e)}
         className={cn(
-          'flex w-full items-center justify-between px-4 py-3 text-left text-sm font-semibold uppercase tracking-wider',
-          dark ? 'text-white' : 'text-slate-800',
+          'flex w-full items-center justify-between',
+          mobileNavCardLabel(dark),
         )}
       >
         {item.dropdownLabel}
