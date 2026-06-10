@@ -73,6 +73,7 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    'analytics-events': AnalyticsEvent;
     'quote-requests': QuoteRequest;
     'contact-submissions': ContactSubmission;
     events: Event;
@@ -104,6 +105,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    'analytics-events': AnalyticsEventsSelect<false> | AnalyticsEventsSelect<true>;
     'quote-requests': QuoteRequestsSelect<false> | QuoteRequestsSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     events: EventsSelect<false> | EventsSelect<true>;
@@ -875,6 +877,50 @@ export interface Form {
   createdAt: string;
 }
 /**
+ * First-party site analytics — page views and interaction events.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "analytics-events".
+ */
+export interface AnalyticsEvent {
+  id: number;
+  eventType:
+    | 'page_view'
+    | 'quote_submit'
+    | 'contact_submit'
+    | 'newsletter_signup'
+    | 'form_submit'
+    | 'whatsapp_click'
+    | 'call_click'
+    | 'email_click'
+    | 'quote_click'
+    | 'download'
+    | 'other';
+  /**
+   * Page path, e.g. /contact or /products
+   */
+  path: string;
+  referrer?: string | null;
+  /**
+   * Anonymous visitor session (hashed cookie).
+   */
+  sessionId?: string | null;
+  /**
+   * Optional extra context (form id, file name, etc.).
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
  * Inbound quote/enquiry submissions from the website.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1490,6 +1536,10 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
+        relationTo: 'analytics-events';
+        value: number | AnalyticsEvent;
+      } | null)
+    | ({
         relationTo: 'quote-requests';
         value: number | QuoteRequest;
       } | null)
@@ -1910,6 +1960,19 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "analytics-events_select".
+ */
+export interface AnalyticsEventsSelect<T extends boolean = true> {
+  eventType?: T;
+  path?: T;
+  referrer?: T;
+  sessionId?: T;
+  metadata?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

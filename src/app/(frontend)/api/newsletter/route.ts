@@ -1,3 +1,4 @@
+import { recordAnalyticsEvent } from '@/utilities/recordAnalyticsEvent'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
@@ -40,6 +41,12 @@ export async function POST(request: Request) {
         status: 'active',
         source: 'website',
       },
+    })
+
+    await recordAnalyticsEvent({
+      payload,
+      eventType: 'newsletter_signup',
+      path: '/',
     })
 
     return NextResponse.json({ success: true, message: 'Successfully subscribed!' })

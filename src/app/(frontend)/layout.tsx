@@ -16,6 +16,7 @@ import { Plus_Jakarta_Sans } from 'next/font/google'
 import React from 'react'
 
 import { GoogleAnalytics } from '@/components/Analytics/GoogleAnalytics'
+import { SiteTracker } from '@/components/Analytics/SiteTracker'
 import { OrganizationJsonLd } from '@/components/SEO/OrganizationJsonLd'
 import { CHILMUND_DEFAULT_DESCRIPTION, CHILMUND_SITE_NAME } from '@/constants/seo'
 
@@ -42,6 +43,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body className={cn(plusJakarta.className, 'min-h-[100vh] antialiased')}>
         <Providers quotePagePath={contact?.quotePagePath}>
+          <SiteTracker />
           <AdminBar
             adminBarProps={{
               preview: isEnabled,

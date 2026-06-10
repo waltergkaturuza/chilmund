@@ -1,3 +1,4 @@
+import { recordAnalyticsEvent } from '@/utilities/recordAnalyticsEvent'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { NextResponse } from 'next/server'
@@ -57,6 +58,13 @@ export async function POST(request: Request) {
         message: message || '',
         status: 'pending',
       },
+    })
+
+    await recordAnalyticsEvent({
+      payload,
+      eventType: 'quote_submit',
+      path: '/contact',
+      metadata: { trackingId },
     })
 
     return NextResponse.json({ success: true, trackingId })

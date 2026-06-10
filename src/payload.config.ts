@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { anyone } from './access/anyone'
+import { AnalyticsEvents } from './collections/AnalyticsEvents'
 import { CSRInitiatives } from './collections/CSRInitiatives'
 import { Categories } from './collections/Categories'
 import { Media } from './collections/Media'
@@ -195,7 +196,7 @@ export default buildConfig({
      * Production (Vercel): run `payload migrate` before `next build` / on deploy after committing migrations.
      */
   }),
-  collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives, TeamMembers, NewsletterSubscribers],
+  collections: [Pages, Posts, Products, Media, Categories, Users, AnalyticsEvents, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives, TeamMembers, NewsletterSubscribers],
   cors: getSiteOrigins(),
   globals: [Header, Footer, CompanyContact],
   plugins: [...plugins, ...vercelBlobPlugins],

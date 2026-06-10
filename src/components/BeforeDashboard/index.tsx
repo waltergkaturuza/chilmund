@@ -3,7 +3,7 @@ import React from 'react'
 
 import { productCatalogPath, recommendedCorporatePages } from '@/content/siteStructure'
 
-import { LeadsDashboard } from './LeadsDashboard'
+import { AnalyticsDashboard } from './analytics/AnalyticsDashboard'
 import { SeedButton } from './SeedButton'
 import './index.scss'
 
@@ -12,7 +12,7 @@ const baseClass = 'before-dashboard'
 const BeforeDashboard: React.FC = async () => {
   return (
     <div className={baseClass}>
-      <LeadsDashboard />
+      <AnalyticsDashboard />
       <Banner className={`${baseClass}__banner`} type="success">
         <h4>Welcome to your dashboard!</h4>
       </Banner>

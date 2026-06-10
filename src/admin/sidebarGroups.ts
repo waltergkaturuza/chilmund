@@ -3,6 +3,7 @@
  * Collections & globals sharing a label are grouped together; order is alphabetical by label.
  */
 export const SIDEBAR = {
+  analytics: 'ANALYTICS',
   content: 'CONTENT',
   management: 'MANAGEMENT',
   site: 'SITE',

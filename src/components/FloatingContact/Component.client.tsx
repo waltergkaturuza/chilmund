@@ -4,6 +4,7 @@ import { Mail, MessageCircle, Phone, X } from 'lucide-react'
 import Link from 'next/link'
 import React, { useCallback, useState } from 'react'
 
+import { trackEvent } from '@/components/Analytics/trackEvent'
 import { Button } from '@/components/ui/button'
 import { useQuoteModalOptional } from '@/providers/QuoteModal'
 import { cn } from '@/utilities/ui'
@@ -39,6 +40,16 @@ export function FloatingContactClient({
   const quoteModal = useQuoteModalOptional()
 
   const track = useCallback((action: string) => {
+    const eventMap: Record<string, 'whatsapp_click' | 'call_click' | 'email_click' | 'quote_click'> =
+      {
+        whatsapp_click: 'whatsapp_click',
+        call_click: 'call_click',
+        email_click: 'email_click',
+        quote_click: 'quote_click',
+      }
+    const eventType = eventMap[action]
+    if (eventType) trackEvent({ eventType })
+
     if (
       typeof window !== 'undefined' &&
       'gtag' in window &&

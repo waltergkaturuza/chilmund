@@ -9,6 +9,7 @@ import * as migration_20260505_090724_quote_request_client_portal_fields from '.
 import * as migration_20260507_home_hero_headline_copy from './20260507_home_hero_headline_copy';
 import * as migration_20260517_home_hero_copy from './20260517_home_hero_copy';
 import * as migration_20260603_home_hero_alum_spelled_out from './20260603_home_hero_alum_spelled_out';
+import * as migration_20260610_185908 from './20260610_185908';
 
 export const migrations = [
   {
@@ -49,7 +50,7 @@ export const migrations = [
   {
     up: migration_20260505_090724_quote_request_client_portal_fields.up,
     down: migration_20260505_090724_quote_request_client_portal_fields.down,
-    name: '20260505_090724_quote_request_client_portal_fields'
+    name: '20260505_090724_quote_request_client_portal_fields',
   },
   {
     up: migration_20260507_home_hero_headline_copy.up,
@@ -65,5 +66,10 @@ export const migrations = [
     up: migration_20260603_home_hero_alum_spelled_out.up,
     down: migration_20260603_home_hero_alum_spelled_out.down,
     name: '20260603_home_hero_alum_spelled_out',
+  },
+  {
+    up: migration_20260610_185908.up,
+    down: migration_20260610_185908.down,
+    name: '20260610_185908'
   },
 ];

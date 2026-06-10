@@ -19,6 +19,10 @@
     --chilmund-blue-hover: #166fe5;
     --chilmund-blue-muted: rgba(24, 119, 242, 0.18);
     --chilmund-blue-glow: rgba(24, 119, 242, 0.1);
+    --chilmund-blue-focus: rgba(24, 119, 242, 0.2);
+    --chilmund-cream: #f3f5f8;
+    --chilmund-cream-deep: #e8ecf2;
+    --chilmund-cream-border: rgba(15, 31, 50, 0.1);
     --chilmund-text: #0f1f32;
     --chilmund-text-muted: #4a6278;
     --chilmund-emerald: #2e9d73;
@@ -115,14 +119,15 @@
     color: var(--chilmund-text);
   }
 
+  /* Cream/grey sidebar — blue hover (matches public site quote form feel) */
   html[data-theme='light'] .nav {
-    background: linear-gradient(185deg, #0f2138 0%, #0a1828 48%, #060f18 100%);
-    border-right: 1px solid rgba(110, 160, 215, 0.25);
-    box-shadow: 4px 0 28px rgba(4, 10, 20, 0.12);
+    background: linear-gradient(180deg, #f8f9fb 0%, var(--chilmund-cream) 55%, var(--chilmund-cream-deep) 100%);
+    border-right: 1px solid var(--chilmund-cream-border);
+    box-shadow: 2px 0 16px rgba(15, 31, 50, 0.04);
   }
 
   html[data-theme='light'] .nav__label {
-    color: rgba(200, 220, 245, 0.82) !important;
+    color: var(--chilmund-text-muted) !important;
     letter-spacing: 0.07em;
     font-size: 10px;
     font-weight: 700;
@@ -130,7 +135,7 @@
   }
 
   html[data-theme='light'] .nav__link {
-    color: rgba(245, 250, 255, 0.93) !important;
+    color: var(--chilmund-text) !important;
     border-radius: var(--style-radius-m);
     padding-block: 6px;
     padding-inline: 10px 28px;
@@ -140,20 +145,24 @@
     letter-spacing: 0.01em;
     transition:
       background-color 0.15s ease,
-      color 0.15s ease;
+      color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
   html[data-theme='light'] .nav a.nav__link:hover,
   html[data-theme='light'] .nav a.nav__link:focus-visible {
-    background-color: var(--chilmund-blue-glow);
+    background-color: var(--chilmund-blue) !important;
     color: #ffffff !important;
     text-decoration: none !important;
+    box-shadow: 0 4px 14px rgba(24, 119, 242, 0.22);
   }
 
   html[data-theme='light'] .nav__link.active {
-    background-color: var(--chilmund-blue-muted);
+    background-color: var(--chilmund-blue) !important;
     color: #ffffff !important;
-    box-shadow: inset 3px 0 0 0 var(--chilmund-blue);
+    box-shadow:
+      inset 3px 0 0 0 #0f5fd4,
+      0 4px 14px rgba(24, 119, 242, 0.2);
     border-radius: var(--style-radius-m);
     font-weight: 600;
   }
@@ -163,28 +172,67 @@
   }
 
   html[data-theme='light'] .nav .chilmund-admin-logo__img {
-    filter: brightness(0) invert(1);
-    opacity: 0.94;
+    filter: none;
+    opacity: 1;
     max-height: 34px;
+  }
+
+  html[data-theme='light'] .nav .btn--icon,
+  html[data-theme='light'] .nav .nav__mobile-close,
+  html[data-theme='light'] .nav .hamburger {
+    border-color: var(--chilmund-cream-border) !important;
+    background: #ffffff !important;
+    color: var(--chilmund-text) !important;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover {
+      background: var(--chilmund-blue) !important;
+      border-color: var(--chilmund-blue) !important;
+      color: #ffffff !important;
+    }
   }
 
   html[data-theme='light'] .nav .search-filter__input {
     border-radius: 10px !important;
-    border: 1px solid rgba(100, 150, 210, 0.28) !important;
-    background: rgba(255, 255, 255, 0.07) !important;
-    color: #f2f8ff !important;
+    border: 1px solid rgba(15, 31, 50, 0.14) !important;
+    background: #ffffff !important;
+    color: var(--chilmund-text) !important;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease !important;
+
+    &:hover {
+      border-color: rgba(24, 119, 242, 0.45) !important;
+      background: #f8fbff !important;
+    }
+
+    &:focus {
+      border-color: var(--chilmund-blue) !important;
+      box-shadow: 0 0 0 3px var(--chilmund-blue-focus) !important;
+      background: #ffffff !important;
+    }
   }
 
   html[data-theme='light'] .nav .search-filter__input::placeholder {
-    color: rgba(200, 220, 245, 0.45);
+    color: rgba(74, 98, 120, 0.55);
   }
 
   html[data-theme='light'] .nav__log-out {
-    color: rgba(220, 232, 250, 0.75) !important;
+    color: var(--chilmund-text-muted) !important;
+    transition: color 0.15s ease;
+
+    &:hover {
+      color: var(--chilmund-blue) !important;
+    }
   }
 
-  html[data-theme='light'] .nav__log-out:hover {
-    color: #ffffff !important;
+  html[data-theme='light'] .nav-group__toggle,
+  html[data-theme='light'] .nav-group__indicator {
+    color: var(--chilmund-text-muted) !important;
   }
 
   html[data-theme='light'] .card {
@@ -245,7 +293,27 @@
     border-radius: var(--style-radius-m);
     --btn-border: 1px solid rgba(15, 31, 50, 0.18);
     --color: var(--chilmund-text);
-    --hover-color: var(--chilmund-text);
+    --hover-color: #ffffff;
+    --hover-bg: var(--chilmund-blue);
+    --bg-color: #ffffff;
+  }
+
+  html[data-theme='light'] .btn--style-secondary:hover {
+    --btn-border: 1px solid var(--chilmund-blue);
+  }
+
+  html[data-theme='light'] .btn--style-icon,
+  html[data-theme='light'] .btn__icon {
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover:not(.btn--disabled) {
+      background: var(--chilmund-blue-glow) !important;
+      border-color: rgba(24, 119, 242, 0.4) !important;
+      color: var(--chilmund-blue) !important;
+    }
   }
 
   html[data-theme='light'] ::selection {
@@ -284,10 +352,43 @@
   html[data-theme='light'] input[type='email'],
   html[data-theme='light'] input[type='password'],
   html[data-theme='light'] input[type='search'],
-  html[data-theme='light'] textarea {
+  html[data-theme='light'] textarea,
+  html[data-theme='light'] .react-select__control {
     color: var(--chilmund-text) !important;
     background-color: #ffffff !important;
     border-color: rgba(15, 31, 50, 0.18) !important;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease !important;
+  }
+
+  html[data-theme='light'] .field-type input:hover,
+  html[data-theme='light'] .field-type textarea:hover,
+  html[data-theme='light'] .field-type select:hover,
+  html[data-theme='light'] input[type='text']:hover,
+  html[data-theme='light'] input[type='email']:hover,
+  html[data-theme='light'] input[type='password']:hover,
+  html[data-theme='light'] input[type='search']:hover,
+  html[data-theme='light'] textarea:hover,
+  html[data-theme='light'] .react-select__control:hover {
+    border-color: rgba(24, 119, 242, 0.5) !important;
+    background-color: #f8fbff !important;
+  }
+
+  html[data-theme='light'] .field-type input:focus,
+  html[data-theme='light'] .field-type textarea:focus,
+  html[data-theme='light'] .field-type select:focus,
+  html[data-theme='light'] input[type='text']:focus,
+  html[data-theme='light'] input[type='email']:focus,
+  html[data-theme='light'] input[type='password']:focus,
+  html[data-theme='light'] input[type='search']:focus,
+  html[data-theme='light'] textarea:focus,
+  html[data-theme='light'] .react-select__control--is-focused {
+    outline: none !important;
+    border-color: var(--chilmund-blue) !important;
+    box-shadow: 0 0 0 3px var(--chilmund-blue-focus) !important;
+    background-color: #ffffff !important;
   }
 
   html[data-theme='light'] .field-type input::placeholder,
@@ -315,13 +416,15 @@
     --theme-border-color: rgba(120, 170, 230, 0.2);
   }
 
+  /* Dark theme: same cream sidebar for consistency */
   html[data-theme='dark'] .nav {
-    background: linear-gradient(180deg, var(--chilmund-navy-deep) 0%, var(--chilmund-navy-void) 100%);
-    border-right: 1px solid rgba(24, 119, 242, 0.22);
+    background: linear-gradient(180deg, #f8f9fb 0%, var(--chilmund-cream) 55%, var(--chilmund-cream-deep) 100%);
+    border-right: 1px solid var(--chilmund-cream-border);
+    box-shadow: 2px 0 16px rgba(15, 31, 50, 0.06);
   }
 
   html[data-theme='dark'] .nav__label {
-    color: rgba(180, 205, 235, 0.75);
+    color: var(--chilmund-text-muted) !important;
     letter-spacing: 0.06em;
     font-size: 10px;
     font-weight: 700;
@@ -329,10 +432,7 @@
   }
 
   html[data-theme='dark'] .nav__link {
-    color: rgba(245, 250, 255, 0.92) !important;
-  }
-
-  html[data-theme='dark'] .nav__link {
+    color: var(--chilmund-text) !important;
     border-radius: var(--style-radius-m);
     padding-block: 6px;
     padding-inline: 10px 28px;
@@ -340,18 +440,24 @@
     text-decoration: none !important;
     transition:
       background-color 0.15s ease,
-      color 0.15s ease;
+      color 0.15s ease,
+      box-shadow 0.15s ease;
   }
 
-  html[data-theme='dark'] .nav__link:hover {
-    background-color: var(--chilmund-blue-glow);
+  html[data-theme='dark'] .nav a.nav__link:hover,
+  html[data-theme='dark'] .nav a.nav__link:focus-visible {
+    background-color: var(--chilmund-blue) !important;
     color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(24, 119, 242, 0.22);
   }
 
   html[data-theme='dark'] .nav__link.active {
-    background-color: var(--chilmund-blue-muted);
+    background-color: var(--chilmund-blue) !important;
     color: #ffffff !important;
-    box-shadow: inset 3px 0 0 0 var(--chilmund-blue);
+    box-shadow:
+      inset 3px 0 0 0 #0f5fd4,
+      0 4px 14px rgba(24, 119, 242, 0.2);
+    font-weight: 600;
   }
 
   html[data-theme='dark'] .nav__link-indicator {
@@ -359,9 +465,47 @@
   }
 
   html[data-theme='dark'] .nav .chilmund-admin-logo__img {
-    filter: brightness(0) invert(1);
-    opacity: 0.93;
+    filter: none;
+    opacity: 1;
     max-height: 34px;
+  }
+
+  html[data-theme='dark'] .nav .btn--icon,
+  html[data-theme='dark'] .nav .nav__mobile-close,
+  html[data-theme='dark'] .nav .hamburger {
+    border-color: var(--chilmund-cream-border) !important;
+    background: #ffffff !important;
+    color: var(--chilmund-text) !important;
+
+    &:hover {
+      background: var(--chilmund-blue) !important;
+      border-color: var(--chilmund-blue) !important;
+      color: #ffffff !important;
+    }
+  }
+
+  html[data-theme='dark'] .nav .search-filter__input {
+    background: #ffffff !important;
+    color: var(--chilmund-text) !important;
+    border-color: rgba(15, 31, 50, 0.14) !important;
+
+    &:hover {
+      border-color: rgba(24, 119, 242, 0.45) !important;
+      background: #f8fbff !important;
+    }
+
+    &:focus {
+      border-color: var(--chilmund-blue) !important;
+      box-shadow: 0 0 0 3px var(--chilmund-blue-focus) !important;
+    }
+  }
+
+  html[data-theme='dark'] .nav__log-out {
+    color: var(--chilmund-text-muted) !important;
+
+    &:hover {
+      color: var(--chilmund-blue) !important;
+    }
   }
 
   html[data-theme='dark'] button,
@@ -407,10 +551,29 @@
   }
 
   html[data-theme='dark'] .btn--style-secondary {
-    --btn-border: 1px solid rgba(24, 119, 242, 0.35);
-    --color: #f2f7fd;
+    --btn-border: 1px solid rgba(15, 31, 50, 0.2);
+    --color: var(--chilmund-text);
     --hover-color: #ffffff;
+    --hover-bg: var(--chilmund-blue);
+    --bg-color: #ffffff;
     border-radius: var(--style-radius-m);
+  }
+
+  html[data-theme='dark'] .field-type input:hover,
+  html[data-theme='dark'] .field-type textarea:hover,
+  html[data-theme='dark'] .field-type select:hover {
+    border-color: rgba(24, 119, 242, 0.5) !important;
+    background-color: #f8fbff !important;
+    color: var(--chilmund-text) !important;
+  }
+
+  html[data-theme='dark'] .field-type input:focus,
+  html[data-theme='dark'] .field-type textarea:focus,
+  html[data-theme='dark'] .field-type select:focus {
+    border-color: var(--chilmund-blue) !important;
+    box-shadow: 0 0 0 3px var(--chilmund-blue-focus) !important;
+    background-color: #ffffff !important;
+    color: var(--chilmund-text) !important;
   }
 
   html[data-theme='dark'] .search-filter__input,
@@ -436,10 +599,19 @@
 
   html[data-theme='dark'] .field-type input,
   html[data-theme='dark'] .field-type textarea,
-  html[data-theme='dark'] .field-type select {
-    color: #f2f7fd !important;
-    background-color: var(--chilmund-navy-panel) !important;
-    border-color: rgba(120, 170, 230, 0.28) !important;
+  html[data-theme='dark'] .field-type select,
+  html[data-theme='dark'] input[type='text'],
+  html[data-theme='dark'] input[type='email'],
+  html[data-theme='dark'] input[type='password'],
+  html[data-theme='dark'] input[type='search'],
+  html[data-theme='dark'] textarea {
+    color: var(--chilmund-text) !important;
+    background-color: #ffffff !important;
+    border-color: rgba(15, 31, 50, 0.18) !important;
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease !important;
   }
 
   /**
@@ -551,24 +723,18 @@
     );
   }
 
+  /* Login logo: full-colour blue mark, ~28rem — slightly below About hero (32–36rem) */
   .template-minimal .chilmund-admin-logo__img {
-    height: auto;
-    width: auto;
+    display: block;
+    width: min(28rem, 92vw) !important;
+    max-width: min(28rem, 92vw) !important;
+    height: auto !important;
+    max-height: none !important;
+    filter: none !important;
+    opacity: 1;
 
-    max-width: min(240px, 78vw);
-
-    max-height: 72px;
-
-    object-fit: contain;
-
-    filter:
-      brightness(0) invert(1) sepia(8%) saturate(180%) hue-rotate(172deg)
-      drop-shadow(0 4px 26px rgba(40, 100, 180, 0.3));
-
-    opacity: 0.96;
-
-    &:hover {
-      opacity: 1;
+    img {
+      filter: none !important;
     }
   }
 
