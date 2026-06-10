@@ -25,7 +25,7 @@ import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
-import { getSiteOrigins } from './utilities/getURL'
+import { getSiteOrigins, resolveSiteURL } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -102,20 +102,19 @@ const poolConnectionString = poolSsl
   ? connectionStringWithoutSslQueryParams(databaseUrl)
   : databaseUrl
 
-const vercelBlobPlugins =
-  process.env.VERCEL_URL && process.env.BLOB_READ_WRITE_TOKEN
-    ? [
-        vercelBlobStorage({
-          enabled: true,
-          collections: {
-            media: true,
-          },
-          token: process.env.BLOB_READ_WRITE_TOKEN,
-        }),
-      ]
-    : []
+/** Always register so admin importMap includes blob upload UI; storage only active when token is set. */
+const vercelBlobPlugins = [
+  vercelBlobStorage({
+    enabled: Boolean(process.env.VERCEL_URL && process.env.BLOB_READ_WRITE_TOKEN),
+    collections: {
+      media: true,
+    },
+    token: process.env.BLOB_READ_WRITE_TOKEN || '',
+  }),
+]
 
 export default buildConfig({
+  serverURL: resolveSiteURL(),
   admin: {
     meta: {
       titleSuffix: '— Chilmund CMS',
