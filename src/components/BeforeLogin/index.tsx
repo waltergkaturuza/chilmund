@@ -6,9 +6,6 @@ const BeforeLogin: React.FC = () => {
       <p className="chilmund-login-intro__lead">
         <strong>Chilmund CMS</strong>
       </p>
-      <p className="chilmund-login-intro__muted">
-        Sign in with your administrator account to edit the corporate site.
-      </p>
     </div>
   )
 }

@@ -9,12 +9,16 @@ import {
 } from '@/constants/brand'
 import { cn } from '@/utilities/ui'
 
+type LogoBounds = { x: number; y: number; width: number; height: number }
+
 type BrandLogoProps = {
   className?: string
   width?: number
   height?: number
   priority?: boolean
   sizes?: string
+  /** Override visible crop bounds (defaults to `CHILMUND_LOGO_CONTENT`). */
+  bounds?: LogoBounds
   /**
    * 'light'   → white logo for dark backgrounds (CSS invert filter applied).
    * 'default' → full-colour logo for light/white backgrounds.
@@ -32,9 +36,10 @@ export function BrandLogo({
   height = CHILMUND_LOGO_FULL.height,
   priority,
   sizes,
+  bounds,
   variant = 'default',
 }: BrandLogoProps) {
-  const crop = CHILMUND_LOGO_CONTENT
+  const crop = bounds ?? CHILMUND_LOGO_CONTENT
   const full = CHILMUND_LOGO_FULL
 
   const imageStyle: React.CSSProperties = {

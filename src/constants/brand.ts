@@ -18,6 +18,11 @@ export const CHILMUND_LOGO_FULL = { width: 1136, height: 737 } as const
 export const CHILMUND_LOGO_CONTENT = { x: 193, y: 228, width: 748, height: 281 } as const
 
 /**
+ * Tighter crop for admin login — trims non-artwork margins inside the PNG bounds.
+ */
+export const CHILMUND_LOGO_LOGIN = { x: 210, y: 236, width: 714, height: 252 } as const
+
+/**
  * Top of "CHILMUND" wordmark within cropped logo, as fraction of crop height.
  * Icon extends above the wordmark — use for About hero text alignment.
  */

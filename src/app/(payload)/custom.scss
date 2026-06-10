@@ -704,38 +704,28 @@
     width: 100%;
   }
 
-  /* Logo PNG inside the login card — lightened for contrast on navy panel */
+  /* Login logo — tight crop, no extra padding around the mark */
   .template-minimal .chilmund-admin-logo {
     justify-content: center;
     align-items: center;
-
-    padding: 14px 20px;
-
     margin-inline: auto;
-
-    margin-bottom: 8px;
-
+    margin-bottom: 4px;
     max-width: 100%;
-
-    border-radius: 14px;
-
-    background: radial-gradient(
-      ellipse 140% 120% at 50% -20%,
-      rgba(100, 160, 230, 0.12),
-      transparent 62%
-    );
+    padding: 0;
+    background: none;
   }
 
-  /* Login logo: full-colour mark — width only; aspect-ratio on BrandLogo prevents stretch */
   .template-minimal .chilmund-admin-logo__img {
     display: block;
-    width: min(22rem, 100%) !important;
-    max-width: 22rem !important;
+    width: min(26rem, 100%) !important;
+    max-width: 26rem !important;
     filter: none !important;
     opacity: 1;
 
     img {
       filter: none !important;
+      transform: scale(1.06);
+      transform-origin: center center;
     }
   }
 
@@ -748,7 +738,7 @@
   }
 
   .template-minimal .chilmund-login-intro__lead {
-    margin-block: 0 8px;
+    margin-block: 0;
 
     font-size: 18px;
 
@@ -961,6 +951,62 @@
 /* Full-bleed navy behind login while the shell hydrates. */
 html:has(.template-minimal) {
   background-color: #081520;
+}
+
+/* Logged-in admin: return to public site (sidebar, below nav links) */
+.chilmund-admin-return {
+  margin: calc(var(--base) * 0.75) 8px calc(var(--base) * 0.5);
+  margin-top: auto;
+  padding-top: calc(var(--base) * 0.65);
+  border-top: 1px solid var(--chilmund-cream-border, rgba(15, 31, 50, 0.1));
+}
+
+.chilmund-admin-return__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: var(--style-radius-m, 8px);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  color: var(--chilmund-text, #0f1f32) !important;
+  background: #ffffff;
+  border: 1px solid var(--chilmund-cream-border, rgba(15, 31, 50, 0.12));
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.chilmund-admin-return__link:hover,
+.chilmund-admin-return__link:focus-visible {
+  color: #ffffff !important;
+  background: var(--chilmund-blue, #1877f2);
+  border-color: var(--chilmund-blue, #1877f2);
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.22);
+}
+
+html[data-theme='dark'] .chilmund-admin-return {
+  border-top-color: rgba(120, 170, 230, 0.18);
+}
+
+html[data-theme='dark'] .chilmund-admin-return__link {
+  color: #e8f0fa !important;
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(120, 170, 230, 0.22);
+}
+
+html[data-theme='dark'] .chilmund-admin-return__link:hover,
+html[data-theme='dark'] .chilmund-admin-return__link:focus-visible {
+  color: #ffffff !important;
+  background: var(--chilmund-blue, #1877f2);
+  border-color: var(--chilmund-blue, #1877f2);
 }
 
 /* Admin sidebar / Payload chrome — sized wordmark PNG */
