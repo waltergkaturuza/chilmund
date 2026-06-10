@@ -291,9 +291,10 @@ These slugs align with the recommended sitemap in the project (`src/content/site
 
 - **Meaning:** The admin shell loads but the login form or dashboard never appears.
 - **Common cause:** `NEXT_PUBLIC_SERVER_URL` is missing on Vercel, so Payload’s admin cannot reach the API (`serverURL` is empty in production).
-- **Fix:** In **Vercel → Project → Settings → Environment Variables**, set  
-  `NEXT_PUBLIC_SERVER_URL` = `https://www.chilmund.co.zw` (no trailing slash), then **redeploy**.
-- Use the **same hostname** you browse (if you use `www`, set `www` in the variable).
+- **Fix:** In **Vercel → Project → Settings → Environment Variables**, set `NEXT_PUBLIC_SERVER_URL` to your **live domain** (no trailing slash), then **redeploy**.  
+  If you use both a custom domain and the Vercel URL, list both (primary first):  
+  `https://www.chilmund.co.zw,https://chilmund.vercel.app`
+- Admin worked on `chilmund.vercel.app` before the custom domain because the browser origin matched that URL. Opening `/admin` on `www.chilmund.co.zw` needs the custom domain in this variable (or both URLs comma-separated).
 - After deploy, open `/admin/login` directly and hard-refresh (Ctrl+F5).
 
 ### “Failed to load resource” / **403** on `…/api/media?…`

@@ -4,14 +4,26 @@ function stripTrailingSlash(url: string): string {
   return url.replace(/\/$/, '')
 }
 
+/** `NEXT_PUBLIC_SERVER_URL` may list multiple comma-separated site URLs (primary first). */
+function configuredSiteURLs(): string[] {
+  const raw = process.env.NEXT_PUBLIC_SERVER_URL?.trim()
+  if (!raw) return []
+
+  return raw
+    .split(',')
+    .map((part) => part.trim())
+    .filter(Boolean)
+    .map((part) => stripTrailingSlash(part.startsWith('http') ? part : `https://${part}`))
+}
+
 /**
  * Canonical site base URL for SSR, Payload, and Open Graph.
  * Never returns an empty string on Vercel — falls back through known deployment hosts.
  */
 export function resolveSiteURL(): string {
-  const explicit = process.env.NEXT_PUBLIC_SERVER_URL?.trim()
-  if (explicit) {
-    return stripTrailingSlash(explicit.startsWith('http') ? explicit : `https://${explicit}`)
+  const configured = configuredSiteURLs()
+  if (configured.length > 0) {
+    return configured[0]!
   }
 
   const productionHost = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim()
@@ -41,7 +53,9 @@ export function getSiteOrigins(): string[] {
     }
   }
 
-  add(process.env.NEXT_PUBLIC_SERVER_URL)
+  for (const url of configuredSiteURLs()) {
+    add(url)
+  }
   if (process.env.VERCEL_PROJECT_PRODUCTION_URL) {
     add(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`)
   }
