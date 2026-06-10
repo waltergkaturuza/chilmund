@@ -2,7 +2,7 @@
 
 /**
  * Chilmund admin chrome — loaded after `@payloadcms/next/css` in `(payload)/layout.tsx`.
- * Tuned for `html[data-theme=dark]` to match brand navies (#0f1f32 / #152a42) and gold (#a08442).
+ * Matches public site palette: navy (#0f1f32), Facebook blue (#1877f2), white, black text.
  */
 
 @layer payload-default {
@@ -15,10 +15,12 @@
     --chilmund-navy-deep: #0a1422;
     --chilmund-navy: #0f1f32;
     --chilmund-navy-panel: #152a42;
-    --chilmund-gold: #a08442;
-    --chilmund-gold-hover: #b89552;
-    --chilmund-gold-muted: rgba(160, 132, 66, 0.22);
-    --chilmund-gold-glow: rgba(160, 132, 66, 0.12);
+    --chilmund-blue: #1877f2;
+    --chilmund-blue-hover: #166fe5;
+    --chilmund-blue-muted: rgba(24, 119, 242, 0.18);
+    --chilmund-blue-glow: rgba(24, 119, 242, 0.1);
+    --chilmund-text: #0f1f32;
+    --chilmund-text-muted: #4a6278;
     --chilmund-emerald: #2e9d73;
     --chilmund-emerald-muted: rgba(46, 157, 115, 0.2);
 
@@ -69,19 +71,48 @@
     --color-success-750: #1a5a44;
   }
 
-  /* Light theme: Chilmund dashboard — navy sidebar, blue-gray main, gold accents */
+  /* Light theme: white main canvas, navy sidebar, blue accents, dark readable text */
   html[data-theme='light'] {
-    --theme-border-color: rgba(100, 140, 188, 0.28);
+    --theme-bg: #ffffff;
+    --theme-input-bg: #ffffff;
+    --theme-text: var(--chilmund-text);
+    --theme-border-color: rgba(15, 31, 50, 0.14);
+
+    --theme-elevation-0: #ffffff;
+    --theme-elevation-50: #f6f9fc;
+    --theme-elevation-100: #edf2f8;
+    --theme-elevation-150: #e3eaf3;
+    --theme-elevation-200: #d6e0ec;
+    --theme-elevation-250: #c5d2e2;
+    --theme-elevation-300: #a8b9cc;
+    --theme-elevation-350: #8da3b8;
+    --theme-elevation-400: #6f879e;
+    --theme-elevation-450: #5a7289;
+    --theme-elevation-500: #4a6278;
+    --theme-elevation-550: #3d5368;
+    --theme-elevation-600: #324558;
+    --theme-elevation-650: #283a4c;
+    --theme-elevation-700: #1f2f40;
+    --theme-elevation-750: #1a2838;
+    --theme-elevation-800: #152a42;
+    --theme-elevation-850: #122436;
+    --theme-elevation-900: #0f1f32;
+    --theme-elevation-950: #0a1624;
+    --theme-elevation-1000: #060b14;
+
+    color: var(--chilmund-text);
   }
 
   html[data-theme='light'] .template-default__wrap {
-    background: linear-gradient(175deg, #f2f7fd 0%, #e8f0f8 45%, #dfe9f4 100%);
+    background: #f4f8fc;
+    color: var(--chilmund-text);
   }
 
   html[data-theme='light'] .app-header {
-    background: linear-gradient(180deg, #fdfeff 0%, #f1f6fc 100%);
-    border-bottom: 1px solid rgba(100, 140, 190, 0.2);
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(15, 31, 50, 0.1);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+    color: var(--chilmund-text);
   }
 
   html[data-theme='light'] .nav {
@@ -91,7 +122,7 @@
   }
 
   html[data-theme='light'] .nav__label {
-    color: rgba(130, 175, 220, 0.48) !important;
+    color: rgba(200, 220, 245, 0.82) !important;
     letter-spacing: 0.07em;
     font-size: 10px;
     font-weight: 700;
@@ -114,15 +145,15 @@
 
   html[data-theme='light'] .nav a.nav__link:hover,
   html[data-theme='light'] .nav a.nav__link:focus-visible {
-    background-color: var(--chilmund-gold-glow);
+    background-color: var(--chilmund-blue-glow);
     color: #ffffff !important;
     text-decoration: none !important;
   }
 
   html[data-theme='light'] .nav__link.active {
-    background-color: var(--chilmund-gold-muted);
+    background-color: var(--chilmund-blue-muted);
     color: #ffffff !important;
-    box-shadow: inset 3px 0 0 0 var(--chilmund-gold);
+    box-shadow: inset 3px 0 0 0 var(--chilmund-blue);
     border-radius: var(--style-radius-m);
     font-weight: 600;
   }
@@ -177,9 +208,9 @@
   }
 
   html[data-theme='light'] .card__actions .btn__icon:hover {
-    border-color: rgba(160, 132, 66, 0.65) !important;
-    background: rgba(160, 132, 66, 0.08);
-    color: var(--chilmund-gold);
+    border-color: rgba(24, 119, 242, 0.45) !important;
+    background: var(--chilmund-blue-glow);
+    color: var(--chilmund-blue);
   }
 
   html[data-theme='light'] .widget {
@@ -200,41 +231,105 @@
     border-radius: var(--style-radius-m) !important;
   }
 
-  /* Light mode: softer blue-gray shell, same gold primary actions. */
+  /* Light mode: blue primary actions, dark labels everywhere */
   html[data-theme='light'] .btn--style-primary {
-    --bg-color: var(--chilmund-gold);
-    --hover-bg: var(--chilmund-gold-hover);
-    --color: #162430;
-    --hover-color: var(--color);
+    --bg-color: var(--chilmund-blue);
+    --hover-bg: var(--chilmund-blue-hover);
+    --color: #ffffff;
+    --hover-color: #ffffff;
     font-weight: 600;
     border-radius: var(--style-radius-m);
   }
 
   html[data-theme='light'] .btn--style-secondary {
     border-radius: var(--style-radius-m);
-    --btn-border: 1px solid rgba(100, 140, 190, 0.35);
+    --btn-border: 1px solid rgba(15, 31, 50, 0.18);
+    --color: var(--chilmund-text);
+    --hover-color: var(--chilmund-text);
   }
 
   html[data-theme='light'] ::selection {
-    background: rgba(100, 160, 220, 0.22);
+    background: rgba(24, 119, 242, 0.22);
     color: #0f1f32;
+  }
+
+  /* Readable body copy across list views, forms, and dashboard */
+  html[data-theme='light'] .doc-header__title,
+  html[data-theme='light'] .list-header__title,
+  html[data-theme='light'] .collapsible__toggle,
+  html[data-theme='light'] .step-nav a,
+  html[data-theme='light'] .table thead th,
+  html[data-theme='light'] .table tbody td,
+  html[data-theme='light'] .field-label:not(.unstyled),
+  html[data-theme='light'] .render-title,
+  html[data-theme='light'] .pill,
+  html[data-theme='light'] .before-dashboard,
+  html[data-theme='light'] .before-dashboard a,
+  html[data-theme='light'] .doc-controls__label,
+  html[data-theme='light'] .list-controls__wrap,
+  html[data-theme='light'] .collection-list__header h1 {
+    color: var(--chilmund-text) !important;
+  }
+
+  html[data-theme='light'] .field-description,
+  html[data-theme='light'] .doc-header__meta,
+  html[data-theme='light'] .table thead th {
+    color: var(--chilmund-text-muted) !important;
+  }
+
+  html[data-theme='light'] .field-type input,
+  html[data-theme='light'] .field-type textarea,
+  html[data-theme='light'] .field-type select,
+  html[data-theme='light'] input[type='text'],
+  html[data-theme='light'] input[type='email'],
+  html[data-theme='light'] input[type='password'],
+  html[data-theme='light'] input[type='search'],
+  html[data-theme='light'] textarea {
+    color: var(--chilmund-text) !important;
+    background-color: #ffffff !important;
+    border-color: rgba(15, 31, 50, 0.18) !important;
+  }
+
+  html[data-theme='light'] .field-type input::placeholder,
+  html[data-theme='light'] .field-type textarea::placeholder,
+  html[data-theme='light'] input::placeholder {
+    color: rgba(74, 98, 120, 0.65) !important;
+  }
+
+  html[data-theme='light'] .doc-drawer__header,
+  html[data-theme='light'] .drawer__header,
+  html[data-theme='light'] .popup,
+  html[data-theme='light'] .popup__content {
+    color: var(--chilmund-text);
+    background-color: #ffffff;
   }
 
   html[data-theme='dark'] .template-default__wrap {
     background-color: var(--chilmund-navy);
   }
 
+  html[data-theme='dark'] {
+    --theme-bg: var(--chilmund-navy);
+    --theme-input-bg: var(--chilmund-navy-panel);
+    --theme-text: #f2f7fd;
+    --theme-border-color: rgba(120, 170, 230, 0.2);
+  }
+
   html[data-theme='dark'] .nav {
     background: linear-gradient(180deg, var(--chilmund-navy-deep) 0%, var(--chilmund-navy-void) 100%);
-    border-right: 1px solid var(--chilmund-gold-muted);
+    border-right: 1px solid rgba(24, 119, 242, 0.22);
   }
 
   html[data-theme='dark'] .nav__label {
-    color: var(--color-base-450);
+    color: rgba(180, 205, 235, 0.75);
     letter-spacing: 0.06em;
     font-size: 10px;
     font-weight: 700;
     text-transform: uppercase;
+  }
+
+  html[data-theme='dark'] .nav__link {
+    color: rgba(245, 250, 255, 0.92) !important;
   }
 
   html[data-theme='dark'] .nav__link {
@@ -249,14 +344,14 @@
   }
 
   html[data-theme='dark'] .nav__link:hover {
-    background-color: var(--chilmund-gold-glow);
-    color: var(--theme-text);
+    background-color: var(--chilmund-blue-glow);
+    color: #ffffff !important;
   }
 
   html[data-theme='dark'] .nav__link.active {
-    background-color: var(--chilmund-gold-muted);
-    color: var(--theme-text);
-    box-shadow: inset 3px 0 0 0 var(--chilmund-gold);
+    background-color: var(--chilmund-blue-muted);
+    color: #ffffff !important;
+    box-shadow: inset 3px 0 0 0 var(--chilmund-blue);
   }
 
   html[data-theme='dark'] .nav__link-indicator {
@@ -290,15 +385,16 @@
 
   html[data-theme='dark'] .app-header {
     background: color-mix(in srgb, var(--chilmund-navy-deep) 88%, transparent);
-    border-bottom: 1px solid var(--chilmund-gold-muted);
+    border-bottom: 1px solid rgba(24, 119, 242, 0.2);
     backdrop-filter: blur(10px);
+    color: #f2f7fd;
   }
 
   html[data-theme='dark'] .btn--style-primary {
-    --color: #0a121c;
-    --bg-color: var(--chilmund-gold);
-    --hover-bg: var(--chilmund-gold-hover);
-    --hover-color: var(--color);
+    --color: #ffffff;
+    --bg-color: var(--chilmund-blue);
+    --hover-bg: var(--chilmund-blue-hover);
+    --hover-color: #ffffff;
     font-weight: 600;
     border-radius: var(--style-radius-m);
   }
@@ -311,7 +407,9 @@
   }
 
   html[data-theme='dark'] .btn--style-secondary {
-    --btn-border: 1px solid var(--chilmund-gold-muted);
+    --btn-border: 1px solid rgba(24, 119, 242, 0.35);
+    --color: #f2f7fd;
+    --hover-color: #ffffff;
     border-radius: var(--style-radius-m);
   }
 
@@ -324,12 +422,28 @@
   }
 
   html[data-theme='dark'] ::selection {
-    background: var(--chilmund-gold-muted);
-    color: var(--theme-text);
+    background: var(--chilmund-blue-muted);
+    color: #ffffff;
+  }
+
+  html[data-theme='dark'] .field-label:not(.unstyled),
+  html[data-theme='dark'] .doc-header__title,
+  html[data-theme='dark'] .table thead th,
+  html[data-theme='dark'] .table tbody td,
+  html[data-theme='dark'] .before-dashboard {
+    color: #f2f7fd !important;
+  }
+
+  html[data-theme='dark'] .field-type input,
+  html[data-theme='dark'] .field-type textarea,
+  html[data-theme='dark'] .field-type select {
+    color: #f2f7fd !important;
+    background-color: var(--chilmund-navy-panel) !important;
+    border-color: rgba(120, 170, 230, 0.28) !important;
   }
 
   /**
-   * Auth / login (`template-minimal`) — Chilmund blues + gold primary CTA; logo lives in the card.
+   * Auth / login (`template-minimal`) — navy panel, white copy, blue primary CTA.
    */
   .template-minimal {
     position: relative;
@@ -491,7 +605,7 @@
 
     line-height: 1.5;
 
-    color: rgba(148, 186, 230, 0.88);
+    color: rgba(220, 232, 248, 0.95);
   }
 
   /* Light steel inputs (blue-gray fill, dark typing color) */
@@ -577,23 +691,23 @@
 
     border-radius: 12px !important;
 
-    --color: #0c141e !important;
+    --color: #ffffff !important;
 
-    --bg-color: var(--chilmund-gold) !important;
+    --bg-color: var(--chilmund-blue) !important;
 
-    --hover-bg: var(--chilmund-gold-hover) !important;
+    --hover-bg: var(--chilmund-blue-hover) !important;
 
-    --hover-color: var(--color) !important;
+    --hover-color: #ffffff !important;
 
     box-shadow:
-      0 10px 28px rgba(160, 132, 66, 0.2),
-      0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+      0 10px 28px rgba(24, 119, 242, 0.28),
+      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
   }
 
   .template-minimal .btn--style-primary:hover {
     box-shadow:
-      0 12px 32px rgba(160, 132, 66, 0.28),
-      0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      0 12px 32px rgba(24, 119, 242, 0.38),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
   }
 
   .template-minimal form a:not(.chilmund-login-return__link) {

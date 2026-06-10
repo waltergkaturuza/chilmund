@@ -190,23 +190,65 @@ html[data-theme='dark'] {
 
 .dashboard .before-dashboard {
   margin-bottom: base(1.5);
+  color: #0f1f32;
+
+  code {
+    font-size: 0.85em;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    background: rgba(24, 119, 242, 0.08);
+    color: #0f1f32;
+  }
 
   &__banner {
     & h4 {
       margin: 0;
+      color: #0f1f32;
     }
   }
 
   &__instructions {
     list-style: decimal;
     margin-bottom: base(0.5);
+    color: #0f1f32;
 
     & li {
       width: 100%;
     }
   }
 
+  & a {
+    color: #1877f2;
+    font-weight: 600;
+  }
+
   & a:hover {
-    opacity: 0.85;
+    color: #166fe5;
+    opacity: 1;
+  }
+}
+
+html[data-theme='dark'] .dashboard .before-dashboard {
+  color: #f2f7fd;
+
+  code {
+    background: rgba(24, 119, 242, 0.15);
+    color: #f2f7fd;
+  }
+
+  &__banner h4 {
+    color: #f2f7fd;
+  }
+
+  &__instructions {
+    color: #e8f0fa;
+  }
+
+  & a {
+    color: #6eb0ff;
+  }
+
+  & a:hover {
+    color: #9cc8ff;
   }
 }
