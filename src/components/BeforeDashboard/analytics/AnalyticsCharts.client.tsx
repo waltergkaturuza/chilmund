@@ -85,11 +85,18 @@ export function AnalyticsLineChart({ data, title, subtitle, fill = false }: Line
         />
       </svg>
       <div className="chilmund-analytics-chart__axis">
-        {data.map((d) => (
-          <span key={d.date} className="chilmund-analytics-chart__tick">
-            {d.label}
-          </span>
-        ))}
+        {data.map((d, index) => {
+          const maxTicks = 8
+          const step = Math.max(1, Math.ceil(data.length / maxTicks))
+          const showTick = index % step === 0 || index === data.length - 1
+          if (!showTick) return null
+
+          return (
+            <span key={d.date} className="chilmund-analytics-chart__tick">
+              {d.label}
+            </span>
+          )
+        })}
       </div>
     </div>
   )

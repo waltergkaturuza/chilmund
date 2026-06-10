@@ -280,18 +280,39 @@ html[data-theme='dark'] .dashboard .before-dashboard {
     color: #4a6278;
   }
 
-  &__window {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.35rem 0.75rem;
+  &__window-picker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 6px;
+    max-width: min(100%, 520px);
+  }
+
+  &__window-option {
+    padding: 0.35rem 0.65rem;
     border-radius: 999px;
-    border: 1px solid rgba(24, 119, 242, 0.25);
-    background: rgba(24, 119, 242, 0.08);
-    color: #1877f2;
-    font-size: 0.75rem;
+    border: 1px solid rgba(15, 31, 50, 0.12);
+    background: #f4f6f8;
+    color: #4a6278;
+    font-size: 0.7rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
+
+    &:hover {
+      border-color: rgba(24, 119, 242, 0.35);
+      color: #1877f2;
+    }
+
+    &--active {
+      border-color: rgba(24, 119, 242, 0.45);
+      background: rgba(24, 119, 242, 0.12);
+      color: #1877f2;
+    }
   }
 
   &__grid {
@@ -659,6 +680,18 @@ html[data-theme='dark'] {
     &__table td {
       color: #e8f0fa;
     }
+
+    &__window-option {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(120, 170, 230, 0.18);
+      color: rgba(200, 220, 245, 0.85);
+
+      &--active {
+        background: rgba(24, 119, 242, 0.2);
+        border-color: rgba(24, 119, 242, 0.45);
+        color: #8ec0ff;
+      }
+    }
   }
 
   .chilmund-analytics-chart__title {
@@ -673,6 +706,16 @@ html[data-theme='dark'] {
 }
 
 @media (max-width: 1100px) {
+  .chilmund-analytics__header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chilmund-analytics__window-picker {
+    max-width: none;
+    justify-content: flex-start;
+  }
+
   .chilmund-analytics__grid--hero,
   .chilmund-analytics__grid--split {
     grid-template-columns: 1fr;

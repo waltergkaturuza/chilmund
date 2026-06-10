@@ -1,9 +1,16 @@
+import { cookies } from 'next/headers'
 import React from 'react'
 
-import { ANALYTICS_WINDOW_DAYS } from '@/constants/analytics'
+import { parseAnalyticsWindowDays, ANALYTICS_WINDOW_COOKIE } from '@/constants/analytics'
 
 import { AnalyticsLineChart } from './AnalyticsCharts.client'
+import { AnalyticsWindowPicker } from './AnalyticsWindowPicker.client'
 import { getAnalyticsData } from './getAnalyticsData'
+
+function bucketSubtitle(unit: 'day' | 'week' | 'month', windowLabel: string): string {
+  const unitLabel = unit === 'day' ? 'DAY' : unit === 'week' ? 'WEEK' : 'MONTH'
+  return `BY ${unitLabel} (${windowLabel.toUpperCase()})`
+}
 
 function formatEventTime(iso: string): string {
   return new Date(iso).toLocaleString('en-GB', {
@@ -36,8 +43,12 @@ function interactionIcon(icon: string): string {
 }
 
 export async function AnalyticsDashboard() {
-  const data = await getAnalyticsData(ANALYTICS_WINDOW_DAYS)
+  const cookieStore = await cookies()
+  const windowDays = parseAnalyticsWindowDays(cookieStore.get(ANALYTICS_WINDOW_COOKIE)?.value)
+  const data = await getAnalyticsData(windowDays)
   const maxTopPage = data.topPages[0]?.count || 1
+  const pageViewsSubtitle = bucketSubtitle(data.bucketUnit, data.windowLabel)
+  const eventsSubtitle = bucketSubtitle(data.bucketUnit, data.windowLabel)
 
   return (
     <div className="chilmund-analytics">
@@ -46,7 +57,7 @@ export async function AnalyticsDashboard() {
           <h2 className="chilmund-analytics__title">Analytics</h2>
           <p className="chilmund-analytics__subtitle">Site visitors and interactions</p>
         </div>
-        <span className="chilmund-analytics__window">{data.windowDays} days</span>
+        <AnalyticsWindowPicker selectedDays={windowDays} />
       </header>
 
       <div className="chilmund-analytics__grid chilmund-analytics__grid--hero">
@@ -55,11 +66,11 @@ export async function AnalyticsDashboard() {
           <ul className="chilmund-analytics__meta-list">
             <li>
               <span>Window</span>
-              <strong>{data.windowDays} days</strong>
+              <strong>{data.windowLabel}</strong>
             </li>
             <li>
               <span>Unique visitors</span>
-              <strong>{data.windowDays} days</strong>
+              <strong>{data.uniqueVisitors.toLocaleString()}</strong>
             </li>
             <li>
               <span>Source</span>
@@ -72,7 +83,7 @@ export async function AnalyticsDashboard() {
           <AnalyticsLineChart
             data={data.pageViewsByDay}
             title="Page views"
-            subtitle={`BY DAY (${data.windowDays} DAYS)`}
+            subtitle={pageViewsSubtitle}
           />
         </div>
       </div>
@@ -80,7 +91,7 @@ export async function AnalyticsDashboard() {
       <div className="chilmund-analytics__grid chilmund-analytics__grid--stats">
         <div className="chilmund-analytics__stat">
           <span className="chilmund-analytics__stat-label">Unique visitors</span>
-          <span className="chilmund-analytics__stat-sub">{data.windowDays} days</span>
+          <span className="chilmund-analytics__stat-sub">{data.windowLabel}</span>
           <span className="chilmund-analytics__stat-value">{data.uniqueVisitors.toLocaleString()}</span>
         </div>
         <div className="chilmund-analytics__stat">
@@ -102,7 +113,7 @@ export async function AnalyticsDashboard() {
           <AnalyticsLineChart
             data={data.eventsByDay}
             title="Events"
-            subtitle={`BY TYPE (${data.windowDays} DAYS)`}
+            subtitle={eventsSubtitle}
             fill
           />
           {data.eventsByType.length > 0 ? (
@@ -119,7 +130,7 @@ export async function AnalyticsDashboard() {
 
         <div className="chilmund-analytics__card">
           <h4 className="chilmund-analytics__card-title">Top pages</h4>
-          <p className="chilmund-analytics__card-sub">{data.windowDays} days</p>
+          <p className="chilmund-analytics__card-sub">{data.windowLabel}</p>
           {data.topPages.length === 0 ? (
             <p className="chilmund-analytics__empty">No page views recorded yet.</p>
           ) : (

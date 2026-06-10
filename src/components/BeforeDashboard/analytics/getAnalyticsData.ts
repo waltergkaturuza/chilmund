@@ -1,7 +1,10 @@
 import {
   ANALYTICS_EVENT_LABELS,
   ANALYTICS_WINDOW_DAYS,
+  type AnalyticsBucketUnit,
   type AnalyticsEventType,
+  getAnalyticsBucketUnit,
+  getAnalyticsWindowLabel,
 } from '@/constants/analytics'
 import type { AnalyticsEvent } from '@/payload-types'
 import { getPayload } from 'payload'
@@ -28,6 +31,8 @@ export type KeyInteraction = {
 
 export type AnalyticsSnapshot = {
   windowDays: number
+  windowLabel: string
+  bucketUnit: AnalyticsBucketUnit
   pageViewsByDay: DailyCount[]
   eventsByDay: DailyCount[]
   uniqueVisitors: number
@@ -53,21 +58,78 @@ function isoDateKey(date: Date): string {
   return date.toISOString().slice(0, 10)
 }
 
-function buildDayBuckets(windowDays: number): DailyCount[] {
+function formatWeekLabel(start: Date, end: Date): string {
+  const sameMonth = start.getMonth() === end.getMonth()
+  if (sameMonth) {
+    return `${start.getDate()}–${end.getDate()} ${start.toLocaleDateString('en-GB', { month: 'short' })}`
+  }
+  return `${formatDayLabel(start)} – ${formatDayLabel(end)}`
+}
+
+function formatMonthLabel(date: Date): string {
+  return date.toLocaleDateString('en-GB', { month: 'short', year: '2-digit' })
+}
+
+function startOfWeek(date: Date): Date {
+  const d = startOfDay(date)
+  const day = d.getDay()
+  d.setDate(d.getDate() - day)
+  return d
+}
+
+function bucketKeyForDate(date: Date, unit: AnalyticsBucketUnit): string {
+  if (unit === 'day') return isoDateKey(startOfDay(date))
+  if (unit === 'week') return isoDateKey(startOfWeek(date))
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
+}
+
+function buildTimeBuckets(windowDays: number, unit: AnalyticsBucketUnit): DailyCount[] {
   const buckets: DailyCount[] = []
   const today = startOfDay(new Date())
+  const cutoff = new Date(today)
+  cutoff.setDate(cutoff.getDate() - (windowDays - 1))
 
-  for (let i = windowDays - 1; i >= 0; i--) {
-    const d = new Date(today)
-    d.setDate(today.getDate() - i)
-    buckets.push({ date: isoDateKey(d), label: formatDayLabel(d), count: 0 })
+  if (unit === 'day') {
+    for (let i = windowDays - 1; i >= 0; i--) {
+      const d = new Date(today)
+      d.setDate(today.getDate() - i)
+      buckets.push({ date: isoDateKey(d), label: formatDayLabel(d), count: 0 })
+    }
+    return buckets
+  }
+
+  if (unit === 'week') {
+    const cursor = startOfWeek(cutoff)
+    while (cursor <= today) {
+      const end = new Date(cursor)
+      end.setDate(end.getDate() + 6)
+      buckets.push({
+        date: isoDateKey(cursor),
+        label: formatWeekLabel(cursor, end),
+        count: 0,
+      })
+      cursor.setDate(cursor.getDate() + 7)
+    }
+    return buckets
+  }
+
+  const cursor = new Date(cutoff.getFullYear(), cutoff.getMonth(), 1)
+  const endMonth = new Date(today.getFullYear(), today.getMonth(), 1)
+  while (cursor <= endMonth) {
+    buckets.push({
+      date: `${cursor.getFullYear()}-${String(cursor.getMonth() + 1).padStart(2, '0')}`,
+      label: formatMonthLabel(cursor),
+      count: 0,
+    })
+    cursor.setMonth(cursor.getMonth() + 1)
   }
 
   return buckets
 }
 
 function bucketCounts(events: AnalyticsEvent[], windowDays: number, filterType?: AnalyticsEventType) {
-  const buckets = buildDayBuckets(windowDays)
+  const unit = getAnalyticsBucketUnit(windowDays)
+  const buckets = buildTimeBuckets(windowDays, unit)
   const index = new Map(buckets.map((b, i) => [b.date, i]))
   const cutoff = startOfDay(new Date())
   cutoff.setDate(cutoff.getDate() - (windowDays - 1))
@@ -76,7 +138,7 @@ function bucketCounts(events: AnalyticsEvent[], windowDays: number, filterType?:
     if (filterType && event.eventType !== filterType) continue
     const created = new Date(event.createdAt)
     if (created < cutoff) continue
-    const key = isoDateKey(startOfDay(created))
+    const key = bucketKeyForDate(created, unit)
     const idx = index.get(key)
     if (idx !== undefined) buckets[idx]!.count += 1
   }
@@ -88,9 +150,11 @@ export async function getAnalyticsData(
   windowDays = ANALYTICS_WINDOW_DAYS,
 ): Promise<AnalyticsSnapshot> {
   const payload = await getPayload({ config: configPromise })
+  const bucketUnit = getAnalyticsBucketUnit(windowDays)
   const now = new Date()
   const windowStart = new Date(now.getTime() - windowDays * 24 * 60 * 60 * 1000).toISOString()
   const todayStart = startOfDay(now).toISOString()
+  const eventLimit = windowDays > 365 ? 50000 : 10000
 
   const [
     periodEventsResult,
@@ -108,7 +172,7 @@ export async function getAnalyticsData(
     payload.find({
       collection: 'analytics-events',
       where: { createdAt: { greater_than: windowStart } },
-      limit: 10000,
+      limit: eventLimit,
       depth: 0,
       sort: '-createdAt',
       pagination: false,
@@ -229,6 +293,8 @@ export async function getAnalyticsData(
 
   return {
     windowDays,
+    windowLabel: getAnalyticsWindowLabel(windowDays),
+    bucketUnit,
     pageViewsByDay: bucketCounts(periodEvents, windowDays, 'page_view'),
     eventsByDay: bucketCounts(periodEvents, windowDays),
     uniqueVisitors,

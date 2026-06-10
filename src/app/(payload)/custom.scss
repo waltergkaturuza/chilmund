@@ -637,7 +637,7 @@
       top: clamp(18px, 4vw, 36px);
 
       margin: 0 auto;
-      max-width: 480px;
+      max-width: 580px;
       content: '';
       height: 2px;
 
@@ -657,9 +657,12 @@
     position: relative;
     z-index: 1;
 
+    width: min(580px, 94vw);
+    max-width: 580px;
+    margin-inline: auto;
     margin-top: clamp(28px, 7vh, 56px);
 
-    padding: clamp(28px, 4vw, 44px);
+    padding: clamp(28px, 4vw, 44px) clamp(32px, 5vw, 52px);
 
     border-radius: 18px;
 
@@ -723,13 +726,11 @@
     );
   }
 
-  /* Login logo: full-colour blue mark, ~28rem — slightly below About hero (32–36rem) */
+  /* Login logo: full-colour mark — width only; aspect-ratio on BrandLogo prevents stretch */
   .template-minimal .chilmund-admin-logo__img {
     display: block;
-    width: min(28rem, 92vw) !important;
-    max-width: min(28rem, 92vw) !important;
-    height: auto !important;
-    max-height: none !important;
+    width: min(22rem, 100%) !important;
+    max-width: 22rem !important;
     filter: none !important;
     opacity: 1;
 
