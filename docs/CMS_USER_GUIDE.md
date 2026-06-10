@@ -287,6 +287,15 @@ These slugs align with the recommended sitemap in the project (`src/content/site
 
 ## 15. Troubleshooting (admin errors)
 
+### Blank `/admin` page (white screen)
+
+- **Meaning:** The admin shell loads but the login form or dashboard never appears.
+- **Common cause:** `NEXT_PUBLIC_SERVER_URL` is missing on Vercel, so Payload’s admin cannot reach the API (`serverURL` is empty in production).
+- **Fix:** In **Vercel → Project → Settings → Environment Variables**, set  
+  `NEXT_PUBLIC_SERVER_URL` = `https://www.chilmund.co.zw` (no trailing slash), then **redeploy**.
+- Use the **same hostname** you browse (if you use `www`, set `www` in the variable).
+- After deploy, open `/admin/login` directly and hard-refresh (Ctrl+F5).
+
 ### “Failed to load resource” / **403** on `…/api/media?…`
 
 - **Meaning:** The browser asked your site’s API for the **Media** list; the server answered **403 Forbidden** (not allowed).

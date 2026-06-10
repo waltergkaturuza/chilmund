@@ -25,7 +25,7 @@ import { Footer } from './Footer/config'
 import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
-import { getServerSideURL } from './utilities/getURL'
+import { getSiteOrigins } from './utilities/getURL'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -197,7 +197,7 @@ export default buildConfig({
      */
   }),
   collections: [Pages, Posts, Products, Media, Categories, Users, QuoteRequests, ContactSubmissions, Events, Resources, IndustryAwards, CSRInitiatives, TeamMembers, NewsletterSubscribers],
-  cors: [getServerSideURL()].filter(Boolean),
+  cors: getSiteOrigins(),
   globals: [Header, Footer, CompanyContact],
   plugins: [...plugins, ...vercelBlobPlugins],
   secret: process.env.PAYLOAD_SECRET,
