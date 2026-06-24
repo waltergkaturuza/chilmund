@@ -4,7 +4,7 @@ export const companyContactDefaultData = {
   salesPhone: '+263 242 312 235 / 236',
   salesPhoneTel: '+263242312235',
   salesEmail: 'sales@chilmund.co.zw',
-  whatsappNumber: '263783184726',
+  whatsappNumber: '263783886868',
   whatsappPrefillMessage:
     'Hello, I would like to enquire about aluminium sulphate supply from Chilmund Chemicals.',
   quotePagePath: '/contact',
