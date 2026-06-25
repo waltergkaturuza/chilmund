@@ -2557,6 +2557,10 @@ export interface CompanyContact {
    * Digits only, country code, no + (e.g. 263783184726)
    */
   whatsappNumber?: string | null;
+  /**
+   * Optional second WhatsApp line. Digits only, country code, no + (e.g. 263774440304)
+   */
+  whatsappNumberSecondary?: string | null;
   whatsappPrefillMessage?: string | null;
   headOfficeAddress?: string | null;
   manufacturingPlantAddress?: string | null;
@@ -2652,6 +2656,7 @@ export interface CompanyContactSelect<T extends boolean = true> {
   salesEmail?: T;
   adminEmail?: T;
   whatsappNumber?: T;
+  whatsappNumberSecondary?: T;
   whatsappPrefillMessage?: T;
   headOfficeAddress?: T;
   manufacturingPlantAddress?: T;

@@ -102,6 +102,15 @@ export const CompanyContact: GlobalConfig = {
               },
             },
             {
+              name: 'whatsappNumberSecondary',
+              type: 'text',
+              label: 'WhatsApp number (secondary)',
+              defaultValue: D.whatsappNumberSecondary,
+              admin: {
+                description: 'Optional second WhatsApp line. Digits only, country code, no + (e.g. 263774440304)',
+              },
+            },
+            {
               name: 'whatsappPrefillMessage',
               type: 'textarea',
               label: 'WhatsApp default message',

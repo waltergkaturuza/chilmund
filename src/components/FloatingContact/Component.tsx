@@ -16,6 +16,7 @@ export async function FloatingContact() {
       salesPhone={data?.salesPhone}
       salesPhoneTel={data?.salesPhoneTel}
       whatsappNumber={data?.whatsappNumber}
+      whatsappNumberSecondary={data?.whatsappNumberSecondary}
       whatsappPrefillMessage={data?.whatsappPrefillMessage}
     />
   )

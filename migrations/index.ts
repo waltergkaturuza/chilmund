@@ -10,6 +10,7 @@ import * as migration_20260507_home_hero_headline_copy from './20260507_home_her
 import * as migration_20260517_home_hero_copy from './20260517_home_hero_copy';
 import * as migration_20260603_home_hero_alum_spelled_out from './20260603_home_hero_alum_spelled_out';
 import * as migration_20260610_185908 from './20260610_185908';
+import * as migration_20260625_add_whatsapp_secondary from './20260625_add_whatsapp_secondary';
 
 export const migrations = [
   {
@@ -71,5 +72,10 @@ export const migrations = [
     up: migration_20260610_185908.up,
     down: migration_20260610_185908.down,
     name: '20260610_185908'
+  },
+  {
+    up: migration_20260625_add_whatsapp_secondary.up,
+    down: migration_20260625_add_whatsapp_secondary.down,
+    name: '20260625_add_whatsapp_secondary',
   },
 ];

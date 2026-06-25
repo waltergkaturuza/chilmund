@@ -119,6 +119,15 @@ export default async function ContactPage() {
                   external
                 />
               )}
+              {contact?.whatsappNumberSecondary && (
+                <ContactRow
+                  icon={<Globe className="size-4" />}
+                  label="WhatsApp"
+                  value={`+${contact.whatsappNumberSecondary}`}
+                  href={`https://wa.me/${contact.whatsappNumberSecondary}${contact.whatsappPrefillMessage ? '?text=' + encodeURIComponent(contact.whatsappPrefillMessage) : ''}`}
+                  external
+                />
+              )}
             </div>
           </div>
 

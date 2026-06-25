@@ -15,6 +15,7 @@ export type FloatingContactClientProps = {
   salesPhoneTel: string | null | undefined
   salesEmail: string | null | undefined
   whatsappNumber: string | null | undefined
+  whatsappNumberSecondary: string | null | undefined
   whatsappPrefillMessage: string | null | undefined
   quotePagePath: string | null | undefined
 }
@@ -33,6 +34,7 @@ export function FloatingContactClient({
   salesPhoneTel,
   salesEmail,
   whatsappNumber,
+  whatsappNumberSecondary,
   whatsappPrefillMessage,
   quotePagePath,
 }: FloatingContactClientProps) {
@@ -65,6 +67,7 @@ export function FloatingContactClient({
 
   const tel = (salesPhoneTel || salesPhone || '').replace(/\s/g, '')
   const wa = whatsappNumber?.replace(/\D/g, '')
+  const wa2 = whatsappNumberSecondary?.replace(/\D/g, '')
   const prefill = whatsappPrefillMessage?.trim() || ''
   const quoteHref = quotePagePath?.startsWith('/') ? quotePagePath : `/${quotePagePath || 'contact'}`
 
@@ -93,6 +96,20 @@ export function FloatingContactClient({
               >
                 <MessageCircle aria-hidden className="size-4 shrink-0" />
                 WhatsApp
+              </a>
+            </Button>
+          ) : null}
+          {wa2 && wa2 !== wa ? (
+            <Button asChild className="w-full justify-start gap-2" variant="default">
+              <a
+                data-contact="whatsapp"
+                href={waUrl(wa2, prefill)}
+                rel="noopener noreferrer"
+                target="_blank"
+                onClick={() => track('whatsapp_click')}
+              >
+                <MessageCircle aria-hidden className="size-4 shrink-0" />
+                WhatsApp (alternative)
               </a>
             </Button>
           ) : null}
