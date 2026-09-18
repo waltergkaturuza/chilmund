@@ -29,7 +29,7 @@ const tabStripTrack =
 const tabStripTrackLight = ''
 
 const tabStripItem =
-  'inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[0.75rem] font-semibold tracking-wide transition-colors xl:px-3 xl:py-2 xl:text-[0.8125rem]'
+  'inline-flex items-center gap-1 whitespace-nowrap rounded-md px-2.5 py-1.5 text-[0.75rem] font-medium tracking-wide transition-colors xl:px-3 xl:py-2 xl:text-[0.8125rem]'
 
 const tabStripActive = (dark?: boolean) =>
   dark
