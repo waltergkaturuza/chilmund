@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params: paramsPromise }: Args)
             {product.category.replace(/-/g, ' ')}
           </p>
         ) : null}
-        <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+        <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
           {product.title}
         </h1>
         {product.shortDescription ? (

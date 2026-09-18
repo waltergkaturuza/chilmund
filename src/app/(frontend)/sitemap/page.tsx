@@ -162,7 +162,7 @@ export default async function SiteMapPage() {
       <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">Site Map</h1>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Site Map</h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg md:leading-relaxed">
             Navigate the main sections of our site using the headings below — the same destinations as the primary
             header menu whenever your menu is curated in Payload.
@@ -171,7 +171,7 @@ export default async function SiteMapPage() {
       </section>
 
       <section className="bg-white dark:bg-slate-950">
-        <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
+        <div className="container mx-auto max-w-4xl px-4 py-8 md:py-12">
           <div className="grid gap-10 md:grid-cols-2">
         {primary.map(({ title, links }) => (
           <section key={title}>

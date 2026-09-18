@@ -9,11 +9,11 @@ import RichText from '@/components/RichText'
 export const MediumImpactHero: React.FC<Page['hero']> = ({ links, media, richText }) => {
   return (
     <div className="border-b border-border bg-muted/40">
-      <div className="container py-12 md:py-16">
+      <div className="container py-8 md:py-12">
         <div className="mx-auto max-w-3xl text-center md:text-left">
           {richText && (
             <RichText
-              className="mb-6 prose-headings:font-extrabold prose-headings:tracking-tight [&_h1]:text-3xl [&_h1]:md:text-4xl [&_h1]:lg:text-5xl"
+              className="mb-6 prose-headings:font-bold prose-headings:tracking-tight [&_h1]:text-2xl [&_h1]:md:text-3xl [&_h1]:lg:text-4xl"
               data={richText}
               enableGutter={false}
             />

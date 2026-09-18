@@ -260,7 +260,7 @@ export function TrackQuotePanel({ variant = 'page', initialTrackingId, onClose }
   }
 
   return (
-    <div className="min-h-[calc(100vh-8rem)] bg-slate-950 px-4 py-16">
+    <div className="min-h-[calc(100vh-8rem)] bg-slate-950 px-4 py-10">
       <div className="mx-auto flex min-h-[60vh] max-w-4xl flex-col items-center justify-center">{inner}</div>
     </div>
   )

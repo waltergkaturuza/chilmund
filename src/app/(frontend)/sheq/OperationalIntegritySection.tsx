@@ -8,11 +8,11 @@ const linkCls =
 
 export function OperationalIntegritySection() {
   return (
-    <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
+    <section className="border-b border-slate-200/90 bg-white py-10 dark:border-white/10 dark:bg-slate-950 md:py-16">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="home-card overflow-hidden rounded-3xl border border-slate-200 bg-[linear-gradient(135deg,#f8fafc_0%,#ffffff_48%,#eef2ff_100%)] shadow-xl dark:border-white/15 dark:bg-[linear-gradient(135deg,oklch(18%_0.04_250deg)_0%,oklch(14%_0.035_248deg)_100%)] md:grid md:grid-cols-2 md:items-stretch">
           <div className="w-full p-8 md:p-10">
-            <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white md:text-3xl">
+            <h2 className="text-xl font-bold text-slate-900 dark:text-white md:text-2xl">
               Operational Integrity (SHEQ)
             </h2>
             <p className="mt-4 text-[1.05rem] font-medium leading-relaxed text-slate-700 dark:text-white/65">

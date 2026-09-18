@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { BadgeCheck, Handshake, HeartHandshake, Sprout, Trophy } from 'lucide-react'
 import React from 'react'
 
 import { ABOUT_CORE_VALUES } from '@/content/aboutCoreValues'
@@ -8,24 +7,19 @@ const linkCls =
   'font-semibold text-blue-700 underline-offset-4 transition-colors hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300'
 
 function PillarCard({
-  icon,
   title,
   subtitle,
   body,
   foot,
-  accentClass,
 }: {
-  icon: React.ReactNode
   title: string
   subtitle: string
   body: string
   foot: React.ReactNode
-  accentClass: string
 }) {
   return (
     <div className="home-card flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white px-7 py-6 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
-      <div className={`flex size-12 items-center justify-center rounded-xl ${accentClass}`}>{icon}</div>
-      <h3 className="mt-4 text-xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h3>
+      <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">{title}</h3>
       <p className="text-sm font-medium text-slate-600 dark:text-white/60">{subtitle}</p>
       <div className="mt-5 flex flex-1 flex-col">
         <p className="flex-1 text-sm leading-relaxed text-slate-600 dark:text-white/58">{body}</p>
@@ -41,10 +35,10 @@ export function AboutFoundationSections() {
   return (
     <div className="home-content-sections space-y-0 [&_section]:scroll-mt-20">
       {/* Three pillars */}
-      <section className="border-b border-slate-200/90 bg-white pb-16 pt-8 dark:border-white/10 dark:bg-slate-950 md:pb-22 md:pt-12">
+      <section className="border-b border-slate-200/90 bg-white pb-10 pt-6 dark:border-white/10 dark:bg-slate-950 md:pb-16 md:pt-8">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mb-12 text-center md:mb-14">
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+            <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-white md:text-3xl">
               Our Key Pillars
             </h2>
             <p className="mx-auto mt-3 max-w-2xl !text-center text-slate-600 dark:text-white/55">
@@ -53,8 +47,6 @@ export function AboutFoundationSections() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <PillarCard
-              icon={<Trophy className="size-7" />}
-              accentClass="bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300"
               title="Quality"
               subtitle="Highest global standards"
               body="We deliver world-class products that meet rigorous specifications and audit-driven consistency."
@@ -69,8 +61,6 @@ export function AboutFoundationSections() {
               }
             />
             <PillarCard
-              icon={<Handshake className="size-7" />}
-              accentClass="bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300"
               title="Affordability"
               subtitle="Inclusive access"
               body="We design solutions so that safe water remains accessible regardless of economic context."
@@ -85,8 +75,6 @@ export function AboutFoundationSections() {
               }
             />
             <PillarCard
-              icon={<HeartHandshake className="size-7" />}
-              accentClass="bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300"
               title="Service excellence"
               subtitle="Reliability on specification &amp; schedule"
               body="Customer satisfaction anchors every dispatch, disciplined logistics, proactive communication and follow-through."
@@ -105,11 +93,10 @@ export function AboutFoundationSections() {
       </section>
 
       {/* Vision & mission */}
-      <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/50 md:py-22">
+      <section className="border-b border-slate-200/90 bg-slate-50 py-10 dark:border-white/10 dark:bg-slate-900/50 md:py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-10">
             <div className="home-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
-              <BadgeCheck className="mb-5 size-9 text-blue-600 dark:text-blue-400" />
               <h2 className="text-xl font-bold uppercase tracking-wide text-slate-900 dark:text-white">Our vision</h2>
               <p className="mt-4 text-[1.05rem] leading-relaxed text-slate-700 dark:text-white/65">
                 To be the most sustainable and trusted Pan-African water treatment chemicals partner, empowering
@@ -127,7 +114,6 @@ export function AboutFoundationSections() {
               </p>
             </div>
             <div className="home-card relative overflow-hidden rounded-3xl border border-slate-200 bg-white px-8 py-10 shadow-xl dark:border-white/15 dark:bg-slate-950/80 dark:shadow-none">
-              <Sprout className="mb-5 size-9 text-emerald-600 dark:text-emerald-400" />
               <h2 className="text-xl font-bold uppercase tracking-wide text-slate-900 dark:text-white">Our mission</h2>
               <p className="mt-4 text-[1.05rem] leading-relaxed text-slate-700 dark:text-white/65">
                 We deliver result-oriented water solutions that enhance lives and livelihoods, one drop at a time. Through
@@ -143,10 +129,10 @@ export function AboutFoundationSections() {
       </section>
 
       {/* Core values */}
-      <section className="border-b border-slate-200/90 bg-white py-16 dark:border-white/10 dark:bg-slate-950 md:py-22">
+      <section className="border-b border-slate-200/90 bg-white py-10 dark:border-white/10 dark:bg-slate-950 md:py-16">
         <div className="container mx-auto max-w-6xl px-4">
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <h2 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white md:text-3xl">
               Core Values
             </h2>
             <p className="mt-3 text-slate-600 dark:text-white/55">

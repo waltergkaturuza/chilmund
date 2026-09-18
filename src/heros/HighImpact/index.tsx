@@ -32,7 +32,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
         <div className="max-w-4xl text-center">
           {richText && (
             <RichText
-              className="mb-0 prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-white prose-p:text-lg prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 md:prose-p:text-xl [&_h1]:text-4xl [&_h1]:md:text-5xl [&_h1]:lg:text-6xl [&_h1]:leading-[1.08]"
+              className="mb-0 prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-white prose-p:text-lg prose-p:text-white/85 prose-strong:text-white prose-a:text-blue-500 md:prose-p:text-xl [&_h1]:text-3xl [&_h1]:md:text-4xl [&_h1]:lg:text-5xl [&_h1]:leading-[1.08]"
               data={richText}
               enableGutter={false}
             />

@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-  Building2,
-  CheckCircle,
-  Download,
-  Microscope,
-  Shield,
-} from 'lucide-react'
 import React from 'react'
 
 import { hrefForStaticLibraryDocument } from '@/content/staticLibraryDocuments'
@@ -41,7 +34,7 @@ export default function SHEQPage() {
           <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-blue-400/95 sm:text-sm sm:tracking-[0.18em]">
             Safety · Health · Environment · Quality
           </p>
-          <h1 className="mt-2 text-4xl font-extrabold tracking-tight md:mt-2 md:text-5xl">SHEQ</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight md:mt-2 md:text-4xl">SHEQ</h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-base leading-relaxed text-white/75 md:text-lg md:leading-relaxed">
             Integrated Management System commitments covering ISO&nbsp;9001, ISO&nbsp;14001, and ISO&nbsp;45001 — from
             certified processes to analytical capability and responsible community engagement.
@@ -53,10 +46,10 @@ export default function SHEQPage() {
 
       {/* Overview */}
       <section className="border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl px-4 py-10 md:py-14">
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-12">
             <div className="lg:col-span-6">
-              <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
                 Integrated Management System (IMS)
               </h2>
               <div className="mt-6 text-[1.0625rem] leading-[1.75] text-slate-700 dark:text-white/65">
@@ -71,7 +64,6 @@ export default function SHEQPage() {
                     download
                     className="inline-flex items-center gap-2 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-900 transition-colors hover:border-blue-500 hover:text-blue-700 dark:border-white/20 dark:bg-slate-900 dark:text-white dark:hover:border-blue-400 dark:hover:text-blue-300"
                   >
-                    <Download className="size-4 shrink-0" aria-hidden />
                     Download IMS policy
                   </Link>
                 </p>
@@ -103,13 +95,10 @@ export default function SHEQPage() {
 
       {/* QC/QA */}
       <section id="qc-qa" className="scroll-mt-24 border-b border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
+        <div className="container mx-auto max-w-4xl px-4 py-10 md:py-14">
           <div className="flex items-center gap-3">
-            <span className="flex size-12 items-center justify-center rounded-xl bg-slate-900 text-white dark:bg-blue-700">
-              <Building2 className="size-6" aria-hidden />
-            </span>
             <div>
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">QC / QA Process</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">QC / QA Process</h2>
               <p className="mt-1 text-sm text-slate-500 dark:text-white/45">
                 Aluminium sulphate — consistency, compliance, traceability across the lifecycle
               </p>
@@ -125,7 +114,6 @@ export default function SHEQPage() {
                 key={title}
                 className="flex items-center gap-4 rounded-xl border border-slate-100 bg-slate-50/80 p-5 dark:border-white/10 dark:bg-slate-900/40"
               >
-                <CheckCircle className="size-5 shrink-0 text-emerald-600 dark:text-emerald-400" aria-hidden />
                 <p className="font-medium text-slate-900 dark:text-white">{title}</p>
               </li>
             ))}
@@ -138,13 +126,10 @@ export default function SHEQPage() {
 
       {/* Laboratory */}
       <section id="laboratory" className="scroll-mt-24 bg-slate-50 dark:bg-slate-900/80">
-        <div className="container mx-auto max-w-6xl px-4 py-16 md:py-20">
+        <div className="container mx-auto max-w-6xl px-4 py-10 md:py-14">
           <div className="flex flex-wrap items-start gap-4">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white">
-              <Microscope className="size-6" aria-hidden />
-            </span>
             <div className="min-w-0 flex-1">
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Laboratory Facilities</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">Laboratory Facilities</h2>
               <p className="mt-2 max-w-4xl text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
                 As a testament to our commitment to quality, Chilmund has established a laboratory equipped with
                 state-of-the-art analytical instruments.
@@ -170,8 +155,8 @@ export default function SHEQPage() {
 
       {/* SHEQ approach */}
       <section className="border-t border-slate-200 bg-white dark:border-white/10 dark:bg-slate-950">
-        <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Our SHEQ Approach</h2>
+        <div className="container mx-auto max-w-4xl px-4 py-10 md:py-14">
+          <h2 className="text-xl font-bold text-slate-900 dark:text-white">Our SHEQ Approach</h2>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-2">
             <PillarCard
@@ -233,7 +218,6 @@ function PillarCard({
   return (
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/55">
       <div className={`flex items-center gap-2 px-5 py-3.5 text-white ${accent}`}>
-        <Shield className="size-5 opacity-95" aria-hidden />
         <h3 className="text-base font-bold">{title}</h3>
       </div>
       <ul className="space-y-2.5 px-5 py-4 text-sm leading-relaxed text-slate-600 dark:text-white/60">

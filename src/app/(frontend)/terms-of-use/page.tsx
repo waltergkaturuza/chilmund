@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 
 export default function TermsOfUsePage() {
   return (
-    <article className="container mx-auto max-w-3xl px-4 py-14 md:py-20">
-      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Terms of Use</h1>
+    <article className="container mx-auto max-w-3xl px-4 py-10 md:py-14">
+      <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Terms of Use</h1>
       <p className="mt-2 text-sm text-slate-500 dark:text-white/45">Last updated {new Date().getFullYear()}</p>
 
       <div className="prose prose-slate mt-10 max-w-none dark:prose-invert prose-p:text-justify prose-headings:text-slate-900 dark:prose-headings:text-white">

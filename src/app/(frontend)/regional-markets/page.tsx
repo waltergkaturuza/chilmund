@@ -43,7 +43,7 @@ export default function RegionalMarketsPage() {
       <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
         <div className={innerHeroGradientInner}>
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Regional Markets
           </h1>
           <p className="mx-auto mt-4 max-w-5xl text-lg text-white/75 md:text-xl lg:whitespace-nowrap">
@@ -53,7 +53,7 @@ export default function RegionalMarketsPage() {
       </section>
 
       {/* Map + cards */}
-      <section className="container px-4 py-16 md:py-20">
+      <section className="container px-4 py-10 md:py-14">
         <RegionalMarketsMap markets={[...MARKETS]} />
 
         <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

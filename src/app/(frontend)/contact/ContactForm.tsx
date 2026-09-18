@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { CheckCircle2, Loader2, Send } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import React, { useCallback, useState } from 'react'
 import { COUNTRIES } from '@/content/geo'
 import { useQuoteModalOptional } from '@/providers/QuoteModal'
@@ -78,8 +78,7 @@ export function ContactForm() {
   if (submitted) {
     return (
       <div className="rounded-2xl border border-border bg-card p-8 text-center shadow-lg">
-        <CheckCircle2 className="mx-auto size-14 text-emerald-500" />
-        <h3 className="mt-4 text-xl font-bold tracking-tight">Message sent!</h3>
+        <h3 className="text-xl font-bold tracking-tight">Message sent!</h3>
         <p className="mt-2 text-sm text-muted-foreground">
           Thank you, {form.fullName.split(' ')[0]}. Our team will respond within 24 hours.
         </p>
@@ -192,7 +191,7 @@ export function ContactForm() {
           disabled={!canSubmit || submitting}
           className="inline-flex items-center gap-2 rounded-full bg-blue-600 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+          {submitting && <Loader2 className="size-4 animate-spin" />}
           {submitting ? 'Sending…' : 'Send message'}
         </button>
       </div>

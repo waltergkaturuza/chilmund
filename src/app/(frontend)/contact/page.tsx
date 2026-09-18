@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { innerHeroGradientInner, innerHeroGradientOuter } from '@/utilities/pageHero'
 import { getCachedGlobal } from '@/utilities/getGlobals'
 import type { CompanyContact } from '@/payload-types'
-import { Building2, Factory, Globe, Mail, MapPin, Phone } from 'lucide-react'
 import React from 'react'
 import { ContactForm } from './ContactForm'
 
@@ -23,7 +22,7 @@ export default async function ContactPage() {
       <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
         <div className={innerHeroGradientInner}>
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
             Contact Us
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75 md:text-xl">
@@ -34,7 +33,7 @@ export default async function ContactPage() {
       </section>
 
       {/* Contact cards + form */}
-      <section className="container px-4 py-16 md:py-20">
+      <section className="container px-4 py-10 md:py-14">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-16">
           {/* Left: contact details */}
           <div className="space-y-8">
@@ -49,7 +48,6 @@ export default async function ContactPage() {
             <div className="space-y-4">
               {contact?.headOfficeAddress && (
                 <ContactCard
-                  icon={<MapPin className="size-5" />}
                   title="Head Office — Harare"
                   lines={[
                     contact.headOfficeAddress,
@@ -60,7 +58,6 @@ export default async function ContactPage() {
 
               {contact?.manufacturingPlantAddress && (
                 <ContactCard
-                  icon={<Factory className="size-5" />}
                   title="Manufacturing Plant — Bindura"
                   lines={[
                     contact.manufacturingPlantAddress,
@@ -80,7 +77,6 @@ export default async function ContactPage() {
 
               {contact?.salesEmail && (
                 <ContactRow
-                  icon={<Mail className="size-4" />}
                   label="Sales"
                   value={contact.salesEmail}
                   href={`mailto:${contact.salesEmail}`}
@@ -88,7 +84,6 @@ export default async function ContactPage() {
               )}
               {contact?.adminEmail && (
                 <ContactRow
-                  icon={<Mail className="size-4" />}
                   label="Admin"
                   value={contact.adminEmail}
                   href={`mailto:${contact.adminEmail}`}
@@ -96,7 +91,6 @@ export default async function ContactPage() {
               )}
               {contact?.salesPhone && (
                 <ContactRow
-                  icon={<Phone className="size-4" />}
                   label="Harare"
                   value={contact.salesPhone}
                   href={contact.salesPhoneTel ? `tel:${contact.salesPhoneTel.replace(/\s/g, '')}` : undefined}
@@ -104,7 +98,6 @@ export default async function ContactPage() {
               )}
               {contact?.phoneBinduraDisplay && (
                 <ContactRow
-                  icon={<Phone className="size-4" />}
                   label="Bindura"
                   value={contact.phoneBinduraDisplay}
                   href={contact.phoneBinduraTel ? `tel:${contact.phoneBinduraTel.replace(/\s/g, '')}` : undefined}
@@ -112,7 +105,6 @@ export default async function ContactPage() {
               )}
               {contact?.whatsappNumber && (
                 <ContactRow
-                  icon={<Globe className="size-4" />}
                   label="WhatsApp"
                   value={`+${contact.whatsappNumber}`}
                   href={`https://wa.me/${contact.whatsappNumber}${contact.whatsappPrefillMessage ? '?text=' + encodeURIComponent(contact.whatsappPrefillMessage) : ''}`}
@@ -121,7 +113,6 @@ export default async function ContactPage() {
               )}
               {contact?.whatsappNumberSecondary && (
                 <ContactRow
-                  icon={<Globe className="size-4" />}
                   label="WhatsApp"
                   value={`+${contact.whatsappNumberSecondary}`}
                   href={`https://wa.me/${contact.whatsappNumberSecondary}${contact.whatsappPrefillMessage ? '?text=' + encodeURIComponent(contact.whatsappPrefillMessage) : ''}`}
@@ -156,19 +147,14 @@ export default async function ContactPage() {
 /* ── Sub-components ──────────────────────────────────────────────────── */
 
 function ContactCard({
-  icon,
   title,
   lines,
 }: {
-  icon: React.ReactNode
   title: string
   lines: string[]
 }) {
   return (
     <div className="flex gap-4 rounded-xl border border-border bg-card p-5 shadow-sm">
-      <div className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-blue-600/10 text-blue-600">
-        {icon}
-      </div>
       <div>
         <h4 className="font-semibold">{title}</h4>
         {lines.map((line, i) => (
@@ -182,13 +168,11 @@ function ContactCard({
 }
 
 function ContactRow({
-  icon,
   label,
   value,
   href,
   external,
 }: {
-  icon: React.ReactNode
   label: string
   value: string
   href?: string
@@ -196,7 +180,6 @@ function ContactRow({
 }) {
   const content = (
     <div className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-muted">
-      <span className="text-blue-600">{icon}</span>
       <span className="shrink-0 font-medium text-muted-foreground">{label}</span>
       <span className="font-semibold">{value}</span>
     </div>

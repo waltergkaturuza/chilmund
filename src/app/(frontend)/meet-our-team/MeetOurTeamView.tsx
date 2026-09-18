@@ -2,7 +2,7 @@
 
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { Linkedin, Mail, User } from 'lucide-react'
+import { Linkedin, Mail } from 'lucide-react'
 import React, { useState } from 'react'
 
 import { TeamProfileModal } from './TeamProfileModal'
@@ -45,7 +45,7 @@ export function MeetOurTeamView({ members }: Props) {
       <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/30 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">Meet Our Team</h1>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">Meet Our Team</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-white/70">
             Our experienced leadership team combines deep industry knowledge with a passion for
             sustainable water solutions across Africa.
@@ -57,7 +57,7 @@ export function MeetOurTeamView({ members }: Props) {
         <section className="bg-white dark:bg-slate-950">
           <div className="container mx-auto px-4 pt-16">
             <div className="mx-auto max-w-2xl text-center">
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Leadership</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">Leadership</h2>
             </div>
             <div className="mx-auto mt-10 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {featured.map((m, i) => (
@@ -69,10 +69,10 @@ export function MeetOurTeamView({ members }: Props) {
       )}
 
       <section className="bg-white dark:bg-slate-950">
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 py-10">
           {featured.length > 0 && (
             <div className="mx-auto mb-10 max-w-2xl text-center">
-              <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">The Team</h2>
+              <h2 className="text-xl font-bold text-slate-900 dark:text-white">The Team</h2>
             </div>
           )}
           <div className="mx-auto grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -87,8 +87,7 @@ export function MeetOurTeamView({ members }: Props) {
           </div>
 
           <div className="mx-auto mt-16 max-w-2xl rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center dark:border-white/10 dark:bg-slate-800/50">
-            <User className="mx-auto size-10 text-blue-600 dark:text-blue-400" />
-            <h3 className="mt-4 text-xl font-bold text-slate-900 dark:text-white">Join Our Team</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Join Our Team</h3>
             <p className="mt-2 text-slate-600 dark:text-white/60">
               We&apos;re always looking for talented individuals to join our growing team — currently 200+, with plans for continued growth.
             </p>

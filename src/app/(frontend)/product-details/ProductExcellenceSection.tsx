@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Building2, Sparkles } from 'lucide-react'
 import React from 'react'
 
 const linkCls =
@@ -8,15 +7,14 @@ const linkCls =
 
 export function ProductExcellenceSection() {
   return (
-    <section className="border-b border-slate-200/90 bg-slate-50 py-16 dark:border-white/10 dark:bg-slate-900/50 md:py-22">
+    <section className="border-b border-slate-200/90 bg-slate-50 py-10 dark:border-white/10 dark:bg-slate-900/50 md:py-16">
       <div className="container mx-auto max-w-6xl px-4">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-stretch lg:gap-12">
           <div className="flex min-w-0 flex-col lg:col-span-5">
             <div className="inline-flex items-center gap-2 rounded-full bg-blue-600/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-blue-800 dark:bg-blue-500/20 dark:text-blue-300">
-              <Sparkles className="size-3.5" />
               Portfolio
             </div>
-            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white md:text-4xl">
+            <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-900 dark:text-white md:text-3xl">
               Product excellence
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-700 dark:text-white/65">
@@ -40,8 +38,7 @@ export function ProductExcellenceSection() {
             </div>
 
             <div className="mt-10 border-t border-slate-200/90 pt-10 dark:border-white/10">
-              <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white">
-                <Building2 className="size-5 text-blue-600" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                 Applications
               </h3>
               <ul className="mt-6 space-y-4 text-sm leading-relaxed text-slate-700 dark:text-white/60">

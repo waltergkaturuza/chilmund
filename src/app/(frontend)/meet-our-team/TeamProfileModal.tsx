@@ -1,7 +1,7 @@
 'use client'
 
 import { cn } from '@/utilities/ui'
-import { Linkedin, Mail, X } from 'lucide-react'
+import { X } from 'lucide-react'
 import React, { useEffect, useRef } from 'react'
 
 import { TeamPortraitImage } from './TeamPortraitImage'
@@ -90,7 +90,7 @@ export function TeamProfileModal({ member, onClose }: Props) {
                 </div>
               </div>
               <div className="min-w-0 flex-1 text-center sm:pb-1 sm:text-left">
-                <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">{member.name}</h2>
+                <h2 className="text-xl font-bold tracking-tight sm:text-2xl">{member.name}</h2>
                 <p className="mt-1 text-sm font-semibold text-blue-100 sm:text-base">{member.jobTitle}</p>
                 {member.credentials ? (
                   <p className="mt-3 text-xs leading-relaxed text-white/85 sm:text-sm">{member.credentials}</p>
@@ -113,7 +113,6 @@ export function TeamProfileModal({ member, onClose }: Props) {
                     href={`mailto:${member.email}`}
                     className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:border-blue-500 hover:bg-blue-50 hover:text-blue-800 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:hover:border-blue-400 dark:hover:bg-blue-950/40"
                   >
-                    <Mail className="size-4 shrink-0" />
                     Email
                   </a>
                 ) : null}
@@ -124,7 +123,6 @@ export function TeamProfileModal({ member, onClose }: Props) {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-800 transition-colors hover:border-blue-500 hover:bg-blue-50 hover:text-blue-800 dark:border-white/15 dark:bg-white/5 dark:text-white/90 dark:hover:border-blue-400 dark:hover:bg-blue-950/40"
                   >
-                    <Linkedin className="size-4 shrink-0" />
                     LinkedIn
                   </a>
                 ) : null}

@@ -2,33 +2,20 @@
 
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import {
-  Award,
-  Download,
-  ExternalLink,
-  FileText,
-  Film,
-  Image as ImageIcon,
-  LayoutGrid,
-  Presentation,
-  Search,
-  Star,
-  Table,
-} from 'lucide-react'
 import React, { useMemo, useState } from 'react'
 
 import type { ResourceItem } from './page'
 
-const TYPE_META: Record<string, { label: string; icon: React.ReactNode; color: string }> = {
-  certificate: { label: 'Certificate', icon: <Award className="size-4" />, color: 'bg-emerald-600' },
-  document: { label: 'Document', icon: <FileText className="size-4" />, color: 'bg-blue-600' },
-  infographic: { label: 'Infographic', icon: <LayoutGrid className="size-4" />, color: 'bg-violet-600' },
-  video: { label: 'Video', icon: <Film className="size-4" />, color: 'bg-red-600' },
-  image: { label: 'Image', icon: <ImageIcon className="size-4" />, color: 'bg-amber-600' },
-  brochure: { label: 'Brochure', icon: <FileText className="size-4" />, color: 'bg-cyan-600' },
-  datasheet: { label: 'Datasheet', icon: <Table className="size-4" />, color: 'bg-indigo-600' },
-  presentation: { label: 'Presentation', icon: <Presentation className="size-4" />, color: 'bg-pink-600' },
-  other: { label: 'Other', icon: <FileText className="size-4" />, color: 'bg-slate-600' },
+const TYPE_META: Record<string, { label: string; color: string }> = {
+  certificate: { label: 'Certificate', color: 'bg-emerald-600' },
+  document: { label: 'Document', color: 'bg-blue-600' },
+  infographic: { label: 'Infographic', color: 'bg-violet-600' },
+  video: { label: 'Video', color: 'bg-red-600' },
+  image: { label: 'Image', color: 'bg-amber-600' },
+  brochure: { label: 'Brochure', color: 'bg-cyan-600' },
+  datasheet: { label: 'Datasheet', color: 'bg-indigo-600' },
+  presentation: { label: 'Presentation', color: 'bg-pink-600' },
+  other: { label: 'Other', color: 'bg-slate-600' },
 }
 
 function typeMeta(key: string) {
@@ -67,7 +54,7 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/35 via-transparent to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/45 to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center px-4">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">Resources</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-white md:text-3xl">Resources</h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
             Download certificates, documents, infographics, brochures and more — including company policy PDFs from our
             document library.
@@ -108,7 +95,6 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
                         : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/15 dark:hover:text-white',
                     )}
                   >
-                    {meta.icon}
                     {meta.label}
                   </button>
                 )
@@ -124,8 +110,7 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
               </div>
             ) : (
               <div className="rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
-                <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
-                <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No resources found</p>
+                <p className="text-lg font-semibold text-slate-700 dark:text-white/60">No resources found</p>
                 <p className="mt-1 text-sm text-slate-500 dark:text-white/40">Try adjusting your search or filter.</p>
               </div>
             )}
@@ -135,8 +120,7 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Search */}
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
-              <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-                <Search className="size-4" />
+              <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
                 Search
               </h3>
               <div className="relative">
@@ -152,8 +136,7 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
 
             {/* Types legend */}
             <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
-              <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-                <LayoutGrid className="size-4" />
+              <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
                 Categories
               </h3>
               <div className="space-y-0.5">
@@ -184,7 +167,6 @@ export function ResourcesPageClient({ items }: { items: ResourceItem[] }) {
                           : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-white/60 dark:hover:bg-white/5 dark:hover:text-white',
                       )}
                     >
-                      {meta.icon}
                       {meta.label}
                       <span className="ml-auto text-xs text-slate-400 dark:text-white/30">{count}</span>
                     </button>
@@ -215,9 +197,7 @@ function ResourceCard({ item }: { item: ResourceItem }) {
             className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex size-full items-center justify-center">
-            <div className="text-slate-300 dark:text-white/20">{meta.icon}</div>
-          </div>
+          <div className="flex size-full items-center justify-center" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
@@ -229,25 +209,14 @@ function ResourceCard({ item }: { item: ResourceItem }) {
               meta.color,
             )}
           >
-            {meta.icon}
             {meta.label}
           </span>
           {item.featured && (
             <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/90 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-              <Star className="size-3" />
               Featured
             </span>
           )}
         </div>
-
-        {/* Video play overlay */}
-        {isVideo && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="flex size-14 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition-transform group-hover:scale-110">
-              <Film className="size-6 text-white" />
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Content */}
@@ -268,7 +237,6 @@ function ResourceCard({ item }: { item: ResourceItem }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-lg bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-500"
             >
-              <Film className="size-3.5" />
               Watch
             </a>
           ) : item.downloadUrl ? (
@@ -277,7 +245,6 @@ function ResourceCard({ item }: { item: ResourceItem }) {
               download={item.filename || true}
               className="inline-flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
             >
-              <Download className="size-3.5" />
               Download
             </a>
           ) : null}
@@ -289,7 +256,6 @@ function ResourceCard({ item }: { item: ResourceItem }) {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-200 hover:text-slate-900 dark:border-white/10 dark:bg-white/10 dark:text-white/70 dark:hover:bg-white/15 dark:hover:text-white"
             >
-              <ExternalLink className="size-3.5" />
               View
             </a>
           )}

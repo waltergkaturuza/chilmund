@@ -12,7 +12,7 @@ export function HomeProductShowcase() {
   return (
     <section
       aria-label="Product highlights"
-      className="border-b border-slate-200/90 bg-white py-12 dark:border-white/10 dark:bg-slate-950 md:py-16"
+      className="border-b border-slate-200/90 bg-white py-8 dark:border-white/10 dark:bg-slate-950 md:py-12"
     >
       <div className="container mx-auto max-w-6xl px-4">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-start lg:gap-12">

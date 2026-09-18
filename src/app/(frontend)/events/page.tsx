@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 import configPromise from '@payload-config'
 import { innerHeroGradientInner, innerHeroGradientOuter } from '@/utilities/pageHero'
 import { getPayload } from 'payload'
-import { Calendar, Clock, MapPin, ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -53,14 +52,14 @@ export default async function EventsPage() {
       <section className={innerHeroGradientOuter}>
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(59,130,246,0.15),transparent)]" />
         <div className={innerHeroGradientInner}>
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl">Events</h1>
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">Events</h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/75 md:text-xl">
             Conferences, exhibitions, award ceremonies, and community outreach.
           </p>
         </div>
       </section>
 
-      <section className="container px-4 py-16 md:py-20">
+      <section className="container px-4 py-10 md:py-14">
         {upcoming.docs.length > 0 && (
           <div className="mb-16">
             <h2 className="mb-8 text-2xl font-bold tracking-tight">Upcoming Events</h2>
@@ -85,8 +84,7 @@ export default async function EventsPage() {
 
         {upcoming.docs.length === 0 && past.docs.length === 0 && (
           <div className="py-20 text-center">
-            <Calendar className="mx-auto size-12 text-muted-foreground/40" />
-            <h2 className="mt-4 text-xl font-bold">No events yet</h2>
+            <h2 className="text-xl font-bold">No events yet</h2>
             <p className="mt-2 text-muted-foreground">Check back soon — we regularly participate in industry events across Southern Africa.</p>
           </div>
         )}
@@ -119,7 +117,6 @@ function EventCard({ event, upcoming }: { event: Record<string, any>; upcoming?:
         </h3>
         {date && (
           <div className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <Clock className="size-3.5" />
             <time dateTime={date.toISOString()}>
               {date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
               {' · '}
@@ -129,7 +126,6 @@ function EventCard({ event, upcoming }: { event: Record<string, any>; upcoming?:
         )}
         {event.venue && (
           <div className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <MapPin className="size-3.5" />
             {event.venue}
           </div>
         )}
@@ -144,7 +140,7 @@ function EventCard({ event, upcoming }: { event: Record<string, any>; upcoming?:
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-500"
             >
-              Register <ExternalLink className="size-3.5" />
+              Register
             </a>
           )}
         </div>

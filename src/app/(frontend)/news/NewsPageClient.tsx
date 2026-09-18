@@ -2,7 +2,6 @@
 
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { Calendar, CheckCircle, Clock, Mail, MapPin, Search, ArrowRight, Tag } from 'lucide-react'
 import Link from 'next/link'
 import React, { useMemo, useState } from 'react'
 
@@ -95,7 +94,7 @@ export function NewsPageClient({
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/35 via-transparent to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-blue-500/45 to-transparent" />
         <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center px-4">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white md:text-4xl">News &amp; Events</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-white md:text-3xl">News &amp; Events</h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
             Stay updated with the latest from Chilmund Chemicals — industry news, events, awards, and community
             initiatives.
@@ -143,8 +142,7 @@ export function NewsPageClient({
 
             {filtered.length === 0 && (
               <div className="flex flex-col items-center rounded-xl border border-slate-200 bg-slate-50 py-16 text-center dark:border-white/10 dark:bg-white/5">
-                <Search className="size-10 text-slate-400 dark:text-white/30" aria-hidden />
-                <p className="mt-4 text-lg font-semibold !text-center text-slate-700 dark:text-white/60">
+                <p className="text-lg font-semibold !text-center text-slate-700 dark:text-white/60">
                   No results found
                 </p>
                 <p className="mt-1 text-sm !text-center text-slate-500 dark:text-white/40">
@@ -157,7 +155,7 @@ export function NewsPageClient({
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Search */}
-            <SidebarCard title="Search" icon={<Search className="size-4" />}>
+            <SidebarCard title="Search">
               <div className="relative">
                 <input
                   type="text"
@@ -170,7 +168,7 @@ export function NewsPageClient({
             </SidebarCard>
 
             {/* Recent posts */}
-            <SidebarCard title="Recent posts" icon={<Clock className="size-4" />}>
+            <SidebarCard title="Recent posts">
               <div className="space-y-3">
                 {recentPosts.map((p) => (
                   <Link key={p.id} href={p.href} className="group block">
@@ -192,7 +190,7 @@ export function NewsPageClient({
             </SidebarCard>
 
             {/* Categories */}
-            <SidebarCard title="Categories" icon={<Tag className="size-4" />}>
+            <SidebarCard title="Categories">
               <div className="space-y-0.5">
                 <button
                   type="button"
@@ -234,11 +232,10 @@ export function NewsPageClient({
   )
 }
 
-function SidebarCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
+function SidebarCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
-      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-        {icon}
+      <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         {title}
       </h3>
       {children}
@@ -278,13 +275,11 @@ function FeaturedCard({ item }: { item: AnyItem }) {
         <div className="flex flex-wrap items-center gap-3 text-sm text-slate-500 dark:text-white/50">
           {date && (
             <span className="flex items-center gap-1.5">
-              <Calendar className="size-3.5" />
               {date.toLocaleDateString('en-GB', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}
             </span>
           )}
           {event?.venue && (
             <span className="flex items-center gap-1.5">
-              <MapPin className="size-3.5" />
               {event.venue}
             </span>
           )}
@@ -296,7 +291,7 @@ function FeaturedCard({ item }: { item: AnyItem }) {
           <p className="mt-3 line-clamp-3 text-slate-600 dark:text-white/60">{item.excerpt}</p>
         )}
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors group-hover:text-blue-500 dark:text-blue-400 dark:group-hover:text-blue-300">
-          Read more <ArrowRight className="size-3.5" />
+          Read more
         </span>
       </div>
     </Link>
@@ -336,8 +331,7 @@ function NewsletterWidget() {
 
   return (
     <div className="rounded-xl border border-blue-200 bg-gradient-to-br from-blue-50 to-slate-50 p-5 dark:border-blue-500/20 dark:from-blue-950/80 dark:to-slate-900/80">
-      <h3 className="mb-2 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-        <Mail className="size-4" />
+      <h3 className="mb-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         Never Miss an Update
       </h3>
       <p className="mb-4 text-sm text-slate-600 dark:text-white/50">
@@ -346,7 +340,6 @@ function NewsletterWidget() {
 
       {status === 'success' ? (
         <div className="flex items-center gap-2 rounded-lg bg-emerald-100 px-4 py-3 text-sm font-medium text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300">
-          <CheckCircle className="size-4 shrink-0" />
           {message}
         </div>
       ) : (

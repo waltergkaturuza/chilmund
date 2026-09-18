@@ -27,7 +27,7 @@ export default async function BinduraPlantMapPage() {
       <section className={innerHeroRadialSection}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/35 via-transparent to-transparent" />
         <div className="relative mx-auto max-w-3xl">
-          <h1 className="text-4xl font-extrabold tracking-tight md:text-5xl">
+          <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
             Bindura manufacturing plant · Map
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">

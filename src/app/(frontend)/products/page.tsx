@@ -56,7 +56,7 @@ export default async function ProductsCatalogPage({ searchParams }: Props) {
       <div className="container">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-blue-800/80">Catalog</p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
             Products &amp; services
           </h1>
           <p className="mt-3 text-slate-600">

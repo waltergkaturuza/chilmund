@@ -4,7 +4,6 @@ import { CHILMUND_ABOUT_HERO_TITLE_GAP, CHILMUND_LOGO_WORDMARK_TOP_PADDING } fro
 import { chilmundCopy } from '@/content/chilmundCopy'
 import { aboutHeroSection } from '@/utilities/pageHero'
 import { AboutFoundationSections } from './AboutFoundationSections'
-import { Factory, Users, Globe, Droplets } from 'lucide-react'
 import React from 'react'
 
 export const metadata: Metadata = {
@@ -13,10 +12,10 @@ export const metadata: Metadata = {
 }
 
 const stats = [
-  { label: 'Established', value: '2007', icon: <Factory className="size-5" /> },
-  { label: 'Monthly capacity', value: '7500t+', icon: <Droplets className="size-5" /> },
-  { label: 'Employees', value: '200+', icon: <Users className="size-5" /> },
-  { label: 'Countries served', value: '10+', icon: <Globe className="size-5" /> },
+  { label: 'Established', value: '2007' },
+  { label: 'Monthly capacity', value: '7500t+' },
+  { label: 'Employees', value: '200+' },
+  { label: 'Countries served', value: '10+' },
 ]
 
 export default function AboutChilmundPage() {
@@ -42,13 +41,13 @@ export default function AboutChilmundPage() {
               style={{ paddingTop: CHILMUND_LOGO_WORDMARK_TOP_PADDING }}
             >
               <h1
-                className="absolute left-0 text-[2.75rem] font-extrabold leading-tight tracking-tight lg:text-5xl"
+                className="absolute left-0 text-3xl font-bold leading-tight tracking-tight lg:text-4xl"
                 style={{ bottom: CHILMUND_ABOUT_HERO_TITLE_GAP }}
               >
                 Company Overview
               </h1>
             </div>
-            <h1 className="mb-3 text-4xl font-extrabold tracking-tight md:hidden">
+            <h1 className="mb-3 text-3xl font-bold tracking-tight md:hidden">
               Company Overview
             </h1>
             <p className="mx-auto max-w-2xl text-base leading-snug text-white/70 md:mx-0 md:text-lg">
@@ -63,10 +62,7 @@ export default function AboutChilmundPage() {
         <div className="container mx-auto grid grid-cols-2 gap-6 px-4 py-10 md:grid-cols-4">
           {stats.map((s) => (
             <div key={s.label} className="text-center">
-              <div className="mx-auto mb-2 flex size-12 items-center justify-center rounded-xl bg-blue-600/10 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
-                {s.icon}
-              </div>
-              <div className="text-2xl font-extrabold text-slate-900 dark:text-white">{s.value}</div>
+              <div className="text-2xl font-bold text-slate-900 dark:text-white">{s.value}</div>
               <div className="mt-1 text-sm text-slate-500 dark:text-white/50">{s.label}</div>
             </div>
           ))}

@@ -4,7 +4,6 @@ import { ImageSlideshow } from '@/components/ImageSlideshow/ImageSlideshow'
 import { industryAwardsSlideshowSlides } from '@/content/industryAwardsSlideshowSlides'
 import { cn } from '@/utilities/ui'
 import { innerHeroRadialSection } from '@/utilities/pageHero'
-import { Award, Calendar, Search, Star, Trophy, Building2 } from 'lucide-react'
 import React, { useMemo, useState } from 'react'
 
 import type { AwardItem } from './page'
@@ -71,7 +70,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
           <p className="mx-auto max-w-xl text-center text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-amber-400/95 sm:text-sm sm:tracking-[0.18em]">
             Awards &amp; recognition
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          <h1 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">
             Industry Awards
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
@@ -120,7 +119,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
             {/* One panel: certificate slideshow + CMS grid or empty hint */}
             <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900/60">
               <div className="border-b border-slate-200 bg-slate-50/90 p-5 dark:border-white/10 dark:bg-slate-900/50 sm:p-6">
-                <h2 className="text-center text-lg font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-xl">
+                <h2 className="text-center text-lg font-bold tracking-tight text-slate-900 dark:text-white sm:text-xl">
                   Award highlights
                 </h2>
                 <p className="mx-auto mt-2 max-w-2xl text-center text-sm leading-relaxed text-slate-600 dark:text-white/60">
@@ -148,8 +147,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
                   </div>
                 ) : (
                   <div className="rounded-lg border border-dashed border-slate-200 bg-slate-50/80 py-12 text-center dark:border-white/15 dark:bg-white/[0.03]">
-                    <Search className="mx-auto size-10 text-slate-400 dark:text-white/30" />
-                    <p className="mt-4 text-lg font-semibold text-slate-700 dark:text-white/60">No awards match</p>
+                    <p className="text-lg font-semibold text-slate-700 dark:text-white/60">No awards match</p>
                     <p className="mt-1 text-sm text-slate-500 dark:text-white/40">
                       Try adjusting search or filters — highlights above always show our recognition gallery.
                     </p>
@@ -162,7 +160,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
           {/* Sidebar */}
           <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
             {/* Search */}
-            <SidebarCard title="Search" icon={<Search className="size-4" />}>
+            <SidebarCard title="Search">
               <input
                 type="text"
                 placeholder="Search awards..."
@@ -174,7 +172,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
 
             {/* Years */}
             {years.length > 0 && (
-              <SidebarCard title="By Year" icon={<Calendar className="size-4" />}>
+              <SidebarCard title="By Year">
                 <div className="flex flex-wrap gap-2">
                   {years.map((y) => (
                     <button
@@ -196,7 +194,7 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
             )}
 
             {/* Stats */}
-            <SidebarCard title="Summary" icon={<Award className="size-4" />}>
+            <SidebarCard title="Summary">
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-slate-600 dark:text-white/60">Total awards</span>
@@ -222,11 +220,10 @@ export function IndustryAwardsClient({ items }: { items: AwardItem[] }) {
   )
 }
 
-function SidebarCard({ title, icon, children }: { title: string; icon: React.ReactNode; children: React.ReactNode }) {
+function SidebarCard({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-white/10 dark:bg-slate-900/80">
-      <h3 className="mb-4 flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
-        {icon}
+      <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
         {title}
       </h3>
       {children}
@@ -249,9 +246,7 @@ function AwardCard({ item }: { item: AwardItem }) {
             className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="flex size-full items-center justify-center bg-gradient-to-br from-amber-100 to-slate-100 dark:from-amber-900/30 dark:to-slate-900">
-            <Trophy className="size-16 text-amber-500/35 dark:text-amber-500/30" />
-          </div>
+          <div className="flex size-full items-center justify-center bg-gradient-to-br from-amber-100 to-slate-100 dark:from-amber-900/30 dark:to-slate-900" />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
 
@@ -264,7 +259,6 @@ function AwardCard({ item }: { item: AwardItem }) {
           )}
           {item.featured && (
             <span className="inline-flex items-center gap-1 rounded-md bg-amber-500/90 px-2 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-              <Star className="size-3" />
               Featured
             </span>
           )}
@@ -272,7 +266,7 @@ function AwardCard({ item }: { item: AwardItem }) {
 
         {/* Year badge */}
         <div className="absolute bottom-3 right-3">
-          <span className="rounded-lg bg-black/60 px-3 py-1 text-lg font-extrabold text-amber-400 backdrop-blur-sm">
+          <span className="rounded-lg bg-black/60 px-3 py-1 text-lg font-bold text-amber-400 backdrop-blur-sm">
             {item.year}
           </span>
         </div>
@@ -284,7 +278,6 @@ function AwardCard({ item }: { item: AwardItem }) {
           {item.title}
         </h3>
         <div className="mt-2 flex items-center gap-1.5 text-sm text-slate-600 dark:text-white/50">
-          <Building2 className="size-3.5 shrink-0" />
           <span className="line-clamp-1">{item.awardingBody}</span>
         </div>
         {item.summary && (
